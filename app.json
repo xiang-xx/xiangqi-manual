@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "象棋背谱",
+    "slug": "xiangqi-manual",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "xiangqi-manual",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.xiang.xiangqimanual"
+    },
+    "android": {
+      "package": "com.xiang.xiangqimanual",
+      "adaptiveIcon": {
+        "backgroundColor": "#1B4332",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-linking"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

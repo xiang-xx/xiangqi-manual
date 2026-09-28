@@ -10,6 +10,7 @@ type Manual = {
   title: string;
   tags: string[];             // 多标签，如 ["开局","中炮","屏风马"]
   sideToMemorize: 'red' | 'black' | 'both'; // 默认 both
+  defaultFlipped?: boolean;   // 首次进入是否黑方在下；未写时后手谱（black）默认 true
   startFen: string;           // 象棋 FEN
   moves: Array<{
     san: string;              // 中文着法展示，如「炮二平五」
@@ -42,10 +43,25 @@ rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1
 
 ## 新增一局棋谱
 
-1. 新建 `src/data/manuals/<id>.json`（或用 `npx tsx scripts/import-pgn.ts` 生成模板）
+1. 新建 `src/data/manuals/<id>.json`（或用导入脚本生成）
 2. 填写 `tags`、中文 `san`、可选 `comments`
 3. 在 `src/data/manuals/index.ts` 中 `import` 并加入 `manuals` 数组
 4. 重启 Metro 后在首页可见
+
+### 导入脚本
+
+```bash
+# ICCS 坐标着法
+npm run import-pgn -- --id demo --title "演示" --moves "h2e2 h9g7"
+
+# 东萍 DhtmlXQ 页面 / UBB
+npm run import-dhtmlxq -- --url "http://www.dpxq.com/hldcg/search/view_u_68905.html" --id demo
+
+# 《银川棋路》45 局（写入 src/data/manuals/ycql/）
+npm run fetch-ycql
+```
+
+内置 `银川棋路` tag 可在首页筛选。许银川执黑的局默认 `defaultFlipped`。
 
 ## 进度存储
 
@@ -55,5 +71,8 @@ rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1
   maxReached: number;
   wrongCounts: Record<string, number>; // 着法下标 → 错误次数
   lastStudiedAt?: string;              // ISO 时间；用于「最近背谱」
+  flipped?: boolean;                   // 该谱上次棋盘翻转；优先于 defaultFlipped
 }
 ```
+
+翻转优先级：`progress.flipped` → `manual.defaultFlipped` → `sideToMemorize === 'black'`。

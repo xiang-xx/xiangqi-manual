@@ -14,20 +14,26 @@ import { Board } from '../../components/Board';
 import { getManualById } from '../../data/manuals';
 import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
+  goNext,
+  goPrev,
+  goToStep,
   initialPracticeState,
   restartPractice,
   selectSquare,
   showHint,
+  switchMode,
   toProgress,
   type PracticeState,
+  type StudyMode,
 } from '../../lib/practiceMachine';
-import { loadProgress, saveProgress } from '../../lib/progress';
+import { loadProgress, resolveFlipped, saveProgress } from '../../lib/progress';
 import type { Square } from '../../lib/squares';
 
 export default function ManualScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const manual = getManualById(id);
   const [state, setState] = useState<PracticeState | null>(null);
+  const [flipped, setFlipped] = useState(false);
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const insets = useSafeAreaInsets();
 
@@ -37,7 +43,8 @@ export default function ManualScreen() {
     (async () => {
       const progress = await loadProgress(manual.id);
       if (!alive) return;
-      setState(initialPracticeState(manual, progress));
+      setFlipped(resolveFlipped(manual, progress));
+      setState(initialPracticeState(manual, progress, 'study'));
     })();
     return () => {
       alive = false;
@@ -48,12 +55,12 @@ export default function ManualScreen() {
     if (!manual || !state) return;
     if (persistTimer.current) clearTimeout(persistTimer.current);
     persistTimer.current = setTimeout(() => {
-      void saveProgress(manual.id, toProgress(state));
+      void saveProgress(manual.id, toProgress(state, flipped));
     }, 200);
     return () => {
       if (persistTimer.current) clearTimeout(persistTimer.current);
     };
-  }, [manual, state]);
+  }, [manual, state, flipped]);
 
   if (!manual) {
     return (
@@ -66,18 +73,49 @@ export default function ManualScreen() {
   if (!state) {
     return (
       <View style={[styles.fallback, { paddingTop: insets.top + 16 }]}>
-        <Text style={styles.meta}>加载中…</Text>
+        <Text style={styles.progressText}>加载中…</Text>
       </View>
     );
   }
 
-  const currentSan =
-    state.status === 'complete'
-      ? '本谱已背完'
-      : `请走 ${manual.moves[state.stepIndex]?.san ?? ''} · ${state.stepIndex + 1}/${manual.moves.length}`;
+  const isStudy = state.mode === 'study';
+  const total = manual.moves.length;
+  const progressLabel = `${Math.min(state.stepIndex, total)}/${total}`;
+
+  // 固定槽：记谱显示「下一步」；背谱不剧透着法
+  const cueLabel = (() => {
+    if (state.status === 'complete') {
+      return isStudy ? '本谱已看完' : '本谱已背完';
+    }
+    if (isStudy) {
+      const next = manual.moves[state.stepIndex];
+      return next ? `下一步  ${next.san}` : '';
+    }
+    return '请走下一步';
+  })();
+
+  const lastSan =
+    state.stepIndex > 0 ? manual.moves[state.stepIndex - 1]?.san ?? null : null;
 
   const onSquarePress = (square: Square) => {
+    if (isStudy) return;
     setState((prev) => (prev ? selectSquare(manual, prev, square) : prev));
+  };
+
+  const setMode = (mode: StudyMode) => {
+    setState((prev) => (prev ? switchMode(manual, prev, mode) : prev));
+  };
+
+  const canPrev = isStudy && state.stepIndex > 0;
+  const canNext = isStudy && state.stepIndex < total;
+  const canReset = state.stepIndex > 0 || state.status === 'complete';
+
+  const resetToStart = () => {
+    setState((prev) => {
+      if (!prev) return prev;
+      if (prev.mode === 'study') return goToStep(manual, prev, 0);
+      return restartPractice(manual, prev.wrongCounts);
+    });
   };
 
   return (
@@ -91,86 +129,191 @@ export default function ManualScreen() {
           headerShadowVisible: false,
         }}
       />
-      <ImageBackground source={TABLE_WOOD} style={styles.scroll} resizeMode="cover">
+      <ImageBackground source={TABLE_WOOD} style={styles.root} resizeMode="cover">
         <View style={styles.dim} />
-        <ScrollView
-          contentContainerStyle={styles.container}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.topBar}>
-            <Text style={styles.tags} numberOfLines={1}>
-              {manual.tags.join(' · ')}
+
+        {/* 顶栏：模式 + 进度 + 重置 */}
+        <View style={styles.topBar}>
+          <View style={styles.modeRow}>
+            <Pressable
+              style={[styles.modeTab, isStudy && styles.modeTabActive]}
+              onPress={() => setMode('study')}
+            >
+              <Text style={[styles.modeTabText, isStudy && styles.modeTabTextActive]}>
+                记谱
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.modeTab, !isStudy && styles.modeTabActive]}
+              onPress={() => setMode('practice')}
+            >
+              <Text style={[styles.modeTabText, !isStudy && styles.modeTabTextActive]}>
+                背谱
+              </Text>
+            </Pressable>
+          </View>
+          <View style={styles.topRight}>
+            <Text style={styles.progressText}>{progressLabel}</Text>
+            <Pressable
+              style={[styles.resetBtn, !canReset && styles.buttonDisabled]}
+              disabled={!canReset}
+              onPress={resetToStart}
+              hitSlop={8}
+            >
+              <Text
+                style={[styles.resetBtnText, !canReset && styles.buttonTextDisabled]}
+              >
+                重置
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+
+        {/* 说明：固定 3 行高度，多出内部滚动，不顶棋盘 */}
+        <View style={styles.commentPanel}>
+          <Text style={styles.commentLabel}>说明</Text>
+          <ScrollView
+            style={styles.commentScroll}
+            contentContainerStyle={styles.commentScrollContent}
+            showsVerticalScrollIndicator
+            nestedScrollEnabled
+          >
+            {state.comment ? (
+              <Text style={styles.commentBody}>{state.comment}</Text>
+            ) : (
+              <Text style={styles.commentEmpty}>本步暂无说明</Text>
+            )}
+          </ScrollView>
+        </View>
+
+        {/* 棋盘 */}
+        <View style={styles.boardStage}>
+          <Board
+            fen={state.fen}
+            flipped={flipped}
+            selected={isStudy ? null : state.selected}
+            legalTargets={isStudy ? [] : state.legalTargets}
+            hintFrom={isStudy ? null : state.hintFrom}
+            hintTo={isStudy ? null : state.hintTo}
+            lastMove={state.lastMove}
+            onSquarePress={onSquarePress}
+          />
+        </View>
+
+        {/* 着法提示槽 */}
+        <View style={styles.cueSlot}>
+          <Text style={styles.cueText} numberOfLines={1}>
+            {cueLabel}
+          </Text>
+          {lastSan && state.status !== 'complete' ? (
+            <Text style={styles.lastMoveText} numberOfLines={1}>
+              刚走  {lastSan}
             </Text>
-            <Text style={styles.meta}>{currentSan}</Text>
-          </View>
+          ) : (
+            <Text style={styles.lastMovePlaceholder}> </Text>
+          )}
+          <Text
+            style={[styles.feedbackText, !state.feedback && styles.feedbackHidden]}
+            numberOfLines={2}
+          >
+            {state.feedback ?? ' '}
+          </Text>
+        </View>
 
-          {/* 棋盘几乎通栏，左右仅留极窄边 */}
-          <View style={styles.boardStage}>
-            <Board
-              fen={state.fen}
-              selected={state.selected}
-              legalTargets={state.legalTargets}
-              hintFrom={state.hintFrom}
-              hintTo={state.hintTo}
-              lastMove={state.lastMove}
-              onSquarePress={onSquarePress}
-            />
-          </View>
-
-          {state.feedback ? <Text style={styles.feedback}>{state.feedback}</Text> : null}
-
-          {state.comment ? (
-            <View style={styles.commentBox}>
-              <Text style={styles.commentLabel}>说明</Text>
-              <Text style={styles.comment}>{state.comment}</Text>
-            </View>
-          ) : null}
-
-          <View style={styles.actions}>
-            <Pressable
-              style={styles.button}
-              onPress={() => setState((prev) => (prev ? showHint(manual, prev) : prev))}
-            >
-              <Text style={styles.buttonText}>提示</Text>
-            </Pressable>
-            <Pressable
-              style={[styles.button, styles.buttonSecondary]}
-              onPress={() =>
-                setState((prev) => restartPractice(manual, prev?.wrongCounts))
-              }
-            >
-              <Text style={[styles.buttonText, styles.buttonTextSecondary]}>重来</Text>
-            </Pressable>
-          </View>
-
-          <Text style={styles.sectionTitle}>着法</Text>
-          <View style={styles.moveList}>
-            {manual.moves.map((move, index) => {
-              const done = index < state.stepIndex;
-              const current = index === state.stepIndex && state.status === 'playing';
-              return (
+        {/* 操作按钮贴底 */}
+        <View style={[styles.actions, { marginBottom: Math.max(insets.bottom, 10) }]}>
+          {isStudy ? (
+            <>
+              <Pressable
+                style={[styles.button, styles.buttonSecondary, !canPrev && styles.buttonDisabled]}
+                disabled={!canPrev}
+                onPress={() => setState((prev) => (prev ? goPrev(manual, prev) : prev))}
+              >
                 <Text
-                  key={`${move.uci}-${index}`}
                   style={[
-                    styles.moveLine,
-                    done && styles.moveDone,
-                    current && styles.moveCurrent,
+                    styles.buttonText,
+                    styles.buttonTextSecondary,
+                    !canPrev && styles.buttonTextDisabled,
                   ]}
                 >
-                  {index + 1}.{move.san}
-                  {done ? ' ✓' : ''}
+                  上一步
                 </Text>
-              );
-            })}
-          </View>
-        </ScrollView>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonSecondary, flipped && styles.buttonActive]}
+                onPress={() => setFlipped((v) => !v)}
+              >
+                <Text
+                  style={[
+                    styles.buttonText,
+                    styles.buttonTextSecondary,
+                    flipped && styles.buttonTextActive,
+                  ]}
+                >
+                  翻转
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, !canNext && styles.buttonDisabled]}
+                disabled={!canNext}
+                onPress={() => setState((prev) => (prev ? goNext(manual, prev) : prev))}
+              >
+                <Text style={[styles.buttonText, !canNext && styles.buttonTextDisabled]}>
+                  下一步
+                </Text>
+              </Pressable>
+            </>
+          ) : (
+            <>
+              <Pressable
+                style={styles.button}
+                onPress={() => setState((prev) => (prev ? showHint(manual, prev) : prev))}
+              >
+                <Text style={styles.buttonText}>提示</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonSecondary, flipped && styles.buttonActive]}
+                onPress={() => setFlipped((v) => !v)}
+              >
+                <Text
+                  style={[
+                    styles.buttonText,
+                    styles.buttonTextSecondary,
+                    flipped && styles.buttonTextActive,
+                  ]}
+                >
+                  翻转
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonSecondary, !canReset && styles.buttonDisabled]}
+                disabled={!canReset}
+                onPress={resetToStart}
+              >
+                <Text
+                  style={[
+                    styles.buttonText,
+                    styles.buttonTextSecondary,
+                    !canReset && styles.buttonTextDisabled,
+                  ]}
+                >
+                  重置
+                </Text>
+              </Pressable>
+            </>
+          )}
+        </View>
       </ImageBackground>
     </>
   );
 }
 
+const COMMENT_LINES = 3;
+const COMMENT_LINE_HEIGHT = 21;
+const COMMENT_BODY_HEIGHT = COMMENT_LINES * COMMENT_LINE_HEIGHT;
+
 const styles = StyleSheet.create({
-  scroll: {
+  root: {
     flex: 1,
     backgroundColor: '#24140C',
   },
@@ -187,65 +330,100 @@ const styles = StyleSheet.create({
     backgroundColor: '#24140C',
     paddingHorizontal: 16,
   },
-  container: {
-    paddingBottom: 36,
-  },
   topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    paddingTop: 8,
+    paddingBottom: 6,
+    minHeight: 44,
+  },
+  modeRow: {
+    flexDirection: 'row',
+    backgroundColor: 'rgba(0,0,0,0.22)',
+    borderRadius: 10,
+    padding: 3,
+    gap: 2,
+  },
+  modeTab: {
     paddingHorizontal: 14,
-    paddingTop: 10,
-    paddingBottom: 8,
-    gap: 4,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  modeTabActive: {
+    backgroundColor: '#D2A86A',
+  },
+  modeTabText: {
+    color: 'rgba(243, 226, 196, 0.7)',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  modeTabTextActive: {
+    color: '#2A180C',
+  },
+  progressText: {
+    color: 'rgba(230, 205, 170, 0.55)',
+    fontSize: 13,
+    fontWeight: '600',
+    fontVariant: ['tabular-nums'],
+  },
+  topRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  resetBtn: {
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(210, 168, 106, 0.45)',
+    backgroundColor: 'rgba(255,255,255,0.05)',
+  },
+  resetBtnText: {
+    color: 'rgba(243, 226, 196, 0.85)',
+    fontSize: 13,
+    fontWeight: '600',
   },
   boardStage: {
     paddingHorizontal: 10,
-    marginBottom: 8,
   },
-  error: {
-    color: '#FFCDD2',
-    fontSize: 16,
-  },
-  tags: {
-    color: 'rgba(230, 205, 170, 0.72)',
-    fontSize: 12,
-    letterSpacing: 0.2,
-  },
-  meta: {
-    color: '#F6E7C8',
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  feedback: {
-    color: '#FFB74D',
-    fontSize: 14,
-    fontWeight: '600',
-    marginHorizontal: 14,
-    marginBottom: 6,
-  },
-  commentBox: {
+  cueSlot: {
     marginHorizontal: 12,
-    backgroundColor: 'rgba(250, 236, 208, 0.94)',
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    marginBottom: 10,
-  },
-  commentLabel: {
-    color: '#8A6230',
-    fontSize: 11,
-    fontWeight: '700',
+    marginTop: 6,
     marginBottom: 4,
-    letterSpacing: 1,
+    minHeight: 58,
+    justifyContent: 'center',
+    gap: 2,
   },
-  comment: {
-    color: '#3A2A18',
+  cueText: {
+    color: 'rgba(230, 205, 170, 0.45)',
     fontSize: 14,
-    lineHeight: 21,
+    fontWeight: '500',
+    letterSpacing: 0.3,
+  },
+  lastMoveText: {
+    color: 'rgba(230, 205, 170, 0.32)',
+    fontSize: 12,
+  },
+  lastMovePlaceholder: {
+    fontSize: 12,
+    opacity: 0,
+  },
+  feedbackText: {
+    color: '#FFB74D',
+    fontSize: 13,
+    fontWeight: '600',
+    minHeight: 18,
+  },
+  feedbackHidden: {
+    opacity: 0,
   },
   actions: {
     flexDirection: 'row',
     gap: 10,
     marginHorizontal: 12,
-    marginBottom: 14,
   },
   button: {
     flex: 1,
@@ -259,6 +437,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(210, 168, 106, 0.7)',
   },
+  buttonActive: {
+    backgroundColor: 'rgba(210, 168, 106, 0.28)',
+    borderColor: '#D2A86A',
+  },
+  buttonDisabled: {
+    opacity: 0.4,
+  },
   buttonText: {
     color: '#2A180C',
     fontSize: 15,
@@ -267,35 +452,51 @@ const styles = StyleSheet.create({
   buttonTextSecondary: {
     color: '#F3E2C4',
   },
-  sectionTitle: {
-    color: 'rgba(246, 231, 200, 0.85)',
-    fontSize: 13,
-    fontWeight: '600',
-    marginHorizontal: 14,
-    marginBottom: 8,
-    letterSpacing: 1,
-  },
-  moveList: {
-    marginHorizontal: 12,
-    backgroundColor: 'rgba(0,0,0,0.18)',
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  moveLine: {
-    color: 'rgba(230, 205, 170, 0.88)',
-    fontSize: 14,
-    lineHeight: 22,
-    minWidth: '30%',
-  },
-  moveDone: {
-    color: 'rgba(170, 150, 120, 0.7)',
-  },
-  moveCurrent: {
+  buttonTextActive: {
     color: '#FFE082',
+  },
+  buttonTextDisabled: {
+    color: 'rgba(243, 226, 196, 0.5)',
+  },
+  commentPanel: {
+    marginHorizontal: 12,
+    marginBottom: 6,
+    height: 98,
+    backgroundColor: 'rgba(0,0,0,0.22)',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(210, 168, 106, 0.22)',
+    paddingHorizontal: 12,
+    paddingTop: 8,
+    overflow: 'hidden',
+  },
+  commentLabel: {
+    color: 'rgba(210, 168, 106, 0.55)',
+    fontSize: 11,
     fontWeight: '700',
+    letterSpacing: 1.5,
+    marginBottom: 4,
+    height: 14,
+  },
+  commentScroll: {
+    height: COMMENT_BODY_HEIGHT,
+  },
+  commentScrollContent: {
+    paddingBottom: 4,
+    flexGrow: 1,
+  },
+  commentBody: {
+    color: 'rgba(246, 231, 200, 0.88)',
+    fontSize: 14,
+    lineHeight: COMMENT_LINE_HEIGHT,
+  },
+  commentEmpty: {
+    color: 'rgba(230, 205, 170, 0.28)',
+    fontSize: 13,
+    lineHeight: COMMENT_LINE_HEIGHT,
+  },
+  error: {
+    color: '#FFCDD2',
+    fontSize: 16,
   },
 });

@@ -1,9 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { manuals } from '../data/manuals';
-import type { ManualProgress } from '../types/manual';
+import type { Manual, ManualProgress } from '../types/manual';
 
 const keyFor = (manualId: string) => `progress:${manualId}`;
+
+/** 用户上次翻转优先；否则用谱默认；后手谱默认翻转。 */
+export function resolveFlipped(manual: Manual, progress?: ManualProgress | null): boolean {
+  if (progress?.flipped != null) return progress.flipped;
+  if (manual.defaultFlipped != null) return manual.defaultFlipped;
+  return manual.sideToMemorize === 'black';
+}
 
 export async function loadProgress(manualId: string): Promise<ManualProgress | null> {
   const raw = await AsyncStorage.getItem(keyFor(manualId));

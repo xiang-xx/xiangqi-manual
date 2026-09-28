@@ -27,6 +27,8 @@ import { FlyingPiece, LIFT_UP_MS, MOVE_EASING, MOVE_MS, PieceView, SLAM_MS } fro
 
 type Props = {
   fen: string;
+  /** true = 黑方在下（背黑视角） */
+  flipped?: boolean;
   selected?: Square | null;
   legalTargets?: Square[];
   hintFrom?: Square | null;
@@ -47,6 +49,7 @@ type Flight = {
 
 export function Board({
   fen,
+  flipped = false,
   selected = null,
   legalTargets = [],
   hintFrom = null,
@@ -69,8 +72,11 @@ export function Board({
   const pieceSize = cell * 0.9;
   const faceInset = pad * 0.28;
 
-  const xAt = (file: number) => pad + file * cell;
-  const yAt = (rankIndex: number) => pad + rankIndex * cell;
+  // 逻辑坐标 → 屏幕坐标（翻转时 180° 旋转盘面，汉字朝向不变）
+  const displayFile = (file: number) => (flipped ? 8 - file : file);
+  const displayRank = (rankIndex: number) => (flipped ? 9 - rankIndex : rankIndex);
+  const xAt = (file: number) => pad + displayFile(file) * cell;
+  const yAt = (rankIndex: number) => pad + displayRank(rankIndex) * cell;
 
   const pieceOrigin = (square: Square) => {
     const { file, rankIndex } = indicesFromSquare(square);
@@ -88,6 +94,11 @@ export function Board({
   const flyLift = useSharedValue(0);
 
   const clearFlight = () => setFlight(null);
+
+  // 翻转时中断飞子，避免落点错位
+  useEffect(() => {
+    setFlight(null);
+  }, [flipped]);
 
   useEffect(() => {
     if (width <= 0) return;

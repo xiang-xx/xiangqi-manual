@@ -7,8 +7,10 @@ import meihuapuSample from './meihuapu-sample.json';
 import shunpaoZhijun from './shunpao-zhijun.json';
 import xianrenZhilu from './xianren-zhilu.json';
 import zhongpaoPingfengmaShort from './zhongpao-pingfengma-short.json';
+import { ycqlManuals } from './ycql';
 
 export const manuals: Manual[] = [
+  ...ycqlManuals,
   zhongpaoPingfengmaShort as Manual,
   shunpaoZhijun as Manual,
   feixiangJu as Manual,

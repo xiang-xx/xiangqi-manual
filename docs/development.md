@@ -15,6 +15,8 @@ npm run android        # 尝试打开 Android
 npm run typecheck      # TypeScript 检查
 npm run generate-assets
 npm run import-pgn -- --id demo --title "演示" --moves "h2e2 h9g7"
+npm run fetch-ycql          # 拉取《银川棋路》45 局
+npm run import-dhtmlxq -- --url "…" --id demo
 ```
 
 安装原生相关依赖时，优先：

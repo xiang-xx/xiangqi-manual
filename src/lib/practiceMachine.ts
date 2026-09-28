@@ -2,7 +2,11 @@ import type { Manual, ManualProgress } from '../types/manual';
 import { applyUci, fenAfterMoves, legalMovesFrom, pieceAt, uciMatches } from './engine';
 import { parseUci, type Square } from './squares';
 
+/** 记谱 = 浏览学习；背谱 = 自己走子校验 */
+export type StudyMode = 'study' | 'practice';
+
 export type PracticeState = {
+  mode: StudyMode;
   fen: string;
   stepIndex: number;
   selected: Square | null;
@@ -17,7 +21,10 @@ export type PracticeState = {
   maxReached: number;
 };
 
-export function initialPracticeState(manual: Manual, progress?: ManualProgress | null): PracticeState {
+function baseState(
+  manual: Manual,
+  extras: Partial<PracticeState> & Pick<PracticeState, 'mode' | 'wrongCounts' | 'maxReached'>,
+): PracticeState {
   return {
     fen: manual.startFen,
     stepIndex: 0,
@@ -29,9 +36,20 @@ export function initialPracticeState(manual: Manual, progress?: ManualProgress |
     status: manual.moves.length === 0 ? 'complete' : 'playing',
     feedback: null,
     comment: null,
+    ...extras,
+  };
+}
+
+export function initialPracticeState(
+  manual: Manual,
+  progress?: ManualProgress | null,
+  mode: StudyMode = 'study',
+): PracticeState {
+  return baseState(manual, {
+    mode,
     wrongCounts: { ...(progress?.wrongCounts ?? {}) },
     maxReached: progress?.maxReached ?? 0,
-  };
+  });
 }
 
 function expectedUci(manual: Manual, stepIndex: number): string | null {
@@ -42,7 +60,102 @@ function commentFor(manual: Manual, stepIndex: number): string | null {
   return manual.comments?.[String(stepIndex)] ?? null;
 }
 
+function clearInteraction(state: PracticeState): PracticeState {
+  return {
+    ...state,
+    selected: null,
+    legalTargets: [],
+    hintFrom: null,
+    hintTo: null,
+    feedback: null,
+  };
+}
+
+/** 跳到已走出 stepIndex 手之后的局面（0 = 开局）。 */
+export function goToStep(manual: Manual, state: PracticeState, stepIndex: number): PracticeState {
+  const clamped = Math.max(0, Math.min(stepIndex, manual.moves.length));
+  const fen = fenAtStep(manual, clamped);
+  const complete = clamped >= manual.moves.length;
+  const lastPlayed = clamped > 0 ? parseUci(manual.moves[clamped - 1].uci) : null;
+
+  return {
+    ...clearInteraction(state),
+    fen,
+    stepIndex: clamped,
+    lastMove: lastPlayed,
+    status: complete ? 'complete' : 'playing',
+    comment: clamped > 0 ? commentFor(manual, clamped - 1) : null,
+  };
+}
+
+export function goNext(manual: Manual, state: PracticeState): PracticeState {
+  if (state.mode !== 'study') return state;
+  if (state.stepIndex >= manual.moves.length) return state;
+
+  const uci = expectedUci(manual, state.stepIndex);
+  if (!uci) return state;
+  const applied = applyUci(state.fen, uci);
+  if (!applied) return state;
+
+  const parsed = parseUci(uci)!;
+  const nextIndex = state.stepIndex + 1;
+  const complete = nextIndex >= manual.moves.length;
+  return {
+    ...clearInteraction(state),
+    fen: applied.fen,
+    stepIndex: nextIndex,
+    lastMove: parsed,
+    status: complete ? 'complete' : 'playing',
+    comment: commentFor(manual, state.stepIndex),
+    feedback: complete ? '本谱已看完' : null,
+  };
+}
+
+export function goPrev(manual: Manual, state: PracticeState): PracticeState {
+  if (state.mode !== 'study') return state;
+  if (state.stepIndex <= 0) return state;
+
+  const undone = parseUci(manual.moves[state.stepIndex - 1].uci);
+  const prevIndex = state.stepIndex - 1;
+  const fen = fenAtStep(manual, prevIndex);
+
+  return {
+    ...clearInteraction(state),
+    fen,
+    stepIndex: prevIndex,
+    // 反向飞子：从落点回到起点
+    lastMove: undone ? { from: undone.to, to: undone.from } : null,
+    status: 'playing',
+    comment: prevIndex > 0 ? commentFor(manual, prevIndex - 1) : null,
+  };
+}
+
+export function switchMode(
+  manual: Manual,
+  state: PracticeState,
+  mode: StudyMode,
+): PracticeState {
+  if (state.mode === mode) return state;
+
+  if (mode === 'practice') {
+    // 背谱从头开始，保留错题统计
+    return baseState(manual, {
+      mode: 'practice',
+      wrongCounts: state.wrongCounts,
+      maxReached: state.maxReached,
+    });
+  }
+
+  // 记谱：停在当前局面，便于对照着法
+  return clearInteraction({
+    ...state,
+    mode: 'study',
+    status: state.stepIndex >= manual.moves.length ? 'complete' : 'playing',
+  });
+}
+
 export function selectSquare(manual: Manual, state: PracticeState, square: Square): PracticeState {
+  if (state.mode !== 'practice') return state;
   if (state.status === 'complete') return state;
 
   const expected = expectedUci(manual, state.stepIndex);
@@ -133,6 +246,7 @@ export function selectSquare(manual: Manual, state: PracticeState, square: Squar
 }
 
 export function showHint(manual: Manual, state: PracticeState): PracticeState {
+  if (state.mode !== 'practice') return state;
   const expected = expectedUci(manual, state.stepIndex);
   if (!expected || state.status === 'complete') return state;
   const parsed = parseUci(expected);
@@ -149,20 +263,21 @@ export function showHint(manual: Manual, state: PracticeState): PracticeState {
 
 export function restartPractice(manual: Manual, keepWrong?: Record<string, number>): PracticeState {
   return {
-    ...initialPracticeState(manual),
+    ...initialPracticeState(manual, undefined, 'practice'),
     wrongCounts: { ...(keepWrong ?? {}) },
   };
 }
 
-export function toProgress(state: PracticeState): ManualProgress {
+export function toProgress(state: PracticeState, flipped: boolean): ManualProgress {
   return {
     maxReached: state.maxReached,
     wrongCounts: state.wrongCounts,
     lastStudiedAt: new Date().toISOString(),
+    flipped,
   };
 }
 
-/** Rebuild fen for a given step (for future review mode). */
+/** Rebuild fen after `stepIndex` moves have been played. */
 export function fenAtStep(manual: Manual, stepIndex: number): string {
   if (stepIndex <= 0) return manual.startFen;
   return fenAfterMoves(

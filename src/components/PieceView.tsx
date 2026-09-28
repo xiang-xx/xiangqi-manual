@@ -17,7 +17,7 @@ type Props = {
   lifted?: boolean;
 };
 
-const LIFT_MS = 120;
+const LIFT_MS = 110;
 
 export function PieceView({ piece, size, lifted = false }: Props) {
   const lift = useSharedValue(lifted ? 1 : 0);
@@ -33,12 +33,12 @@ export function PieceView({ piece, size, lifted = false }: Props) {
     const t = lift.value;
     return {
       transform: [
-        { translateY: -size * 0.08 * t },
-        { scale: 1 + 0.07 * t },
+        { translateY: -size * 0.07 * t },
+        { scale: 1 + 0.06 * t },
       ],
-      shadowRadius: 2 + 6 * t,
-      shadowOpacity: 0.22 + 0.2 * t,
-      elevation: 3 + 8 * t,
+      shadowRadius: 2 + 5 * t,
+      shadowOpacity: 0.2 + 0.18 * t,
+      elevation: 3 + 7 * t,
     };
   });
 
@@ -46,11 +46,21 @@ export function PieceView({ piece, size, lifted = false }: Props) {
     <Animated.View
       style={[
         styles.shadow,
-        { width: size, height: size, borderRadius: size / 2 },
+        {
+          width: size,
+          height: size,
+          borderRadius: size / 2,
+          overflow: 'hidden',
+          backgroundColor: 'transparent',
+        },
         animStyle,
       ]}
     >
-      <Image source={pieceImage(piece)} style={{ width: size, height: size }} resizeMode="contain" />
+      <Image
+        source={pieceImage(piece)}
+        style={{ width: size, height: size, backgroundColor: 'transparent' }}
+        resizeMode="cover"
+      />
     </Animated.View>
   );
 }
@@ -74,8 +84,8 @@ export function FlyingPiece({
       { translateY: translateY.value },
       { scale: scale.value },
     ],
-    shadowRadius: 8,
-    shadowOpacity: 0.35,
+    shadowRadius: 7,
+    shadowOpacity: 0.32,
     elevation: 14,
   }));
 
@@ -91,18 +101,23 @@ export function FlyingPiece({
           width: size,
           height: size,
           borderRadius: size / 2,
+          overflow: 'hidden',
+          backgroundColor: 'transparent',
           zIndex: 20,
         },
         style,
       ]}
     >
-      <Image source={pieceImage(piece)} style={{ width: size, height: size }} resizeMode="contain" />
+      <Image
+        source={pieceImage(piece)}
+        style={{ width: size, height: size, backgroundColor: 'transparent' }}
+        resizeMode="cover"
+      />
     </Animated.View>
   );
 }
 
-/** 走子时长：短而干脆 */
-export const MOVE_MS = 160;
+export const MOVE_MS = 150;
 
 const styles = StyleSheet.create({
   shadow: {

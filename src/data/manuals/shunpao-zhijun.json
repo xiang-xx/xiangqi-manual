@@ -1,0 +1,21 @@
+{
+  "id": "shunpao-zhijun",
+  "title": "顺炮直车对横车（短谱）",
+  "tags": ["开局", "顺炮", "教学"],
+  "sideToMemorize": "both",
+  "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
+  "moves": [
+    { "san": "炮二平五", "uci": "h2e2" },
+    { "san": "炮8平5", "uci": "h7e7" },
+    { "san": "马二进三", "uci": "h0g2" },
+    { "san": "马8进7", "uci": "h9g7" },
+    { "san": "车一平二", "uci": "i0h0" },
+    { "san": "车9进1", "uci": "i9i8" }
+  ],
+  "comments": {
+    "0": "仍以中炮开局。",
+    "1": "黑方顺炮应对，对攻意味更强。",
+    "5": "横车出动，准备过宫支援右翼。"
+  },
+  "source": "教学示例"
+}

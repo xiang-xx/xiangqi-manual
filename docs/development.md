@@ -2,7 +2,7 @@
 
 ## 环境
 
-- Node.js 20+（当前可用 nvm）
+- Node.js **22**（推荐用 nvm；项目有 `.nvmrc`。Node 25 会触发 Expo config plugin 的 type-stripping 错误）
 - 手机：Android + [Expo Go](https://expo.dev/go)
 - 电脑与手机同一局域网
 
@@ -13,6 +13,8 @@ npm install
 npm start              # 启动 Metro，扫码用 Expo Go
 npm run android        # 尝试打开 Android
 npm run typecheck      # TypeScript 检查
+npm run generate-assets
+npm run import-pgn -- --id demo --title "演示" --moves "h2e2 h9g7"
 ```
 
 安装原生相关依赖时，优先：

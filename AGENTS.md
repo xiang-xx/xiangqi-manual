@@ -27,7 +27,8 @@ npx expo install --fix
 - Manual JSON format: `docs/manual-format.md`. Do not invent a parallel schema.
 - No backend. Progress is AsyncStorage only.
 - Do not create or hand-edit `android/` / `ios/`; configure via `app.json`.
-- Prefer Expo modules; use `xiangqi.js` (or equivalent) for rules — do not hand-roll xiangqi legality.
+- Prefer Expo modules; use vendored `src/lib/vendor/xiangqi.js` for rules — do not hand-roll xiangqi legality.
+- Manual schema uses `tags[]` (not single category); default `sideToMemorize` is `both`.
 - Keep UI focused on board + practice; avoid dashboard clutter.
 - Package name `com.xiang.xiangqimanual` is fixed for future store listing.
 

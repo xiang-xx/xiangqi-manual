@@ -1,8 +1,8 @@
 {
   "id": "zhongpao-pingfengma-short",
-  "title": "中炮对屏风马（示例短谱）",
-  "category": "opening",
-  "sideToMemorize": "red",
+  "title": "中炮对屏风马（短谱）",
+  "tags": ["开局", "中炮", "屏风马", "教学"],
+  "sideToMemorize": "both",
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
   "moves": [
     { "san": "炮二平五", "uci": "h2e2" },
@@ -13,6 +13,9 @@
     { "san": "马2进3", "uci": "b9c7" }
   ],
   "comments": {
-    "0": "中炮起手，控制中路"
-  }
+    "0": "中炮起手，控制中路，威胁中卒。",
+    "1": "屏风马起手，巩固中防并开通左翼。",
+    "5": "右马也跳出，形成标准屏风马阵型。"
+  },
+  "source": "教学示例"
 }

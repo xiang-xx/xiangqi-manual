@@ -1,0 +1,20 @@
+{
+  "id": "xianren-zhilu",
+  "title": "仙人指路对卒底炮（短谱）",
+  "tags": ["开局", "仙人指路", "教学"],
+  "sideToMemorize": "both",
+  "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
+  "moves": [
+    { "san": "兵七进一", "uci": "c3c4" },
+    { "san": "炮2平3", "uci": "b7c7" },
+    { "san": "炮二平五", "uci": "h2e2" },
+    { "san": "马8进7", "uci": "h9g7" },
+    { "san": "马二进三", "uci": "h0g2" },
+    { "san": "车9平8", "uci": "i9h9" }
+  ],
+  "comments": {
+    "0": "仙人指路，试探黑方应法。",
+    "1": "卒底炮瞄准七路，准备对攻。"
+  },
+  "source": "教学示例"
+}

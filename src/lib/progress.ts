@@ -28,3 +28,12 @@ export async function listAllProgress(): Promise<Record<string, ManualProgress>>
     ManualProgress
   >;
 }
+
+export async function listRecentManualIds(limit = 8): Promise<string[]> {
+  const all = await listAllProgress();
+  return Object.entries(all)
+    .filter(([, p]) => p.lastStudiedAt)
+    .sort((a, b) => (b[1].lastStudiedAt! > a[1].lastStudiedAt! ? 1 : -1))
+    .slice(0, limit)
+    .map(([id]) => id);
+}

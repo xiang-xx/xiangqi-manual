@@ -5,6 +5,7 @@ export const OPENING_NAMES = [
   '屏风马',
   '反宫马',
   '单提马',
+  '三步虎',
   '卒底炮',
   '过宫炮',
   '士角炮',
@@ -13,6 +14,7 @@ export const OPENING_NAMES = [
   '顺炮',
   '中炮',
   '飞相',
+  '飞象',
   '起马',
   '对兵',
   '两头蛇',
@@ -34,8 +36,10 @@ export const OPENING_ORDER: OpeningName[] = [
   '反宫马',
   '顺炮',
   '列炮',
-  '卒底炮',
   '单提马',
+  '三步虎',
+  '卒底炮',
+  '飞象',
 ];
 
 /** 别名 → 规范名 */
@@ -45,6 +49,7 @@ const OPENING_ALIASES: Record<string, OpeningName> = {
   起马局: '起马',
   对兵局: '对兵',
   列手炮: '列炮',
+  后补列炮: '列炮',
   仕角炮: '士角炮',
   五七炮: '中炮',
   五六炮: '中炮',
@@ -100,6 +105,11 @@ export function parseDongpingOpen(open: string): ManualOpening {
   const raw = stripOpenCode(open);
   if (!raw) return {};
 
+  // 顺炮系：双方中炮，黑方走顺炮
+  if (raw.startsWith('顺炮')) {
+    return { red: '中炮', black: '顺炮' };
+  }
+
   let partial: ManualOpening | null = null;
   for (const idx of duiSplitIndexes(raw)) {
     const red = matchOpeningName(raw.slice(0, idx));
@@ -141,6 +151,7 @@ export const LEGACY_OPENING_TAGS = new Set([
   '屏风马',
   '顺炮',
   '飞相',
+  '飞象',
   '仙人指路',
   '反宫马',
   '列炮',
@@ -150,5 +161,7 @@ export const LEGACY_OPENING_TAGS = new Set([
   '士角炮',
   '起马',
   '单提马',
+  '三步虎',
   '对兵',
+  '两头蛇',
 ]);

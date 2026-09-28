@@ -70,6 +70,12 @@ npm run fetch-modern-ai
 
 # 回填 opening（先手/后手），并去掉旧扁平开局 tag
 npm run retag-openings
+
+# 按布局补缺口：顺炮 / 列炮 / 单提马 / 三步虎 / 反宫马 / 仙人指路对飞象|中炮
+npm run fetch-opening-gaps
+
+# 过宫炮 + 引擎对战（楚河汉界 / 电脑软件赛）
+npm run fetch-guogong-ai
 ```
 
 内置分类 tag：`银川棋路`、`个人赛`、`碧桂园杯`、`王天一`、`郑惟桐` 等；开局写入 `opening`，由东萍 `open` 字段解析。

@@ -7,6 +7,7 @@ const OPENING_NAMES = [
   '屏风马',
   '反宫马',
   '单提马',
+  '三步虎',
   '卒底炮',
   '过宫炮',
   '士角炮',
@@ -15,6 +16,7 @@ const OPENING_NAMES = [
   '顺炮',
   '中炮',
   '飞相',
+  '飞象',
   '起马',
   '对兵',
   '两头蛇',
@@ -26,6 +28,7 @@ const OPENING_ALIASES = {
   起马局: '起马',
   对兵局: '对兵',
   列手炮: '列炮',
+  后补列炮: '列炮',
   仕角炮: '士角炮',
   五七炮: '中炮',
   五六炮: '中炮',
@@ -43,6 +46,7 @@ const LEGACY_OPENING_TAGS = new Set([
   '屏风马',
   '顺炮',
   '飞相',
+  '飞象',
   '仙人指路',
   '反宫马',
   '列炮',
@@ -52,6 +56,7 @@ const LEGACY_OPENING_TAGS = new Set([
   '士角炮',
   '起马',
   '单提马',
+  '三步虎',
   '对兵',
   '两头蛇',
 ]);
@@ -90,6 +95,10 @@ function duiSplitIndexes(raw) {
 function parseDongpingOpen(open) {
   const raw = stripOpenCode(open);
   if (!raw) return {};
+
+  if (raw.startsWith('顺炮')) {
+    return { red: '中炮', black: '顺炮' };
+  }
 
   let partial = null;
   for (const idx of duiSplitIndexes(raw)) {

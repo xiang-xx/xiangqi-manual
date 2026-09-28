@@ -7,7 +7,8 @@
     "开局"
   ],
   "opening": {
-    "red": "顺炮"
+    "red": "中炮",
+    "black": "顺炮"
   },
   "sideToMemorize": "red",
   "defaultFlipped": false,

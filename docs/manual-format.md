@@ -21,6 +21,12 @@ type Manual = {
     uci: string;              // ICCS 坐标着法，如「h2e2」
   }>;
   comments?: Record<string, string>; // key 为着法下标字符串
+  variations?: Record<string, Array<{  // key = 被替代的主变着法下标
+    id: string;
+    label: string;            // 如「如改走马八进七」
+    comment?: string;
+    moves: Array<{ san: string; uci: string }>;
+  }>>;
   source?: string;            // 书名 / 来源备注
 };
 ```
@@ -28,11 +34,13 @@ type Manual = {
 展示用 tag 顺序见 `src/data/tags.ts`；开局词表见 `src/data/openings.ts`。
 首页可分别选先手 / 后手开局（如「后手中炮」，或「先手中炮 + 后手屏风马」），再与分类 tag 取交集。
 
+**变例**：仅 **记谱** 可点进浏览（棋盘走出旁路），**背谱不校验变例**。可用 `npm run extract-variations` 从注释「如改走…」抽取。
+
 ## 约定
 
 - **内部比较用 `uci`（ICCS）**，与 `xiangqi.js` 一致。
 - **界面展示用 `san`**。
-- 第一期只支持 **线性主变**；变例以后用可选 `variations` 扩展，不破坏现有字段。
+- 第一期主变线性；可选 `variations` 供记谱浏览旁路（不背分支）。
 - `id` 一旦有进度数据就不要改；改标题不影响进度。
 - 黑方中文着法按黑方己方右侧为「一路」理解；写入 `uci` 时用红方视角的 a–i / 0–9。
 
@@ -76,6 +84,9 @@ npm run fetch-opening-gaps
 
 # 过宫炮 + 引擎对战（楚河汉界 / 电脑软件赛）
 npm run fetch-guogong-ai
+
+# 从注释「如改走」抽取变例（默认 ycql）
+npm run extract-variations
 ```
 
 内置分类 tag：`银川棋路`、`个人赛`、`碧桂园杯`、`王天一`、`郑惟桐` 等；开局写入 `opening`，由东萍 `open` 字段解析。

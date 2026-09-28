@@ -14,6 +14,10 @@ import { Board } from '../../components/Board';
 import { getManualById } from '../../data/manuals';
 import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
+  commentedMoveIndex,
+  enterVariation,
+  exitVariation,
+  getActiveVariation,
   goNext,
   goPrev,
   goToStep,
@@ -23,6 +27,7 @@ import {
   showHint,
   switchMode,
   toProgress,
+  variationsAt,
   type PracticeState,
   type StudyMode,
 } from '../../lib/practiceMachine';
@@ -79,23 +84,46 @@ export default function ManualScreen() {
   }
 
   const isStudy = state.mode === 'study';
-  const total = manual.moves.length;
-  const progressLabel = `${Math.min(state.stepIndex, total)}/${total}`;
+  const inVariation = Boolean(state.variation);
+  const activeVariation = getActiveVariation(manual, state);
+  const commentMove = commentedMoveIndex(state);
+  const availableVariations =
+    isStudy && !inVariation && commentMove != null ? variationsAt(manual, commentMove) : [];
+
+  const total = inVariation
+    ? (activeVariation?.moves.length ?? 0)
+    : manual.moves.length;
+  const currentStep = inVariation
+    ? (state.variation?.stepIndex ?? 0)
+    : state.stepIndex;
+  const progressLabel = inVariation
+    ? `变例 ${Math.min(currentStep, total)}/${total}`
+    : `${Math.min(state.stepIndex, manual.moves.length)}/${manual.moves.length}`;
 
   // 固定槽：记谱显示「下一步」；背谱不剧透着法
   const cueLabel = (() => {
     if (state.status === 'complete') {
+      if (inVariation) return '变例已看完';
       return isStudy ? '本谱已看完' : '本谱已背完';
     }
     if (isStudy) {
+      if (inVariation && activeVariation) {
+        const next = activeVariation.moves[state.variation!.stepIndex];
+        return next ? `变例下一步  ${next.san}` : '';
+      }
       const next = manual.moves[state.stepIndex];
       return next ? `下一步  ${next.san}` : '';
     }
     return '请走下一步';
   })();
 
-  const lastSan =
-    state.stepIndex > 0 ? manual.moves[state.stepIndex - 1]?.san ?? null : null;
+  const lastSan = (() => {
+    if (inVariation && activeVariation && state.variation) {
+      if (state.variation.stepIndex <= 0) return null;
+      return activeVariation.moves[state.variation.stepIndex - 1]?.san ?? null;
+    }
+    return state.stepIndex > 0 ? manual.moves[state.stepIndex - 1]?.san ?? null : null;
+  })();
 
   const onSquarePress = (square: Square) => {
     if (isStudy) return;
@@ -106,13 +134,14 @@ export default function ManualScreen() {
     setState((prev) => (prev ? switchMode(manual, prev, mode) : prev));
   };
 
-  const canPrev = isStudy && state.stepIndex > 0;
-  const canNext = isStudy && state.stepIndex < total;
-  const canReset = state.stepIndex > 0 || state.status === 'complete';
+  const canPrev = isStudy && (inVariation || state.stepIndex > 0);
+  const canNext = isStudy && currentStep < total;
+  const canReset = inVariation || state.stepIndex > 0 || state.status === 'complete';
 
   const resetToStart = () => {
     setState((prev) => {
       if (!prev) return prev;
+      if (prev.variation) return exitVariation(manual, prev);
       if (prev.mode === 'study') return goToStep(manual, prev, 0);
       return restartPractice(manual, prev.wrongCounts);
     });
@@ -169,9 +198,39 @@ export default function ManualScreen() {
           </View>
         </View>
 
-        {/* 说明：固定 3 行高度，多出内部滚动，不顶棋盘 */}
+        {/* 说明：固定高度；右上角变例 / 返回主变 */}
         <View style={styles.commentPanel}>
-          <Text style={styles.commentLabel}>说明</Text>
+          <View style={styles.commentHeader}>
+            <Text style={styles.commentLabel}>{inVariation ? '变例' : '说明'}</Text>
+            {inVariation ? (
+              <Pressable
+                onPress={() => setState((prev) => (prev ? exitVariation(manual, prev) : prev))}
+                hitSlop={8}
+              >
+                <Text style={styles.variationLink}>返回主变</Text>
+              </Pressable>
+            ) : availableVariations.length > 0 ? (
+              <View style={styles.variationHeaderLinks}>
+                {availableVariations.map((v, index) => (
+                  <Pressable
+                    key={v.id}
+                    onPress={() =>
+                      setState((prev) =>
+                        prev && commentMove != null
+                          ? enterVariation(manual, prev, commentMove, v.id)
+                          : prev,
+                      )
+                    }
+                    hitSlop={8}
+                  >
+                    <Text style={styles.variationLink}>
+                      {availableVariations.length === 1 ? '变例' : `变例${index + 1}`}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            ) : null}
+          </View>
           <ScrollView
             style={styles.commentScroll}
             contentContainerStyle={styles.commentScrollContent}
@@ -181,7 +240,9 @@ export default function ManualScreen() {
             {state.comment ? (
               <Text style={styles.commentBody}>{state.comment}</Text>
             ) : (
-              <Text style={styles.commentEmpty}>本步暂无说明</Text>
+              <Text style={styles.commentEmpty}>
+                {inVariation ? '本变例暂无说明' : '本步暂无说明'}
+              </Text>
             )}
           </ScrollView>
         </View>
@@ -227,7 +288,15 @@ export default function ManualScreen() {
               <Pressable
                 style={[styles.button, styles.buttonSecondary, !canPrev && styles.buttonDisabled]}
                 disabled={!canPrev}
-                onPress={() => setState((prev) => (prev ? goPrev(manual, prev) : prev))}
+                onPress={() => {
+                  setState((prev) => {
+                    if (!prev) return prev;
+                    if (prev.variation && prev.variation.stepIndex <= 0) {
+                      return exitVariation(manual, prev);
+                    }
+                    return goPrev(manual, prev);
+                  });
+                }}
               >
                 <Text
                   style={[
@@ -236,7 +305,7 @@ export default function ManualScreen() {
                     !canPrev && styles.buttonTextDisabled,
                   ]}
                 >
-                  上一步
+                  {inVariation && (state.variation?.stepIndex ?? 0) <= 0 ? '回主变' : '上一步'}
                 </Text>
               </Pressable>
               <Pressable
@@ -470,13 +539,28 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     overflow: 'hidden',
   },
+  commentHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+    height: 14,
+  },
   commentLabel: {
     color: 'rgba(210, 168, 106, 0.55)',
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 1.5,
-    marginBottom: 4,
-    height: 14,
+  },
+  variationLink: {
+    color: '#D2A86A',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  variationHeaderLinks: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
   commentScroll: {
     height: COMMENT_BODY_HEIGHT,

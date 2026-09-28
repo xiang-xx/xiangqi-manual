@@ -16,7 +16,8 @@
     "fetch-modern-ai": "node scripts/fetch-modern-ai.js",
     "retag-openings": "node scripts/retag-openings.js",
     "fetch-opening-gaps": "node scripts/fetch-opening-gaps.js",
-    "fetch-guogong-ai": "node scripts/fetch-guogong-ai.js"
+    "fetch-guogong-ai": "node scripts/fetch-guogong-ai.js",
+    "extract-variations": "node scripts/extract-variations.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",

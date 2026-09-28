@@ -1,9 +1,17 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  ImageBackground,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import { Board } from '../../components/Board';
 import { getManualById } from '../../data/manuals';
+import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
   initialPracticeState,
   restartPractice,
@@ -73,19 +81,22 @@ export default function ManualScreen() {
   return (
     <>
       <Stack.Screen options={{ title: manual.title }} />
+      <ImageBackground source={TABLE_WOOD} style={styles.scroll} resizeMode="cover">
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.tags}>{manual.tags.join(' · ')}</Text>
         <Text style={styles.meta}>{currentSan}</Text>
 
-        <Board
-          fen={state.fen}
-          selected={state.selected}
-          legalTargets={state.legalTargets}
-          hintFrom={state.hintFrom}
-          hintTo={state.hintTo}
-          lastMove={state.lastMove}
-          onSquarePress={onSquarePress}
-        />
+        <View style={styles.boardStage}>
+          <Board
+            fen={state.fen}
+            selected={state.selected}
+            legalTargets={state.legalTargets}
+            hintFrom={state.hintFrom}
+            hintTo={state.hintTo}
+            lastMove={state.lastMove}
+            onSquarePress={onSquarePress}
+          />
+        </View>
 
         {state.feedback ? <Text style={styles.feedback}>{state.feedback}</Text> : null}
         {state.comment ? (
@@ -131,42 +142,52 @@ export default function ManualScreen() {
           );
         })}
       </ScrollView>
+      </ImageBackground>
     </>
   );
 }
 
 const styles = StyleSheet.create({
+  scroll: {
+    flex: 1,
+    backgroundColor: '#3E2716',
+  },
   container: {
     padding: 16,
     paddingBottom: 40,
     gap: 8,
   },
+  boardStage: {
+    borderRadius: 12,
+    overflow: 'visible',
+    marginVertical: 4,
+  },
   error: {
-    color: '#B42318',
+    color: '#FFCDD2',
     fontSize: 16,
   },
   tags: {
-    color: '#5C6B5A',
+    color: '#D7C4A8',
     fontSize: 13,
   },
   meta: {
-    color: '#1B4332',
+    color: '#F5E6C8',
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 4,
   },
   feedback: {
-    color: '#B42318',
+    color: '#FFAB91',
     fontSize: 14,
     fontWeight: '500',
     marginTop: 4,
   },
   commentBox: {
-    backgroundColor: '#FFF8E7',
+    backgroundColor: 'rgba(245, 230, 200, 0.92)',
     borderRadius: 10,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#E4D4A8',
+    borderColor: '#C9A46E',
     marginTop: 4,
   },
   commentLabel: {
@@ -188,40 +209,40 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    backgroundColor: '#1B4332',
+    backgroundColor: '#C9A46E',
     borderRadius: 10,
     paddingVertical: 12,
     alignItems: 'center',
   },
   buttonSecondary: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#1B4332',
+    borderColor: '#C9A46E',
   },
   buttonText: {
-    color: '#F7F3E8',
+    color: '#2A180C',
     fontSize: 15,
     fontWeight: '600',
   },
   buttonTextSecondary: {
-    color: '#1B4332',
+    color: '#F5E6C8',
   },
   sectionTitle: {
-    color: '#1B4332',
+    color: '#F5E6C8',
     fontSize: 16,
     fontWeight: '600',
     marginTop: 8,
   },
   moveLine: {
-    color: '#374151',
+    color: '#D7C4A8',
     fontSize: 15,
     lineHeight: 24,
   },
   moveDone: {
-    color: '#6B7280',
+    color: '#9A8570',
   },
   moveCurrent: {
-    color: '#1B4332',
+    color: '#FFE082',
     fontWeight: '700',
   },
 });

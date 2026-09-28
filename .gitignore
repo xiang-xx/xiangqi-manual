@@ -36,6 +36,10 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# local reference screenshots
+微信图片_*.jpg
+微信图片_*.png
+
 # generated native folders
 /ios
 /android

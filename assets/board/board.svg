@@ -1,97 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000">
   <defs>
-    <linearGradient id="woodbg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#E8C99A"/>
-      <stop offset="40%" stop-color="#D4A574"/>
-      <stop offset="100%" stop-color="#C4956A"/>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6B4423"/><stop offset="50%" stop-color="#4E2F18"/><stop offset="100%" stop-color="#3A2110"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0D9B0"/><stop offset="100%" stop-color="#D4B07A"/>
     </linearGradient>
     <pattern id="grain" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M0 20 Q10 18 20 22 T40 20" fill="none" stroke="#B8845A" stroke-width="0.8" opacity="0.35"/>
-      <path d="M0 8 Q12 10 24 6 T40 8" fill="none" stroke="#A67C52" stroke-width="0.6" opacity="0.25"/>
+      <path d="M0 20 Q10 17 20 22 T40 20" fill="none" stroke="#C4A06A" stroke-width="1" opacity="0.4"/>
     </pattern>
   </defs>
-  <rect width="900" height="1000" rx="18" fill="url(#woodbg)"/>
-  <rect width="900" height="1000" rx="18" fill="url(#grain)"/>
-  <rect x="28" y="28" width="844" height="944" rx="8" fill="#E8D5B0" stroke="#5D4037" stroke-width="4"/>
-  <line x1="50" y1="50" x2="50" y2="950" stroke="#3E2723" stroke-width="3"/>
-<line x1="150" y1="50" x2="150" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="150" y1="550" x2="150" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="250" y1="50" x2="250" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="250" y1="550" x2="250" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="350" y1="50" x2="350" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="350" y1="550" x2="350" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="450" y1="50" x2="450" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="450" y1="550" x2="450" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="550" y1="50" x2="550" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="550" y1="550" x2="550" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="650" y1="50" x2="650" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="650" y1="550" x2="650" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="750" y1="50" x2="750" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="750" y1="550" x2="750" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="850" y1="50" x2="850" y2="950" stroke="#3E2723" stroke-width="3"/>
-<line x1="50" y1="50" x2="850" y2="50" stroke="#4E342E" stroke-width="3"/>
-<line x1="50" y1="150" x2="850" y2="150" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="250" x2="850" y2="250" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="350" x2="850" y2="350" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="450" x2="850" y2="450" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="550" x2="850" y2="550" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="650" x2="850" y2="650" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="750" x2="850" y2="750" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="850" x2="850" y2="850" stroke="#4E342E" stroke-width="2"/>
-<line x1="50" y1="950" x2="850" y2="950" stroke="#4E342E" stroke-width="3"/>
-<line x1="350" y1="50" x2="550" y2="250" stroke="#4E342E" stroke-width="2"/>
-<line x1="550" y1="50" x2="350" y2="250" stroke="#4E342E" stroke-width="2"/>
-<line x1="350" y1="750" x2="550" y2="950" stroke="#4E342E" stroke-width="2"/>
-<line x1="550" y1="750" x2="350" y2="950" stroke="#4E342E" stroke-width="2"/>
+  <rect width="900" height="1000" rx="16" fill="url(#frame)"/>
+  <rect x="22" y="22" width="856" height="956" rx="6" fill="url(#face)" stroke="#5A3A1E" stroke-width="4"/>
+  <rect x="22" y="22" width="856" height="956" rx="6" fill="url(#grain)" opacity="0.45"/>
+  <line x1="54" y1="54" x2="54" y2="946" stroke="#4A2F18" stroke-width="3"/>
+<line x1="153" y1="54" x2="153" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="153" y1="549.5555555555555" x2="153" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="252" y1="54" x2="252" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="252" y1="549.5555555555555" x2="252" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="351" y1="54" x2="351" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="351" y1="549.5555555555555" x2="351" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="450" y1="54" x2="450" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="450" y1="549.5555555555555" x2="450" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="549" y1="54" x2="549" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="549" y1="549.5555555555555" x2="549" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="648" y1="54" x2="648" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="648" y1="549.5555555555555" x2="648" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="747" y1="54" x2="747" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="747" y1="549.5555555555555" x2="747" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="846" y1="54" x2="846" y2="946" stroke="#4A2F18" stroke-width="3"/>
+<line x1="54" y1="54" x2="846" y2="54" stroke="#5C3D22" stroke-width="3"/>
+<line x1="54" y1="153.11111111111111" x2="846" y2="153.11111111111111" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="252.22222222222223" x2="846" y2="252.22222222222223" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="351.33333333333337" x2="846" y2="351.33333333333337" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="450.44444444444446" x2="846" y2="450.44444444444446" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="549.5555555555555" x2="846" y2="549.5555555555555" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="648.6666666666667" x2="846" y2="648.6666666666667" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="747.7777777777778" x2="846" y2="747.7777777777778" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="846.8888888888889" x2="846" y2="846.8888888888889" stroke="#5C3D22" stroke-width="2"/>
+<line x1="54" y1="946" x2="846" y2="946" stroke="#5C3D22" stroke-width="3"/>
+<line x1="351" y1="54" x2="549" y2="252.22222222222223" stroke="#5C3D22" stroke-width="2"/>
+<line x1="549" y1="54" x2="351" y2="252.22222222222223" stroke="#5C3D22" stroke-width="2"/>
+<line x1="351" y1="747.7777777777778" x2="549" y2="946" stroke="#5C3D22" stroke-width="2"/>
+<line x1="549" y1="747.7777777777778" x2="351" y2="946" stroke="#5C3D22" stroke-width="2"/>
 
-  <path d="M146,240 L146,246 L140,246" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M154,240 L154,246 L160,246" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M146,260 L146,254 L140,254" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M154,260 L154,254 L160,254" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M746,240 L746,246 L740,246" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M754,240 L754,246 L760,246" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M746,260 L746,254 L740,254" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M754,260 L754,254 L760,254" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M54,340 L54,346 L60,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M54,360 L54,354 L60,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M246,340 L246,346 L240,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M254,340 L254,346 L260,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M246,360 L246,354 L240,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M254,360 L254,354 L260,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M446,340 L446,346 L440,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M454,340 L454,346 L460,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M446,360 L446,354 L440,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M454,360 L454,354 L460,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M646,340 L646,346 L640,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M654,340 L654,346 L660,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M646,360 L646,354 L640,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M654,360 L654,354 L660,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M846,340 L846,346 L840,346" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M846,360 L846,354 L840,354" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M146,740 L146,746 L140,746" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M154,740 L154,746 L160,746" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M146,760 L146,754 L140,754" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M154,760 L154,754 L160,754" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M746,740 L746,746 L740,746" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M754,740 L754,746 L760,746" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M746,760 L746,754 L740,754" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M754,760 L754,754 L760,754" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M54,640 L54,646 L60,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M54,660 L54,654 L60,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M246,640 L246,646 L240,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M254,640 L254,646 L260,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M246,660 L246,654 L240,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M254,660 L254,654 L260,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M446,640 L446,646 L440,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M454,640 L454,646 L460,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M446,660 L446,654 L440,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M454,660 L454,654 L460,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M646,640 L646,646 L640,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M654,640 L654,646 L660,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M646,660 L646,654 L640,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M654,660 L654,654 L660,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M846,640 L846,646 L840,646" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-<path d="M846,660 L846,654 L840,654" fill="none" stroke="#5D4037" stroke-width="1.5"/>
-  <text x="450" y="508" text-anchor="middle" font-family="Songti SC, STSong, serif" font-size="36" fill="#5D4037" opacity="0.55" letter-spacing="24">楚 河　　汉 界</text>
+  <text x="310" y="512" text-anchor="middle" font-family="Songti SC, STSong, serif" font-size="36" fill="#6B4A2A" opacity="0.55">楚 河</text>
+  <text x="590" y="512" text-anchor="middle" font-family="Songti SC, STSong, serif" font-size="36" fill="#6B4A2A" opacity="0.55">汉 界</text>
 </svg>

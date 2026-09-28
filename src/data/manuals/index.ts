@@ -7,9 +7,11 @@ import meihuapuSample from './meihuapu-sample.json';
 import shunpaoZhijun from './shunpao-zhijun.json';
 import xianrenZhilu from './xianren-zhilu.json';
 import zhongpaoPingfengmaShort from './zhongpao-pingfengma-short.json';
+import { modernManuals } from './modern';
 import { ycqlManuals } from './ycql';
 
 export const manuals: Manual[] = [
+  ...modernManuals,
   ...ycqlManuals,
   zhongpaoPingfengmaShort as Manual,
   shunpaoZhijun as Manual,

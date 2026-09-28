@@ -12,7 +12,8 @@
     "generate-assets": "node scripts/generate-assets.js",
     "import-pgn": "node scripts/import-pgn.js",
     "import-dhtmlxq": "node scripts/import-dhtmlxq.js",
-    "fetch-ycql": "node scripts/fetch-ycql.js"
+    "fetch-ycql": "node scripts/fetch-ycql.js",
+    "fetch-modern-ai": "node scripts/fetch-modern-ai.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",

@@ -59,9 +59,12 @@ npm run import-dhtmlxq -- --url "http://www.dpxq.com/hldcg/search/view_u_68905.h
 
 # 《银川棋路》45 局（写入 src/data/manuals/ycql/）
 npm run fetch-ycql
+
+# AI 时代精选：个人赛 / 王天一·郑惟桐近年 / 碧桂园杯 2020–2021
+npm run fetch-modern-ai
 ```
 
-内置 `银川棋路` tag 可在首页筛选。许银川执黑的局默认 `defaultFlipped`。
+内置 tag：`银川棋路`、`AI时代`、`个人赛`、`碧桂园杯`、`王天一`、`郑惟桐` 等可在首页筛选。
 
 ## 进度存储
 

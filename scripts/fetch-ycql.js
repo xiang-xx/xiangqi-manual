@@ -107,6 +107,7 @@ async function main() {
       const manual = buildManual({
         text,
         id,
+        tags: ['名局', '银川棋路'],
         source: `《银川棋路》第${Number(num)}局 · 东萍 u_${dpxqId}`,
       });
       // 标题带局号，便于列表识别

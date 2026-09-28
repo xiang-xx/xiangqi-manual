@@ -160,7 +160,7 @@ function binitToFen(binit) {
   return START_FEN;
 }
 
-function buildManual({ text, id, title, tags, sideToMemorize, source }) {
+function buildManual({ text, id, title, tags, sideToMemorize, source, focusPlayers }) {
   const dpMoves = extractMainMovelist(text);
   const startFen = binitToFen(extractTag(text, 'binit'));
   const game = new Xiangqi(startFen);
@@ -192,15 +192,26 @@ function buildManual({ text, id, title, tags, sideToMemorize, source }) {
   const date = extractTag(text, 'date');
   const result = extractTag(text, 'result');
 
-  const side =
-    sideToMemorize ??
-    ( /许银川/.test(black) && !/许银川/.test(red)
-      ? 'black'
-      : /许银川/.test(red) && !/许银川/.test(black)
-        ? 'red'
-        : 'both');
+  const focus = Array.isArray(focusPlayers) ? focusPlayers : focusPlayers ? [focusPlayers] : [];
+  let side = sideToMemorize;
+  if (!side && focus.length) {
+    const redHit = focus.some((n) => red.includes(n));
+    const blackHit = focus.some((n) => black.includes(n));
+    if (blackHit && !redHit) side = 'black';
+    else if (redHit && !blackHit) side = 'red';
+    else side = 'both';
+  }
+  if (!side) {
+    side =
+      /许银川/.test(black) && !/许银川/.test(red)
+        ? 'black'
+        : /许银川/.test(red) && !/许银川/.test(black)
+          ? 'red'
+          : 'both';
+  }
 
-  const tagSet = new Set([...(tags ?? []), '名局', '银川棋路']);
+  const tagSet = new Set(tags?.length ? tags : ['名局']);
+  tagSet.add('名局');
   if (/中炮/.test(opening)) tagSet.add('中炮');
   if (/屏风马/.test(opening)) tagSet.add('屏风马');
   if (/飞相/.test(opening)) tagSet.add('飞相');
@@ -218,9 +229,7 @@ function buildManual({ text, id, title, tags, sideToMemorize, source }) {
     comments,
     source:
       source ||
-      ['《银川棋路》', red && black ? `${red} vs ${black}` : '', date, result, opening]
-        .filter(Boolean)
-        .join(' · '),
+      [red && black ? `${red} vs ${black}` : '', date, result, opening].filter(Boolean).join(' · '),
   };
 }
 

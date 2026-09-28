@@ -3,10 +3,12 @@
   "title": "17.胜果险中求",
   "tags": [
     "名局",
-    "银川棋路",
-    "中炮",
-    "屏风马"
+    "银川棋路"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "屏风马"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",

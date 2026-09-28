@@ -2,10 +2,12 @@
   "id": "wang-007",
   "title": "杭州环境集团队 王天一 和 四川成都懿锦金弈队 武俊强",
   "tags": [
-    "AI时代",
     "王天一",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -343,6 +345,5 @@
       "uci": "a2c0"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_126859 · 2023-12-10"
 }

@@ -2,13 +2,14 @@
   "id": "grs2025-014",
   "title": "浙江 吕叶昊 负 江苏 刘柏宏",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2025",
-    "名局",
-    "中炮",
-    "仙人指路"
+    "名局"
   ],
+  "opening": {
+    "red": "仙人指路",
+    "black": "卒底炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -334,6 +335,5 @@
       "uci": "e6d6"
     }
   ],
-  "comments": {},
   "source": "个人赛2025 · 东萍 m_138458 · 2025-12-12"
 }

@@ -2,11 +2,13 @@
   "id": "grs2025-004",
   "title": "浙江 吕叶昊 和 杭州 程宇东",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2025",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -264,6 +266,5 @@
       "uci": "e4b4"
     }
   ],
-  "comments": {},
   "source": "个人赛2025 · 东萍 m_138542 · 2025-12-13"
 }

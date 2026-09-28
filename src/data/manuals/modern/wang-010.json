@@ -2,12 +2,13 @@
   "id": "wang-010",
   "title": "杭州环境集团队 王天一 胜 四川成都懿锦金弈队 赵攀伟",
   "tags": [
-    "AI时代",
     "王天一",
-    "名局",
-    "中炮",
-    "仙人指路"
+    "名局"
   ],
+  "opening": {
+    "red": "仙人指路",
+    "black": "卒底炮"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -445,6 +446,5 @@
       "uci": "h7h5"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_126849 · 2023-12-09"
 }

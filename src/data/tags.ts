@@ -1,6 +1,5 @@
 /** 首页 Tag 展示顺序；棋谱里可有未列出的 tag，会排在末尾 */
 export const TAG_ORDER = [
-  'AI时代',
   '银川棋路',
   '个人赛',
   '碧桂园杯',
@@ -9,14 +8,8 @@ export const TAG_ORDER = [
   '开局',
   '中局',
   '残棋',
-  '中炮',
-  '屏风马',
-  '顺炮',
-  '飞相',
-  '仙人指路',
   '古谱',
   '名局',
-  '教学',
 ] as const;
 
 export function sortTags(tags: Iterable<string>): string[] {

@@ -9,6 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Xiangqi } = require('../src/lib/vendor/xiangqi.js');
+const { parseDongpingOpen, stripLegacyOpeningTags } = require('./openings');
 
 const START_FEN =
   'rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1';
@@ -210,18 +211,16 @@ function buildManual({ text, id, title, tags, sideToMemorize, source, focusPlaye
           : 'both';
   }
 
-  const tagSet = new Set(tags?.length ? tags : ['名局']);
+  const tagSet = new Set(stripLegacyOpeningTags(tags?.length ? tags : ['名局']));
   tagSet.add('名局');
-  if (/中炮/.test(opening)) tagSet.add('中炮');
-  if (/屏风马/.test(opening)) tagSet.add('屏风马');
-  if (/飞相/.test(opening)) tagSet.add('飞相');
-  if (/仙人指路/.test(opening)) tagSet.add('仙人指路');
-  if (/顺炮|列手炮|过宫炮/.test(opening)) tagSet.add('开局');
+
+  const parsedOpening = parseDongpingOpen(opening);
 
   return {
     id,
     title: metaTitle,
     tags: [...tagSet],
+    ...(Object.keys(parsedOpening).length ? { opening: parsedOpening } : {}),
     sideToMemorize: side,
     defaultFlipped: side === 'black',
     startFen,

@@ -2,11 +2,13 @@
   "id": "grs2025-036",
   "title": "宁波 陶恒 和 安徽 万川",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2025",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -212,6 +214,5 @@
       "uci": "g4g3"
     }
   ],
-  "comments": {},
   "source": "个人赛2025 · 东萍 m_138477 · 2025-12-12"
 }

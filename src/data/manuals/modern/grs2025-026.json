@@ -2,12 +2,13 @@
   "id": "grs2025-026",
   "title": "北京 王禹博 和 广东 黄光颖",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2025",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -197,6 +198,5 @@
       "uci": "b9c7"
     }
   ],
-  "comments": {},
   "source": "个人赛2025 · 东萍 m_138467 · 2025-12-11"
 }

@@ -2,12 +2,14 @@
   "id": "bgy2021-017",
   "title": "北京 蒋川 胜 湖北 洪智",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2021",
-    "名局",
-    "中炮"
+    "名局"
   ],
+  "opening": {
+    "red": "对兵",
+    "black": "中炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -321,6 +323,5 @@
       "uci": "h8i8"
     }
   ],
-  "comments": {},
   "source": "碧桂园2021 · 东萍 m_116080 · 2021-12-08"
 }

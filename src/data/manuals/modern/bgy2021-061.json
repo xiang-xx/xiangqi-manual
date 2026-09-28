@@ -2,12 +2,14 @@
   "id": "bgy2021-061",
   "title": "上海 谢靖 和 浙江 赵鑫鑫",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2021",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相",
+    "black": "士角炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -241,6 +243,5 @@
       "uci": "e2c4"
     }
   ],
-  "comments": {},
   "source": "碧桂园2021 · 东萍 m_116041 · 2021-12-05"
 }

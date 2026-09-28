@@ -2,12 +2,13 @@
   "id": "bgy2021-003",
   "title": "杭州 王天一 和 四川 郑惟桐",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2021",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -293,6 +294,5 @@
       "uci": "e4e3"
     }
   ],
-  "comments": {},
   "source": "碧桂园2021 · 东萍 m_116099 · 2021-12-10"
 }

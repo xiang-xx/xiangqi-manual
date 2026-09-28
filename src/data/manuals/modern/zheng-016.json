@@ -2,13 +2,13 @@
   "id": "zheng-016",
   "title": "北方队 蒋川 和 南方队 郑惟桐",
   "tags": [
-    "AI时代",
     "郑惟桐",
-    "名局",
-    "中炮",
-    "屏风马",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相",
+    "black": "中炮"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -214,6 +214,5 @@
       "uci": "a5a4"
     }
   ],
-  "comments": {},
   "source": "郑惟桐 · 东萍 m_117302 · 2022-08-25"
 }

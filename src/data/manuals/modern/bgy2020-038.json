@@ -2,11 +2,13 @@
   "id": "bgy2020-038",
   "title": "上海 谢靖 胜 广东 吕钦",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2020",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -504,6 +506,5 @@
       "uci": "e0e1"
     }
   ],
-  "comments": {},
   "source": "碧桂园2020 · 东萍 m_110761 · 2020-12-13"
 }

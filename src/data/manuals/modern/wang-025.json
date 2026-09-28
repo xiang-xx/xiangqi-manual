@@ -2,11 +2,12 @@
   "id": "wang-025",
   "title": "广东 李诚 负 杭州 王天一",
   "tags": [
-    "AI时代",
     "王天一",
-    "名局",
-    "中炮"
+    "名局"
   ],
+  "opening": {
+    "black": "中炮"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -260,6 +261,5 @@
       "uci": "f7f9"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_127378 · 2023-08-02"
 }

@@ -2,10 +2,12 @@
   "id": "wang-003",
   "title": "广东 吕钦 和 杭州 王天一",
   "tags": [
-    "AI时代",
     "王天一",
     "名局"
   ],
+  "opening": {
+    "red": "起马"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -183,6 +185,5 @@
       "uci": "g1g6"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_128325 · 2024-01-11"
 }

@@ -2,13 +2,14 @@
   "id": "grs2023-011",
   "title": "中国棋院杭州分院 王天一 和 黑龙江省社体与棋牌中心 聂铁文",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2023",
-    "名局",
-    "中炮",
-    "仙人指路"
+    "名局"
   ],
+  "opening": {
+    "red": "仙人指路",
+    "black": "卒底炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -262,6 +263,5 @@
       "uci": "e5h5"
     }
   ],
-  "comments": {},
   "source": "个人赛2023 · 东萍 m_122240 · 2023-05-05"
 }

@@ -3,9 +3,11 @@
   "title": "35.卒入花心老帅自昏",
   "tags": [
     "名局",
-    "银川棋路",
-    "飞相"
+    "银川棋路"
   ],
+  "opening": {
+    "red": "飞相"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",

@@ -2,11 +2,13 @@
   "id": "bgy2020-052",
   "title": "江苏 徐天红 胜 湖北 洪智",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2020",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -544,6 +546,5 @@
       "uci": "f8e8"
     }
   ],
-  "comments": {},
   "source": "碧桂园2020 · 东萍 m_110747 · 2020-12-12"
 }

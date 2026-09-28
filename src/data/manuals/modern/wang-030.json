@@ -2,11 +2,13 @@
   "id": "wang-030",
   "title": "广东 许珍浩 和 杭州 王天一",
   "tags": [
-    "AI时代",
     "王天一",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相",
+    "black": "士角炮"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",

@@ -2,12 +2,13 @@
   "id": "grs2023-006",
   "title": "浙江省智力运动管理中心 赵鑫鑫 和 成都棋院 孟辰",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2023",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -217,6 +218,5 @@
       "uci": "c2b2"
     }
   ],
-  "comments": {},
   "source": "个人赛2023 · 东萍 m_122347 · 2023-05-06"
 }

@@ -2,12 +2,13 @@
   "id": "zheng-026",
   "title": "四川成都懿锦金弈 郑惟桐 负 北京威凯＆金环建设京冀联队 孟繁睿",
   "tags": [
-    "AI时代",
     "郑惟桐",
-    "名局",
-    "中炮",
-    "仙人指路"
+    "名局"
   ],
+  "opening": {
+    "red": "仙人指路",
+    "black": "卒底炮"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -613,6 +614,5 @@
       "uci": "d4f4"
     }
   ],
-  "comments": {},
   "source": "郑惟桐 · 东萍 m_116951 · 2022-07-20"
 }

@@ -2,11 +2,13 @@
   "id": "bgy2020-062",
   "title": "广东 许银川 和 湖北 柳大华",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2020",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",

@@ -2,13 +2,14 @@
   "id": "grs2023-040",
   "title": "河北金环建设队 孟繁睿 胜 北京威凯建设队 蒋川",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2023",
-    "名局",
-    "中炮",
-    "屏风马"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "屏风马"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -522,6 +523,5 @@
       "uci": "e9g8"
     }
   ],
-  "comments": {},
   "source": "个人赛2023 · 东萍 m_122036 · 2023-05-02"
 }

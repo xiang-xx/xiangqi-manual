@@ -30,7 +30,7 @@ const SOURCES = {
     label: '个人赛2025',
     listBase:
       'http://www.dpxq.com/hldcg/share/chess_大师对局/全国象棋个人赛/2025年民生实业杯全国象棋个人赛/棋谱列表/',
-    tags: ['AI时代', '个人赛', '个人赛2025'],
+    tags: ['个人赛', '个人赛2025'],
     max: 40,
     pick: pickPersonal2025,
   },
@@ -38,14 +38,14 @@ const SOURCES = {
     label: '个人赛2023',
     listBase:
       'http://www.dpxq.com/hldcg/share/chess_大师对局/全国象棋个人赛/2023年贵州王道酒业杯全国象棋个人赛/棋谱列表/',
-    tags: ['AI时代', '个人赛', '个人赛2023'],
+    tags: ['个人赛', '个人赛2023'],
     max: 40,
     pick: pickPersonal2023,
   },
   wang: {
     label: '王天一',
     listBase: 'http://www.dpxq.com/hldcg/share/chess_大师对局/按棋手姓名/王天一/全部对局/',
-    tags: ['AI时代', '王天一'],
+    tags: ['王天一'],
     max: 30,
     focusPlayers: ['王天一'],
     pick: (rows) => pickByYear(rows, 2022, 30),
@@ -53,7 +53,7 @@ const SOURCES = {
   zheng: {
     label: '郑惟桐',
     listBase: 'http://www.dpxq.com/hldcg/share/chess_大师对局/按棋手姓名/郑惟桐/全部对局/',
-    tags: ['AI时代', '郑惟桐'],
+    tags: ['郑惟桐'],
     max: 30,
     focusPlayers: ['郑惟桐'],
     pick: (rows) => pickByYear(rows, 2022, 30),
@@ -62,7 +62,7 @@ const SOURCES = {
     label: '碧桂园2020',
     listBase:
       'http://www.dpxq.com/hldcg/share/chess_大师对局/其他大师或以上级别大赛/2020年第09届碧桂园杯全国象棋冠军邀请赛/棋谱列表/',
-    tags: ['AI时代', '碧桂园杯', '碧桂园2020'],
+    tags: ['碧桂园杯', '碧桂园2020'],
     max: 80,
     pick: (rows) => rows.slice(0, 80),
   },
@@ -70,7 +70,7 @@ const SOURCES = {
     label: '碧桂园2021',
     listBase:
       'http://www.dpxq.com/hldcg/share/chess_大师对局/其他大师或以上级别大赛/2021年第10届碧桂园杯全国象棋冠军邀请赛/棋谱列表/',
-    tags: ['AI时代', '碧桂园杯', '碧桂园2021'],
+    tags: ['碧桂园杯', '碧桂园2021'],
     max: 80,
     pick: (rows) => rows.slice(0, 80),
   },

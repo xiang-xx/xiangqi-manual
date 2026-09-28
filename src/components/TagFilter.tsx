@@ -1,44 +1,49 @@
-import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 type Props = {
   tags: string[];
+  counts: Record<string, number>;
   selected: string[];
   onToggle: (tag: string) => void;
 };
 
-export function TagFilter({ tags, selected, onToggle }: Props) {
+export function TagFilter({ tags, counts, selected, onToggle }: Props) {
   const selectedSet = new Set(selected);
 
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.row}
-    >
+    <View style={styles.wrap}>
       {tags.map((tag) => {
         const active = selectedSet.has(tag);
+        const count = counts[tag] ?? 0;
         return (
           <Pressable
             key={tag}
             onPress={() => onToggle(tag)}
             style={[styles.chip, active && styles.chipActive]}
           >
-            <Text style={[styles.chipText, active && styles.chipTextActive]}>{tag}</Text>
+            <Text style={[styles.chipText, active && styles.chipTextActive]}>
+              {tag}
+              <Text style={[styles.chipCount, active && styles.chipCountActive]}>
+                {' '}
+                {count}
+              </Text>
+            </Text>
           </Pressable>
         );
       })}
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  row: {
+  wrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 8,
     paddingVertical: 4,
-    paddingRight: 8,
   },
   chip: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     paddingVertical: 7,
     borderRadius: 8,
     backgroundColor: '#EFE6D6',
@@ -56,5 +61,13 @@ const styles = StyleSheet.create({
   },
   chipTextActive: {
     color: '#F7F3E8',
+  },
+  chipCount: {
+    color: '#7A8A78',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  chipCountActive: {
+    color: 'rgba(247, 243, 232, 0.72)',
   },
 });

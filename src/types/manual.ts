@@ -1,3 +1,5 @@
+import type { ManualOpening } from '../data/openings';
+
 export type SideToMemorize = 'red' | 'black' | 'both';
 
 export type ManualMove = {
@@ -10,8 +12,12 @@ export type ManualMove = {
 export type Manual = {
   id: string;
   title: string;
-  /** 多标签分类，如 开局 / 中炮 / 屏风马 */
+  /** 分类标签：赛事 / 棋手 / 阶段等；开局用 opening */
   tags: string[];
+  /**
+   * 先手 / 后手开局（粗粒度），如 { red: '中炮', black: '屏风马' }
+   */
+  opening?: ManualOpening;
   sideToMemorize: SideToMemorize;
   /**
    * 首次进入时是否翻转棋盘（黑方在下）。

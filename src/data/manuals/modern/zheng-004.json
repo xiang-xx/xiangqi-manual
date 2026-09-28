@@ -2,11 +2,12 @@
   "id": "zheng-004",
   "title": "四川 郑惟桐 负 杭州 王天一",
   "tags": [
-    "AI时代",
     "郑惟桐",
-    "名局",
-    "中炮"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -396,6 +397,5 @@
       "uci": "f4f6"
     }
   ],
-  "comments": {},
   "source": "郑惟桐 · 东萍 m_117387 · 2022-09-21"
 }

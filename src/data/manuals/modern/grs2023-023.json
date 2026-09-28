@@ -2,12 +2,14 @@
   "id": "grs2023-023",
   "title": "湖北省体育局棋牌运动管理中心 洪智 负 成都棋院 孟辰",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2023",
     "名局",
     "开局"
   ],
+  "opening": {
+    "red": "过宫炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -581,6 +583,5 @@
       "uci": "g5g7"
     }
   ],
-  "comments": {},
   "source": "个人赛2023 · 东萍 m_122172 · 2023-05-04"
 }

@@ -2,12 +2,13 @@
   "id": "wang-024",
   "title": "广东 黄淦辉 负 杭州 王天一",
   "tags": [
-    "AI时代",
     "王天一",
-    "名局",
-    "中炮",
-    "屏风马"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "屏风马"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -221,6 +222,5 @@
       "uci": "e4f2"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_127379 · 2023-08-02"
 }

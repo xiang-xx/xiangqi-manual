@@ -2,12 +2,14 @@
   "id": "bgy2020-041",
   "title": "广东 许银川 和 上海 孙勇征",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2020",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相",
+    "black": "士角炮"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -285,6 +287,5 @@
       "uci": "h6e6"
     }
   ],
-  "comments": {},
   "source": "碧桂园2020 · 东萍 m_110758 · 2020-12-13"
 }

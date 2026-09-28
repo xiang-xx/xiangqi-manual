@@ -2,11 +2,13 @@
   "id": "bgy2021-037",
   "title": "广东 许银川 胜 深圳 柳大华",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2021",
     "名局"
   ],
+  "opening": {
+    "red": "起马"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -272,6 +274,5 @@
       "uci": "a6e6"
     }
   ],
-  "comments": {},
   "source": "碧桂园2021 · 东萍 m_116065 · 2021-12-06"
 }

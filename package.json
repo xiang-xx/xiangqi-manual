@@ -13,7 +13,8 @@
     "import-pgn": "node scripts/import-pgn.js",
     "import-dhtmlxq": "node scripts/import-dhtmlxq.js",
     "fetch-ycql": "node scripts/fetch-ycql.js",
-    "fetch-modern-ai": "node scripts/fetch-modern-ai.js"
+    "fetch-modern-ai": "node scripts/fetch-modern-ai.js",
+    "retag-openings": "node scripts/retag-openings.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",

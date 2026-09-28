@@ -2,11 +2,13 @@
   "id": "grs2025-030",
   "title": "山东 谢岿 胜 安徽 万川",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2025",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -624,6 +626,5 @@
       "uci": "h6e6"
     }
   ],
-  "comments": {},
   "source": "个人赛2025 · 东萍 m_138535 · 2025-12-13"
 }

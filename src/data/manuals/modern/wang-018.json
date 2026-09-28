@@ -2,10 +2,13 @@
   "id": "wang-018",
   "title": "广东 邓金苹 和 杭州 王天一",
   "tags": [
-    "AI时代",
     "王天一",
     "名局"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "反宫马"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -183,6 +186,5 @@
       "uci": "d4d5"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_127990 · 2023-08-02"
 }

@@ -2,11 +2,13 @@
   "id": "zheng-005",
   "title": "四川 郑惟桐 胜 浙江 赵鑫鑫",
   "tags": [
-    "AI时代",
     "郑惟桐",
-    "名局",
-    "屏风马"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "屏风马"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -456,6 +458,5 @@
       "uci": "d6f5"
     }
   ],
-  "comments": {},
   "source": "郑惟桐 · 东萍 m_117319 · 2022-09-20"
 }

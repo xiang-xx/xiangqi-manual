@@ -4,18 +4,29 @@ import {
   ActivityIndicator,
   FlatList,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
 import { TagFilter } from '../components/TagFilter';
-import { allTags, filterManualsByTags, getManualById, manuals } from '../data/manuals';
+import {
+  allOpenings,
+  allTags,
+  filterManuals,
+  getManualById,
+  manualMetaLine,
+  manuals,
+  openingCounts,
+} from '../data/manuals';
 import { listAllProgress, listRecentManualIds } from '../lib/progress';
 import type { Manual, ManualProgress } from '../types/manual';
 
 export default function HomeScreen() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [redOpening, setRedOpening] = useState<string | null>(null);
+  const [blackOpening, setBlackOpening] = useState<string | null>(null);
   const [progressMap, setProgressMap] = useState<Record<string, ManualProgress>>({});
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +35,7 @@ export default function HomeScreen() {
     useCallback(() => {
       let alive = true;
       (async () => {
-        const [all, recent] = await Promise.all([listAllProgress(), listRecentManualIds(6)]);
+        const [all, recent] = await Promise.all([listAllProgress(), listRecentManualIds(5)]);
         if (!alive) return;
         setProgressMap(all);
         setRecentIds(recent);
@@ -37,16 +48,53 @@ export default function HomeScreen() {
   );
 
   const tags = useMemo(() => allTags(), []);
-  const filtered = useMemo(() => filterManualsByTags(selectedTags), [selectedTags]);
+  const tagCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const manual of manuals) {
+      for (const tag of manual.tags) {
+        counts[tag] = (counts[tag] ?? 0) + 1;
+      }
+    }
+    return counts;
+  }, []);
+  const redOptions = useMemo(() => allOpenings('red'), []);
+  const blackOptions = useMemo(() => allOpenings('black'), []);
+  const redCounts = useMemo(() => openingCounts('red'), []);
+  const blackCounts = useMemo(() => openingCounts('black'), []);
+
+  const filtered = useMemo(
+    () => filterManuals({ tags: selectedTags, redOpening, blackOpening }),
+    [selectedTags, redOpening, blackOpening],
+  );
   const recentManuals = useMemo(
-    () => recentIds.map((id) => getManualById(id)).filter((m): m is Manual => m != null),
+    () =>
+      recentIds
+        .map((id) => getManualById(id))
+        .filter((m): m is Manual => m != null)
+        .slice(0, 5),
     [recentIds],
   );
+
+  const hasFilter = selectedTags.length > 0 || redOpening != null || blackOpening != null;
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
     );
+  };
+
+  const toggleRed = (name: string) => {
+    setRedOpening((prev) => (prev === name ? null : name));
+  };
+
+  const toggleBlack = (name: string) => {
+    setBlackOpening((prev) => (prev === name ? null : name));
+  };
+
+  const clearFilters = () => {
+    setSelectedTags([]);
+    setRedOpening(null);
+    setBlackOpening(null);
   };
 
   return (
@@ -65,28 +113,65 @@ export default function HomeScreen() {
               {recentManuals.length > 0 && (
                 <View style={styles.section}>
                   <Text style={styles.sectionTitle}>最近背谱</Text>
-                  <View style={styles.recentRow}>
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.recentRow}
+                  >
                     {recentManuals.map((item) => (
                       <Link key={item.id} href={`/manual/${item.id}`} asChild>
                         <Pressable style={styles.recentCard}>
                           <Text style={styles.recentTitle} numberOfLines={2}>
                             {item.title}
                           </Text>
-                          <Text style={styles.recentMeta}>
+                          <Text style={styles.recentMeta} numberOfLines={1}>
                             {progressLabel(progressMap[item.id], item)}
                           </Text>
                         </Pressable>
                       </Link>
                     ))}
-                  </View>
+                  </ScrollView>
+                </View>
+              )}
+
+              {(redOptions.length > 0 || blackOptions.length > 0) && (
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>开局</Text>
+                  {redOptions.length > 0 && (
+                    <View style={styles.openingBlock}>
+                      <Text style={styles.openingSide}>先手</Text>
+                      <TagFilter
+                        tags={redOptions}
+                        counts={redCounts}
+                        selected={redOpening ? [redOpening] : []}
+                        onToggle={toggleRed}
+                      />
+                    </View>
+                  )}
+                  {blackOptions.length > 0 && (
+                    <View style={styles.openingBlock}>
+                      <Text style={styles.openingSide}>后手</Text>
+                      <TagFilter
+                        tags={blackOptions}
+                        counts={blackCounts}
+                        selected={blackOpening ? [blackOpening] : []}
+                        onToggle={toggleBlack}
+                      />
+                    </View>
+                  )}
                 </View>
               )}
 
               <View style={styles.section}>
                 <Text style={styles.sectionTitle}>分类</Text>
-                <TagFilter tags={tags} selected={selectedTags} onToggle={toggleTag} />
-                {selectedTags.length > 0 && (
-                  <Pressable onPress={() => setSelectedTags([])} style={styles.clearTags}>
+                <TagFilter
+                  tags={tags}
+                  counts={tagCounts}
+                  selected={selectedTags}
+                  onToggle={toggleTag}
+                />
+                {hasFilter && (
+                  <Pressable onPress={clearFilters} style={styles.clearTags}>
                     <Text style={styles.clearTagsText}>清除筛选</Text>
                   </Pressable>
                 )}
@@ -94,20 +179,18 @@ export default function HomeScreen() {
 
               <Text style={styles.sectionTitle}>
                 棋谱列表
-                {selectedTags.length > 0 ? `（${filtered.length}）` : `（${manuals.length}）`}
+                {hasFilter ? `（${filtered.length}）` : `（${manuals.length}）`}
               </Text>
             </View>
           }
           ListEmptyComponent={
-            <Text style={styles.empty}>没有同时包含所选标签的棋谱</Text>
+            <Text style={styles.empty}>没有同时符合所选条件的棋谱</Text>
           }
           renderItem={({ item }) => (
             <Link href={`/manual/${item.id}`} asChild>
               <Pressable style={styles.card}>
                 <Text style={styles.cardTitle}>{item.title}</Text>
-                <Text style={styles.cardMeta}>
-                  {item.tags.join(' · ')} · {item.moves.length} 手
-                </Text>
+                <Text style={styles.cardMeta}>{manualMetaLine(item)}</Text>
                 <Text style={styles.cardProgress}>
                   {progressLabel(progressMap[item.id], item)}
                 </Text>
@@ -149,14 +232,23 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 8,
   },
+  openingBlock: {
+    marginBottom: 8,
+  },
+  openingSide: {
+    color: '#5C6B5A',
+    fontSize: 13,
+    fontWeight: '500',
+    marginBottom: 4,
+  },
   recentRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
     gap: 8,
+    paddingVertical: 2,
+    paddingRight: 8,
   },
   recentCard: {
-    width: '48%',
-    flexGrow: 1,
+    width: 148,
     backgroundColor: '#E8F0E6',
     borderRadius: 10,
     padding: 12,

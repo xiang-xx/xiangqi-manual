@@ -2,11 +2,12 @@
   "id": "wang-006",
   "title": "四川成都懿锦金弈队 武俊强 负 杭州环境集团队 王天一",
   "tags": [
-    "AI时代",
     "王天一",
-    "名局",
-    "中炮"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -300,6 +301,5 @@
       "uci": "c5e5"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_126860 · 2023-12-10"
 }

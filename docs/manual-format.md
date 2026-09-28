@@ -8,7 +8,11 @@
 type Manual = {
   id: string;                 // 稳定 ID，用于进度 key，勿随意改
   title: string;
-  tags: string[];             // 多标签，如 ["开局","中炮","屏风马"]
+  tags: string[];             // 分类标签：赛事 / 棋手 / 阶段等
+  opening?: {                 // 先手 / 后手开局（粗粒度）
+    red?: string;             // 如「中炮」「飞相」「仙人指路」
+    black?: string;           // 如「屏风马」「顺炮」「中炮」
+  };
   sideToMemorize: 'red' | 'black' | 'both'; // 默认 both
   defaultFlipped?: boolean;   // 首次进入是否黑方在下；未写时后手谱（black）默认 true
   startFen: string;           // 象棋 FEN
@@ -21,7 +25,8 @@ type Manual = {
 };
 ```
 
-展示用 tag 顺序见 `src/data/tags.ts`。
+展示用 tag 顺序见 `src/data/tags.ts`；开局词表见 `src/data/openings.ts`。
+首页可分别选先手 / 后手开局（如「后手中炮」，或「先手中炮 + 后手屏风马」），再与分类 tag 取交集。
 
 ## 约定
 
@@ -33,7 +38,7 @@ type Manual = {
 
 ## 示例
 
-见 `src/data/manuals/zhongpao-pingfengma-short.json`。
+见 `src/data/manuals/ycql/ycql-01.json` 或 `src/data/manuals/modern/`。
 
 标准开局 FEN：
 
@@ -62,9 +67,12 @@ npm run fetch-ycql
 
 # AI 时代精选：个人赛 / 王天一·郑惟桐近年 / 碧桂园杯 2020–2021
 npm run fetch-modern-ai
+
+# 回填 opening（先手/后手），并去掉旧扁平开局 tag
+npm run retag-openings
 ```
 
-内置 tag：`银川棋路`、`AI时代`、`个人赛`、`碧桂园杯`、`王天一`、`郑惟桐` 等可在首页筛选。
+内置分类 tag：`银川棋路`、`个人赛`、`碧桂园杯`、`王天一`、`郑惟桐` 等；开局写入 `opening`，由东萍 `open` 字段解析。
 
 ## 进度存储
 

@@ -2,12 +2,13 @@
   "id": "zheng-010",
   "title": "北方队 汪洋 负 南方队 郑惟桐",
   "tags": [
-    "AI时代",
     "郑惟桐",
-    "名局",
-    "中炮",
-    "仙人指路"
+    "名局"
   ],
+  "opening": {
+    "red": "仙人指路",
+    "black": "卒底炮"
+  },
   "sideToMemorize": "black",
   "defaultFlipped": true,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -413,6 +414,5 @@
       "uci": "c5d3"
     }
   ],
-  "comments": {},
   "source": "郑惟桐 · 东萍 m_117295 · 2022-08-28"
 }

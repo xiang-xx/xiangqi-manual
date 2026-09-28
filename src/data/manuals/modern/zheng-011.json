@@ -2,11 +2,13 @@
   "id": "zheng-011",
   "title": "南方队 郑惟桐 胜 北方队 王廓",
   "tags": [
-    "AI时代",
     "郑惟桐",
-    "名局",
-    "中炮"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "反宫马"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -320,6 +322,5 @@
       "uci": "c3h3"
     }
   ],
-  "comments": {},
   "source": "郑惟桐 · 东萍 m_117293 · 2022-08-27"
 }

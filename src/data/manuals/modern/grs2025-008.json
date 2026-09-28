@@ -2,12 +2,13 @@
   "id": "grs2025-008",
   "title": "广东 黄光颖 和 宁波 陶恒",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2025",
-    "名局",
-    "中炮"
+    "名局"
   ],
+  "opening": {
+    "red": "中炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -789,6 +790,5 @@
       "uci": "e5h5"
     }
   ],
-  "comments": {},
   "source": "个人赛2025 · 东萍 m_138538 · 2025-12-13"
 }

@@ -39,7 +39,7 @@
 
 ## 关键交互
 
-1. **首页**：最近背谱（按 `lastStudiedAt`）；多选 tag 取交集筛选列表。
+1. **首页**：最近背谱（按 `lastStudiedAt`）；先手/后手开局筛选 + 多选分类 tag 取交集。
 2. **记谱**：上一步 / 下一步自动走子；展示该步 `comments`；棋盘不可手走。
 3. **背谱**：用户走子；与谱着 `uci` 比对；错误提示并重试；正确则展示注释。
 4. **进度**：`progress:{manualId}` 存 `maxReached`、各步错误次数、`lastStudiedAt`、`flipped`（该谱上次棋盘朝向）。

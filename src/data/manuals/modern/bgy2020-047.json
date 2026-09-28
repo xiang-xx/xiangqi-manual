@@ -2,13 +2,14 @@
   "id": "bgy2020-047",
   "title": "湖北 洪智 和 江苏 徐天红",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2020",
-    "名局",
-    "飞相",
-    "仙人指路"
+    "名局"
   ],
+  "opening": {
+    "red": "仙人指路",
+    "black": "卒底炮"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -298,6 +299,5 @@
       "uci": "d2c4"
     }
   ],
-  "comments": {},
   "source": "碧桂园2020 · 东萍 m_110752 · 2020-12-12"
 }

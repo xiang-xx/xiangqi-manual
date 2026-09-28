@@ -2,11 +2,13 @@
   "id": "bgy2021-039",
   "title": "江苏 徐天红 负 湖北 汪洋",
   "tags": [
-    "AI时代",
     "碧桂园杯",
     "碧桂园2021",
     "名局"
   ],
+  "opening": {
+    "red": "对兵"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -468,6 +470,5 @@
       "uci": "f3f6"
     }
   ],
-  "comments": {},
   "source": "碧桂园2021 · 东萍 m_116063 · 2021-12-06"
 }

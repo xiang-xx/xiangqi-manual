@@ -2,11 +2,14 @@
   "id": "grs2023-029",
   "title": "厦门市体育事业发展中心 刘子健 负 湖北省体育局棋牌运动管理中心 汪洋",
   "tags": [
-    "AI时代",
     "个人赛",
     "个人赛2023",
     "名局"
   ],
+  "opening": {
+    "red": "中炮",
+    "black": "反宫马"
+  },
   "sideToMemorize": "both",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -396,6 +399,5 @@
       "uci": "g1e1"
     }
   ],
-  "comments": {},
   "source": "个人赛2023 · 东萍 m_122353 · 2023-05-03"
 }

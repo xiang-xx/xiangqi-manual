@@ -2,11 +2,13 @@
   "id": "wang-015",
   "title": "杭州环境集团队 王天一 和 北京威凯＆金环建设京冀联队 王禹博",
   "tags": [
-    "AI时代",
     "王天一",
-    "名局",
-    "飞相"
+    "名局"
   ],
+  "opening": {
+    "red": "飞相",
+    "black": "士角炮"
+  },
   "sideToMemorize": "red",
   "defaultFlipped": false,
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1",
@@ -372,6 +374,5 @@
       "uci": "i4h4"
     }
   ],
-  "comments": {},
   "source": "王天一 · 东萍 m_126817 · 2023-12-06"
 }

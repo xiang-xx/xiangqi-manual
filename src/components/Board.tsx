@@ -7,7 +7,7 @@ import {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { G, Line, Text as SvgText } from 'react-native-svg';
+import Svg, { G, Line, Rect, Text as SvgText } from 'react-native-svg';
 
 import { boardFromFen } from '../lib/engine';
 import { BOARD_WOOD, TABLE_WOOD } from '../lib/pieceAssets';
@@ -50,14 +50,14 @@ export function Board({
   const grid = useMemo(() => boardFromFen(fen), [fen]);
   const targetSet = useMemo(() => new Set(legalTargets), [legalTargets]);
 
-  // 窄边框，棋盘尽量撑满，棋子更大好点
-  const pad = width * 0.038;
+  // 留足边距，避免最外侧棋子被裁切
+  const pad = width * 0.055;
   const boardW = width > 0 ? width - pad * 2 : 0;
   const cell = boardW / 8;
   const boardH = cell * 9;
   const height = boardH + pad * 2;
-  const pieceSize = cell * 0.94;
-  const faceInset = pad * 0.35;
+  const pieceSize = cell * 0.9;
+  const faceInset = pad * 0.28;
 
   const xAt = (file: number) => pad + file * cell;
   const yAt = (rankIndex: number) => pad + rankIndex * cell;
@@ -132,6 +132,7 @@ export function Board({
             resizeMode="cover"
           />
 
+          {/* 木纹盘面：不用 border，避免格线相对交叉点偏移 */}
           <ImageBackground
             source={BOARD_WOOD}
             style={{
@@ -142,12 +143,20 @@ export function Board({
               height: height - faceInset * 2,
               borderRadius: 3,
               overflow: 'hidden',
-              borderWidth: 2,
-              borderColor: '#4A3018',
             }}
             resizeMode="cover"
           >
             <Svg width={width - faceInset * 2} height={height - faceInset * 2}>
+              <Rect
+                x={0.5}
+                y={0.5}
+                width={width - faceInset * 2 - 1}
+                height={height - faceInset * 2 - 1}
+                rx={3}
+                fill="none"
+                stroke="#4A3018"
+                strokeWidth={2}
+              />
               {Array.from({ length: COLS }, (_, f) => {
                 const x = pad - faceInset + f * cell;
                 return f === 0 || f === 8 ? (
@@ -252,15 +261,91 @@ export function Board({
             </Svg>
           </ImageBackground>
 
+          {/* 落点标记：绝对定位在交叉点中心，避免被布局挤偏 */}
+          {Array.from({ length: ROWS }, (_, rankIndex) =>
+            Array.from({ length: COLS }, (_, file) => {
+              const square = squareFromIndices(file, rankIndex);
+              const piece = grid[rankIndex][file];
+              const isTarget = targetSet.has(square);
+              const isHint = hintFrom === square || hintTo === square;
+              const isLast =
+                lastMove != null && (lastMove.from === square || lastMove.to === square);
+              const isSelected = selected === square;
+              if (!isTarget && !isHint && !(isLast && !isSelected)) return null;
+
+              const cx = xAt(file);
+              const cy = yAt(rankIndex);
+              const dot = cell * 0.18;
+
+              return (
+                <View
+                  key={`mark-${square}`}
+                  pointerEvents="none"
+                  style={{
+                    position: 'absolute',
+                    left: cx - markSize / 2,
+                    top: cy - markSize / 2,
+                    width: markSize,
+                    height: markSize,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 2,
+                  }}
+                >
+                  {isLast && !isSelected && (
+                    <View
+                      style={{
+                        position: 'absolute',
+                        width: markSize,
+                        height: markSize,
+                        borderRadius: markSize / 2,
+                        backgroundColor: 'rgba(180, 120, 50, 0.22)',
+                      }}
+                    />
+                  )}
+                  {isHint && (
+                    <View
+                      style={{
+                        position: 'absolute',
+                        width: markSize,
+                        height: markSize,
+                        borderRadius: markSize / 2,
+                        backgroundColor: 'rgba(180, 120, 50, 0.3)',
+                      }}
+                    />
+                  )}
+                  {isTarget && !piece && (
+                    <View
+                      style={{
+                        width: dot,
+                        height: dot,
+                        borderRadius: dot,
+                        backgroundColor: 'rgba(120, 70, 30, 0.45)',
+                      }}
+                    />
+                  )}
+                  {isTarget && piece ? (
+                    <View
+                      style={{
+                        position: 'absolute',
+                        width: pieceSize * 1.02,
+                        height: pieceSize * 1.02,
+                        borderRadius: pieceSize,
+                        borderWidth: 2,
+                        borderColor: 'rgba(140, 80, 35, 0.55)',
+                      }}
+                    />
+                  ) : null}
+                </View>
+              );
+            }),
+          )}
+
           {Array.from({ length: ROWS }, (_, rankIndex) =>
             Array.from({ length: COLS }, (_, file) => {
               const square = squareFromIndices(file, rankIndex);
               const piece = grid[rankIndex][file];
               const isSelected = selected === square;
-              const isTarget = targetSet.has(square);
-              const isHint = hintFrom === square || hintTo === square;
-              const isLast =
-                lastMove != null && (lastMove.from === square || lastMove.to === square);
               const hidePiece = piece != null && hideSquare.has(square);
 
               return (
@@ -275,66 +360,9 @@ export function Board({
                     height: cell,
                     alignItems: 'center',
                     justifyContent: 'center',
-                    zIndex: isSelected ? 5 : 1,
+                    zIndex: isSelected ? 5 : 3,
                   }}
                 >
-                  {isLast && !isSelected && (
-                    <View
-                      style={{
-                        position: 'absolute',
-                        width: markSize,
-                        height: markSize,
-                        borderRadius: markSize / 2,
-                        backgroundColor: 'rgba(201, 146, 60, 0.28)',
-                      }}
-                    />
-                  )}
-                  {isHint && (
-                    <View
-                      style={{
-                        position: 'absolute',
-                        width: markSize,
-                        height: markSize,
-                        borderRadius: markSize / 2,
-                        backgroundColor: 'rgba(56, 142, 60, 0.28)',
-                      }}
-                    />
-                  )}
-                  {isSelected && (
-                    <View
-                      style={{
-                        position: 'absolute',
-                        width: pieceSize * 1.06,
-                        height: pieceSize * 1.06,
-                        borderRadius: pieceSize,
-                        borderWidth: 2.5,
-                        borderColor: 'rgba(46, 125, 50, 0.95)',
-                        backgroundColor: 'rgba(76, 175, 80, 0.12)',
-                      }}
-                    />
-                  )}
-                  {isTarget && !piece && (
-                    <View
-                      style={{
-                        width: cell * 0.22,
-                        height: cell * 0.22,
-                        borderRadius: cell,
-                        backgroundColor: 'rgba(56, 142, 60, 0.5)',
-                      }}
-                    />
-                  )}
-                  {isTarget && piece ? (
-                    <View
-                      style={{
-                        position: 'absolute',
-                        width: pieceSize * 1.04,
-                        height: pieceSize * 1.04,
-                        borderRadius: pieceSize,
-                        borderWidth: 2.5,
-                        borderColor: 'rgba(56, 142, 60, 0.85)',
-                      }}
-                    />
-                  ) : null}
                   {piece && !hidePiece ? (
                     <PieceView piece={piece} size={pieceSize} lifted={isSelected} />
                   ) : null}

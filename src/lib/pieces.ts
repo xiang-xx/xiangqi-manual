@@ -20,7 +20,7 @@ const BLACK_LABELS: Record<PieceType, string> = {
   k: '将',
   a: '士',
   b: '象',
-  n: '马',
+  n: '馬',
   r: '车',
   c: '炮',
   p: '卒',

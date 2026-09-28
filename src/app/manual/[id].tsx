@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   boardStage: {
-    paddingHorizontal: 4,
+    paddingHorizontal: 10,
     marginBottom: 8,
   },
   error: {

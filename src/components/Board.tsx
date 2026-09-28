@@ -4,16 +4,26 @@ import {
   Easing,
   runOnJS,
   useSharedValue,
+  withDelay,
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import Svg, { G, Line, Rect, Text as SvgText } from 'react-native-svg';
+import Svg, {
+  Circle,
+  Defs,
+  G,
+  Line,
+  RadialGradient,
+  Rect,
+  Stop,
+  Text as SvgText,
+} from 'react-native-svg';
 
 import { boardFromFen } from '../lib/engine';
 import { BOARD_WOOD, TABLE_WOOD } from '../lib/pieceAssets';
 import type { BoardPiece } from '../lib/pieces';
 import { indicesFromSquare, squareFromIndices, type Square } from '../lib/squares';
-import { FlyingPiece, MOVE_MS, PieceView } from './PieceView';
+import { FlyingPiece, LIFT_UP_MS, MOVE_EASING, MOVE_MS, PieceView, SLAM_MS } from './PieceView';
 
 type Props = {
   fen: string;
@@ -75,6 +85,7 @@ export function Board({
   const flyX = useSharedValue(0);
   const flyY = useSharedValue(0);
   const flyScale = useSharedValue(1);
+  const flyLift = useSharedValue(0);
 
   const clearFlight = () => setFlight(null);
 
@@ -95,20 +106,47 @@ export function Board({
     const toPos = pieceOrigin(lastMove.to);
     flyX.value = fromPos.x;
     flyY.value = fromPos.y;
-    flyScale.value = 1.06;
+    flyScale.value = 1;
+    flyLift.value = 0;
     setFlight({ piece: moving, from: lastMove.from, to: lastMove.to });
 
-    const ease = { duration: MOVE_MS, easing: Easing.out(Easing.cubic) };
-    flyX.value = withTiming(toPos.x, ease);
-    flyY.value = withTiming(toPos.y, ease, (finished) => {
-      if (!finished) return;
-      flyScale.value = withSequence(
-        withTiming(0.97, { duration: 45 }),
-        withTiming(1, { duration: 60 }, (done) => {
-          if (done) runOnJS(clearFlight)();
-        }),
-      );
+    // 1) 提起
+    flyLift.value = withTiming(1, {
+      duration: LIFT_UP_MS,
+      easing: Easing.out(Easing.cubic),
     });
+    flyScale.value = withTiming(1.12, {
+      duration: LIFT_UP_MS,
+      easing: Easing.out(Easing.cubic),
+    });
+
+    // 2) 空中平移（提起稍后再动）
+    const travel = { duration: MOVE_MS, easing: MOVE_EASING };
+    flyX.value = withDelay(LIFT_UP_MS * 0.55, withTiming(toPos.x, travel));
+    flyY.value = withDelay(
+      LIFT_UP_MS * 0.55,
+      withTiming(toPos.y, travel, (finished) => {
+        if (!finished) return;
+        // 3) 拍下：快速落下 + 挤压回弹
+        flyLift.value = withTiming(0, {
+          duration: SLAM_MS,
+          easing: Easing.in(Easing.cubic),
+        });
+        flyScale.value = withSequence(
+          withTiming(0.86, {
+            duration: SLAM_MS * 0.55,
+            easing: Easing.in(Easing.quad),
+          }),
+          withTiming(1.06, {
+            duration: 48,
+            easing: Easing.out(Easing.cubic),
+          }),
+          withTiming(1, { duration: 40, easing: Easing.inOut(Easing.quad) }, (done) => {
+            if (done) runOnJS(clearFlight)();
+          }),
+        );
+      }),
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fen, lastMove, width, cell, pieceSize]);
 
@@ -268,14 +306,18 @@ export function Board({
               const piece = grid[rankIndex][file];
               const isTarget = targetSet.has(square);
               const isHint = hintFrom === square || hintTo === square;
-              const isLast =
-                lastMove != null && (lastMove.from === square || lastMove.to === square);
-              const isSelected = selected === square;
-              if (!isTarget && !isHint && !(isLast && !isSelected)) return null;
+              const isLastFrom = lastMove != null && lastMove.from === square;
+              const isLastTo = lastMove != null && lastMove.to === square;
+              if (!isTarget && !isHint && !isLastFrom && !isLastTo) return null;
 
               const cx = xAt(file);
               const cy = yAt(rankIndex);
               const dot = cell * 0.18;
+              // moved.jpg：落点细白环；起点白芯+细环（无底影）
+              const toHalo = pieceSize * 1.12;
+              const fromRing = cell * 0.4;
+              const fromCore = cell * 0.13;
+              const markBox = Math.max(markSize, toHalo, fromRing * 1.4);
 
               return (
                 <View
@@ -283,25 +325,76 @@ export function Board({
                   pointerEvents="none"
                   style={{
                     position: 'absolute',
-                    left: cx - markSize / 2,
-                    top: cy - markSize / 2,
-                    width: markSize,
-                    height: markSize,
+                    left: cx - markBox / 2,
+                    top: cy - markBox / 2,
+                    width: markBox,
+                    height: markBox,
                     alignItems: 'center',
                     justifyContent: 'center',
                     zIndex: 2,
                   }}
                 >
-                  {isLast && !isSelected && (
+                  {isLastTo && (
+                    <Svg width={toHalo} height={toHalo} style={{ position: 'absolute' }}>
+                      <Defs>
+                        <RadialGradient id={`lastTo-${square}`} cx="50%" cy="50%" r="50%">
+                          <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.08} />
+                          <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.12} />
+                          <Stop offset="88%" stopColor="#FFFFFF" stopOpacity={0.35} />
+                          <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
+                        </RadialGradient>
+                      </Defs>
+                      <Circle
+                        cx={toHalo / 2}
+                        cy={toHalo / 2}
+                        r={toHalo / 2}
+                        fill={`url(#lastTo-${square})`}
+                      />
+                      <Circle
+                        cx={toHalo / 2}
+                        cy={toHalo / 2}
+                        r={toHalo * 0.47}
+                        fill="none"
+                        stroke="rgba(255,255,255,0.78)"
+                        strokeWidth={Math.max(1, cell * 0.014)}
+                      />
+                    </Svg>
+                  )}
+                  {isLastFrom && (
                     <View
                       style={{
                         position: 'absolute',
-                        width: markSize,
-                        height: markSize,
-                        borderRadius: markSize / 2,
-                        backgroundColor: 'rgba(180, 120, 50, 0.22)',
+                        width: fromRing,
+                        height: fromRing,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
-                    />
+                    >
+                      <Svg width={fromRing} height={fromRing}>
+                        <Defs>
+                          <RadialGradient id={`lastFrom-${square}`} cx="50%" cy="50%" r="50%">
+                            <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={1} />
+                            <Stop offset="35%" stopColor="#FFFFFF" stopOpacity={0.95} />
+                            <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.25} />
+                            <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
+                          </RadialGradient>
+                        </Defs>
+                        <Circle
+                          cx={fromRing / 2}
+                          cy={fromRing / 2}
+                          r={fromRing * 0.48}
+                          fill="none"
+                          stroke="rgba(255,255,255,0.55)"
+                          strokeWidth={Math.max(1.2, cell * 0.022)}
+                        />
+                        <Circle
+                          cx={fromRing / 2}
+                          cy={fromRing / 2}
+                          r={fromCore}
+                          fill={`url(#lastFrom-${square})`}
+                        />
+                      </Svg>
+                    </View>
                   )}
                   {isHint && (
                     <View
@@ -378,6 +471,7 @@ export function Board({
               translateX={flyX}
               translateY={flyY}
               scale={flyScale}
+              lift={flyLift}
             />
           ) : null}
         </>

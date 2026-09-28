@@ -38,6 +38,7 @@ yarn-error.*
 
 # local reference screenshots
 微信图片_*.jpg
+moved.jpg
 微信图片_*.png
 
 # generated native folders

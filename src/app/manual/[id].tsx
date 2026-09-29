@@ -34,10 +34,10 @@ import {
   type PracticeState,
   type StudyMode,
 } from '../../lib/practiceMachine';
-import { loadProgress, resolveFlipped, saveProgress } from '../../lib/progress';
+import { loadProgress, flippedForPracticeSide, resolveFlipped, saveProgress } from '../../lib/progress';
 import type { Square } from '../../lib/squares';
 import { wood } from '../../lib/theme';
-import type { SideToMemorize } from '../../types/manual';
+import type { ManualProgress, SideToMemorize } from '../../types/manual';
 
 const PRACTICE_SIDES: { id: SideToMemorize; label: string }[] = [
   { id: 'both', label: '双方' },
@@ -49,8 +49,12 @@ const OPPONENT_DELAY_MS = 500;
 
 export default function ManualScreen() {
   useKeepAwake(undefined, { suppressDeactivateWarnings: true });
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const params = useLocalSearchParams<{ id: string; entrySide?: string | string[] }>();
+  const id = Array.isArray(params.id) ? params.id[0] : params.id;
+  const entrySideRaw = Array.isArray(params.entrySide) ? params.entrySide[0] : params.entrySide;
   const manual = getManualById(id);
+  const entrySide: 'red' | 'black' | null =
+    entrySideRaw === 'red' ? 'red' : entrySideRaw === 'black' ? 'black' : null;
   const [state, setState] = useState<PracticeState | null>(null);
   const [flipped, setFlipped] = useState(false);
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -63,13 +67,22 @@ export default function ManualScreen() {
     (async () => {
       const progress = await loadProgress(manual.id);
       if (!alive) return;
-      setFlipped(resolveFlipped(manual, progress));
-      setState(initialPracticeState(manual, progress, 'study'));
+      const seeded: ManualProgress | null = entrySide
+        ? {
+            maxReached: progress?.maxReached ?? 0,
+            wrongCounts: progress?.wrongCounts ?? {},
+            lastStudiedAt: progress?.lastStudiedAt,
+            practiceSide: entrySide,
+            flipped: entrySide === 'black',
+          }
+        : progress;
+      setFlipped(resolveFlipped(manual, seeded));
+      setState(initialPracticeState(manual, seeded, 'study'));
     })();
     return () => {
       alive = false;
     };
-  }, [manual]);
+  }, [manual, entrySide]);
 
   useEffect(() => {
     if (!manual || !state) return;
@@ -135,8 +148,9 @@ export default function ManualScreen() {
   })();
 
   const setMode = (mode: StudyMode) => {
-    if (mode === 'practice' && state.practiceSide === 'black') {
-      setFlipped(true);
+    if (mode === 'practice') {
+      const nextFlip = flippedForPracticeSide(state.practiceSide);
+      if (nextFlip != null) setFlipped(nextFlip);
     }
     setState((prev) => (prev ? switchMode(manual, prev, mode) : prev));
   };
@@ -159,7 +173,8 @@ export default function ManualScreen() {
   };
 
   const onPracticeSide = (side: SideToMemorize) => {
-    if (side === 'black') setFlipped(true);
+    const nextFlip = flippedForPracticeSide(side);
+    if (nextFlip != null) setFlipped(nextFlip);
     setState((prev) => (prev ? setPracticeSide(manual, prev, side) : prev));
   };
 

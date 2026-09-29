@@ -21,7 +21,7 @@ import {
   openingFacetCounts,
   tagFacetCounts,
 } from '../../data/manuals';
-import { listAllProgress, listRecentManualIds } from '../../lib/progress';
+import { listAllProgress, listRecentManualIds, entrySideFromOpeningFilter } from '../../lib/progress';
 import { ink } from '../../lib/theme';
 import { loadManualFilterPrefs, saveManualFilterPrefs } from '../../lib/uiPrefs';
 import type { Manual, ManualProgress } from '../../types/manual';
@@ -102,6 +102,12 @@ export default function HomeScreen() {
     [recentIds],
   );
   const hasFilter = selectedTags.length > 0 || redOpening != null || blackOpening != null;
+  const entrySide = entrySideFromOpeningFilter(redOpening, blackOpening);
+
+  const manualHref = (manualId: string) =>
+    entrySide
+      ? { pathname: '/manual/[id]' as const, params: { id: manualId, entrySide } }
+      : { pathname: '/manual/[id]' as const, params: { id: manualId } };
 
   return (
     <View style={styles.container}>
@@ -125,7 +131,7 @@ export default function HomeScreen() {
                     {recentManuals.map((item, i) => (
                       <View key={item.id} style={styles.recentItem}>
                         {i > 0 ? <Text style={styles.recentSep}>/</Text> : null}
-                        <Link href={`/manual/${item.id}`} asChild>
+                        <Link href={manualHref(item.id)} asChild>
                           <Pressable hitSlop={6}>
                             <Text style={styles.recentTitle} numberOfLines={1}>
                               {item.title}
@@ -202,7 +208,7 @@ export default function HomeScreen() {
           }
           ListEmptyComponent={<Text style={styles.empty}>无匹配棋谱</Text>}
           renderItem={({ item }) => (
-            <Link href={`/manual/${item.id}`} asChild>
+            <Link href={manualHref(item.id)} asChild>
               <Pressable style={styles.row}>
                 <Text style={styles.rowTitle} numberOfLines={2}>
                   {item.title}

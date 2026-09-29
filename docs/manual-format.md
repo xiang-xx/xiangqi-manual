@@ -107,6 +107,6 @@ npm run extract-variations
 }
 ```
 
-翻转优先级：`progress.flipped` → 只背黑则黑在下 → `manual.defaultFlipped` → `sideToMemorize === 'black'`。选「黑」时会把棋盘翻到黑在下，之后仍可点翻转并记住。
+翻转优先级：`progress.flipped` → 谱默认。背谱点「红」「黑」会立刻把己方翻到下方（红在下 / 黑在下）；「双方」不改朝向。之后仍可点翻转并记住。
 
-背谱练习方：`progress.practiceSide`（默认双方）；选红/黑时对方着法自动走出主变。棋谱字段 `sideToMemorize` 仍是内容元数据（如后手谱默认翻转），与用户偏好分开。
+背谱练习方：`progress.practiceSide`（默认双方）；选红/黑时对方着法自动走出主变。从首页**只筛后手**（未选先手）点进一局，该次进入默认只背黑且黑在下；只筛先手则只背红、红在下。棋谱字段 `sideToMemorize` 仍是内容元数据（如后手谱默认翻转），与用户偏好分开。

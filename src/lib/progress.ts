@@ -1,17 +1,41 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { manuals } from '../data/manuals';
-import type { Manual, ManualProgress } from '../types/manual';
+import type { Manual, ManualProgress, SideToMemorize } from '../types/manual';
 
 const keyFor = (manualId: string) => `progress:${manualId}`;
 
 /**
- * 用户上次翻转优先；只背黑且从未记过翻转则黑在下；
- * 否则谱默认 / 后手谱默认翻转。
+ * 只背红/黑时的默认朝向：红在下 / 黑在下。双方不改。
+ */
+export function flippedForPracticeSide(side: SideToMemorize): boolean | null {
+  if (side === 'black') return true;
+  if (side === 'red') return false;
+  return null;
+}
+
+/**
+ * 首页只筛后手（未选先手）进谱时默认黑方；只筛先手则默认红方。
+ * 两边都选或都未选则不据此改朝向 / 练习方。
+ */
+export function entrySideFromOpeningFilter(
+  redOpening: string | null,
+  blackOpening: string | null,
+): 'red' | 'black' | null {
+  if (blackOpening != null && redOpening == null) return 'black';
+  if (redOpening != null && blackOpening == null) return 'red';
+  return null;
+}
+
+/**
+ * 用户上次翻转优先；否则谱默认 / 后手谱默认翻转。
  */
 export function resolveFlipped(manual: Manual, progress?: ManualProgress | null): boolean {
   if (progress?.flipped != null) return progress.flipped;
-  if (progress?.practiceSide === 'black') return true;
+  const fromSide = progress?.practiceSide
+    ? flippedForPracticeSide(progress.practiceSide)
+    : null;
+  if (fromSide != null) return fromSide;
   if (manual.defaultFlipped != null) return manual.defaultFlipped;
   return manual.sideToMemorize === 'black';
 }

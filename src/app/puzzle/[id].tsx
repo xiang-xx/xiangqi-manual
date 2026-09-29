@@ -1,3 +1,4 @@
+import { useKeepAwake } from 'expo-keep-awake';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -25,6 +26,7 @@ import { wood } from '../../lib/theme';
 const OPPONENT_DELAY_MS = 500;
 
 export default function PuzzleScreen() {
+  useKeepAwake(undefined, { suppressDeactivateWarnings: true });
   const { id } = useLocalSearchParams<{ id: string }>();
   const puzzle = getPuzzleById(id);
   const router = useRouter();

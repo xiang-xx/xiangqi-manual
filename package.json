@@ -20,7 +20,8 @@
     "fetch-recent-elite": "node scripts/fetch-recent-elite.js",
     "import-classic-puzzles": "node scripts/import-classic-puzzles.js",
     "extract-variations": "node scripts/extract-variations.js",
-    "fetch-pikafish-assets": "node scripts/fetch-pikafish-assets.js"
+    "fetch-pikafish-assets": "node scripts/fetch-pikafish-assets.js",
+    "shorten-ycql-comments": "node scripts/shorten-ycql-comments.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -29,6 +30,7 @@
     "expo-build-properties": "~57.0.22",
     "expo-constants": "~57.0.19",
     "expo-dev-client": "~57.0.19",
+    "expo-keep-awake": "~57.0.2",
     "expo-linking": "~57.0.11",
     "expo-router": "~57.0.23",
     "expo-splash-screen": "~57.0.9",

@@ -5,9 +5,13 @@ import type { Manual, ManualProgress } from '../types/manual';
 
 const keyFor = (manualId: string) => `progress:${manualId}`;
 
-/** 用户上次翻转优先；否则用谱默认；后手谱默认翻转。 */
+/**
+ * 用户上次翻转优先；只背黑且从未记过翻转则黑在下；
+ * 否则谱默认 / 后手谱默认翻转。
+ */
 export function resolveFlipped(manual: Manual, progress?: ManualProgress | null): boolean {
   if (progress?.flipped != null) return progress.flipped;
+  if (progress?.practiceSide === 'black') return true;
   if (manual.defaultFlipped != null) return manual.defaultFlipped;
   return manual.sideToMemorize === 'black';
 }

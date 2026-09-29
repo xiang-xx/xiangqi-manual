@@ -59,4 +59,9 @@ export type ManualProgress = {
   lastStudiedAt?: string;
   /** 该谱上次使用的棋盘翻转；有则优先于 defaultFlipped */
   flipped?: boolean;
+  /**
+   * 背谱时只练哪一方：双方 / 只背红 / 只背黑。
+   * 未写默认 both；对方着法自动走出。
+   */
+  practiceSide?: SideToMemorize;
 };

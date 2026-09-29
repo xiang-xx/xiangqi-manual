@@ -112,13 +112,22 @@ export async function findBestMove(
   fen: string,
   difficulty: AiDifficulty,
 ): Promise<string> {
-  await ensureEngine();
   const opts = DIFFICULTY_OPTS[difficulty];
-  await sendPikafish(`setoption name Hash value ${opts.hash}`);
+  return findBestMoveTimed(fen, opts.movetime, opts.hash);
+}
+
+/** 复盘等场景：自定义思考时间（毫秒） */
+export async function findBestMoveTimed(
+  fen: string,
+  movetime: number,
+  hash = 32,
+): Promise<string> {
+  await ensureEngine();
+  await sendPikafish(`setoption name Hash value ${hash}`);
   await sendPikafish('setoption name Threads value 1');
   await sendPikafish(`position fen ${toPikafishFen(fen)}`);
-  const bestPromise = waitFor((l) => l.startsWith('bestmove '), opts.movetime + 15_000);
-  await sendPikafish(`go movetime ${opts.movetime}`);
+  const bestPromise = waitFor((l) => l.startsWith('bestmove '), movetime + 15_000);
+  await sendPikafish(`go movetime ${movetime}`);
   const line = await bestPromise;
   const parts = line.trim().split(/\s+/);
   const move = parts[1];

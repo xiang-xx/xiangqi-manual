@@ -1,3 +1,4 @@
+import { useKeepAwake } from 'expo-keep-awake';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -21,8 +22,11 @@ import {
   goPrev,
   goToStep,
   initialPracticeState,
+  isUserPracticeTurn,
+  playOpponentPly,
   restartPractice,
   selectSquare,
+  setPracticeSide,
   showHint,
   switchMode,
   toProgress,
@@ -33,13 +37,24 @@ import {
 import { loadProgress, resolveFlipped, saveProgress } from '../../lib/progress';
 import type { Square } from '../../lib/squares';
 import { wood } from '../../lib/theme';
+import type { SideToMemorize } from '../../types/manual';
+
+const PRACTICE_SIDES: { id: SideToMemorize; label: string }[] = [
+  { id: 'both', label: '双方' },
+  { id: 'red', label: '红' },
+  { id: 'black', label: '黑' },
+];
+
+const OPPONENT_DELAY_MS = 500;
 
 export default function ManualScreen() {
+  useKeepAwake(undefined, { suppressDeactivateWarnings: true });
   const { id } = useLocalSearchParams<{ id: string }>();
   const manual = getManualById(id);
   const [state, setState] = useState<PracticeState | null>(null);
   const [flipped, setFlipped] = useState(false);
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const opponentTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
@@ -66,6 +81,21 @@ export default function ManualScreen() {
       if (persistTimer.current) clearTimeout(persistTimer.current);
     };
   }, [manual, state, flipped]);
+
+  useEffect(() => {
+    if (!manual || !state) return;
+    if (state.mode !== 'practice' || state.status !== 'playing') return;
+    if (isUserPracticeTurn(state)) return;
+
+    if (opponentTimer.current) clearTimeout(opponentTimer.current);
+    opponentTimer.current = setTimeout(() => {
+      setState((prev) => (prev ? playOpponentPly(manual, prev) : prev));
+    }, OPPONENT_DELAY_MS);
+
+    return () => {
+      if (opponentTimer.current) clearTimeout(opponentTimer.current);
+    };
+  }, [manual, state?.mode, state?.practiceSide, state?.status, state?.stepIndex]);
 
   if (!manual) {
     return (
@@ -105,6 +135,9 @@ export default function ManualScreen() {
   })();
 
   const setMode = (mode: StudyMode) => {
+    if (mode === 'practice' && state.practiceSide === 'black') {
+      setFlipped(true);
+    }
     setState((prev) => (prev ? switchMode(manual, prev, mode) : prev));
   };
 
@@ -117,8 +150,17 @@ export default function ManualScreen() {
       if (!prev) return prev;
       if (prev.variation) return exitVariation(manual, prev);
       if (prev.mode === 'study') return goToStep(manual, prev, 0);
-      return restartPractice(manual, prev.wrongCounts);
+      return restartPractice(manual, {
+        wrongCounts: prev.wrongCounts,
+        practiceSide: prev.practiceSide,
+        maxReached: prev.maxReached,
+      });
     });
+  };
+
+  const onPracticeSide = (side: SideToMemorize) => {
+    if (side === 'black') setFlipped(true);
+    setState((prev) => (prev ? setPracticeSide(manual, prev, side) : prev));
   };
 
   return (
@@ -138,18 +180,32 @@ export default function ManualScreen() {
           bottomInset={insets.bottom}
           header={
             <View style={styles.topBar}>
-              <View style={styles.modeRow}>
-                {(['study', 'practice'] as StudyMode[]).map((m) => {
-                  const on = state.mode === m;
-                  return (
-                    <Pressable key={m} onPress={() => setMode(m)} hitSlop={8} style={styles.modeHit}>
-                      <Text style={[styles.modeText, on && styles.modeTextOn]}>
-                        {m === 'study' ? '记谱' : '背谱'}
-                      </Text>
-                      {on ? <View style={styles.modeRule} /> : <View style={styles.modeRuleSpacer} />}
-                    </Pressable>
-                  );
-                })}
+              <View style={styles.topLeft}>
+                <View style={styles.modeRow}>
+                  {(['study', 'practice'] as StudyMode[]).map((m) => {
+                    const on = state.mode === m;
+                    return (
+                      <Pressable key={m} onPress={() => setMode(m)} hitSlop={8} style={styles.modeHit}>
+                        <Text style={[styles.modeText, on && styles.modeTextOn]}>
+                          {m === 'study' ? '记谱' : '背谱'}
+                        </Text>
+                        {on ? <View style={styles.modeRule} /> : <View style={styles.modeRuleSpacer} />}
+                      </Pressable>
+                    );
+                  })}
+                </View>
+                {!isStudy ? (
+                  <View style={styles.sideRow}>
+                    {PRACTICE_SIDES.map((s) => {
+                      const on = state.practiceSide === s.id;
+                      return (
+                        <Pressable key={s.id} onPress={() => onPracticeSide(s.id)} hitSlop={6}>
+                          <Text style={[styles.sideText, on && styles.sideTextOn]}>{s.label}</Text>
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+                ) : null}
               </View>
               <Text style={styles.progress}>{progressLabel}</Text>
             </View>
@@ -276,7 +332,7 @@ export default function ManualScreen() {
   );
 }
 
-const COMMENT_LINES = 5;
+const COMMENT_LINES = 3;
 const COMMENT_LINE_HEIGHT = 22;
 const COMMENT_BODY_HEIGHT = COMMENT_LINES * COMMENT_LINE_HEIGHT;
 
@@ -296,6 +352,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
+  },
+  topLeft: {
+    flexShrink: 1,
+    gap: 8,
   },
   modeRow: {
     flexDirection: 'row',
@@ -323,6 +383,19 @@ const styles = StyleSheet.create({
   modeRuleSpacer: {
     marginTop: 5,
     height: 1.5,
+  },
+  sideRow: {
+    flexDirection: 'row',
+    gap: 14,
+  },
+  sideText: {
+    color: wood.creamFaint,
+    fontSize: 12,
+    letterSpacing: 1,
+  },
+  sideTextOn: {
+    color: wood.gold,
+    fontWeight: '600',
   },
   progress: {
     color: wood.creamFaint,

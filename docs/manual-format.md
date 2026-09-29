@@ -103,7 +103,10 @@ npm run extract-variations
   wrongCounts: Record<string, number>; // 着法下标 → 错误次数
   lastStudiedAt?: string;              // ISO 时间；用于「最近背谱」
   flipped?: boolean;                   // 该谱上次棋盘翻转；优先于 defaultFlipped
+  practiceSide?: 'red' | 'black' | 'both'; // 背谱只练哪一方；未写默认 both
 }
 ```
 
-翻转优先级：`progress.flipped` → `manual.defaultFlipped` → `sideToMemorize === 'black'`。
+翻转优先级：`progress.flipped` → 只背黑则黑在下 → `manual.defaultFlipped` → `sideToMemorize === 'black'`。选「黑」时会把棋盘翻到黑在下，之后仍可点翻转并记住。
+
+背谱练习方：`progress.practiceSide`（默认双方）；选红/黑时对方着法自动走出主变。棋谱字段 `sideToMemorize` 仍是内容元数据（如后手谱默认翻转），与用户偏好分开。

@@ -1,5 +1,18 @@
-import type { Manual, ManualMove, ManualProgress, ManualVariation } from '../types/manual';
-import { applyUci, fenAfterMoves, legalMovesFrom, pieceAt, uciMatches } from './engine';
+import type {
+  Manual,
+  ManualMove,
+  ManualProgress,
+  ManualVariation,
+  SideToMemorize,
+} from '../types/manual';
+import {
+  applyUci,
+  fenAfterMoves,
+  legalMovesFrom,
+  pieceAt,
+  turnFromFen,
+  uciMatches,
+} from './engine';
 import { parseUci, type Square } from './squares';
 
 /** 记谱 = 浏览学习；背谱 = 自己走子校验 */
@@ -31,11 +44,22 @@ export type PracticeState = {
   maxReached: number;
   /** 非空 = 正在浏览变例（仅 study） */
   variation: VariationCursor | null;
+  /** 背谱练哪一方；记谱模式忽略 */
+  practiceSide: SideToMemorize;
 };
+
+/** 每局偏好：未设置则双方 */
+export function resolvePracticeSide(progress?: ManualProgress | null): SideToMemorize {
+  if (progress?.practiceSide === 'red' || progress?.practiceSide === 'black') {
+    return progress.practiceSide;
+  }
+  return 'both';
+}
 
 function baseState(
   manual: Manual,
-  extras: Partial<PracticeState> & Pick<PracticeState, 'mode' | 'wrongCounts' | 'maxReached'>,
+  extras: Partial<PracticeState> &
+    Pick<PracticeState, 'mode' | 'wrongCounts' | 'maxReached' | 'practiceSide'>,
 ): PracticeState {
   return {
     fen: manual.startFen,
@@ -62,6 +86,7 @@ export function initialPracticeState(
     mode,
     wrongCounts: { ...(progress?.wrongCounts ?? {}) },
     maxReached: progress?.maxReached ?? 0,
+    practiceSide: resolvePracticeSide(progress),
   });
 }
 
@@ -264,6 +289,43 @@ export function exitVariation(manual: Manual, state: PracticeState): PracticeSta
   return goToStep(manual, state, returnStep);
 }
 
+/** 背谱时是否轮到用户走（只背一方时对方由机器走出） */
+export function isUserPracticeTurn(state: PracticeState): boolean {
+  if (state.mode !== 'practice') return false;
+  if (state.practiceSide === 'both') return true;
+  return turnFromFen(state.fen) === state.practiceSide;
+}
+
+/** 按主变走出当前一手（背谱自动走对方时用） */
+function applyMainLineMove(manual: Manual, state: PracticeState): PracticeState {
+  const expected = expectedUci(manual, state.stepIndex);
+  if (!expected || state.status === 'complete') return state;
+  const applied = applyUci(state.fen, expected);
+  if (!applied) return state;
+  const parsed = parseUci(expected)!;
+  const nextIndex = state.stepIndex + 1;
+  const complete = nextIndex >= manual.moves.length;
+  return {
+    ...clearInteraction(state),
+    fen: applied.fen,
+    stepIndex: nextIndex,
+    lastMove: parsed,
+    status: complete ? 'complete' : 'playing',
+    feedback: complete ? '本谱已背完' : null,
+    comment: commentFor(manual, state.stepIndex),
+    maxReached: Math.max(state.maxReached, nextIndex),
+    variation: null,
+  };
+}
+
+/** 只背一方时走出对方当前一手（由界面延迟调用） */
+export function playOpponentPly(manual: Manual, state: PracticeState): PracticeState {
+  if (state.mode !== 'practice' || state.practiceSide === 'both') return state;
+  if (state.status !== 'playing') return state;
+  if (turnFromFen(state.fen) === state.practiceSide) return state;
+  return applyMainLineMove(manual, state);
+}
+
 export function switchMode(
   manual: Manual,
   state: PracticeState,
@@ -276,6 +338,7 @@ export function switchMode(
       mode: 'practice',
       wrongCounts: state.wrongCounts,
       maxReached: state.maxReached,
+      practiceSide: state.practiceSide,
     });
   }
 
@@ -292,9 +355,20 @@ export function switchMode(
   );
 }
 
+/** 切换只背哪一方；按局写入 progress.practiceSide */
+export function setPracticeSide(
+  manual: Manual,
+  state: PracticeState,
+  practiceSide: SideToMemorize,
+): PracticeState {
+  if (state.practiceSide === practiceSide) return state;
+  return clearInteraction({ ...state, practiceSide });
+}
+
 export function selectSquare(manual: Manual, state: PracticeState, square: Square): PracticeState {
   if (state.mode !== 'practice') return state;
   if (state.status === 'complete') return state;
+  if (!isUserPracticeTurn(state)) return state;
 
   const expected = expectedUci(manual, state.stepIndex);
   if (!expected) return state;
@@ -343,7 +417,7 @@ export function selectSquare(manual: Manual, state: PracticeState, square: Squar
     const parsed = parseUci(uci)!;
     const nextIndex = state.stepIndex + 1;
     const complete = nextIndex >= manual.moves.length;
-    return {
+    const afterUser: PracticeState = {
       ...state,
       fen: applied.fen,
       stepIndex: nextIndex,
@@ -358,6 +432,7 @@ export function selectSquare(manual: Manual, state: PracticeState, square: Squar
       maxReached: Math.max(state.maxReached, nextIndex),
       variation: null,
     };
+    return afterUser;
   }
 
   const piece = pieceAt(state.fen, square);
@@ -382,6 +457,7 @@ export function selectSquare(manual: Manual, state: PracticeState, square: Squar
 
 export function showHint(manual: Manual, state: PracticeState): PracticeState {
   if (state.mode !== 'practice') return state;
+  if (!isUserPracticeTurn(state)) return state;
   const expected = expectedUci(manual, state.stepIndex);
   if (!expected || state.status === 'complete') return state;
   const parsed = parseUci(expected);
@@ -396,11 +472,20 @@ export function showHint(manual: Manual, state: PracticeState): PracticeState {
   };
 }
 
-export function restartPractice(manual: Manual, keepWrong?: Record<string, number>): PracticeState {
-  return {
-    ...initialPracticeState(manual, undefined, 'practice'),
-    wrongCounts: { ...(keepWrong ?? {}) },
-  };
+export function restartPractice(
+  manual: Manual,
+  opts: {
+    wrongCounts?: Record<string, number>;
+    practiceSide?: SideToMemorize;
+    maxReached?: number;
+  } = {},
+): PracticeState {
+  return baseState(manual, {
+    mode: 'practice',
+    wrongCounts: { ...(opts.wrongCounts ?? {}) },
+    maxReached: opts.maxReached ?? 0,
+    practiceSide: opts.practiceSide ?? 'both',
+  });
 }
 
 export function toProgress(state: PracticeState, flipped: boolean): ManualProgress {
@@ -409,6 +494,7 @@ export function toProgress(state: PracticeState, flipped: boolean): ManualProgre
     wrongCounts: state.wrongCounts,
     lastStudiedAt: new Date().toISOString(),
     flipped,
+    practiceSide: state.practiceSide,
   };
 }
 

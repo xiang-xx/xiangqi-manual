@@ -191,6 +191,13 @@ import danti012 from './danti-012.json';
 import danti013 from './danti-013.json';
 import danti014 from './danti-014.json';
 import danti015 from './danti-015.json';
+import dqs2021001 from './dqs2021-001.json';
+import dqs2021002 from './dqs2021-002.json';
+import dqs2021003 from './dqs2021-003.json';
+import dqs2021004 from './dqs2021-004.json';
+import dqs2021005 from './dqs2021-005.json';
+import dqs2021006 from './dqs2021-006.json';
+import dqs2021007 from './dqs2021-007.json';
 import fangong001 from './fangong-001.json';
 import fangong002 from './fangong-002.json';
 import fangong003 from './fangong-003.json';
@@ -203,6 +210,11 @@ import fangong009 from './fangong-009.json';
 import fangong010 from './fangong-010.json';
 import fangong011 from './fangong-011.json';
 import fangong012 from './fangong-012.json';
+import fangong016 from './fangong-016.json';
+import fangong017 from './fangong-017.json';
+import fangong018 from './fangong-018.json';
+import fangong019 from './fangong-019.json';
+import fangong020 from './fangong-020.json';
 import feiguogong001 from './feiguogong-001.json';
 import feiguogong002 from './feiguogong-002.json';
 import feiguogong003 from './feiguogong-003.json';
@@ -308,6 +320,52 @@ import guogong015 from './guogong-015.json';
 import guogong016 from './guogong-016.json';
 import guogong017 from './guogong-017.json';
 import guogong018 from './guogong-018.json';
+import guogong019 from './guogong-019.json';
+import guogong020 from './guogong-020.json';
+import guogong021 from './guogong-021.json';
+import guogong022 from './guogong-022.json';
+import guogong023 from './guogong-023.json';
+import hesui2024001 from './hesui2024-001.json';
+import hesui2024002 from './hesui2024-002.json';
+import hesui2024003 from './hesui2024-003.json';
+import hesui2024004 from './hesui2024-004.json';
+import hesui2024005 from './hesui2024-005.json';
+import hesui2024006 from './hesui2024-006.json';
+import hesui2024007 from './hesui2024-007.json';
+import hesui2024008 from './hesui2024-008.json';
+import jia2022f001 from './jia2022f-001.json';
+import jia2022f002 from './jia2022f-002.json';
+import jia2022f003 from './jia2022f-003.json';
+import jia2022f004 from './jia2022f-004.json';
+import jia2022f005 from './jia2022f-005.json';
+import jia2022f006 from './jia2022f-006.json';
+import jia2022f007 from './jia2022f-007.json';
+import jia2022f008 from './jia2022f-008.json';
+import jia2022f009 from './jia2022f-009.json';
+import jia2022f010 from './jia2022f-010.json';
+import jia2022f011 from './jia2022f-011.json';
+import jia2022f012 from './jia2022f-012.json';
+import jia2023k001 from './jia2023k-001.json';
+import jia2023k002 from './jia2023k-002.json';
+import jia2023k003 from './jia2023k-003.json';
+import jia2023k004 from './jia2023k-004.json';
+import jia2023k005 from './jia2023k-005.json';
+import jia2023k006 from './jia2023k-006.json';
+import jia2023k007 from './jia2023k-007.json';
+import jia2023k008 from './jia2023k-008.json';
+import jia2023k009 from './jia2023k-009.json';
+import jia2025001 from './jia2025-001.json';
+import jia2025002 from './jia2025-002.json';
+import jia2025003 from './jia2025-003.json';
+import jia2025004 from './jia2025-004.json';
+import jia2025005 from './jia2025-005.json';
+import jia2025006 from './jia2025-006.json';
+import jia2025007 from './jia2025-007.json';
+import jia2025008 from './jia2025-008.json';
+import jia2025009 from './jia2025-009.json';
+import jia2025010 from './jia2025-010.json';
+import jia2025011 from './jia2025-011.json';
+import jia2025012 from './jia2025-012.json';
 import lie001 from './lie-001.json';
 import lie002 from './lie-002.json';
 import lie003 from './lie-003.json';
@@ -323,6 +381,8 @@ import lie012 from './lie-012.json';
 import lie013 from './lie-013.json';
 import lie014 from './lie-014.json';
 import lie015 from './lie-015.json';
+import lie016 from './lie-016.json';
+import lie017 from './lie-017.json';
 import sanbu001 from './sanbu-001.json';
 import sanbu002 from './sanbu-002.json';
 import sanbu003 from './sanbu-003.json';
@@ -338,6 +398,11 @@ import sanbu012 from './sanbu-012.json';
 import sanbu013 from './sanbu-013.json';
 import sanbu014 from './sanbu-014.json';
 import sanbu015 from './sanbu-015.json';
+import sanbu016 from './sanbu-016.json';
+import sanbu017 from './sanbu-017.json';
+import sanbu018 from './sanbu-018.json';
+import sanbu019 from './sanbu-019.json';
+import sh2022f001 from './sh2022f-001.json';
 import shun001 from './shun-001.json';
 import shun002 from './shun-002.json';
 import shun003 from './shun-003.json';
@@ -355,6 +420,15 @@ import shun014 from './shun-014.json';
 import shun015 from './shun-015.json';
 import shun016 from './shun-016.json';
 import shun017 from './shun-017.json';
+import shun018 from './shun-018.json';
+import shun019 from './shun-019.json';
+import shun020 from './shun-020.json';
+import tt2024001 from './tt2024-001.json';
+import tt2024002 from './tt2024-002.json';
+import tt2024003 from './tt2024-003.json';
+import tt2024004 from './tt2024-004.json';
+import tt2024005 from './tt2024-005.json';
+import tt2024006 from './tt2024-006.json';
 import wang001 from './wang-001.json';
 import wang002 from './wang-002.json';
 import wang003 from './wang-003.json';
@@ -624,6 +698,13 @@ export const modernManuals: Manual[] = [
   danti013 as Manual,
   danti014 as Manual,
   danti015 as Manual,
+  dqs2021001 as Manual,
+  dqs2021002 as Manual,
+  dqs2021003 as Manual,
+  dqs2021004 as Manual,
+  dqs2021005 as Manual,
+  dqs2021006 as Manual,
+  dqs2021007 as Manual,
   fangong001 as Manual,
   fangong002 as Manual,
   fangong003 as Manual,
@@ -636,6 +717,11 @@ export const modernManuals: Manual[] = [
   fangong010 as Manual,
   fangong011 as Manual,
   fangong012 as Manual,
+  fangong016 as Manual,
+  fangong017 as Manual,
+  fangong018 as Manual,
+  fangong019 as Manual,
+  fangong020 as Manual,
   feiguogong001 as Manual,
   feiguogong002 as Manual,
   feiguogong003 as Manual,
@@ -741,6 +827,52 @@ export const modernManuals: Manual[] = [
   guogong016 as Manual,
   guogong017 as Manual,
   guogong018 as Manual,
+  guogong019 as Manual,
+  guogong020 as Manual,
+  guogong021 as Manual,
+  guogong022 as Manual,
+  guogong023 as Manual,
+  hesui2024001 as Manual,
+  hesui2024002 as Manual,
+  hesui2024003 as Manual,
+  hesui2024004 as Manual,
+  hesui2024005 as Manual,
+  hesui2024006 as Manual,
+  hesui2024007 as Manual,
+  hesui2024008 as Manual,
+  jia2022f001 as Manual,
+  jia2022f002 as Manual,
+  jia2022f003 as Manual,
+  jia2022f004 as Manual,
+  jia2022f005 as Manual,
+  jia2022f006 as Manual,
+  jia2022f007 as Manual,
+  jia2022f008 as Manual,
+  jia2022f009 as Manual,
+  jia2022f010 as Manual,
+  jia2022f011 as Manual,
+  jia2022f012 as Manual,
+  jia2023k001 as Manual,
+  jia2023k002 as Manual,
+  jia2023k003 as Manual,
+  jia2023k004 as Manual,
+  jia2023k005 as Manual,
+  jia2023k006 as Manual,
+  jia2023k007 as Manual,
+  jia2023k008 as Manual,
+  jia2023k009 as Manual,
+  jia2025001 as Manual,
+  jia2025002 as Manual,
+  jia2025003 as Manual,
+  jia2025004 as Manual,
+  jia2025005 as Manual,
+  jia2025006 as Manual,
+  jia2025007 as Manual,
+  jia2025008 as Manual,
+  jia2025009 as Manual,
+  jia2025010 as Manual,
+  jia2025011 as Manual,
+  jia2025012 as Manual,
   lie001 as Manual,
   lie002 as Manual,
   lie003 as Manual,
@@ -756,6 +888,8 @@ export const modernManuals: Manual[] = [
   lie013 as Manual,
   lie014 as Manual,
   lie015 as Manual,
+  lie016 as Manual,
+  lie017 as Manual,
   sanbu001 as Manual,
   sanbu002 as Manual,
   sanbu003 as Manual,
@@ -771,6 +905,11 @@ export const modernManuals: Manual[] = [
   sanbu013 as Manual,
   sanbu014 as Manual,
   sanbu015 as Manual,
+  sanbu016 as Manual,
+  sanbu017 as Manual,
+  sanbu018 as Manual,
+  sanbu019 as Manual,
+  sh2022f001 as Manual,
   shun001 as Manual,
   shun002 as Manual,
   shun003 as Manual,
@@ -788,6 +927,15 @@ export const modernManuals: Manual[] = [
   shun015 as Manual,
   shun016 as Manual,
   shun017 as Manual,
+  shun018 as Manual,
+  shun019 as Manual,
+  shun020 as Manual,
+  tt2024001 as Manual,
+  tt2024002 as Manual,
+  tt2024003 as Manual,
+  tt2024004 as Manual,
+  tt2024005 as Manual,
+  tt2024006 as Manual,
   wang001 as Manual,
   wang002 as Manual,
   wang003 as Manual,

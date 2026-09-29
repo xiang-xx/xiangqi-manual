@@ -18,7 +18,8 @@ import {
   getManualById,
   manualMetaLine,
   manuals,
-  openingCounts,
+  openingFacetCounts,
+  tagFacetCounts,
 } from '../data/manuals';
 import { listAllProgress, listRecentManualIds } from '../lib/progress';
 import type { Manual, ManualProgress } from '../types/manual';
@@ -48,23 +49,22 @@ export default function HomeScreen() {
   );
 
   const tags = useMemo(() => allTags(), []);
-  const tagCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const manual of manuals) {
-      for (const tag of manual.tags) {
-        counts[tag] = (counts[tag] ?? 0) + 1;
-      }
-    }
-    return counts;
-  }, []);
   const redOptions = useMemo(() => allOpenings('red'), []);
   const blackOptions = useMemo(() => allOpenings('black'), []);
-  const redCounts = useMemo(() => openingCounts('red'), []);
-  const blackCounts = useMemo(() => openingCounts('black'), []);
 
-  const filtered = useMemo(
-    () => filterManuals({ tags: selectedTags, redOpening, blackOpening }),
+  const activeFilter = useMemo(
+    () => ({ tags: selectedTags, redOpening, blackOpening }),
     [selectedTags, redOpening, blackOpening],
+  );
+  const filtered = useMemo(() => filterManuals(activeFilter), [activeFilter]);
+  const tagCounts = useMemo(() => tagFacetCounts(activeFilter), [activeFilter]);
+  const redCounts = useMemo(
+    () => openingFacetCounts('red', activeFilter),
+    [activeFilter],
+  );
+  const blackCounts = useMemo(
+    () => openingFacetCounts('black', activeFilter),
+    [activeFilter],
   );
   const recentManuals = useMemo(
     () =>

@@ -76,6 +76,9 @@ npm run fetch-ycql
 # AI 时代精选：个人赛 / 王天一·郑惟桐近年 / 碧桂园杯 2020–2021
 npm run fetch-modern-ai
 
+# 近五年高分名局：大棋圣战 / 甲级决赛 / 上海杯 / 贺岁杯 / 天天象棋杯 / 开局补强
+npm run fetch-recent-elite
+
 # 回填 opening（先手/后手），并去掉旧扁平开局 tag
 npm run retag-openings
 
@@ -89,7 +92,7 @@ npm run fetch-guogong-ai
 npm run extract-variations
 ```
 
-内置分类 tag：`银川棋路`、`个人赛`、`碧桂园杯`、`王天一`、`郑惟桐` 等；开局写入 `opening`，由东萍 `open` 字段解析。
+内置分类 tag：`银川棋路`、`个人赛`、`碧桂园杯`、`甲级联赛`、`大棋圣战`、`上海杯`、`贺岁杯`、`天天象棋杯`、`约战`、`王天一`、`郑惟桐` 等；开局写入 `opening`，由东萍 `open` 字段解析。
 
 ## 进度存储
 

@@ -4,8 +4,8 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
@@ -17,12 +17,14 @@
     "retag-openings": "node scripts/retag-openings.js",
     "fetch-opening-gaps": "node scripts/fetch-opening-gaps.js",
     "fetch-guogong-ai": "node scripts/fetch-guogong-ai.js",
+    "fetch-recent-elite": "node scripts/fetch-recent-elite.js",
     "extract-variations": "node scripts/extract-variations.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
     "babel-preset-expo": "~57.0.0",
     "expo": "~57.0.25",
+    "expo-build-properties": "~57.0.22",
     "expo-constants": "~57.0.19",
     "expo-linking": "~57.0.11",
     "expo-router": "~57.0.23",

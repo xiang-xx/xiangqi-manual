@@ -32,8 +32,38 @@ export function allOpenings(side: 'red' | 'black'): string[] {
 }
 
 export function openingCounts(side: 'red' | 'black'): Record<string, number> {
+  return openingFacetCounts(side, {});
+}
+
+/**
+ * 在当前其它筛选条件下，每个 tag 再纳入后还能命中的棋谱数（AND）。
+ * 已选中的 tag 数字 = 当前结果集大小。
+ */
+export function tagFacetCounts(filter: ManualFilter = {}): Record<string, number> {
+  const base = filterManuals(filter);
   const counts: Record<string, number> = {};
-  for (const manual of manuals) {
+  for (const manual of base) {
+    for (const tag of manual.tags) {
+      counts[tag] = (counts[tag] ?? 0) + 1;
+    }
+  }
+  return counts;
+}
+
+/**
+ * 先手/后手开局为单选：数字 = 换成该开局（保留 tags 与另一侧开局）后的命中数。
+ */
+export function openingFacetCounts(
+  side: 'red' | 'black',
+  filter: ManualFilter = {},
+): Record<string, number> {
+  const base = filterManuals({
+    tags: filter.tags,
+    redOpening: side === 'red' ? null : filter.redOpening,
+    blackOpening: side === 'black' ? null : filter.blackOpening,
+  });
+  const counts: Record<string, number> = {};
+  for (const manual of base) {
     const name = manual.opening?.[side];
     if (!name) continue;
     counts[name] = (counts[name] ?? 0) + 1;

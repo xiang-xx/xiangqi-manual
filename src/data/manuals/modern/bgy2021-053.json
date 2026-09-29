@@ -7,7 +7,8 @@
     "名局"
   ],
   "opening": {
-    "red": "仙人指路"
+    "red": "仙人指路",
+    "black": "飞象"
   },
   "sideToMemorize": "both",
   "defaultFlipped": false,

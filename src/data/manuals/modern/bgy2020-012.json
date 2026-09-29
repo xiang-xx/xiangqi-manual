@@ -7,7 +7,8 @@
     "名局"
   ],
   "opening": {
-    "red": "中炮"
+    "red": "中炮",
+    "black": "三步虎"
   },
   "sideToMemorize": "both",
   "defaultFlipped": false,

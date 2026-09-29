@@ -2,6 +2,9 @@
 /**
  * Download official Pikafish Android arm64 binary + NNUE into the local Expo module.
  * Usage: npm run fetch-pikafish-assets
+ *
+ * Binary goes to assets/pikafish (copied to filesDir at runtime) because
+ * Expo sets useLegacyPackaging=false — jniLibs are not extracted to disk.
  */
 const fs = require('fs');
 const path = require('path');
@@ -11,10 +14,8 @@ const { execFileSync } = require('child_process');
 const ROOT = path.join(__dirname, '..');
 const MODULE = path.join(ROOT, 'modules/pikafish-engine');
 const VENDOR = path.join(MODULE, 'vendor');
-const JNI = path.join(MODULE, 'android/src/main/jniLibs/arm64-v8a');
 const ASSETS = path.join(MODULE, 'android/src/main/assets');
 
-// Pin a known release; bump when upgrading the engine.
 const RELEASE_TAG = '2024-12-06';
 const BASE = `https://github.com/official-pikafish/Pikafish/releases/download/${RELEASE_TAG}`;
 const FILES = {
@@ -52,7 +53,12 @@ function findBinary(dir) {
     if (st.isDirectory() && !name.startsWith('.')) {
       const hit = findBinary(p);
       if (hit) return hit;
-    } else if (st.isFile() && st.size > 500_000 && !name.endsWith('.nnue') && !name.endsWith('.tar')) {
+    } else if (
+      st.isFile() &&
+      st.size > 500_000 &&
+      !name.endsWith('.nnue') &&
+      !name.endsWith('.tar')
+    ) {
       return p;
     }
   }
@@ -61,12 +67,12 @@ function findBinary(dir) {
 
 async function main() {
   fs.mkdirSync(VENDOR, { recursive: true });
-  fs.mkdirSync(JNI, { recursive: true });
   fs.mkdirSync(ASSETS, { recursive: true });
 
   const tarPath = path.join(VENDOR, 'pikafish-android-armv8.tar');
   const nnuePath = path.join(ASSETS, 'pikafish.nnue');
-  const soPath = path.join(JNI, 'libpikafish.so');
+  const soPath = path.join(MODULE, 'android/src/main/jniLibs/arm64-v8a/libpikafish.so');
+  const binPath = path.join(ASSETS, 'pikafish');
 
   if (!fs.existsSync(nnuePath) || fs.statSync(nnuePath).size < 1_000_000) {
     console.log('Downloading pikafish.nnue…');
@@ -76,13 +82,22 @@ async function main() {
     console.log('NNUE already present, skip.');
   }
 
-  if (!fs.existsSync(soPath) || fs.statSync(soPath).size < 100_000) {
+  const needBin =
+    !fs.existsSync(binPath) ||
+    fs.statSync(binPath).size < 100_000 ||
+    !fs.existsSync(soPath) ||
+    fs.statSync(soPath).size < 100_000;
+
+  if (needBin) {
     console.log('Downloading Android arm64 binary…');
     await download(FILES.android, tarPath);
     execFileSync('tar', ['-xf', tarPath, '-C', VENDOR], { stdio: 'inherit' });
     const found = findBinary(VENDOR);
     if (!found) throw new Error('Could not find binary inside tar');
+    fs.mkdirSync(path.dirname(soPath), { recursive: true });
+    fs.copyFileSync(found, binPath);
     fs.copyFileSync(found, soPath);
+    console.log(`  → ${binPath}`);
     console.log(`  → ${soPath}`);
   } else {
     console.log('Binary already present, skip.');

@@ -35,16 +35,33 @@ npx expo install <package>
 
 ## 真机调试
 
-1. `npm start`
-2. Expo Go 扫终端二维码
-3. 若连不上：确认防火墙、试 `npx expo start --tunnel`
-
-**对弈（Pikafish）** 不在 Expo Go 里：需开发构建。资源与细节见 [ai-play.md](./ai-play.md)。
+背谱 / 残棋可用 Expo Go。**对弈（Pikafish）必须用开发客户端**（含原生引擎模块）。
 
 ```bash
 npm run fetch-pikafish-assets   # 若尚无 so / nnue
-npx expo run:android            # 生成并安装开发构建
+npx expo run:android            # 安装「象棋背谱」开发客户端
+npm start                       # expo start --dev-client
 ```
+
+然后从手机桌面打开 **「象棋背谱」**（不要扫码进 Expo Go）。
+
+若 App 提示连不上 `198.18.x.x:8081`（Clash/Surge 等 VPN 假网卡）：USB 调试时用本机端口转发，让手机走 `127.0.0.1`：
+
+```bash
+adb reverse tcp:8081 tcp:8081
+adb shell am start -a android.intent.action.VIEW \
+  -d 'exp+xiangqi-manual://expo-development-client/?url=http%3A%2F%2F127.0.0.1%3A8081'
+```
+
+或关掉 VPN / 用 `REACT_NATIVE_PACKAGER_HOSTNAME=10.x.x.x npm start` 指定真实局域网 IP。
+
+若只调试背谱/残棋：
+
+1. `npx expo start`（不加 `--dev-client`）
+2. Expo Go 扫终端二维码
+3. 若连不上：确认防火墙、试 `npx expo start --tunnel`
+
+对弈细节见 [ai-play.md](./ai-play.md)。
 
 ## 打自用 APK（以后）
 

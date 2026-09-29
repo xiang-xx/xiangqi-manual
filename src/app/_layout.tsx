@@ -5,16 +5,19 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { ink, wood } from '../lib/theme';
+
 export default function RootLayout() {
   return (
     <GestureHandlerRootView style={styles.root}>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: '#F7F3E8' },
-          headerTintColor: '#1B4332',
-          headerTitleStyle: { fontWeight: '600' },
-          contentStyle: { backgroundColor: '#F7F3E8' },
+          headerStyle: { backgroundColor: ink.wash },
+          headerTintColor: ink.deep,
+          headerTitleStyle: { fontWeight: '500' },
+          headerShadowVisible: false,
+          contentStyle: { backgroundColor: ink.wash },
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -23,19 +26,19 @@ export default function RootLayout() {
           name="puzzle/[id]"
           options={{
             title: '残棋',
-            headerStyle: { backgroundColor: '#2C1A0E' },
-            headerTintColor: '#F3E2C4',
-            contentStyle: { backgroundColor: '#24140C' },
+            headerStyle: { backgroundColor: wood.header },
+            headerTintColor: wood.cream,
+            contentStyle: { backgroundColor: wood.lacquer },
           }}
         />
-        <Stack.Screen name="puzzle/solved" options={{ title: '已解残棋' }} />
+        <Stack.Screen name="puzzle/solved" options={{ title: '已解' }} />
         <Stack.Screen
           name="play/game"
           options={{
             title: '对弈',
-            headerStyle: { backgroundColor: '#2C1A0E' },
-            headerTintColor: '#F3E2C4',
-            contentStyle: { backgroundColor: '#24140C' },
+            headerStyle: { backgroundColor: wood.header },
+            headerTintColor: wood.cream,
+            contentStyle: { backgroundColor: wood.lacquer },
           }}
         />
       </Stack>

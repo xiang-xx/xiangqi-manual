@@ -14,7 +14,6 @@ import Svg, {
   G,
   Line,
   RadialGradient,
-  Rect,
   Stop,
   Text as SvgText,
 } from 'react-native-svg';
@@ -41,6 +40,9 @@ type Props = {
 const ROWS = 10;
 const COLS = 9;
 
+/** 红方纵线：己方右→左 一…九；逻辑 file 8=i 为一路 */
+const RED_FILE_LABELS = ['一', '二', '三', '四', '五', '六', '七', '八', '九'] as const;
+
 type Flight = {
   piece: BoardPiece;
   from: Square;
@@ -63,14 +65,15 @@ export function Board({
   const grid = useMemo(() => boardFromFen(fen), [fen]);
   const targetSet = useMemo(() => new Set(legalTargets), [legalTargets]);
 
-  // 留足边距，避免最外侧棋子被裁切
-  const pad = width * 0.055;
+  // 留足边距：外侧棋子 + 红/黑路数坐标
+  const pad = width * 0.072;
   const boardW = width > 0 ? width - pad * 2 : 0;
   const cell = boardW / 8;
   const boardH = cell * 9;
   const height = boardH + pad * 2;
   const pieceSize = cell * 0.9;
-  const faceInset = pad * 0.28;
+  const faceInset = pad * 0.22;
+  const coordSize = Math.max(11, cell * 0.28);
 
   // 逻辑坐标 → 屏幕坐标（翻转时 180° 旋转盘面，汉字朝向不变）
   const displayFile = (file: number) => (flipped ? 8 - file : file);
@@ -196,16 +199,6 @@ export function Board({
             resizeMode="cover"
           >
             <Svg width={width - faceInset * 2} height={height - faceInset * 2}>
-              <Rect
-                x={0.5}
-                y={0.5}
-                width={width - faceInset * 2 - 1}
-                height={height - faceInset * 2 - 1}
-                rx={3}
-                fill="none"
-                stroke="#4A3018"
-                strokeWidth={2}
-              />
               {Array.from({ length: COLS }, (_, f) => {
                 const x = pad - faceInset + f * cell;
                 return f === 0 || f === 8 ? (
@@ -307,6 +300,44 @@ export function Board({
               >
                 汉 界
               </SvgText>
+
+              {/* 路数：红中文 / 黑阿拉伯，贴在各自底线外侧；翻转后随之换边 */}
+              {Array.from({ length: COLS }, (_, file) => {
+                const x = pad - faceInset + displayFile(file) * cell;
+                const gridTop = pad - faceInset;
+                const gridBottom = pad - faceInset + cell * 9;
+                const margin = pad - faceInset;
+                const outsideTop = margin * 0.68;
+                const outsideBottom = gridBottom + margin * 0.52;
+                const redY = flipped ? outsideTop : outsideBottom;
+                const blackY = flipped ? outsideBottom : outsideTop;
+                return (
+                  <G key={`coord-${file}`}>
+                    <SvgText
+                      x={x}
+                      y={redY}
+                      textAnchor="middle"
+                      fill="#5C3D22"
+                      opacity={0.72}
+                      fontSize={coordSize}
+                      fontWeight="600"
+                    >
+                      {RED_FILE_LABELS[8 - file]}
+                    </SvgText>
+                    <SvgText
+                      x={x}
+                      y={blackY}
+                      textAnchor="middle"
+                      fill="#5C3D22"
+                      opacity={0.72}
+                      fontSize={coordSize}
+                      fontWeight="600"
+                    >
+                      {String(file + 1)}
+                    </SvgText>
+                  </G>
+                );
+              })}
             </Svg>
           </ImageBackground>
 

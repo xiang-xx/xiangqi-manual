@@ -34,8 +34,8 @@
 
 ## 包体与资源
 
-- `libpikafish.so`（arm64）→ `modules/pikafish-engine/android/src/main/jniLibs/arm64-v8a/`
-- `pikafish.nnue` → `android/src/main/assets/`（gitignore，首次启动拷到 `filesDir`，UCI `EvalFile`）
+- `libpikafish.so`（arm64）→ `jniLibs/arm64-v8a/`，并开启 `useLegacyPackaging` 解压到 `nativeLibraryDir` 再执行（`filesDir` 在小米等机型常为 noexec）
+- `pikafish` + `pikafish.nnue` 仍放 `assets/`（nnue gitignore；二进制作 fallback）
 - 拉取：`npm run fetch-pikafish-assets`
 
 ## 构建

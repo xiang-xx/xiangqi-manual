@@ -1,6 +1,7 @@
 import {
   applyUci,
   createGame,
+  fenAfterMoves,
   legalMovesFrom,
   pieceAt,
   turnFromFen,
@@ -14,51 +15,126 @@ export type PlayStatus = 'playing' | 'won' | 'lost' | 'draw';
 export type PlayState = {
   fen: string;
   humanSide: PlaySide;
+  /** 从开局起的 UCI 序列 */
+  moves: string[];
   selected: Square | null;
   legalTargets: Square[];
   lastMove: { from: Square; to: Square } | null;
   status: PlayStatus;
-  feedback: string | null;
+  /** 仅异常/终局短讯；常态文案由 UI 从状态推导 */
+  note: string | null;
   thinking: boolean;
 };
+
+export type PlayTone =
+  | { kind: 'your-move'; title: string; hint: string }
+  | { kind: 'waiting'; title: string; hint: string }
+  | { kind: 'ended'; title: string; hint: string; tone: 'win' | 'lose' | 'draw' }
+  | { kind: 'error'; title: string; hint: string };
 
 function clearSelection(state: PlayState): PlayState {
   return { ...state, selected: null, legalTargets: [] };
 }
 
-function outcomeAfter(fen: string, humanSide: PlaySide): Pick<PlayState, 'status' | 'feedback'> {
+function outcomeAfter(fen: string, humanSide: PlaySide): {
+  status: PlayStatus;
+  note: string | null;
+} {
   const game = createGame(fen);
   if (!game.game_over()) {
-    return { status: 'playing', feedback: null };
+    return { status: 'playing', note: null };
   }
   if (game.in_checkmate()) {
-    // 被将死的一方 = 当前应走方
     const mated = turnFromFen(fen);
     if (mated === humanSide) {
-      return { status: 'lost', feedback: '你被将死了' };
+      return { status: 'lost', note: '将死' };
     }
-    return { status: 'won', feedback: '将死！你赢了' };
+    return { status: 'won', note: '将死' };
   }
-  return { status: 'draw', feedback: '和棋' };
+  return { status: 'draw', note: '双方无子可动' };
 }
 
-export function initialPlayState(humanSide: PlaySide): PlayState {
-  const fen = createGame().fen();
+function rebuild(humanSide: PlaySide, moves: string[], noteOverride?: string | null): PlayState {
+  const start = createGame().fen();
+  const fen = moves.length === 0 ? start : fenAfterMoves(start, moves);
+  const lastUci = moves[moves.length - 1];
+  const outcome = outcomeAfter(fen, humanSide);
+  // 认负等非局面终局：保留 noteOverride
+  const resigned = noteOverride === '认负';
   return {
     fen,
     humanSide,
+    moves,
     selected: null,
     legalTargets: [],
-    lastMove: null,
-    status: 'playing',
-    feedback: humanSide === 'black' ? '引擎先手…' : '请走棋',
+    lastMove: lastUci ? parseUci(lastUci) : null,
+    status: resigned ? 'lost' : outcome.status,
+    note: resigned ? '认负' : outcome.note,
     thinking: false,
   };
+}
+
+export function initialPlayState(humanSide: PlaySide): PlayState {
+  return rebuild(humanSide, []);
+}
+
+/** 从存档着法恢复（终局可继续悔棋） */
+export function restorePlayState(
+  humanSide: PlaySide,
+  moves: string[],
+  opts?: { resigned?: boolean },
+): PlayState {
+  return rebuild(humanSide, moves, opts?.resigned ? '认负' : undefined);
 }
 
 export function isHumanTurn(state: PlayState): boolean {
   if (state.status !== 'playing' || state.thinking) return false;
   return turnFromFen(state.fen) === state.humanSide;
+}
+
+/** 顶部状态条文案（避免「请走棋 / 引擎思考中」直白口吻） */
+export function playTone(state: PlayState, difficultyLabel: string): PlayTone {
+  if (state.note && state.status === 'playing' && !state.thinking) {
+    // 非法着等瞬时提示
+    if (state.note.length > 0 && !['将死', '双方无子可动'].includes(state.note)) {
+      return { kind: 'error', title: state.note, hint: '换一手试试' };
+    }
+  }
+
+  if (state.status === 'won') {
+    return {
+      kind: 'ended',
+      title: '胜',
+      hint: state.note === '将死' ? '对手无路可走' : '本局结束',
+      tone: 'win',
+    };
+  }
+  if (state.status === 'lost') {
+    return {
+      kind: 'ended',
+      title: state.note === '将死' ? '负' : '认负',
+      hint: state.note === '将死' ? '无路可走' : '再战一局？',
+      tone: 'lose',
+    };
+  }
+  if (state.status === 'draw') {
+    return { kind: 'ended', title: '和', hint: state.note ?? '本局结束', tone: 'draw' };
+  }
+
+  if (state.thinking || turnFromFen(state.fen) !== state.humanSide) {
+    return {
+      kind: 'waiting',
+      title: '对方落子',
+      hint: `${difficultyLabel} · 推演中`,
+    };
+  }
+
+  const ply = state.moves.length;
+  return {
+    kind: 'your-move',
+    title: ply === 0 ? '开局' : '轮到你了',
+    hint: ply === 0 ? '点选己方棋子' : '续弈',
+  };
 }
 
 export function selectPlaySquare(state: PlayState, square: Square): PlayState {
@@ -74,29 +150,31 @@ export function selectPlaySquare(state: PlayState, square: Square): PlayState {
     }
     if (piece && piece.color === color) {
       const targets = legalMovesFrom(state.fen, square).map((m) => parseUci(m)!.to);
-      return { ...state, selected: square, legalTargets: targets, feedback: null };
+      return { ...state, selected: square, legalTargets: targets, note: null };
     }
     return clearSelection(state);
   }
 
   if (!piece || piece.color !== color) return state;
   const targets = legalMovesFrom(state.fen, square).map((m) => parseUci(m)!.to);
-  return { ...state, selected: square, legalTargets: targets, feedback: null };
+  return { ...state, selected: square, legalTargets: targets, note: null };
 }
 
 export function applyHumanMove(state: PlayState, uci: string): PlayState {
   if (!isHumanTurn(state)) return state;
   const applied = applyUci(state.fen, uci);
   if (!applied) {
-    return { ...clearSelection(state), feedback: '非法着法' };
+    return { ...clearSelection(state), note: '此着不成' };
   }
+  const moves = [...state.moves, uci];
   const outcome = outcomeAfter(applied.fen, state.humanSide);
   return {
     ...clearSelection(state),
     fen: applied.fen,
+    moves,
     lastMove: parseUci(uci),
     status: outcome.status,
-    feedback: outcome.feedback ?? '引擎思考中…',
+    note: outcome.note,
     thinking: outcome.status === 'playing',
   };
 }
@@ -106,7 +184,7 @@ export function beginAiThink(state: PlayState): PlayState {
   return {
     ...clearSelection(state),
     thinking: true,
-    feedback: '引擎思考中…',
+    note: null,
   };
 }
 
@@ -117,16 +195,18 @@ export function applyAiMove(state: PlayState, uci: string): PlayState {
     return {
       ...state,
       thinking: false,
-      feedback: `引擎着法非法：${uci}`,
+      note: '引擎着法异常',
     };
   }
+  const moves = [...state.moves, uci];
   const outcome = outcomeAfter(applied.fen, state.humanSide);
   return {
     ...clearSelection(state),
     fen: applied.fen,
+    moves,
     lastMove: parseUci(uci),
     status: outcome.status,
-    feedback: outcome.feedback ?? '请走棋',
+    note: outcome.note,
     thinking: false,
   };
 }
@@ -137,6 +217,24 @@ export function resign(state: PlayState): PlayState {
     ...clearSelection(state),
     status: 'lost',
     thinking: false,
-    feedback: '你认输了',
+    note: '认负',
   };
+}
+
+/**
+ * 悔棋：
+ * - 对方思考中：撤回刚走的一手
+ * - 己方行棋 / 终局：连撤「我方 + 对方」两手（若不足则撤一手）
+ */
+export function canUndo(state: PlayState): boolean {
+  return state.moves.length > 0;
+}
+
+export function undoPlay(state: PlayState): PlayState {
+  if (!canUndo(state)) return state;
+  const take =
+    state.thinking || state.moves.length === 1
+      ? 1
+      : 2;
+  return rebuild(state.humanSide, state.moves.slice(0, -take));
 }

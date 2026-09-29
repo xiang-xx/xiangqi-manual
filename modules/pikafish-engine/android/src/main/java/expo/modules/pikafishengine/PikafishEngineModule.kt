@@ -1,6 +1,7 @@
 package expo.modules.pikafishengine
 
 import android.content.Context
+import android.system.Os
 import expo.modules.kotlin.Promise
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
@@ -35,12 +36,21 @@ class PikafishEngineModule : Module() {
             ?: throw IllegalStateException("No React context")
           val nnuePath = ensureNnue(ctx)
           val binary = resolveBinary(ctx)
+          val workDir = binary.parentFile ?: ctx.codeCacheDir
           val pb = ProcessBuilder(binary.absolutePath)
-            .directory(binary.parentFile)
+            .directory(workDir)
             .redirectErrorStream(true)
           val env = pb.environment()
-          env["LD_LIBRARY_PATH"] = binary.parentFile.absolutePath
-          val proc = pb.start()
+          env["LD_LIBRARY_PATH"] = workDir.absolutePath
+          val proc =
+            try {
+              pb.start()
+            } catch (e: Exception) {
+              throw IllegalStateException(
+                "cannot run ${binary.absolutePath} (exists=${binary.exists()} exec=${binary.canExecute()} size=${binary.length()}): ${e.message}",
+                e,
+              )
+            }
           process = proc
           writer = OutputStreamWriter(proc.outputStream, Charsets.UTF_8)
           running.set(true)
@@ -60,7 +70,6 @@ class PikafishEngineModule : Module() {
             }
           }.start()
 
-          // Point EvalFile at copied NNUE
           sendCommandSync("uci")
           sendCommandSync("setoption name EvalFile value $nnuePath")
           sendCommandSync("setoption name Threads value 1")
@@ -125,21 +134,33 @@ class PikafishEngineModule : Module() {
     }
   }
 
+  /**
+   * Prefer nativeLibraryDir (executable after useLegacyPackaging=true).
+   * filesDir is often noexec on MIUI — do not run from there.
+   */
   private fun resolveBinary(ctx: Context): File {
-    val nativeDir = File(ctx.applicationInfo.nativeLibraryDir)
-    val so = File(nativeDir, "libpikafish.so")
-    if (!so.exists()) {
-      throw IllegalStateException("libpikafish.so not found in $nativeDir")
+    val nativeSo = File(ctx.applicationInfo.nativeLibraryDir, "libpikafish.so")
+    if (nativeSo.exists() && nativeSo.length() > 100_000L) {
+      return nativeSo
     }
-    // Copy out of nativeLibraryDir so ProcessBuilder can exec reliably.
-    val dest = File(ctx.filesDir, "pikafish")
-    if (!dest.exists() || dest.length() != so.length()) {
-      so.inputStream().use { input ->
+
+    // Fallback: extract asset into codeCacheDir and chmod 0700
+    val dest = File(ctx.codeCacheDir, "pikafish")
+    val needCopy = !dest.exists() || dest.length() < 100_000L
+    if (needCopy) {
+      ctx.assets.open("pikafish").use { input ->
         FileOutputStream(dest).use { output -> input.copyTo(output) }
       }
     }
-    dest.setReadable(true, true)
-    dest.setExecutable(true, true)
+    try {
+      Os.chmod(dest.absolutePath, 448) // 0700
+    } catch (_: Exception) {
+      dest.setReadable(true, true)
+      dest.setExecutable(true, true)
+    }
+    if (!dest.exists()) {
+      throw IllegalStateException("pikafish missing after extract")
+    }
     return dest
   }
 

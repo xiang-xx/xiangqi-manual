@@ -18,6 +18,7 @@ import {
   puzzleTagFacetCounts,
 } from '../../data/puzzles';
 import { listAllPuzzleProgress } from '../../lib/puzzleProgress';
+import { ink } from '../../lib/theme';
 import type { PuzzleProgress } from '../../types/puzzle';
 
 export default function PuzzlesScreen() {
@@ -48,21 +49,15 @@ export default function PuzzlesScreen() {
     () => puzzles.filter((p) => progressMap[p.id]?.solved).length,
     [progressMap],
   );
-
-  const unsolved = useMemo(() => {
-    return filtered.filter((p) => !progressMap[p.id]?.solved);
-  }, [filtered, progressMap]);
-
-  const toggleTag = (tag: string) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-    );
-  };
+  const unsolved = useMemo(
+    () => filtered.filter((p) => !progressMap[p.id]?.solved),
+    [filtered, progressMap],
+  );
 
   return (
     <View style={styles.container}>
       {loading ? (
-        <ActivityIndicator color="#1B4332" style={{ marginTop: 24 }} />
+        <ActivityIndicator color={ink.deep} style={{ marginTop: 28 }} />
       ) : (
         <FlatList
           data={unsolved}
@@ -70,54 +65,61 @@ export default function PuzzlesScreen() {
           contentContainerStyle={styles.list}
           ListHeaderComponent={
             <View style={styles.header}>
-              <View style={styles.subtitleRow}>
-                <Text style={styles.subtitle}>
-                  只走解题方 · 对方按主变自动
-                </Text>
+              <View style={styles.topRow}>
+                <Text style={styles.kicker}>未解</Text>
                 {solvedCount > 0 ? (
                   <Link href="/puzzle/solved" asChild>
-                    <Pressable hitSlop={8} style={styles.solvedEntry}>
-                      <Text style={styles.solvedEntryText}>已解 {solvedCount}</Text>
+                    <Pressable hitSlop={8}>
+                      <Text style={styles.solvedLink}>已解 {solvedCount}</Text>
                     </Pressable>
                   </Link>
                 ) : null}
               </View>
+
               <View style={styles.section}>
-                <Text style={styles.sectionTitle}>分类</Text>
                 <TagFilter
                   tags={tags}
                   counts={tagCounts}
                   selected={selectedTags}
-                  onToggle={toggleTag}
+                  onToggle={(tag) =>
+                    setSelectedTags((prev) =>
+                      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+                    )
+                  }
                 />
-                {selectedTags.length > 0 && (
-                  <Pressable onPress={() => setSelectedTags([])} style={styles.clearTags}>
-                    <Text style={styles.clearTagsText}>清除筛选</Text>
+                {selectedTags.length > 0 ? (
+                  <Pressable onPress={() => setSelectedTags([])} hitSlop={8} style={styles.clear}>
+                    <Text style={styles.clearText}>清除筛选</Text>
                   </Pressable>
-                )}
+                ) : null}
               </View>
-              <Text style={styles.sectionTitle}>
-                残棋列表（{unsolved.length}）
-              </Text>
+
+              <View style={styles.countRow}>
+                <View style={styles.rule} />
+                <Text style={styles.count}>{unsolved.length} 题</Text>
+                <View style={styles.rule} />
+              </View>
             </View>
           }
           ListEmptyComponent={
             <Text style={styles.empty}>
-              {filtered.length === 0
-                ? '没有符合条件的残棋'
-                : '未解题已全部完成'}
+              {filtered.length === 0 ? '无匹配残棋' : '已全部解完'}
             </Text>
           }
           renderItem={({ item }) => {
             const progress = progressMap[item.id];
             return (
               <Link href={`/puzzle/${item.id}`} asChild>
-                <Pressable style={styles.card}>
-                  <View style={styles.cardTop}>
-                    <Text style={styles.cardTitle}>{item.title}</Text>
-                  </View>
-                  <Text style={styles.cardMeta}>{puzzleMetaLine(item)}</Text>
-                  <Text style={styles.cardProgress}>{progressLabel(progress)}</Text>
+                <Pressable style={styles.row}>
+                  <Text style={styles.rowTitle} numberOfLines={2}>
+                    {item.title}
+                  </Text>
+                  <Text style={styles.rowMeta} numberOfLines={1}>
+                    {puzzleMetaLine(item)}
+                    {progress && (progress.attempts > 0 || progress.fails > 0) ? (
+                      <Text style={styles.rowProgress}>{`  失败 ${progress.fails}`}</Text>
+                    ) : null}
+                  </Text>
                 </Pressable>
               </Link>
             );
@@ -128,98 +130,84 @@ export default function PuzzlesScreen() {
   );
 }
 
-function progressLabel(progress: PuzzleProgress | undefined): string {
-  if (!progress) return '未开始';
-  if (progress.attempts > 0 || progress.fails > 0) {
-    return `未解 · 失败 ${progress.fails} 次`;
-  }
-  return '未开始';
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    backgroundColor: ink.wash,
+    paddingHorizontal: 22,
+  },
+  list: {
+    paddingBottom: 40,
   },
   header: {
     paddingTop: 8,
-    gap: 4,
   },
-  subtitleRow: {
+  topRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'baseline',
     justifyContent: 'space-between',
-    gap: 12,
-    marginBottom: 12,
+    marginBottom: 14,
   },
-  subtitle: {
-    flex: 1,
-    color: '#5C6B5A',
-    fontSize: 14,
+  kicker: {
+    color: ink.faint,
+    fontSize: 11,
+    letterSpacing: 3,
   },
-  solvedEntry: {
-    paddingVertical: 2,
-    paddingHorizontal: 2,
-  },
-  solvedEntryText: {
-    color: '#9CA3AF',
+  solvedLink: {
+    color: ink.faint,
     fontSize: 13,
   },
   section: {
-    marginBottom: 16,
+    marginBottom: 18,
   },
-  sectionTitle: {
-    color: '#1B4332',
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 8,
-  },
-  clearTags: {
+  clear: {
     alignSelf: 'flex-start',
-    marginTop: 8,
+    marginTop: 6,
+    marginLeft: 8,
   },
-  clearTagsText: {
-    color: '#2D6A4F',
+  clearText: {
+    color: ink.faint,
     fontSize: 13,
   },
-  list: {
-    gap: 10,
-    paddingBottom: 28,
-  },
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    borderWidth: 1,
-    borderColor: '#E4DDCF',
-  },
-  cardTop: {
+  countRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 8,
-    marginBottom: 4,
+    gap: 12,
+    marginBottom: 6,
   },
-  cardTitle: {
+  rule: {
     flex: 1,
-    color: '#1B4332',
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: ink.rule,
+  },
+  count: {
+    color: ink.faint,
+    fontSize: 11,
+    letterSpacing: 2,
+  },
+  row: {
+    paddingVertical: 16,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: ink.rule,
+  },
+  rowTitle: {
+    color: ink.deep,
     fontSize: 17,
-    fontWeight: '600',
-  },
-  cardMeta: {
-    color: '#6B7280',
-    fontSize: 13,
-    marginBottom: 4,
-  },
-  cardProgress: {
-    color: '#2D6A4F',
-    fontSize: 12,
     fontWeight: '500',
+    lineHeight: 24,
+  },
+  rowMeta: {
+    marginTop: 6,
+    color: ink.soft,
+    fontSize: 12,
+  },
+  rowProgress: {
+    color: ink.faint,
   },
   empty: {
-    color: '#6B7280',
+    color: ink.faint,
     textAlign: 'center',
-    marginTop: 24,
+    marginTop: 40,
+    fontSize: 14,
   },
 });

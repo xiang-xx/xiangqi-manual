@@ -1,9 +1,10 @@
-import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Board } from '../../components/Board';
+import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { getPuzzleById, nextPuzzleId } from '../../data/puzzles';
 import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
@@ -20,6 +21,7 @@ import {
 } from '../../lib/puzzleMachine';
 import { loadPuzzleProgress, savePuzzleProgress } from '../../lib/puzzleProgress';
 import type { Square } from '../../lib/squares';
+import { wood } from '../../lib/theme';
 
 const OPPONENT_DELAY_MS = 500;
 
@@ -60,7 +62,6 @@ export default function PuzzleScreen() {
     };
   }, [puzzle, state, flipped]);
 
-  // 对方应着：至少等 OPPONENT_DELAY_MS 再走，方便看清己方着法
   useEffect(() => {
     if (!puzzle || !state) return;
     if (state.status !== 'playing') return;
@@ -79,7 +80,7 @@ export default function PuzzleScreen() {
   if (!puzzle) {
     return (
       <View style={[styles.fallback, { paddingTop: insets.top + 16 }]}>
-        <Text style={styles.error}>未找到残棋：{id}</Text>
+        <Text style={styles.error}>未找到残棋</Text>
       </View>
     );
   }
@@ -87,113 +88,112 @@ export default function PuzzleScreen() {
   if (!state) {
     return (
       <View style={[styles.fallback, { paddingTop: insets.top + 16 }]}>
-        <Text style={styles.muted}>加载中…</Text>
+        <Text style={styles.muted}>载入中…</Text>
       </View>
     );
   }
 
   const nextId = nextPuzzleId(puzzle.id);
   const progressLabel = `${Math.min(state.stepIndex, puzzle.solution.length)}/${puzzle.solution.length}`;
+  const done = state.status === 'complete';
 
   return (
     <>
       <Stack.Screen
         options={{
           title: puzzle.title,
-          headerStyle: { backgroundColor: '#2C1A0E' },
-          headerTintColor: '#F3E2C4',
-          headerTitleStyle: { fontWeight: '600', fontSize: 16 },
+          headerStyle: { backgroundColor: wood.header },
+          headerTintColor: wood.cream,
+          headerTitleStyle: { fontWeight: '500', fontSize: 16 },
           headerShadowVisible: false,
         }}
       />
       <ImageBackground source={TABLE_WOOD} style={styles.root} resizeMode="cover">
         <View style={styles.dim} />
 
-        <View style={styles.metaRow}>
-          <Text style={styles.progressText}>{progressLabel}</Text>
-          <Pressable onPress={() => setFlipped((f) => !f)} hitSlop={8} style={styles.flipBtn}>
-            <Text style={styles.flipText}>翻转</Text>
-          </Pressable>
-        </View>
-
-        {state.comment ? (
-          <Text style={styles.comment} numberOfLines={2}>
-            {state.comment}
-          </Text>
-        ) : (
-          <Text style={styles.commentPlaceholder}> </Text>
-        )}
-
-        <View style={styles.boardStage}>
-          <Board
-            fen={state.fen}
-            flipped={flipped}
-            selected={state.selected}
-            legalTargets={state.legalTargets}
-            hintFrom={state.hintFrom}
-            hintTo={state.hintTo}
-            lastMove={state.lastMove}
-            onSquarePress={(sq: Square) =>
-              setState((prev) => (prev ? selectSquare(puzzle, prev, sq) : prev))
-            }
-          />
-        </View>
-
-        {state.feedback ? (
-          <Text style={styles.feedbackText} numberOfLines={2}>
-            {state.feedback}
-          </Text>
-        ) : (
-          <View style={styles.feedbackSpacer} />
-        )}
-
-        <View style={[styles.actions, { marginBottom: Math.max(insets.bottom, 10) }]}>
-          {state.status === 'complete' ? (
-            <>
-              <Pressable
-                style={[styles.button, styles.buttonGhost]}
-                onPress={() => setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev))}
-              >
-                <Text style={styles.buttonGhostText}>重来</Text>
+        <BoardScreenLayout
+          bottomInset={insets.bottom}
+          header={
+            <View style={styles.topBar}>
+              <Text style={styles.progress}>{progressLabel}</Text>
+              <Pressable onPress={() => setFlipped((f) => !f)} hitSlop={10}>
+                <Text style={styles.flip}>翻转</Text>
               </Pressable>
-              {nextId ? (
-                <Pressable
-                  style={[styles.button, styles.buttonPrimary]}
-                  onPress={() => router.replace(`/puzzle/${nextId}`)}
-                >
-                  <Text style={styles.buttonPrimaryText}>下一题</Text>
-                </Pressable>
-              ) : (
-                <Link href="/(tabs)/puzzles" asChild>
-                  <Pressable style={[styles.button, styles.buttonPrimary]}>
-                    <Text style={styles.buttonPrimaryText}>回列表</Text>
-                  </Pressable>
-                </Link>
-              )}
-            </>
-          ) : (
-            <>
-              <Pressable
-                style={[styles.button, styles.buttonGhost]}
-                onPress={() => setState((prev) => (prev ? showHint(puzzle, prev) : prev))}
-              >
-                <Text style={styles.buttonGhostText}>提示</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonGhost]}
-                onPress={() => setState((prev) => (prev ? revealNext(puzzle, prev) : prev))}
-              >
-                <Text style={styles.buttonGhostText}>看答案</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonPrimary]}
-                onPress={() => setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev))}
-              >
-                <Text style={styles.buttonPrimaryText}>重来</Text>
-              </Pressable>
-            </>
-          )}
-        </View>
+            </View>
+          }
+          overlay={
+            state.comment || state.feedback ? (
+              <View style={styles.noteBlock}>
+                {state.comment ? (
+                  <Text style={styles.comment} numberOfLines={4}>
+                    {state.comment}
+                  </Text>
+                ) : null}
+                {state.feedback ? (
+                  <Text style={styles.feedback} numberOfLines={1}>
+                    {state.feedback}
+                  </Text>
+                ) : null}
+              </View>
+            ) : null
+          }
+          board={
+            <Board
+              fen={state.fen}
+              flipped={flipped}
+              selected={state.selected}
+              legalTargets={state.legalTargets}
+              hintFrom={state.hintFrom}
+              hintTo={state.hintTo}
+              lastMove={state.lastMove}
+              onSquarePress={(sq: Square) =>
+                setState((prev) => (prev ? selectSquare(puzzle, prev, sq) : prev))
+              }
+            />
+          }
+          actions={
+            done
+              ? [
+                  {
+                    key: 'restart',
+                    label: '重来',
+                    onPress: () =>
+                      setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev)),
+                  },
+                  nextId
+                    ? {
+                        key: 'next',
+                        label: '下一题',
+                        primary: true,
+                        onPress: () => router.replace(`/puzzle/${nextId}`),
+                      }
+                    : {
+                        key: 'list',
+                        label: '回列表',
+                        primary: true,
+                        onPress: () => router.replace('/(tabs)/puzzles'),
+                      },
+                ]
+              : [
+                  {
+                    key: 'hint',
+                    label: '提示',
+                    onPress: () => setState((prev) => (prev ? showHint(puzzle, prev) : prev)),
+                  },
+                  {
+                    key: 'reveal',
+                    label: '看答案',
+                    onPress: () => setState((prev) => (prev ? revealNext(puzzle, prev) : prev)),
+                  },
+                  {
+                    key: 'restart',
+                    label: '重来',
+                    onPress: () =>
+                      setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev)),
+                  },
+                ]
+          }
+        />
       </ImageBackground>
     </>
   );
@@ -202,114 +202,45 @@ export default function PuzzleScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#24140C',
+    backgroundColor: wood.lacquer,
   },
   dim: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(20, 10, 4, 0.28)',
+    ...StyleSheet.absoluteFill,
+    backgroundColor: wood.dim,
   },
   fallback: {
     flex: 1,
-    backgroundColor: '#24140C',
+    backgroundColor: wood.lacquer,
     paddingHorizontal: 16,
   },
-  error: {
-    color: '#E8A0A0',
-    fontSize: 16,
-  },
-  muted: {
-    color: 'rgba(230, 205, 170, 0.7)',
-    fontSize: 14,
-  },
-  metaRow: {
+  error: { color: wood.danger, fontSize: 15 },
+  muted: { color: wood.creamSoft, fontSize: 14 },
+  topBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
-    paddingHorizontal: 12,
-    paddingTop: 8,
-    paddingBottom: 4,
+    justifyContent: 'space-between',
   },
-  progressText: {
-    color: 'rgba(230, 205, 170, 0.55)',
-    fontSize: 13,
-    fontWeight: '600',
+  progress: {
+    color: wood.creamFaint,
+    fontSize: 12,
     fontVariant: ['tabular-nums'],
-    flex: 1,
+    letterSpacing: 1,
   },
-  flipBtn: {
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: 'rgba(210, 168, 106, 0.45)',
-    backgroundColor: 'rgba(255,255,255,0.05)',
-  },
-  flipText: {
-    color: 'rgba(243, 226, 196, 0.85)',
+  flip: {
+    color: wood.creamSoft,
     fontSize: 13,
-    fontWeight: '600',
+    letterSpacing: 2,
   },
+  noteBlock: {},
   comment: {
-    color: 'rgba(243, 226, 196, 0.82)',
-    fontSize: 13,
-    minHeight: 36,
-    marginHorizontal: 12,
-    marginBottom: 4,
+    color: wood.cream,
+    fontSize: 14,
+    lineHeight: 21,
+    opacity: 0.88,
   },
-  commentPlaceholder: {
-    minHeight: 36,
-    marginBottom: 4,
-  },
-  boardStage: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  feedbackText: {
-    color: '#E8B4A0',
-    fontSize: 13,
-    textAlign: 'center',
-    marginHorizontal: 12,
-    marginTop: 6,
-    marginBottom: 4,
-    minHeight: 20,
-  },
-  feedbackSpacer: {
-    height: 30,
-  },
-  actions: {
-    flexDirection: 'row',
-    gap: 10,
-    paddingHorizontal: 12,
-    paddingTop: 4,
-  },
-  button: {
-    flex: 1,
-    borderRadius: 10,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  buttonPrimary: {
-    backgroundColor: '#D2A86A',
-  },
-  buttonPrimaryText: {
-    color: '#2A180C',
-    fontSize: 15,
-    fontWeight: '700',
-  },
-  buttonGhost: {
-    borderWidth: 1,
-    borderColor: 'rgba(210, 168, 106, 0.45)',
-    backgroundColor: 'rgba(255,255,255,0.06)',
-  },
-  buttonGhostText: {
-    color: 'rgba(243, 226, 196, 0.9)',
-    fontSize: 15,
-    fontWeight: '600',
+  feedback: {
+    marginTop: 4,
+    color: wood.gold,
+    fontSize: 12,
   },
 });

@@ -21,7 +21,7 @@
 │  pikafish-engine（Android Process）   │
 ├─────────────────────────────────────┤
 │  manuals / puzzles（内置 JSON）       │
-│  progress / puzzleProgress（存储）    │
+│  progress / puzzleProgress / playGames │
 └─────────────────────────────────────┘
 ```
 
@@ -50,8 +50,8 @@
 2. **记谱**：上一步 / 下一步自动走子；展示该步 `comments`；有 `variations` 时可点进旁路浏览，再返回主变；棋盘不可手走。
 3. **背谱**：用户走子；与谱着 `uci` 比对；错误提示并重试；正确则展示注释（不背变例）。
 4. **残棋 Tab**：按题材/难度筛选；解题页只走解题方，对方着法取自题库主变自动走出（**不是引擎算杀**）。
-5. **对弈 Tab**：选执红/黑与难度；与离线 Pikafish 对战（需 Android 开发构建）。
-6. **进度**：`progress:{manualId}` / `puzzle:{id}` 存本地 AsyncStorage。
+5. **对弈 Tab**：选执红/黑与难度开新局；未完可续弈，终局可载入悔棋（`play:games` AsyncStorage）。
+6. **进度**：`progress:{manualId}` / `puzzle:{id}` / `play:games` 存本地 AsyncStorage。
 7. **翻转**：首次用默认；之后记住该谱/该题上次翻转；对弈按执棋方自动翻转。
 
 ## 不做什么（当前阶段）

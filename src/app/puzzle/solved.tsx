@@ -11,6 +11,7 @@ import {
 
 import { puzzleMetaLine, puzzles } from '../../data/puzzles';
 import { listAllPuzzleProgress } from '../../lib/puzzleProgress';
+import { ink } from '../../lib/theme';
 import type { PuzzleProgress } from '../../types/puzzle';
 
 export default function SolvedPuzzlesScreen() {
@@ -39,33 +40,34 @@ export default function SolvedPuzzlesScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: '已解残棋' }} />
+      <Stack.Screen options={{ title: '已解' }} />
       <View style={styles.container}>
         {loading ? (
-          <ActivityIndicator color="#1B4332" style={{ marginTop: 24 }} />
+          <ActivityIndicator color={ink.deep} style={{ marginTop: 28 }} />
         ) : (
           <FlatList
             data={solved}
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.list}
             ListHeaderComponent={
-              <Text style={styles.subtitle}>共 {solved.length} 题</Text>
+              <View style={styles.countRow}>
+                <View style={styles.rule} />
+                <Text style={styles.count}>{solved.length} 题</Text>
+                <View style={styles.rule} />
+              </View>
             }
-            ListEmptyComponent={<Text style={styles.empty}>还没有解过的残棋</Text>}
+            ListEmptyComponent={<Text style={styles.empty}>暂无</Text>}
             renderItem={({ item }) => {
               const progress = progressMap[item.id];
               return (
                 <Link href={`/puzzle/${item.id}`} asChild>
-                  <Pressable style={styles.card}>
-                    <View style={styles.cardTop}>
-                      <Text style={styles.cardTitle}>{item.title}</Text>
-                      <Text style={styles.badge}>已解</Text>
-                    </View>
-                    <Text style={styles.cardMeta}>{puzzleMetaLine(item)}</Text>
-                    <Text style={styles.cardProgress}>
-                      {progress?.attempts
-                        ? `尝试 ${progress.attempts} 次`
-                        : '已解'}
+                  <Pressable style={styles.row}>
+                    <Text style={styles.rowTitle} numberOfLines={2}>
+                      {item.title}
+                    </Text>
+                    <Text style={styles.rowMeta} numberOfLines={1}>
+                      {puzzleMetaLine(item)}
+                      {progress?.attempts ? `  ·  ${progress.attempts} 次` : ''}
                     </Text>
                   </Pressable>
                 </Link>
@@ -81,63 +83,49 @@ export default function SolvedPuzzlesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
-  },
-  subtitle: {
-    color: '#5C6B5A',
-    fontSize: 14,
-    marginBottom: 12,
-    paddingTop: 8,
+    backgroundColor: ink.wash,
+    paddingHorizontal: 22,
   },
   list: {
-    gap: 10,
-    paddingBottom: 28,
+    paddingBottom: 40,
   },
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    borderWidth: 1,
-    borderColor: '#E4DDCF',
-    opacity: 0.85,
-  },
-  cardTop: {
+  countRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 8,
-    marginBottom: 4,
+    gap: 12,
+    paddingTop: 12,
+    marginBottom: 6,
   },
-  cardTitle: {
+  rule: {
     flex: 1,
-    color: '#1B4332',
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: ink.rule,
+  },
+  count: {
+    color: ink.faint,
+    fontSize: 11,
+    letterSpacing: 2,
+  },
+  row: {
+    paddingVertical: 16,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: ink.rule,
+  },
+  rowTitle: {
+    color: ink.deep,
     fontSize: 17,
-    fontWeight: '600',
-  },
-  badge: {
-    color: '#2D6A4F',
-    fontSize: 12,
-    fontWeight: '700',
-    backgroundColor: '#E8F0E6',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-    overflow: 'hidden',
-  },
-  cardMeta: {
-    color: '#6B7280',
-    fontSize: 13,
-    marginBottom: 4,
-  },
-  cardProgress: {
-    color: '#2D6A4F',
-    fontSize: 12,
     fontWeight: '500',
+    lineHeight: 24,
+  },
+  rowMeta: {
+    marginTop: 6,
+    color: ink.soft,
+    fontSize: 12,
   },
   empty: {
-    color: '#6B7280',
+    color: ink.faint,
     textAlign: 'center',
-    marginTop: 24,
+    marginTop: 40,
+    fontSize: 14,
   },
 });

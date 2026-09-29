@@ -1,0 +1,58 @@
+{
+  "id": "sqy-319",
+  "title": "匿影避形",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak1b1N/9/2n1ca3/3R1C3/9/9/9/C3B4/c3p2p1/1rB2K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六进三",
+      "uci": "d6d9"
+    },
+    {
+      "san": "马3退4",
+      "uci": "c7d9"
+    },
+    {
+      "san": "马一退三",
+      "uci": "i9g8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "炮四平五",
+      "uci": "f6e6"
+    },
+    {
+      "san": "炮5平1",
+      "uci": "e7a7"
+    },
+    {
+      "san": "马三退四",
+      "uci": "g8f6"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "炮五退五",
+      "uci": "e6e1"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

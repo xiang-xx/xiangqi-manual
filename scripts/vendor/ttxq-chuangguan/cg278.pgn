@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "278关.三国演义.刘琦求计"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg278"]
+[FEN "9/4a4/3k4b/9/9/4R4/9/r2AB4/2p2p3/3KR4 w - - 0 1"]
+1.前车平六 将4平5
+2.相五进七 卒6平5
+3.车五进一 将5平6
+4.车六平四
+1-0 {红胜}

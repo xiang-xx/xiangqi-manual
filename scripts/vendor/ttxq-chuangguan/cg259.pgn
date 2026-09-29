@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "259关.三国演义.吕布殒命"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg259"]
+[FEN "1r1k5/2P1R4/4b3P/7P1/9/9/9/3pp4/3c5/3AK4 w - - 0 1"]
+1.车五平一 炮4平7
+2.兵七平六 将4平5
+3.兵六平五 将5平4
+ {红方正着！红兵借二楼红车，一路平移叫将，并坐占宫心，限制老将的移动}
+4.车一平四 卒5进1
+5.帅五进一 卒4平5
+6.帅五进一 车2进7
+7.帅五退一 车2进1
+8.帅五进一 车2平6
+9.车四退七 炮7退2
+10.车四进八
+1-0 {红胜}

@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "216关.战国七雄.田单复国"]
+[Round "0"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg216"]
+[FEN "2bak4/C3a2NR/4b4/9/9/1C2c4/9/2n1B4/1r2A1c2/3RKAr2 w - - 0 1"]
+1.马二退四
+ {妙着！红马挂角赶将，逼黑将偏头}
+ 将5平6
+2.车一平四 将6平5
+3.车四平五 将5进1
+4.炮八进四
+1-0 {红胜}

@@ -1,0 +1,50 @@
+{
+  "id": "sqy-168",
+  "title": "疾如激电",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak4/3ra3R/9/9/9/1r2P1C2/5NP2/6n2/3p1p3/4K2R1 r - - 0 1",
+  "solution": [
+    {
+      "san": "车一平五",
+      "uci": "i8e8"
+    },
+    {
+      "san": "车4平5",
+      "uci": "d8e8"
+    },
+    {
+      "san": "炮三退二",
+      "uci": "g4g2"
+    },
+    {
+      "san": "车2平1",
+      "uci": "b4a4"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e4e5"
+    },
+    {
+      "san": "车1进3",
+      "uci": "a4a1"
+    },
+    {
+      "san": "车二进九",
+      "uci": "h0h9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

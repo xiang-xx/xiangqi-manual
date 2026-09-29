@@ -1,0 +1,50 @@
+{
+  "id": "sqy-146",
+  "title": "远猎山林",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a5/1n1ka4/9/5N3/2P6/C8/R8/B2ABA1r1/3pNp3/rc2K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮九进四",
+      "uci": "a4a8"
+    },
+    {
+      "san": "马2进1",
+      "uci": "b8a6"
+    },
+    {
+      "san": "车九平六",
+      "uci": "a3d3"
+    },
+    {
+      "san": "士5进4",
+      "uci": "e8d7"
+    },
+    {
+      "san": "马四进六",
+      "uci": "f6d7"
+    },
+    {
+      "san": "车1退1",
+      "uci": "a0a1"
+    },
+    {
+      "san": "马六进八",
+      "uci": "d7b8"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

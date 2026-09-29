@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "117关.楚汉争霸.第117关"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg117"]
+[FEN "4kab2/9/3abR3/1N1N5/9/9/9/7r1/3p5/4K1p2 w - - 0 1"]
+1.马八进六 将5进1
+2.前马进七 将5退1
+3.马六进七 将5平4
+4.车四进二 将4进1
+5.车四退一 将4退1
+ {红车借叫将，堵住黑方象眼。下一步红马即可趁机吃掉黑方中象，同时叫将}
+6.后马退五 将4平5
+7.马七退六
+ {红车定在二楼，双马以“并肩马”杀法取胜}
+1-0 {红胜}

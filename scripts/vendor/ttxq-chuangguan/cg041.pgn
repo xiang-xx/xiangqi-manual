@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "041关.楚汉争霸.第41关"]
+[Round "2"]
+[PlyCount "3"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg041"]
+[FEN "2bak4/1N1RaP3/4b4/9/9/4n4/9/4B4/1n3r3/2BAKA3 w - - 0 1"]
+1.车六进一 士5退4
+ {红方舍车开路，下一步再走马挂角将取胜}
+2.马八退六
+1-0 {红胜}

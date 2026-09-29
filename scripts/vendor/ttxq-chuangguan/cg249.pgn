@@ -1,0 +1,31 @@
+﻿[Game "Chinese Chess"]
+[Event "249关.三国演义.刘救孔融"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg249"]
+[FEN "3k2C2/4a4/3c3R1/9/2P6/6B2/2p6/B5C2/1p2p1p2/3K5 w - - 0 1"]
+1.后炮平一 卒3平4
+2.兵七平六 卒4平5
+3.兵六平五 前卒平4
+4.帅六进一 卒2平3
+5.帅六退一 卒3平4
+6.帅六进一 卒5平4
+7.帅六平五 炮4平6
+8.炮一进七 将4进1
+9.炮三退一 将4退1
+10.车二进二 士5退6
+11.车二平四 将4进1
+12.炮一退一 将4进1
+13.车四退二
+1-0 {红胜}

@@ -1,0 +1,30 @@
+﻿[Game "Chinese Chess"]
+[Event "248关.三国演义.吕布杀董"]
+[Round "13"]
+[PlyCount "25"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg248"]
+[FEN "1P7/1P2n4/3k1P3/9/9/1r4R2/1N2r4/5K3/5cp2/1C5c1 w - - 0 1"]
+1.车三平六 车2平4
+2.马八进七 将4退1
+3.后兵平七 将4退1
+4.兵八平七 将4平5
+5.炮八进九 车4退5
+6.马七进六 将5平6
+7.前兵平六 马5退3
+8.兵六平七 车5退6
+9.兵四进一 炮6退7
+ {红方弃兵叫将，吸引黑炮离位，化解了黑方重炮的杀机}
+10.前兵平六 炮6进1
+11.兵六平五
+1-0 {红胜}

@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "044关.楚汉争霸.第44关"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg044"]
+[FEN "c1ba5/4k1N2/3abR3/9/9/9/9/5C3/2p1p4/1p1K5 w - - 0 1"]
+1.炮四平五 象5进3
+2.马三退五 将5平4
+3.车四进一 士4进5
+4.炮五平六 
+1-0 {红胜}

@@ -1,0 +1,57 @@
+{
+  "id": "sqy-341",
+  "title": "兵马侵境",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1a3/4k4/b1R2N2P/9/4P4/9/3r1p3/3A5/3pp4/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车七进一",
+      "uci": "c7c8"
+    },
+    {
+      "san": "车4退5",
+      "uci": "d3d8"
+    },
+    {
+      "san": "车七平六",
+      "uci": "c8d8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车六退一",
+      "uci": "d8d7"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e7e8"
+    },
+    {
+      "san": "车六平九",
+      "uci": "d7a7"
+    },
+    {
+      "san": "象3进5",
+      "uci": "c9e7"
+    },
+    {
+      "san": "车九进一",
+      "uci": "a7a8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

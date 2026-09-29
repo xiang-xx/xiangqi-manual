@@ -1,0 +1,58 @@
+{
+  "id": "sqy-333",
+  "title": "截趾适履",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak1bR1/9/4ba3/5N3/C7p/2B5r/8c/3p5/5p3/3AK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平三",
+      "uci": "h9g9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车三退一",
+      "uci": "g9g8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车三进一",
+      "uci": "g8g9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车三平五",
+      "uci": "g9e9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e8f8"
+    },
+    {
+      "san": "马四进二",
+      "uci": "f6h7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

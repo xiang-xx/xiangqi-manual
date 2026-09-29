@@ -1,0 +1,57 @@
+{
+  "id": "sqy-216",
+  "title": "载沉载浮",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak3C/3ra4/4c3b/7R1/9/9/9/3A5/r3p4/3K2R2 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二进三",
+      "uci": "h6h9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车二平四",
+      "uci": "h9f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车四退一",
+      "uci": "f9f8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车三进八",
+      "uci": "g0g8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

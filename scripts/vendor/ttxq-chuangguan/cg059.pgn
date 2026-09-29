@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "059关.楚汉争霸.第59关"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg059"]
+[FEN "4k1b2/4aP3/4c4/CCR6/2b6/9/5r1n1/4B4/4A2r1/2B1K3c w - - 0 1"]
+1.车七进三 士5退4
+ {红车叫杀，逼黑方下士，提前借好炮架}
+2.兵四平五 将5进1
+ {红方弃兵，逼请黑将上二楼，红车借将离开底线，
+这样底线只留一个黑士做炮架，红方可以连续沉炮叫将，最终构成重炮杀}
+3.车七退一 将5退1
+4.炮八进三 士4进5
+5.炮九进三
+1-0 {红胜}

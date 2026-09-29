@@ -1,0 +1,48 @@
+{
+  "id": "sqy-413",
+  "title": "残虏投降",
+  "tags": [
+    "中级",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "5ab2/1P1k5/3a4b/9/6p2/9/6P2/9/4K4/5C3 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵八平七",
+      "uci": "b8c8"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "兵七进一",
+      "uci": "c8c9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "兵七平八",
+      "uci": "c9b9"
+    },
+    {
+      "san": "士6进5",
+      "uci": "f9e8"
+    },
+    {
+      "san": "炮四平六",
+      "uci": "f0d0"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

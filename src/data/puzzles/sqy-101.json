@@ -1,0 +1,57 @@
+{
+  "id": "sqy-101",
+  "title": "震惊百里",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "R1bak2CR/5P3/9/9/9/1rB6/9/9/4p3r/5KB2 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮二平六",
+      "uci": "h9d9"
+    },
+    {
+      "san": "车9退8",
+      "uci": "i1i9"
+    },
+    {
+      "san": "兵四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车九平七",
+      "uci": "a9c9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车七退二",
+      "uci": "c9c7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车七平六",
+      "uci": "c7d7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

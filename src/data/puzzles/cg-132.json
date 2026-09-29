@@ -1,0 +1,49 @@
+{
+  "id": "cg-132",
+  "title": "会战泓水",
+  "tags": [
+    "中级",
+    "车类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k2b2/4PP3/2P1b4/p8/9/4R4/P3R3P/2p1BA1p1/3r1p3/1p2K1B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "前车进三",
+      "uci": "e4e7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "前车进二",
+      "uci": "e7e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "后车进五",
+      "uci": "e3e8"
+    }
+  ],
+  "comments": {
+    "1": "红方弃中兵，提前为红车让路",
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

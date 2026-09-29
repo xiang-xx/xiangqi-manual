@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "040关.楚汉争霸.彭城之战"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg040"]
+[FEN "6b2/2Rn5/3P1k3/4N4/9/9/7r1/5p3/4p4/5K3 w - - 0 1"]
+1.马五退三 将6退1
+2.车七平六 将6退1
+3.车六进一 将6进1
+4.马三进五 将6平5
+5.马五进三 将5平6
+6.车六平四
+1-0 {红胜}

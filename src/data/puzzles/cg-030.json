@@ -1,0 +1,58 @@
+{
+  "id": "cg-030",
+  "title": "还定三齐",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1R1ak1b1R/9/1CNc3r1/4p4/6p1p/9/P8/4B1n2/2nCA2r1/2BAK3c r - - 0 1",
+  "solution": [
+    {
+      "san": "车八平六",
+      "uci": "b9d9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车六退一",
+      "uci": "d9d8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车六退一",
+      "uci": "d8d7"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e7e8"
+    },
+    {
+      "san": "车六平四",
+      "uci": "d7f7"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车一平三",
+      "uci": "i9g9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

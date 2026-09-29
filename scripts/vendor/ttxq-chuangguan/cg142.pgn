@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "142关.春秋五霸.霸鞌之战"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg142"]
+[FEN "5kc2/3r3R1/5a3/4p4/8C/7C1/9/9/3p1pp2/4K4 w - - 0 1"]
+1.车二平四 车4平6
+{红方弃车叫将，吸引黑将上二楼。
+如果黑将吃车，则后面红方走炮一平四、
+炮二平五连续叫将，黑将被自己的车挡路，无法逃脱。
+提示：将/帅在二楼，应特别提防对方双炮叫将，
+包括天地炮叫杀，双线并肩炮叫杀。}
+2.炮一进四 炮7进1
+3.炮二进五
+1-0 {红胜}

@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "020关.楚汉争霸.鸿门宴"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg020"]
+[FEN "3k5/4a4/3a5/N8/9/7R1/9/2n6/3r1p3/4K4 w - - 0 1"]
+1.马九进八 将4进1
+2.马八退七 将4退1
+3.车二进五 士5退6
+4.车二平四
+1-0 {红胜}

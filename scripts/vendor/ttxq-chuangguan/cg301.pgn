@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "301关.三国演义.子龙救主"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg301"]
+[FEN "3k5/4C4/b1P1b4/9/9/9/9/2ppp4/4p3p/4cKBR1 w - - 0 1"]
+1.车二进九 将4进1
+2.兵七进一 将4平5
+3.车二退一 将5退1
+4.兵七平六 前卒平6
+5.帅四进一 象5退7
+6.车二进一 卒5平6
+7.帅四进一 卒4平5
+8.相三进五 炮5平2
+9.车二平三
+1-0 {红胜}

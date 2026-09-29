@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "038关.楚汉争霸"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg038"]
+[FEN "2ba5/4k3C/3ab4/9/9/9/9/9/1rp1p1CR1/3K5 w - - 0 1"]
+1.炮三进七 将5退1
+2.车二进八 象5退7
+3.车二平三
+1-0 {红胜}

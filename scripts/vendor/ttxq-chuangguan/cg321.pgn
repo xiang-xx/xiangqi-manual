@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "321关.三国演义.左慈戏操"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg321"]
+[FEN "5a3/4k4/4b4/6N2/2p3b2/9/3R5/1nrC4C/4p4/1c1K1c2r w - - 0 1"]
+1.炮一平五 象5退7
+2.马三退五 象7进5
+ {后象进5}
+3.马五进六 象5退3
+ {红马借将移位，提前为六路红炮铺好炮架，防止黑将逃到六路}
+4.车六平五 象7退5
+ {黑将不能吃车，否则后面红方马后炮杀棋}
+5.车五平九 象5退7
+ {红车借炮飞车，准备转移到左侧，并下沉到二楼叫将}
+6.车九进五 将5进1
+7.马六退五
+1-0 {红胜}

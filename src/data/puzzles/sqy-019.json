@@ -1,0 +1,58 @@
+{
+  "id": "sqy-019",
+  "title": "遁世不见",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k1a3/4a4/2n6/NP1C1P3/9/C8/9/3ABcr1B/3pAp1n1/4K3c r - - 0 1",
+  "solution": [
+    {
+      "san": "炮六退五",
+      "uci": "d6d1"
+    },
+    {
+      "san": "马3进4",
+      "uci": "c7d5"
+    },
+    {
+      "san": "马九进八",
+      "uci": "a6b8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马八退七",
+      "uci": "b8c6"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "马七进八",
+      "uci": "c6b8"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "炮九进四",
+      "uci": "a4a8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

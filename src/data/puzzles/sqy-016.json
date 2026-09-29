@@ -1,0 +1,58 @@
+{
+  "id": "sqy-016",
+  "title": "退思补过",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3aka3/3P1n3/RR2b4/4p4/1Cb4C1/6B1r/9/4p4/3pp4/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车九进二",
+      "uci": "a7a9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车九退一",
+      "uci": "a9a8"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车八进二",
+      "uci": "b7b9"
+    },
+    {
+      "san": "象5退3",
+      "uci": "e7c9"
+    },
+    {
+      "san": "车八平七",
+      "uci": "b9c9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

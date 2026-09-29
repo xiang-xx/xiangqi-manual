@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "140关.春秋五霸.楚王问鼎"]
+[Round "8"]
+[PlyCount "15"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg140"]
+[FEN "3ak4/3RaR3/4b3N/6N2/2b6/9/3pP4/B3C1n1B/2rp2p2/4K4 w - - 0 1"]
+    1.帅五平四 
+{偏帅龙抬头！红方一步看似简单的偏帅，既是提前躲开黑方的杀棋，
+同时又暗伏车四进二贴将叫杀，再马一进三卧槽叫将的反攻绝杀！}
+卒7平8
+    2.帅四进一 马7退6
+    3.车四退四 前卒进1
+    4.帅四进一 车3平6
+    5.帅四退一 卒8平7
+    6.帅四进一 士5进6
+    7.马一进三 将5平6
+    8.车四进三
+1-0 {红胜}

@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "323关.三国演义.曹操病逝"]
+[Round "9"]
+[PlyCount "17"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg323"]
+[FEN "c4kb2/3PP4/4b2r1/4p1p2/7N1/9/9/C8/1p2p4/3K5 w - - 0 1"]
+1.炮九进六 前卒进1
+ {红方也可以直接走 兵六进一，再 兵六平五，双兵联杀}
+2.帅六进一 卒2平3
+3.帅六进一 炮1平4
+4.兵六进一 车8进2
+5.兵六平五
+1-0 {红胜}

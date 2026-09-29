@@ -44,3 +44,8 @@ moved.jpg
 # generated native folders
 /ios
 /android
+
+# Pikafish NNUE（约 50MB；用 npm run fetch-pikafish-assets 拉取）
+modules/pikafish-engine/android/src/main/assets/pikafish.nnue
+modules/pikafish-engine/vendor/
+modules/pikafish-engine/.build/

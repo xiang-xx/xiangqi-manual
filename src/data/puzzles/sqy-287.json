@@ -1,0 +1,58 @@
+{
+  "id": "sqy-287",
+  "title": "夺马驱敌",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bk1a2r/4an3/cR2b3N/p3CR3/2p1p4/1C7/4Pp2P/2c1B4/3pr4/2B2K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车八平六",
+      "uci": "b7d7"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "车六进二",
+      "uci": "d7d9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "炮八进五",
+      "uci": "b4b9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "炮五进二",
+      "uci": "e6e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车四平六",
+      "uci": "f6d6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

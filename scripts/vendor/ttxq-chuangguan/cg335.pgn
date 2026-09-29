@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "335关.三国演义.诸葛平蛮"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg335"]
+[FEN "3akab2/C1R5c/N2cb4/9/7N1/9/9/9/3p1p1r1/4K4 w - - 0 1"]
+1.炮九进一 士4进5
+2.马九进八 士5退4
+3.马八退七 士4进5
+ {黑方中象被红方帅牵制，不能下象，否则将帅直接面对面}
+4.车七进一 士5退4
+5.车七平六 将5进1
+6.马二进三 将5平6
+7.车六平四
+1-0 {红胜}

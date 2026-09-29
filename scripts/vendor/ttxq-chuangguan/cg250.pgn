@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "250关.三国演义.濮阳破曹"]
+[Round "15"]
+[PlyCount "29"]
+[Date "2020.03.14"]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg250"]
+[FEN "9/1RNk2nr1/1Nc4RC/7n1/9/9/9/9/r3p4/4CK3 w - - 0 1"]
+1.车二平六 将4进1
+2.马七退五 车8进1
+3.马五进三 车8平9
+4.马三进五
+1-0 {红胜}

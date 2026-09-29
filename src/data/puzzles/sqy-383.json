@@ -1,0 +1,49 @@
+{
+  "id": "sqy-383",
+  "title": "胡爽扣马",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k4/9/N8/9/9/9/5pp2/9/3pp4/5K1R1 r - - 0 1",
+  "solution": [
+    {
+      "san": "马九进七",
+      "uci": "a7c8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "马七退五",
+      "uci": "c8e7"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马五进四",
+      "uci": "e7f9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车二进七",
+      "uci": "h0h7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

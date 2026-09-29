@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "261关.三国演义.血字密诏"]
+[Round "13"]
+[PlyCount "25"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg261"]
+[FEN "2N4PR/2r5P/bC3k3/9/4p4/9/6r2/5n3/9/2RK2c2 w - - 0 1"]
+1.车七进七 将6退1
+ {红方正着！红方不急着吃黑车，而是先在三楼垫炮架叫将，再车沉二楼，顺路吃黑车并叫将}
+2.车七进一 将6进1
+3.车七退一 将6退1
+4.车七平四 将6进1
+5.马七退六
+1-0 {红胜}

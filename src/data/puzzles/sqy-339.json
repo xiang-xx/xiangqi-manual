@@ -1,0 +1,50 @@
+{
+  "id": "sqy-339",
+  "title": "英略盖世",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1nb2kr2/3Pa2R1/3nba3/N3C2C1/6r2/9/9/9/9/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平四",
+      "uci": "h8f8"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "兵六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "马4退5",
+      "uci": "d7e9"
+    },
+    {
+      "san": "马九进八",
+      "uci": "a6b8"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

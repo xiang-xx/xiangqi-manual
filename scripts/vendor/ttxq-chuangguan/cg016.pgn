@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "016关.楚汉争霸.第16关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg016"]
+[FEN "9/4k1r1n/4b1r1n/9/9/9/9/5p3/4p1p1c/R1R2K2c w - - 0 1"]
+1.车七进八 将5退1
+2.车九进九 象5退3
+3.车九平七
+1-0 {红胜}

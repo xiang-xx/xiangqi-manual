@@ -1,0 +1,55 @@
+{
+  "id": "sqy-435",
+  "title": "上下离心",
+  "tags": [
+    "中级",
+    "车类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak4/2R1a4/b8/9/9/9/9/9/9/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车七平五",
+      "uci": "c8e8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "象1进3",
+      "uci": "a7c5"
+    },
+    {
+      "san": "车五平四",
+      "uci": "e9f9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

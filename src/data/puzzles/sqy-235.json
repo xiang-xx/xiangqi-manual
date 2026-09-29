@@ -1,0 +1,50 @@
+{
+  "id": "sqy-235",
+  "title": "居中反祸",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bk2r2/P3aR3/n1r1b4/9/9/6R2/9/3n5/4p4/1C3K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车三进五",
+      "uci": "g4g9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e8e7"
+    },
+    {
+      "san": "象3进5",
+      "uci": "c9e7"
+    },
+    {
+      "san": "车三平六",
+      "uci": "g9d9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

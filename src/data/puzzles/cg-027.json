@@ -1,0 +1,49 @@
+{
+  "id": "cg-027",
+  "title": "第27关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3aka3/5P3/4b4/r3N4/9/8R/9/2n6/9/4KA3 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "马五进三",
+      "uci": "e6g7"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车一平四",
+      "uci": "i4f4"
+    },
+    {
+      "san": "车1平6",
+      "uci": "a6f6"
+    },
+    {
+      "san": "车四进二",
+      "uci": "f4f6"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

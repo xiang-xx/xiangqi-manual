@@ -1,0 +1,49 @@
+{
+  "id": "sqy-268",
+  "title": "直穷到底",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "9/4ak3/5a3/6P2/7r1/1r7/9/C2RR4/5p3/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车五进六",
+      "uci": "e2e8"
+    },
+    {
+      "san": "士6退5",
+      "uci": "f7e8"
+    },
+    {
+      "san": "炮九进六",
+      "uci": "a2a8"
+    },
+    {
+      "san": "车2退4",
+      "uci": "b4b8"
+    },
+    {
+      "san": "车六平四",
+      "uci": "d2f2"
+    },
+    {
+      "san": "车8平6",
+      "uci": "h5f5"
+    },
+    {
+      "san": "车四进三",
+      "uci": "f2f5"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

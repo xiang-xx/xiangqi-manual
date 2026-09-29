@@ -11,6 +11,9 @@ const { Xiangqi } = require('./vendor/xiangqi.js') as {
     moves: (options?: { verbose?: boolean; square?: string }) => string[] | XiangqiMoveVerbose[];
     move: (move: string) => XiangqiMoveVerbose | null;
     get: (square: string) => XiangqiPiece | null;
+    in_check: () => boolean;
+    in_checkmate: () => boolean;
+    game_over: () => boolean;
   };
 };
 
@@ -26,6 +29,12 @@ function toBoardPiece(piece: XiangqiPiece | null): BoardPiece | null {
 
 export function createGame(fen?: string) {
   return fen ? new Xiangqi(fen) : new Xiangqi();
+}
+
+/** FEN 第二段：r = 红走，b = 黑走 */
+export function turnFromFen(fen: string): 'red' | 'black' {
+  const turn = fen.trim().split(/\s+/)[1];
+  return turn === 'b' ? 'black' : 'red';
 }
 
 export function boardFromFen(fen: string): BoardGrid {

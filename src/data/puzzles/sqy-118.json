@@ -1,0 +1,58 @@
+{
+  "id": "sqy-118",
+  "title": "多士莫及",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1C3a3/3k4C/2R2a3/2p1pPN2/9/9/2P5P/1cn6/2p2pp2/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车七进一",
+      "uci": "c7c8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车七退一",
+      "uci": "c8c7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "车七进一",
+      "uci": "c7c8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车七平六",
+      "uci": "c8d8"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d7e7"
+    },
+    {
+      "san": "兵四平五",
+      "uci": "f6e6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

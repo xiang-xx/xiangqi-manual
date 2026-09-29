@@ -1,0 +1,31 @@
+﻿[Game "Chinese Chess"]
+[Event "195关.战国七雄.纵横捭阖"]
+[Round "0"]
+[PlyCount "25"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg195"]
+[FEN "3k1c3/4R4/9/9/9/9/C1P3C2/9/1pp2pp2/cp1AK4 w - - 0 1"]
+1.车五退六 卒6进1
+2.帅五平四 前卒平3
+3.车五平九 炮1平2
+4.帅四平五 前卒平4
+5.帅五进一 炮6进1
+6.车九平六 炮6平4
+7.兵七进一 炮2平1
+8.炮九平四 炮1退4
+9.炮三进六 炮4进4
+10.兵七进一 卒7平6
+11.帅五进一 炮4进1
+12.车六进一 炮1平4
+13.车六进一 
+1-0 {红胜}

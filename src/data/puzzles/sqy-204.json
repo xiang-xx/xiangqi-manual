@@ -1,0 +1,50 @@
+{
+  "id": "sqy-204",
+  "title": "雷震八荒",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "R1C6/2P6/b2ak4/6P2/6b2/6B2/9/c4K2n/9/2rR2r2 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六进七",
+      "uci": "d0d7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e7d7"
+    },
+    {
+      "san": "车九退二",
+      "uci": "a9a7"
+    },
+    {
+      "san": "车3退7",
+      "uci": "c0c7"
+    },
+    {
+      "san": "炮七退二",
+      "uci": "c9c7"
+    },
+    {
+      "san": "炮1进2",
+      "uci": "a2a0"
+    },
+    {
+      "san": "炮七退一",
+      "uci": "c7c6"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

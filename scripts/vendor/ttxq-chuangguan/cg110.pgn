@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "110关.楚汉争霸.固陵之战"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg110"]
+[FEN "2b2a3/3ka4/4b2C1/9/4N4/9/9/4C4/3r1p3/2B1KAB2 w - - 0 1"]
+1.马五进七 将4退1
+ {红炮沉底叫将，把黑象引到底线。后面红方中炮才能顺利借帅当炮架}
+2.炮二进二 象5退7
+3.马七进八 将4进1
+4.炮二退一 士5进4
+5.炮五进六
+1-0 {红胜}

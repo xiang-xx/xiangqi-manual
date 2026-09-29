@@ -1,0 +1,58 @@
+{
+  "id": "sqy-132",
+  "title": "五霸争雄",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4kab2/1n2a2cC/2R1P3b/3N5/9/9/9/3p4r/r3p4/2RK5 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵五进一",
+      "uci": "e7e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "前车进二",
+      "uci": "c7c9"
+    },
+    {
+      "san": "马2退4",
+      "uci": "b8d9"
+    },
+    {
+      "san": "前车平六",
+      "uci": "c9d9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车七进九",
+      "uci": "c0c9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

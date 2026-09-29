@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "018关.楚汉争霸.第18关"]
+[Round "2"]
+[PlyCount "3"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg018"]
+[FEN "2bak4/4a4/4b4/9/4C1N2/9/9/4r4/4p4/3K1p3 w - - 0 1"]
+1.马三进四 将5平6
+2.炮五平四
+1-0 {红胜}

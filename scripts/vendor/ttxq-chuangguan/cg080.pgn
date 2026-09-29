@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "080关.楚汉争霸.安邑之战"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg080"]
+[FEN "5a3/3k3N1/1R1cba3/6N2/5r3/9/9/9/4p4/3K2B2 w - - 0 1"]
+1.车八进一 将4退1
+2.马三进四 将4平5
+3.马四退六 将5平4
+4.车八进一 象5退3
+5.车八平七 将4进1
+6.马二进四 将4平5
+7.车七退一
+1-0 {红胜}

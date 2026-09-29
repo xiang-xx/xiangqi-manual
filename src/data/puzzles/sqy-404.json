@@ -1,0 +1,56 @@
+{
+  "id": "sqy-404",
+  "title": "二郎搜山",
+  "tags": [
+    "中级",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1kbn1/2P6/5a3/2p3p1N/9/9/9/9/4K4/2B3B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "马一进二",
+      "uci": "i6h8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "马二退三",
+      "uci": "h8g6"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f8f9"
+    },
+    {
+      "san": "马三进五",
+      "uci": "g6e7"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "帅五平四",
+      "uci": "e1f1"
+    },
+    {
+      "san": "士6退5",
+      "uci": "f7e8"
+    },
+    {
+      "san": "马五进三",
+      "uci": "e7g8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

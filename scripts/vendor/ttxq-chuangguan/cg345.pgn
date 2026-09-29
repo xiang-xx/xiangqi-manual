@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "345关.三国演义.武侯斗阵"]
+[Round "9"]
+[PlyCount "17"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg345"]
+[FEN "2bak3C/4a4/4b4/3P3R1/9/6R2/9/3p1p3/4K4/3r1r3 w - - 0 1"]
+1.车二进三 士5退6
+2.车二退一 士6进5
+3.车三进五 士5退6
+4.车二平五 士4进5
+ {红方妙着！宫心献车，暗藏杀机}
+5.车三退一 象5退7
+6.车三平五 将5平4
+7.车五进一 将4进1
+8.兵六进一 将4进1
+9.车五平六
+1-0 {红胜}

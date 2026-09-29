@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "014关.楚汉争霸.第14关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg014"]
+[FEN "c4kC2/1P2P4/9/9/9/9/9/6nC1/9/3K1A1r1 w - - 0 1"]
+1.炮二进七，车8退9
+2.炮三平九，车8进9
+3.兵八进一
+1-0 {红胜}

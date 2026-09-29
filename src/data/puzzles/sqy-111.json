@@ -1,0 +1,58 @@
+{
+  "id": "sqy-111",
+  "title": "兴戎出好",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2b1ka3/3Ra4/1c2b3c/N8/R8/6B2/4C1r2/C8/4Ap1n1/3AK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e8e7"
+    },
+    {
+      "san": "炮2平5",
+      "uci": "b7e7"
+    },
+    {
+      "san": "车九平六",
+      "uci": "a5d5"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "359关.三国演义.司马受禅"]
+[Round "20"]
+[PlyCount "39"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg359"]
+[FEN "4k4/2P1a1P2/b3P3b/9/9/9/9/B3p3B/2pp1pp2/3AKA3 w - - 0 1"]
+1.兵三平四 士5退4
+2.兵七平六 象1进3
+3.兵六平五 士4进5
+4.兵四平五 将5平6
+5.后兵平四 卒4平5
+6.仕六进五 卒5进1
+7.仕四进五 卒6平5
+8.帅五进一 卒3平4
+9.帅五平六 卒7平6
+10.兵四进一
+1-0 {红胜}

@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "189关.战国七雄.围魏救赵"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg189"]
+[FEN "2P4R1/4ak3/4b4/5N3/9/9/2np5/2pNp3p/4A4/3KRA2c w - - 0 1"]
+1.车二退一 将6退1
+2.马四进五 将6平5
+3.兵七平六 
+ {红方弃兵叫将，是为了保持连续叫将状态，并为下一步跳马叫将制造进攻点位}
+ 将5平4
+4.马五退七 将4平5
+5.车二进一 象5退7
+6.车二平三
+1-0 {红胜}

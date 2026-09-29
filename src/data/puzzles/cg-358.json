@@ -1,0 +1,42 @@
+{
+  "id": "cg-358",
+  "title": "刘禅投降",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k2b2/4a3C/3rb4/n6Cc/5R3/9/9/4B4/3pp4/2B2K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮二进三",
+      "uci": "h6h9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车四进四",
+      "uci": "f5f9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "炮二退一",
+      "uci": "h9h8"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "201关.战国七雄.楚齐之战"]
+[Round "0"]
+[PlyCount "15"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg201"]
+[FEN "9/1RcPck3/b2aPNP2/1R7/9/C1N6/C8/3n4p/3nr2r1/5K1p1 w - - 0 1"]
+1.兵六平五 士4退5
+2.兵三进一 将6退1
+3.前车进一 炮3退1
+4.前车平七 象1退3
+5.兵三进一 将6进1
+6.前炮进四 士5进4
+7.车八进二 士4退5
+8.车八平五
+1-0 {红胜}

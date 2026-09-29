@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "019关.楚汉争霸.第19关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg019"]
+[FEN "2bak4/4aR3/4b4/4C2r1/9/9/9/2R6/3p1p3/2p1K1p2 w - - 0 1"]
+1.车四平五 将5平6
+2.车七平四 车8平6
+3.车四进四
+1-0 {红胜}

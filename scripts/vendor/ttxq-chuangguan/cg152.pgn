@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "152关.春秋五霸.鸡父之战"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg152"]
+[FEN "2b6/c1P1ak3/1NP4Rc/9/4RPb2/9/6n2/4B4/2p3p1r/3rCK3 w - - 0 1"]
+1.车五进三 炮1平5
+{红方弃车借炮，让黑炮挡住黑方老将的路}
+2.车二平四 将6进1
+{红方弃车吃士，逼请黑将上三楼，这样红兵才有连续前冲叫将的机会}
+3.兵四进一 将6退1
+4.兵四进一 将6退1
+5.兵四进一 将6平5
+6.兵四平五 
+{红兵步步紧逼，最后借中炮，吃子占中，同时露出四路肋线的帅，断了黑将一条退路}
+将5平4
+7.兵五进一
+1-0 {红胜}

@@ -1,0 +1,50 @@
+{
+  "id": "sqy-239",
+  "title": "子胥过关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3akab2/2r6/4b4/2C4N1/9/9/9/1p3p3/4p4/3K3R1 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮七平五",
+      "uci": "c6e6"
+    },
+    {
+      "san": "车3平5",
+      "uci": "c8e8"
+    },
+    {
+      "san": "炮五进二",
+      "uci": "e6e8"
+    },
+    {
+      "san": "卒2平1",
+      "uci": "b2a2"
+    },
+    {
+      "san": "炮五退七",
+      "uci": "e8e1"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "马二进三",
+      "uci": "h6g8"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

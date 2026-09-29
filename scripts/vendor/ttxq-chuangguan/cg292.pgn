@@ -1,0 +1,32 @@
+﻿[Game "Chinese Chess"]
+[Event "292关.三国演义.皇叔续偶"]
+[Round "19"]
+[PlyCount "37"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg292"]
+[FEN "3ar1b2/4n4/3akN3/P8/9/9/9/1p2pp1R1/4Rp3/4K4 w - - 0 1"]
+1.车五平四 卒6进1
+2.马四退五 卒5进1
+3.帅五平六 卒5进1
+4.帅六进一 卒6平5
+5.帅六平五 马5进7
+6.车二平五 马7进5
+7.马五进三 将5退1
+8.车五进四 将5平4
+9.车五进三 士4退5
+10.马三退五 象7进5
+11.马五进七 将4进1
+12.车五平一 卒2平3
+13.车一退六 卒3平4
+14.车一平六
+1-0 {红胜}

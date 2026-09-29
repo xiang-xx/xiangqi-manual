@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "322关.三国演义.华佗被害"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg322"]
+[FEN "4k3C/p3a1P2/4b4/5R3/5P3/7N1/3p5/3p3RC/4pp2r/3K1c1r1 w - - 0 1"]
+1.车四进三 将5平6
+2.兵三进一 将6进1
+3.马二进三 将6进1
+ {红方前面连续的弃车和冲兵叫将，都是为了逼请黑将移位，
+进入红马的攻击点位，保持连续叫将攻势}
+4.车二进五 车8退7
+ {红方弃车叫将，是为自己的红炮平肋线叫将让路}
+5.后炮平四 炮6退2
+ {红方为了掩护后面红兵的冲杀，弃炮叫将，消除黑炮对红兵的威胁}
+6.兵四进一
+1-0 {红胜}

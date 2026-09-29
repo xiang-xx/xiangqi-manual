@@ -1,0 +1,40 @@
+{
+  "id": "cg-007",
+  "title": "第7关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4kab2/1N2a4/4b4/3N5/9/9/6n1r/4B4/4A4/2BA1K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "马六进七",
+      "uci": "d6c8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "马七退五",
+      "uci": "c8e7"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "马五进三",
+      "uci": "e7g8"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

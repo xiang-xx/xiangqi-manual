@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "333关.三国演义.七擒七纵"]
+[Round "14"]
+[PlyCount "27"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg333"]
+[FEN "4k2P1/3P1P3/2Pa2r2/9/2b6/9/4c4/9/4p4/3KC4 w - - 0 1"]
+1.兵二平三 卒5进1
+2.帅六进一 车7进6
+3.帅六进一 车7退1
+4.帅六退一 车7退7
+5.兵七平六 车7进8
+6.帅六进一 车7退1
+7.帅六退一 车7平4
+8.帅六进一 象3退5
+9.后兵平五 炮5退1
+10.兵五进一
+1-0 {红胜}

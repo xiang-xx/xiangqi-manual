@@ -1,0 +1,50 @@
+{
+  "id": "sqy-323",
+  "title": "过眼成虚",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4ka3/3Ra1C2/4b2RN/4n4/9/9/5p3/9/4Ar2r/3AK3c r - - 0 1",
+  "solution": [
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车二平五",
+      "uci": "h7e7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "132关.春秋五霸.会战泓水"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg132"]
+[FEN "3k2b2/4PP3/2P1b4/p8/9/4R4/P3R3P/2p1BA1p1/3r1p3/1p2K1B2 w - - 0 1"]
+    1.兵五进一 将4平5
+{红方弃中兵，提前为红车让路}
+    2.前车进三 将5平4
+    3.前车进二 将4进1
+    4.后车进五
+1-0 {红胜}

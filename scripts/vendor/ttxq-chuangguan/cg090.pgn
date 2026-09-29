@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "090关.楚汉争霸.灭赵之战"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg090"]
+[FEN "3aka3/9/9/6C2/2n6/9/9/4C4/9/4K4 w - - 0 1"]
+1.炮三平五 马3进5
+2.前炮进二 士4进5
+ {红方前冲弃炮，吸引黑方上士，形成二垫炮定中线的局面。
+注：二垫炮，即炮和将/帅中间隔着两个子当炮架}
+3.帅五平六
+ {红方欺负黑方无子可走，偏帅封边。红胜}
+1-0 {红胜}

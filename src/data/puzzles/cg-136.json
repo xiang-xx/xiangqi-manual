@@ -1,0 +1,58 @@
+{
+  "id": "cg-136",
+  "title": "晋崤歼秦",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2b1ka3/3Ra4/1c2b3c/N8/R8/2B6/4C1r2/C4n3/2r1Ap1n1/3AK1B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车九平六",
+      "uci": "a5d5"
+    },
+    {
+      "san": "炮2平4",
+      "uci": "b7d7"
+    },
+    {
+      "san": "马九进八",
+      "uci": "a6b8"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "炮九进七",
+      "uci": "a2a9"
+    },
+    {
+      "san": "炮4退2",
+      "uci": "d7d9"
+    },
+    {
+      "san": "车六进四",
+      "uci": "d5d9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

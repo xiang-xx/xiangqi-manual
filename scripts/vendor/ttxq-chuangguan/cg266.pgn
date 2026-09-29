@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "266关.三国演义.关羽寻兄"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg266"]
+[FEN "2n4R1/7N1/4k2n1/5P3/9/9/4p4/3p2C2/4p1p2/5K3 w - - 0 1"]
+1.车二平五 将5平4
+2.车五平六 将4平5
+3.马二进四 将5退1
+4.马四退三 将5平6
+5.车六平四
+1-0 {红胜}

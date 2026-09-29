@@ -1,0 +1,57 @@
+{
+  "id": "sqy-327",
+  "title": "奇妙文武",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1k3/4a4/4b4/5N1Rp/9/9/3pp4/4B4/4pp3/3K2B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二进三",
+      "uci": "h6h9"
+    },
+    {
+      "san": "象5退7",
+      "uci": "e7g9"
+    },
+    {
+      "san": "车二平三",
+      "uci": "h9g9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车三退一",
+      "uci": "g9g8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "马四退五",
+      "uci": "f6e4"
+    },
+    {
+      "san": "象3进5",
+      "uci": "c9e7"
+    },
+    {
+      "san": "马五进六",
+      "uci": "e4d6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

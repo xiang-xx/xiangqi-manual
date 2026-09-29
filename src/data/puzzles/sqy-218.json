@@ -1,0 +1,57 @@
+{
+  "id": "sqy-218",
+  "title": "路隔星河",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "r2aka3/3P5/8R/4r3C/6C2/6R2/9/3p5/4p4/3K1p3 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车1平4",
+      "uci": "a9d9"
+    },
+    {
+      "san": "车一平五",
+      "uci": "i7e7"
+    },
+    {
+      "san": "车5退1",
+      "uci": "e6e7"
+    },
+    {
+      "san": "炮一进三",
+      "uci": "i6i9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "炮一退一",
+      "uci": "i9i8"
+    },
+    {
+      "san": "车4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "炮三进三",
+      "uci": "g5g8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

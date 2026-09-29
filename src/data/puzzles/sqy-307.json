@@ -1,0 +1,57 @@
+{
+  "id": "sqy-307",
+  "title": "拔去病根",
+  "tags": [
+    "中级",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak3C/4a2P1/6N1b/2C5p/9/9/P7n/2p1B4/4pp3/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵二进一",
+      "uci": "h8h9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "炮一退三",
+      "uci": "i9i6"
+    },
+    {
+      "san": "卒3平2",
+      "uci": "c2b2"
+    },
+    {
+      "san": "马三进四",
+      "uci": "g7f9"
+    },
+    {
+      "san": "卒2平1",
+      "uci": "b2a2"
+    },
+    {
+      "san": "马四退三",
+      "uci": "f9g7"
+    },
+    {
+      "san": "象9进7",
+      "uci": "i7g5"
+    },
+    {
+      "san": "炮一进三",
+      "uci": "i6i9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "187关.战国七雄.申子变法"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg187"]
+[FEN "1C1NR4/1C2c3R/5k3/6n1N/8r/9/9/1r2n4/4pc3/3K5 w - - 0 1"]
+1.车五平四 炮6退8
+2.车一平四 马7退6
+3.前炮平四 马6进8
+4.马一进二 炮5平7
+5.炮八平四
+1-0 {红方填炮，强插炮架。红胜}

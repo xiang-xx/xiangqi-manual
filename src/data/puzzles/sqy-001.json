@@ -1,0 +1,58 @@
+{
+  "id": "sqy-001",
+  "title": "气吞关右",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2baka3/3P3N1/bN7/7nc/9/4C1P2/P5n1P/B3R3B/4Apr2/2RAK3c r - - 0 1",
+  "solution": [
+    {
+      "san": "兵六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车七进九",
+      "uci": "c0c9"
+    },
+    {
+      "san": "象1退3",
+      "uci": "a7c9"
+    },
+    {
+      "san": "车五平六",
+      "uci": "e2d2"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "马二进四",
+      "uci": "h8f9"
+    },
+    {
+      "san": "马7进5",
+      "uci": "g3e2"
+    },
+    {
+      "san": "马四退五",
+      "uci": "f9e7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

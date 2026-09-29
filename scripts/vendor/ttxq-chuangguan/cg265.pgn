@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "265关.三国演义.关羽建功"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg265"]
+[FEN "1rb4C1/5k3/P1Ncb4/1P7/9/3rn4/9/5CR2/4p4/5K2p w - - 0 1"]
+1.马七进六 将6平5
+2.车三进六 将5退1
+3.炮四进七 象5退7
+4.炮四退一 象7进9
+5.车三进一 将5进1
+6.炮二退一 
+1-0 {红胜}

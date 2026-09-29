@@ -1,0 +1,41 @@
+{
+  "id": "cg-024",
+  "title": "第24关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak1P2/1N2aP3/4b4/9/2n1N4/9/9/9/1r2p4/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵三平四",
+      "uci": "g9f9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "马八退六",
+      "uci": "b8d7"
+    },
+    {
+      "san": "马3退4",
+      "uci": "c5d7"
+    },
+    {
+      "san": "马五进六",
+      "uci": "e5d7"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

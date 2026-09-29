@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "001关.楚汉争霸.第1关"]
+[Round "2"]
+[PlyCount "3"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg001"]
+[FEN "1R4b2/2P1a2R1/3kba3/9/9/9/9/6n2/1r5r1/4K1p2 w - - 0 1"]
+1. 车八平六 士5退4
+2. 车二平六
+1-0 {红胜}

@@ -24,11 +24,13 @@ npx expo install --fix
 
 - Routes live in `src/app/`. Non-route code goes in `src/components`, `src/lib`, `src/data`, `src/types`.
 - Prefer relative imports under `src/` (no `@/` path alias yet; TS 6 deprecates `baseUrl`).
-- Manual JSON format: `docs/manual-format.md`. Do not invent a parallel schema.
-- No backend. Progress is AsyncStorage only.
+- Manual JSON format: `docs/manual-format.md`. Puzzle format: `docs/puzzle-format.md`.
+- No backend. Progress is AsyncStorage only (`progress:*` / `puzzle:*`).
 - Do not create or hand-edit `android/` / `ios/`; configure via `app.json`.
 - Prefer Expo modules; use vendored `src/lib/vendor/xiangqi.js` for rules — do not hand-roll xiangqi legality.
 - Manual schema uses `tags[]` (not single category); default `sideToMemorize` is `both`.
+- Puzzle: user plays `sideToMove` only; opponent plies come from `solution[]` (not an engine).
+- AI vs human: Android-only via local module `pikafish-engine` (see `docs/ai-play.md`); Expo Go cannot load it.
 - Keep UI focused on board + practice; avoid dashboard clutter.
 - Package name `com.xiang.xiangqimanual` is fixed for future store listing.
 
@@ -36,6 +38,8 @@ npx expo install --fix
 
 - `docs/architecture.md` — modules and flows
 - `docs/manual-format.md` — chess manual JSON
+- `docs/puzzle-format.md` — endgame puzzle JSON
+- `docs/ai-play.md` — Pikafish vs AI + difficulty
 - `docs/development.md` — local / device / APK
 - `docs/roadmap.md` — MVP checklist
 - `docs/publishing.md` — Play Store notes

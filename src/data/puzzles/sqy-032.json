@@ -1,0 +1,58 @@
+{
+  "id": "sqy-032",
+  "title": "士马如云",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bakab2/n6P1/9/1R7/4N4/1C7/9/3ABA3/1N1p1p3/2p1KCrc1 r - - 0 1",
+  "solution": [
+    {
+      "san": "车八平五",
+      "uci": "b6e6"
+    },
+    {
+      "san": "象3进5",
+      "uci": "c9e7"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e6e7"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e7e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车五平六",
+      "uci": "e8d8"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "马五进四",
+      "uci": "e5f7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

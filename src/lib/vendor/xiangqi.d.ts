@@ -30,6 +30,8 @@ export type XiangqiInstance = {
   get: (square: string) => XiangqiPiece | null;
   validate_fen: (fen: string) => { valid: boolean; error_number: number; error: string };
   in_check: () => boolean;
+  in_checkmate: () => boolean;
+  in_stalemate: () => boolean;
   game_over: () => boolean;
 };
 

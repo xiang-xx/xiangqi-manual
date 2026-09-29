@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "015关.楚汉争霸.钜鹿之战"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg015"]
+[FEN "1r1k1P3/2PCa4/C4a3/9/9/9/4p4/9/1p7/4K4 w - - 0 1"]
+1.炮九平六 士5进4
+2.炮六平三 卒2平3
+3.炮三进一
+1-0 {红胜}

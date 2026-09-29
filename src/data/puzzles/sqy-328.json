@@ -1,0 +1,57 @@
+{
+  "id": "sqy-328",
+  "title": "忠孝两全",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "C1b6/1RCka4/5a3/p1p6/2b6/9/P8/9/c3p2p1/5K1c1 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮七退三",
+      "uci": "c8c5"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车八退一",
+      "uci": "b8b7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "车八进一",
+      "uci": "b7b8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车八退四",
+      "uci": "b8b4"
+    },
+    {
+      "san": "象3进5",
+      "uci": "c9e7"
+    },
+    {
+      "san": "车八平六",
+      "uci": "b4d4"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

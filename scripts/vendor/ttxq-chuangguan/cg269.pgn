@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "269关.三国演义.仓亭破袁"]
+[Round "8"]
+[PlyCount "15"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg269"]
+[FEN "3R2P2/4k4/5a3/2p6/1P7/6P2/2P6/4B1p2/3pp4/5K3 w - - 0 1"]
+1.车六退八 卒5平4
+ {红方正着！弃车破卒，保护红帅登高，摆脱黑方多个卒子的威胁。后面再放心大胆地进攻}
+2.帅四进一 将5退1
+3.兵三进一 卒7进1
+4.帅四进一
+1-0 {红帅高升三楼，高枕无忧。后面的走法省略。红方必胜}

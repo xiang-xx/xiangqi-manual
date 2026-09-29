@@ -1,0 +1,30 @@
+﻿[Game "Chinese Chess"]
+[Event "219关.战国七雄.负荆请罪"]
+[Round "0"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg219"]
+[FEN "3a1kb2/4a1P2/4b4/5N3/9/9/9/B2pB3C/r2pA4/c3KA3 w - - 0 1"]
+1.兵三平二  士5进4
+ {红兵以退为进，塞住黑方象眼，方便沉底炮叫将，以及炮退到三楼后再次叫将}
+2.炮一进七 将6进1
+3.马四进六 前卒进1
+ {红方伏有 兵二平三 的杀棋}
+4.帅五平六 卒4进1
+5.帅六平五 卒4平5
+6.仕四进五 车1平5
+7.帅五进一 炮1平8
+8.兵二平三 将6平5
+9.炮一退一 炮8退8
+10.兵三平二 
+1-0 {红胜}

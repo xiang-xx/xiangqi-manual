@@ -1,0 +1,50 @@
+{
+  "id": "sqy-015",
+  "title": "妙振兵铃",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "r1b1k4/c1PPaRc2/r2ab3n/4C4/7RC/9/9/9/4p4/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "炮1平5",
+      "uci": "a8e8"
+    },
+    {
+      "san": "车四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "士4退5",
+      "uci": "d7e8"
+    },
+    {
+      "san": "车二进四",
+      "uci": "h5h9"
+    },
+    {
+      "san": "炮7退1",
+      "uci": "g8g9"
+    },
+    {
+      "san": "车二平三",
+      "uci": "h9g9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

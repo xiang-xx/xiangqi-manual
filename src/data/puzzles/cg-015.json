@@ -1,0 +1,41 @@
+{
+  "id": "cg-015",
+  "title": "钜鹿之战",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1r1k1P3/2PCa4/C4a3/9/9/9/4p4/9/1p7/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮九平六",
+      "uci": "a7d7"
+    },
+    {
+      "san": "士5进4",
+      "uci": "e8d7"
+    },
+    {
+      "san": "炮六平三",
+      "uci": "d8g8"
+    },
+    {
+      "san": "卒2平3",
+      "uci": "b1c1"
+    },
+    {
+      "san": "炮三进一",
+      "uci": "g8g9"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

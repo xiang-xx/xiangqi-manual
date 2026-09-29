@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "263关.三国演义.刘备投袁"]
+[Round "13"]
+[PlyCount "25"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg263"]
+[FEN "2Nrk2c1/1R2CP3/2Pn5/PnP1r4/9/9/9/9/9/3K2p2 w - - 0 1"]
+1.马七退六 车4进2
+2.前兵平六 马2进1
+3.车八进一 炮8平2
+4.兵六进一 车5进6
+5.帅六平五 马1进2
+6.炮五退七 炮2进4
+7.兵七平六 马2退4
+8.后兵进一 卒7平6
+9.帅五平四 炮2平6
+10.前兵平五 将5平4
+11.兵六进一
+1-0 {红胜}

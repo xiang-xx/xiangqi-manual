@@ -1,0 +1,57 @@
+{
+  "id": "sqy-349",
+  "title": "夷齐扣马",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "N1bakab2/R8/9/9/9/9/5pp2/4B4/3pp4/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "马九退七",
+      "uci": "a9c8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "马七退八",
+      "uci": "c8b6"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车九退一",
+      "uci": "a8a7"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e7e8"
+    },
+    {
+      "san": "车九进一",
+      "uci": "a7a8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "马八进六",
+      "uci": "b6d7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

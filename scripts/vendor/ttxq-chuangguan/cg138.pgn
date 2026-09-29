@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "138关.春秋五霸.彭衙胜秦"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg138"]
+[FEN "3k5/1C1Nan3/4b1N2/1r4r2/8R/5C3/4c4/9/4p4/3K5 w - - 0 1"]
+    1.车一进四 马6退8
+    2.车一平二 象5退7
+    3.车二平三 士5退6
+    4.车三平四 炮5退6
+    5.车四平五 将4平5
+    6.马六退四 将5进1
+    7.马四退六 将5平6
+    8.马六进五 将6进1
+    9.马五退四 将6平5
+    10.马三进四
+1-0 {红胜}

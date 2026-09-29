@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "346关.三国演义.诸葛妆神"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg346"]
+[FEN "rc3k1P1/P3P4/P3c4/2P1p4/8R/8R/8C/9/4prp2/2BK5 w - - 0 1"]
+1.后车平四 炮5平6
+2.车一平六 炮2平4
+3.兵七平六 炮4平8
+4.车四退三 卒7平6
+5.车六平四 前卒平4
+6.帅六进一 炮8进8
+7.帅六退一 炮8退7
+8.车四进二 炮8平6
+9.车四进一
+1-0 {红胜}

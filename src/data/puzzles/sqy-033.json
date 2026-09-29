@@ -1,0 +1,58 @@
+{
+  "id": "sqy-033",
+  "title": "计定千里",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a1k2C/2R1a2R1/4b3N/8p/2b6/7n1/9/4C3B/3rAr1p1/4KAB1c r - - 0 1",
+  "solution": [
+    {
+      "san": "车二进一",
+      "uci": "h8h9"
+    },
+    {
+      "san": "象5退7",
+      "uci": "e7g9"
+    },
+    {
+      "san": "车二退五",
+      "uci": "h9h4"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车七平五",
+      "uci": "c8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "马一退三",
+      "uci": "i7g6"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "车二进三",
+      "uci": "h4h7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

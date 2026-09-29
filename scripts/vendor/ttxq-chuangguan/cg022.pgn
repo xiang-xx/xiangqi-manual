@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "022关.楚汉争霸.第22关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg022"]
+[FEN "4k3C/3Pa1P2/5a3/3Np4/9/9/9/9/1r1rp4/5K3 w - - 0 1"]
+1.兵六平五 士6退5
+2.兵三进一 士5退6
+3.兵三平四
+1-0 {红胜}

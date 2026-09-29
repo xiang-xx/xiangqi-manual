@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "074关.楚汉争霸.第74关"]
+[Round "9"]
+[PlyCount "17"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg074"]
+[FEN "4kabC1/4a4/4b4/1R7/4P1N2/2N6/5n3/5p3/4p2r1/5K3 w - - 0 1"]
+1.车八进三 象5退3
+2.车八平七 士5退4
+3.马三进四 将5进1
+4.车七退一 将5进1
+ {红车停在二楼，限制黑将的活动范围}
+5.兵五进一 将5平6
+6.兵五平四 将6平5
+7.兵四进一 将5平6
+8.马七进六 将6平5
+ {红方先后送掉一马一兵，真实目的是为第二个红马让路，不会被别腿}
+9.车七退一
+1-0 {红胜}

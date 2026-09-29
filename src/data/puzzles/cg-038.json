@@ -1,0 +1,41 @@
+{
+  "id": "cg-038",
+  "title": "楚汉争霸",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba5/4k3C/3ab4/9/9/9/9/9/1rp1p1CR1/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮三进七",
+      "uci": "g1g8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车二进八",
+      "uci": "h1h9"
+    },
+    {
+      "san": "象5退7",
+      "uci": "e7g9"
+    },
+    {
+      "san": "车二平三",
+      "uci": "h9g9"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

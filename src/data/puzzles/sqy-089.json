@@ -1,0 +1,58 @@
+{
+  "id": "sqy-089",
+  "title": "七雄争霸",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak1b2/1n3P3/3a5/4p1p1N/6P1C/2R6/C1R1Pp1n1/3A5/3K2crc/3Ar4 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "马一进三",
+      "uci": "i6g7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e8d8"
+    },
+    {
+      "san": "马三退五",
+      "uci": "g7e6"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d8e8"
+    },
+    {
+      "san": "马五进三",
+      "uci": "e6g7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e8d8"
+    },
+    {
+      "san": "前车进四",
+      "uci": "c4c8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

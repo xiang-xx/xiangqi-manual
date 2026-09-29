@@ -1,0 +1,58 @@
+{
+  "id": "sqy-005",
+  "title": "淮阴遇汉",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1k3/4a1R2/9/1cp2N3/1Nb6/3n2P2/4C4/3AB4/3r1p1n1/2R1KAr1c r - - 0 1",
+  "solution": [
+    {
+      "san": "车三进一",
+      "uci": "g8g9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车三退一",
+      "uci": "g9g8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "车三退一",
+      "uci": "g8g7"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f7f8"
+    },
+    {
+      "san": "马四进六",
+      "uci": "f6d7"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f8f9"
+    },
+    {
+      "san": "车三进二",
+      "uci": "g7g9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

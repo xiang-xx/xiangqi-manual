@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "053关.楚汉争霸.第53关"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg053"]
+[FEN "6b2/3ka4/4ba3/9/9/6R2/6p2/5Rn2/9/3AKA1rc w - - 0 1"]
+1.车四平六 士5进4
+2.车六进五 将4平5
+3.车三进四 将5退1
+4.车三进一 将5进1
+5.车六平五 将5平4
+6.车三平六 将4退1
+7.车五平六 
+1-0 {红胜}

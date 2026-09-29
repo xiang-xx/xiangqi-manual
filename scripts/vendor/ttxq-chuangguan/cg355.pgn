@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "355关.三国演义.姜维屯田"]
+[Round "8"]
+[PlyCount "15"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg355"]
+[FEN "3n5/5C3/2P1k1P2/9/9/9/8p/4r4/1p1R5/3K5 w - - 0 1"]
+1.兵七平六 将5退1
+2.兵六进一 将5退1
+3.炮四平五 车5退3
+4.车六平二 卒9平8
+5.车二进二 车5平6
+6.车二进六 车6退4
+7.兵六进一 将5进1
+8.车二平四 卒2平3
+9.兵三平四 卒3进1
+10.帅六进一 卒3平4
+11.车四平五
+1-0 {红胜}

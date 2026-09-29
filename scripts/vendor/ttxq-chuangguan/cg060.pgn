@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "060关.楚汉争霸.九江王败走"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg060"]
+[FEN "3ak4/4aP3/4b4/5P3/9/9/9/9/9/4K4 w - - 0 1"]
+1.帅五进一 象5退3
+ {红方双兵已经堵住黑方象眼。红方只需要走闲棋，逼黑象远走，
+不影响红兵从右侧冲底线叫杀即可}
+2.后兵平三 象3进5
+3.兵三进一 象5退3
+4.兵三进一 象3进5
+5.兵三进一 士5退6
+ {只要黑士离位，双兵马上强攻叫杀}
+6.兵三平四
+1-0 {红胜}

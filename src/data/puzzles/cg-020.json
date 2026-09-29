@@ -1,0 +1,49 @@
+{
+  "id": "cg-020",
+  "title": "鸿门宴",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k5/4a4/3a5/N8/9/7R1/9/2n6/3r1p3/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "马九进八",
+      "uci": "a6b8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马八退七",
+      "uci": "b8c6"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车二进五",
+      "uci": "h4h9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车二平四",
+      "uci": "h9f9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

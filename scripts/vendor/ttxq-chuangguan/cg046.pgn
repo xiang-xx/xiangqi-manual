@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "046关.楚汉争霸.第46关"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg046"]
+[FEN "4ka1R1/2PP5/3an3b/4p4/6b2/2C6/9/4C4/1rp1p4/3K5 w - - 0 1"]
+1.兵六进一 将5平4
+2.车二平四 马5退6
+3.兵七进一 将4进1
+4.炮七平六 士4退5
+5.炮五平六
+1-0 {红胜}

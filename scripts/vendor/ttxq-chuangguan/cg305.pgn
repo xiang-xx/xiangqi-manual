@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "305关.三国演义.义释严颜"]
+[Round "9"]
+[PlyCount "17"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg305"]
+[FEN "5ac1c/3k1P3/N2a5/2C3p1p/9/9/9/9/4p1p2/3K5 w - - 0 1"]
+1.炮七退三 将4退1
+2.马九退七 炮9平8
+3.马七进八 将4进1
+4.炮七平九 卒5平4
+5.帅六进一 炮8进8
+6.帅六退一 后卒进1
+7.炮九进五 
+1-0 {红胜}

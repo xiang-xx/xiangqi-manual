@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "288关.三国演义.周瑜纵火"]
+[Round "12"]
+[PlyCount "23"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg288"]
+[FEN "2ba1k3/3Pa4/4b4/4PP1C1/9/9/9/3rB4/3pp3n/5KCR1 w - - 0 1"]
+1.兵四进一 马9退7
+2.炮三进一 将6平5
+3.车二平一 象5退7
+4.兵四进一 士5进6
+5.车一进九 卒5平6
+6.帅四进一 卒4平5
+7.帅四进一 车4平5
+8.帅四平五 马7退6
+9.帅五平六 士4进5
+10.车一平三 士5退6
+11.车三平四
+1-0 {红胜}

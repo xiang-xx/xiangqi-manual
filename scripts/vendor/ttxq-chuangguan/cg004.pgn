@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "004关.楚汉争霸.第4关"]
+[Round "2"]
+[PlyCount "3"]
+[Date "2020.03.14"]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg004"]
+[FEN "3aR1b2/3k4C/3ab4/7N1/9/9/9/2n6/3r1p3/4K4 w - - 0 1"]
+1.车五退一 将4平5
+2.马二进三
+1-0 {红胜}

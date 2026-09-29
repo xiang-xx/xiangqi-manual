@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "032关.楚汉争霸.第32关"]
+[Round "2"]
+[PlyCount "3"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg032"]
+[FEN "3aka3/9/9/5N2C/9/9/4c2n1/4B4/4A4/3AK4 w - - 0 1"]
+1.马四进三 将5进1
+2.炮一进二
+1-0 {红胜}

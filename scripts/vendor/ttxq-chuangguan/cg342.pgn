@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "342关.三国演义.挥泪斩将"]
+[Round "12"]
+[PlyCount "23"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg342"]
+[FEN "3akn3/4a4/4b4/4C4/2p3p1C/2P3B1r/N8/8B/3pp4/2rc1K3 w - - 0 1"]
+1.炮一平七 车3退4
+2.马九进七 炮4平3
+3.炮七进四 炮3退9
+4.马七进六 卒5平6
+ {红方后面有 马六进七，卧槽马叫将的杀棋}
+5.帅四进一 卒4平5
+6.帅四进一 车9进2
+7.相三退一 卒7进1
+8.马六进七
+1-0 {红胜}

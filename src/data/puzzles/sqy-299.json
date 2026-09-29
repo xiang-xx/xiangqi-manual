@@ -1,0 +1,58 @@
+{
+  "id": "sqy-299",
+  "title": "参前倚衡",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "r2k1a3/3na1R2/3cb1c2/3N1R3/6P2/3C5/9/B4p2B/2p3r2/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车四进三",
+      "uci": "f6f9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车三平六",
+      "uci": "g8d8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马六退七",
+      "uci": "d6c4"
+    },
+    {
+      "san": "炮4平1",
+      "uci": "d7a7"
+    },
+    {
+      "san": "兵三进一",
+      "uci": "g5g6"
+    },
+    {
+      "san": "炮1进4",
+      "uci": "a7a3"
+    },
+    {
+      "san": "马七进六",
+      "uci": "c4d6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

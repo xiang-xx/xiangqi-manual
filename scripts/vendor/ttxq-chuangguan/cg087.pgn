@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "087关.楚汉争霸.第87关"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg087"]
+[FEN "2r2k1N1/9/7R1/2pN2p2/1nb6/9/9/2ncc4/2p2p3/3K1p1r1 w - - 0 1"]
+1.车二平四 将6平5
+2.车四平五 将5平4
+3.马二退四 将4进1
+4.车五进一 将4进1
+5.车五退六 将4退1
+6.车五进六 将4进1
+7.车五平七 将4平5
+ {红方平车不是为了抽吃黑车，而是为了留在二楼，限制黑将活动范围}
+8.马四退三 将5平4
+9.马三退五 将4平5
+10.车七平五
+1-0 {红胜}

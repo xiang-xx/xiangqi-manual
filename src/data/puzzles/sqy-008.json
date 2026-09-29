@@ -1,0 +1,58 @@
+{
+  "id": "sqy-008",
+  "title": "珠藏韫柜",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "C1bac1RN1/r2Rak3/7n1/1rP6/2N1P1p2/9/9/2n6/5p3/4Kc3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车三退四",
+      "uci": "g9g5"
+    },
+    {
+      "san": "炮5平7",
+      "uci": "e9g9"
+    },
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "车1平5",
+      "uci": "a8e8"
+    },
+    {
+      "san": "炮九退一",
+      "uci": "a9a8"
+    },
+    {
+      "san": "车2退2",
+      "uci": "b6b8"
+    },
+    {
+      "san": "马七进五",
+      "uci": "c5e6"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "车三进二",
+      "uci": "g5g7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

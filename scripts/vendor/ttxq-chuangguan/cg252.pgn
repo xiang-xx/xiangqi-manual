@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "252关.三国演义.三让徐州"]
+[Round "14"]
+[PlyCount "27"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg252"]
+[FEN "4k1PR1/2Pn1rP2/9/1P7/9/9/9/4N2cr/2p4c1/3K1A3 w - - 0 1"]
+1.后兵平四 前炮退8
+2.兵七平六 前炮进2
+3.仕四进五 卒3平4
+4.帅六进一 后炮进8
+5.仕五进四 车9平6
+6.兵四平五
+1-0 {红胜}

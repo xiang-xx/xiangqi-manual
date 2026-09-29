@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "349关.三国演义.孔明归天"]
+[Round "8"]
+[PlyCount "15"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg349"]
+[FEN "3k5/2P1an3/b3b4/9/3N5/9/9/2prcK2R/5pp1C/3A2B2 w - - 0 1"]
+1.车一进七 马6退8
+2.车一平二 象5退7
+3.车二平三 士5退6
+4.马六进五 将4平5
+5.仕六进五 将5进1
+6.马五进三 炮5退3
+7.仕五进六 炮5平6
+8.车三平四 炮6退3
+9.车四退一 将5退1
+10.车四平六
+1-0 {红胜}

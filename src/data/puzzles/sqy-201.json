@@ -1,0 +1,49 @@
+{
+  "id": "sqy-201",
+  "title": "三请诸葛",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak1P1P/4a4/9/9/4p3C/c3C1R2/9/5p3/2rp5/4K1R2 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵三平四",
+      "uci": "g9f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "前车进五",
+      "uci": "g4g9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "前车退一",
+      "uci": "g9g8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "后车进七",
+      "uci": "g0g7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

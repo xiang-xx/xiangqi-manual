@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "136关.春秋五霸.晋崤歼秦"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg136"]
+[FEN "2b1ka3/3Ra4/1c2b3c/N8/R8/2B6/4C1r2/C4n3/2r1Ap1n1/3AK1B2 w - - 0 1"]
+    1.车六进一 将5平4
+    2.车九平六 炮2平4
+    3.马九进八 将4平5
+    4.炮九进七 炮4退2
+    5.车六进四
+1-0 {红胜}

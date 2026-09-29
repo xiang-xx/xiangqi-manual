@@ -1,0 +1,57 @@
+{
+  "id": "sqy-012",
+  "title": "颠猿饮涧",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1C2kab2/rN2a2R1/2r1c3b/9/9/5R3/9/7C1/9/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平五",
+      "uci": "h8e8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车四进四",
+      "uci": "f4f8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车四退一",
+      "uci": "f9f8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "炮二进七",
+      "uci": "h2h9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

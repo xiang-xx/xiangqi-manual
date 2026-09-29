@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "030关.楚汉争霸.还定三齐"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg030"]
+[FEN "1R1ak1b1R/9/1CNc3r1/4p4/6p1p/9/P8/4B1n2/2nCA2r1/2BAK3c w - - 0 1"]
+1.车八平六 将5进1
+2.车六退一 将5进1
+3.车六退一 将5退1
+4.车六平四 将5退1
+5.车一平三
+1-0 {红胜}

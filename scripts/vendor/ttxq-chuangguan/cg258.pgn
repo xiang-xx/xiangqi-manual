@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "258关.三国演义.水淹下邳"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg258"]
+[FEN "4P3C/R8/2N1k1CNb/4p1rr1/9/9/9/3n5/4p4/3K5 w - - 0 1"]
+1.马七进六 将5平4
+2.马六退八 将4平5
+3.马八退七 将5平6
+4.马七进六 将6平5
+5.马六进四 将5平6
+6.马四退二 将6平5
+7.车九退一 将5退1
+8.炮一退一 将5退1
+9.车九进二
+1-0 {红胜}

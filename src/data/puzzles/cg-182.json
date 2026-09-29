@@ -1,0 +1,74 @@
+{
+  "id": "cg-182",
+  "title": "河西之战",
+  "tags": [
+    "高级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 4,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2baka3/3P3N1/bN7/7nc/9/4C1P2/P5n1P/B3R3B/4Apr2/2RAK3c r - - 0 1",
+  "solution": [
+    {
+      "san": "炮五平九",
+      "uci": "e4a4"
+    },
+    {
+      "san": "马7进5",
+      "uci": "g3e2"
+    },
+    {
+      "san": "兵六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车七进八",
+      "uci": "c0c8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "马二进四",
+      "uci": "h8f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e7f7"
+    },
+    {
+      "san": "马八进六",
+      "uci": "b7d8"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f7f8"
+    },
+    {
+      "san": "马六退五",
+      "uci": "d8e6"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f8f9"
+    },
+    {
+      "san": "车七平四",
+      "uci": "c8f8"
+    }
+  ],
+  "comments": {
+    "12": "红胜"
+  },
+  "source": "天天象棋残局挑战"
+}

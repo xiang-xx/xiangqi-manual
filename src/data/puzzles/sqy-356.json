@@ -1,0 +1,56 @@
+{
+  "id": "sqy-356",
+  "title": "猛虎驱羊",
+  "tags": [
+    "中级",
+    "车类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "6b2/1R7/3kb4/P6P1/9/9/9/9/pp3pp2/4K2p1 r - - 0 1",
+  "solution": [
+    {
+      "san": "车八退一",
+      "uci": "b8b7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "车八进一",
+      "uci": "b7b8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车八退一",
+      "uci": "b8b7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "车八退六",
+      "uci": "b7b1"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车八平六",
+      "uci": "b1d1"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

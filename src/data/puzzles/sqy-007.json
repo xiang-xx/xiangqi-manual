@@ -1,0 +1,58 @@
+{
+  "id": "sqy-007",
+  "title": "春雷惊蛰",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a2b2/1P1k5/2Pab4/7RC/9/9/2P2c3/2NA5/3KAr3/cnn1r4 r - - 0 1",
+  "solution": [
+    {
+      "san": "前兵平六",
+      "uci": "c7d7"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "炮一进一",
+      "uci": "i6i7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "兵八平七",
+      "uci": "b8c8"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d8e8"
+    },
+    {
+      "san": "前兵平六",
+      "uci": "c8d8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e8f8"
+    },
+    {
+      "san": "车二平四",
+      "uci": "h6f6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

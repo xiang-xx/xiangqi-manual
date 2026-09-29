@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "042关.楚汉争霸.第42关"]
+[Round "4"]
+[PlyCount "7"]
+[Date "2020.03.14"]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg042"]
+[FEN "4ka3/1N2a4/4c4/9/9/3R3R1/4c4/4B4/4A1rn1/3AK1B2 w - - 0 1"]
+1.车六进五 士5退4
+2.马八退六 将5进1
+3.车二进四 车7退7
+4.车二平三
+1-0 {红胜}

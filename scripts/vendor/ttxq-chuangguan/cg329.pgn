@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "329关.三国演义.夷陵之战"]
+[Round "18"]
+[PlyCount "35"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg329"]
+[FEN "3k5/5R3/8C/2P6/6bCc/6B2/9/4p4/3pp2p1/5K3 w - - 0 1"]
+1.车四进一 将4进1
+2.炮一进一 象7退9
+3.炮一平三 前卒进1
+4.帅四平五 将4平5
+5.炮二进三 将5进1
+6.帅五平四 炮9平6
+7.车四退四 卒5平6
+8.车四退三 卒8平7
+9.车四平五 将5平4
+10.兵七平六
+1-0 {红胜}

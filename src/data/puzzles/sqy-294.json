@@ -1,0 +1,50 @@
+{
+  "id": "sqy-294",
+  "title": "勤劳一纪",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4ka2R/3na4/2rcb3n/1R3N1NC/2b4P1/9/9/6pr1/7p1/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车一平四",
+      "uci": "i9f9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车八进三",
+      "uci": "b6b9"
+    },
+    {
+      "san": "车3退2",
+      "uci": "c7c9"
+    },
+    {
+      "san": "马四进三",
+      "uci": "f6g8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车八平七",
+      "uci": "b9c9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

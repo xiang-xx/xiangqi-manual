@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "299关.三国演义.张松献图"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg299"]
+[FEN "5aC2/3k5/4PP3/9/9/N3n4/6r2/R8/3p1p3/4K4 w - - 0 1"]
+1.车九平六 马5进4
+ {红方弃车叫将，引离黑马，露出中帅，占线助杀}
+2.兵五平六 将4进1
+3.马九进七 将4退1
+4.马七进八 将4进1
+5.兵四平五
+1-0 {红胜}

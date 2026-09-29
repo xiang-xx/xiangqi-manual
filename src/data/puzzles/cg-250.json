@@ -1,0 +1,50 @@
+{
+  "id": "cg-250",
+  "title": "濮阳破曹",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "9/1RNk2nr1/1Nc4RC/7n1/9/9/9/9/r3p4/4CK3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平六",
+      "uci": "h7d7"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "马七退五",
+      "uci": "c8e7"
+    },
+    {
+      "san": "车8进1",
+      "uci": "h8h7"
+    },
+    {
+      "san": "马五进三",
+      "uci": "e7g8"
+    },
+    {
+      "san": "车8平9",
+      "uci": "h7i7"
+    },
+    {
+      "san": "马三进五",
+      "uci": "g8e9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

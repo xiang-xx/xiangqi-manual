@@ -1,0 +1,42 @@
+{
+  "id": "cg-086",
+  "title": "第86关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak4/4a1R2/4b4/6N2/1r2N4/9/9/9/5p3/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车三进一",
+      "uci": "g8g9"
+    },
+    {
+      "san": "象5退7",
+      "uci": "e7g9"
+    },
+    {
+      "san": "马五进六",
+      "uci": "e5d7"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "马三进二",
+      "uci": "g6h8"
+    }
+  ],
+  "comments": {
+    "2": "红方八角马，挂士角",
+    "4": "红胜"
+  },
+  "source": "天天象棋残局挑战"
+}

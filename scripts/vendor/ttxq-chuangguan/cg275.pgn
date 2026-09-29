@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "275关.三国演义.徐庶荐贤"]
+[Round "17"]
+[PlyCount "33"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg275"]
+[FEN "3k1ab2/n1P6/3ab4/2pN5/4p1c2/1N7/9/4B4/5p3/1rBCK1Crc w - - 0 1"]
+1.马六进四 士4退5
+2.马八进六 士5进4
+3.马六进五 士4退5
+4.马五退六 士5进4
+5.兵七平六
+1-0 {红胜}

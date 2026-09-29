@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "071关.楚汉争霸.第71关"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg071"]
+[FEN "3ak1bR1/4a4/4b4/2pN5/9/6B2/2r3r2/4B4/4A4/3AK4 w - - 0 1"]
+1.马六进七 将5平6
+2.马七退五 卒3进1
+3.车二平三 将6进1
+4.马五退三 将6进1
+5.车三退二 将6退1
+6.车三平一 将6退1
+7.车一进二
+1-0 {红胜}

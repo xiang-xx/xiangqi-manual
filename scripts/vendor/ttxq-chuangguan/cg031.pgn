@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "031关.楚汉争霸.第31关"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg031"]
+[FEN "4kab2/4a4/2Ncb2C1/6p2/9/1R3RP2/P1r4r1/4B4/2n1A4/2BA1K3 w - - 0 1"]
+1.车八进五，黑象5退3
+2.车八平七，黑士5退4
+3.车四进五，黑将5进1
+4.车七退一，黑将5进1
+5.车四退二
+1-0 {红胜}

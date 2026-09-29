@@ -1,0 +1,50 @@
+{
+  "id": "sqy-120",
+  "title": "龟玉毁椟",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "R2rk4/4nP3/2n1b4/6N2/9/1r2C4/4c4/4B4/3pN4/4KC3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车九平六",
+      "uci": "a9d9"
+    },
+    {
+      "san": "马3退4",
+      "uci": "c7d9"
+    },
+    {
+      "san": "兵四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "马三进四",
+      "uci": "g6f8"
+    },
+    {
+      "san": "炮5平6",
+      "uci": "e3f3"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

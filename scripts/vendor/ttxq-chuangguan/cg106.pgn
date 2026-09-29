@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "106关.楚汉争霸.第106关"]
+[Round "11"]
+[PlyCount "21"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg106"]
+[FEN "3ak1b2/4a4/1c2b4/3NR4/2p6/4C4/9/9/2r2p3/3K5 w - - 0 1"]
+1.马六进七 将5平6
+2.车五平四 士5进6
+3.炮五平四 车3进1
+4.帅六进一 将6进1
+5.车四平一 士6退5
+6.马七退六 卒6平5
+7.帅六平五 车3退1
+8.帅五退一 车3平5
+9.帅五进一 炮2进7
+10.车一平四 士5进6
+11.车四进一
+1-0 {红胜}

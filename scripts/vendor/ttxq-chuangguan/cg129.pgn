@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "129关.春秋五霸.退避三舍"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg129"]
+[FEN "2P2k3/4R4/6nP1/2r6/8N/9/9/rp2K4/1c2AC2C/2n2p3 w - - 0 1"]
+    1.仕五进四 马7进6
+    2.车五进一 将6进1
+    3.马一进三 车3平7
+{红方弃马叫将，吸引黑车移位}
+    4.炮一进七 车7平9
+    5.兵二平三 车9退2
+    6.车五退一 将6退1
+    7.车五平一 车1退3
+    8.车一进一 将6进1
+    9.兵三进一 将6进1
+    10.车一平四
+1-0 {红胜}

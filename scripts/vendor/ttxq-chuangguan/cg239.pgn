@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "239关.战国七雄.秦灭齐"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg239"]
+[FEN "3akarr1/2C2P2C/2N6/9/R2P5/9/9/4B1p2/3pp4/2B2K3 w - - 0 1"]
+1.兵四平五 士4进5
+ {红方妙着！红方平兵宫心叫将，是为了逼黑方上士，方便红车红炮有沉底连续叫将的机会。弃兵叫将，是为了“借步”}
+2.车九进四 士5退4
+3.炮七进一 士4进5
+4.炮七平四 士5退4
+5.车九平六 
+1-0 {红胜}

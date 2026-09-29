@@ -1,0 +1,49 @@
+{
+  "id": "sqy-154",
+  "title": "外攘四夷",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a1k2C/3ra4/4b4/9/6b1N/6cR1/9/3n5/4r4/3K2cR1 r - - 0 1",
+  "solution": [
+    {
+      "san": "前车进五",
+      "uci": "h4h9"
+    },
+    {
+      "san": "象5退7",
+      "uci": "e7g9"
+    },
+    {
+      "san": "前车平三",
+      "uci": "h9g9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车三退一",
+      "uci": "g9g8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "车二进七",
+      "uci": "h0h7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

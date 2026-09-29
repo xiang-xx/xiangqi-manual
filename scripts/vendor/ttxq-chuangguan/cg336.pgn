@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "336关.三国演义.罢归田里"]
+[Round "32"]
+[PlyCount "63"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg336"]
+[FEN "3k4C/2P6/3N5/9/2P3p2/6P2/9/8B/1pp1K4/5r3 w - - 0 1"]
+1.马六进五 车6退9
+2.后兵平六 卒3平4
+3.帅五进一 车6平9
+4.兵七进一 将4进1
+5.马五退四 将4进1
+6.兵六进一
+1-0 {红胜}

@@ -1,0 +1,58 @@
+{
+  "id": "sqy-282",
+  "title": "前后一辙",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4ka3/4aR3/4N1C1b/c1p1p4/9/9/2N1P1R2/5C3/r1rp5/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "马五进七",
+      "uci": "e7c8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "前马退五",
+      "uci": "c8e7"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马五进四",
+      "uci": "e7f9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "炮四进五",
+      "uci": "f2f7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

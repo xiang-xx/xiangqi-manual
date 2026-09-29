@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "024关.楚汉争霸.第24关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg024"]
+[FEN "2bak1P2/1N2aP3/4b4/9/2n1N4/9/9/9/1r2p4/5K3 w - - 0 1"]
+1.兵三平四，士5退6
+2.马八退六，马3退4
+3.马五进六
+1-0 {红胜}

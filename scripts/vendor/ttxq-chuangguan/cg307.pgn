@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "307关.三国演义.为国捐生"]
+[Round "16"]
+[PlyCount "31"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg307"]
+[FEN "3a1a3/3k2P2/9/9/9/3Nr4/9/7C1/4A2c1/1crRKA3 w - - 0 1"]
+1.马六进五 将4平5
+ {红方跳马，车马双将。这样，虽然红车被黑方的车炮套牢，仍然能镇住黑将在肋线的一条退路。车不自由，但杀气仍在！}
+2.马五进三 将5退1
+3.炮二进七 士6进5
+4.兵三进一 士5退6
+5.兵三平四
+1-0 {红胜}

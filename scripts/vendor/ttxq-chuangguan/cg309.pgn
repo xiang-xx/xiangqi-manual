@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "309关.三国演义.张辽胜吴"]
+[Round "8"]
+[PlyCount "15"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg309"]
+[FEN "2b1k4/4aP3/4b4/2P6/9/9/9/9/4K4/9 w - - 0 1"]
+1.兵七进一 士5进6
+2.兵七平六 将5平4
+3.帅五平六 将4平5
+4.兵六进一 士6退5
+5.兵六平五 
+1-0 {红胜}

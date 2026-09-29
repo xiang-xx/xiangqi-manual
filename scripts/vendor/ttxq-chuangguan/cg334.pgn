@@ -1,0 +1,31 @@
+﻿[Game "Chinese Chess"]
+[Event "334关.三国演义.火烧藤甲"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg334"]
+[FEN "3k1rr2/4P4/1P7/2c3P2/9/4P4/9/9/1C1p2CR1/4K4 w - - 0 1"]
+1.炮三进八 车6进8
+2.前兵进一 将4平5
+3.炮八平四 炮3平2
+4.帅五平四 将5平6
+5.兵三平四 将6平5
+6.车二进八 炮2进1
+7.炮三退一 将5进1
+8.兵四进一 卒4平5
+9.炮四进五 卒5平6
+10.帅四进一 炮2平8
+11.车二退四 将5平4
+12.兵四进一 将4进1
+13.车二进二
+1-0 {红胜}

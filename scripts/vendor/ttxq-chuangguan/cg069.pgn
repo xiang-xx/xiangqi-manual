@@ -1,0 +1,30 @@
+﻿[Game "Chinese Chess"]
+[Event "069关.楚汉争霸"]
+[Round "9"]
+[PlyCount "17"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg069"]
+[FEN "c4a3/2N1knR2/9/4P4/7C1/6n2/9/1r1p5/4p4/3K5 w - - 0 1"]
+1.兵五进一 将5平4
+2.车三平四 士6进5
+3.兵五进一 将4退1
+4.兵五进一 炮1平5
+5.马七退五 炮5进1
+6.车四进一 将4进1
+7.马五退七 将4进1
+8.车四平六 炮5平4
+9.车六退一 
+1-0 {红胜}
+17
+17
+17

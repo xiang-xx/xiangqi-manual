@@ -1,0 +1,50 @@
+{
+  "id": "sqy-167",
+  "title": "功成略地",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2b1ka3/1R2a1P2/4b4/5R2C/4N4/4n4/9/4p4/1r5r1/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车八平五",
+      "uci": "b8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车四进三",
+      "uci": "f6f9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

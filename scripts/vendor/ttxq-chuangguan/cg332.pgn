@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "332关.三国演义.五路犯川"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg332"]
+[FEN "4ka3/3Pa2P1/b3b1CRN/9/9/9/9/2p1p4/4ppp2/3K2B2 w - - 0 1"]
+1.炮三进二 象5退7
+2.车二平六 前卒进1
+3.帅六平五 卒6平5
+4.帅五平六 前卒进1
+5.帅六平五 卒5进1
+6.帅五进一 卒7平6
+7.帅五平四 士5进4
+8.马一进三
+1-0 {红胜}

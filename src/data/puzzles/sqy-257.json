@@ -1,0 +1,49 @@
+{
+  "id": "sqy-257",
+  "title": "挡住英雄",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "6b2/9/3k4C/4P4/9/9/9/4R4/3r1p3/4K1B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵五进一",
+      "uci": "e6e7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e7e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车4平1",
+      "uci": "d1a1"
+    },
+    {
+      "san": "车五平六",
+      "uci": "e2d2"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

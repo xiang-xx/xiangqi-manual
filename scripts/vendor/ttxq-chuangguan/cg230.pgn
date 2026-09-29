@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "230关.战国七雄.肥之战"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg230"]
+[FEN "R1b2k3/4a1P2/b2a5/2p6/5P3/8r/9/2n6/C2p3r1/RCc1K4 w - - 0 1"]
+1.车九平七 象1退3
+2.兵三进一 将6进1
+ {妙着！红方这一步兵三进一，冲底线叫将非常重要！必须把黑将逼到中线，或者二楼。
+如果黑将逃到中线，红方则连续两个炮沉底，黑方下象后，不能再下士，因为将帅不能直线面对面。
+现在黑将走法是逃到二楼，则红方再在二楼摆重炮即可取胜}
+3.炮九进七 士5退4
+4.炮八进八 将6进1
+5.兵四进一
+1-0 {红胜}

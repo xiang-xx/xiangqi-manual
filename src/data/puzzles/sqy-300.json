@@ -1,0 +1,57 @@
+{
+  "id": "sqy-300",
+  "title": "陈桥兵变",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1k3/2rPa4/R3b4/4cP1C1/2p6/9/3rP4/4B4/3pp4/2B2K1R1 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "卒3进1",
+      "uci": "c5c4"
+    },
+    {
+      "san": "兵六平五",
+      "uci": "d9e9"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "车九平五",
+      "uci": "a7e7"
+    },
+    {
+      "san": "卒3平2",
+      "uci": "c4b4"
+    },
+    {
+      "san": "炮二平五",
+      "uci": "h6e6"
+    },
+    {
+      "san": "卒2平1",
+      "uci": "b4a4"
+    },
+    {
+      "san": "车二进九",
+      "uci": "h0h9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

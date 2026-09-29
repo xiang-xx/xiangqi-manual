@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "304关.三国演义.庞统遭伏"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg304"]
+[FEN "2ra5/4ak3/C3P2c1/1C4P2/7R1/8r/9/9/3p1p3/4K4 w - - 0 1"]
+1.车二平四 炮8平6
+2.车四进二 士5进6
+3.炮八平四 士6退5
+4.兵五平四 将6进1
+5.兵三进一 将6退1
+6.炮九平四
+ {红炮借兵，强插炮架取胜}
+1-0 {红胜}

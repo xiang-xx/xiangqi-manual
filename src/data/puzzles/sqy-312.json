@@ -1,0 +1,58 @@
+{
+  "id": "sqy-312",
+  "title": "深入远岛",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1r4b2/4k4/rN2b1P1n/6p1p/9/3R3C1/9/5A3/p4pc2/3RK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "马八进七",
+      "uci": "b7c9"
+    },
+    {
+      "san": "车2平3",
+      "uci": "b9c9"
+    },
+    {
+      "san": "前车进四",
+      "uci": "d4d8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "前车进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车3平4",
+      "uci": "c9d9"
+    },
+    {
+      "san": "兵三进一",
+      "uci": "g7g8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "车六进九",
+      "uci": "d0d9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

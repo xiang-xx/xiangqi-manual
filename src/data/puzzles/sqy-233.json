@@ -1,0 +1,50 @@
+{
+  "id": "sqy-233",
+  "title": "望尘遮道",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k4/3RaP3/n3Na3/8C/9/9/6r2/5p3/4p4/R4K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车九进七",
+      "uci": "a0a7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

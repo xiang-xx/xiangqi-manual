@@ -1,0 +1,31 @@
+﻿[Game "Chinese Chess"]
+[Event "199关.战国七雄.朝秦暮楚"]
+[Round "0"]
+[PlyCount "21"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg199"]
+[FEN "1P1c1k3/4P4/2PP1r3/9/5rP1C/8C/8R/3p5/4p4/3K3R1 w - - 0 1"]
+1.前炮平四 车6进2
+2.炮一平四 车6平7
+3.车一进六 车7退4
+4.车一平三 炮4平7
+5.炮四退三 
+ {此时红炮必须退回二楼，防止黑方双卒并联绝杀}
+ 炮7平2
+6.车二进二 卒5平4
+7.帅六平五 前卒进1
+8.帅五进一 后卒进1
+9.帅五平六 炮2平4
+10.兵六平五 卒4平5
+11.车二平四
+1-0 {红胜}

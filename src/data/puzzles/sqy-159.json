@@ -1,0 +1,57 @@
+{
+  "id": "sqy-159",
+  "title": "前后绝伦",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak4/4a4/4b4/6N2/9/3rC4/4c4/4BR2C/1n1rA4/4KA3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车四进七",
+      "uci": "f2f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "马三进二",
+      "uci": "g6h8"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "马二退四",
+      "uci": "h8f7"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "马四进二",
+      "uci": "f7h8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "炮一进六",
+      "uci": "i2i8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

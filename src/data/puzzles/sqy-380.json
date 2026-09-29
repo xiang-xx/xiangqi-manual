@@ -1,0 +1,48 @@
+{
+  "id": "sqy-380",
+  "title": "二马追风",
+  "tags": [
+    "中级",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "5k3/7P1/9/1NN6/9/9/2p1p4/3K1p3/9/9 r - - 0 1",
+  "solution": [
+    {
+      "san": "马七进六",
+      "uci": "c6d8"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "马六退四",
+      "uci": "d8f7"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "马四进三",
+      "uci": "f7g9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "马八进七",
+      "uci": "b6c8"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sqy-004",
+  "title": "良将安边",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bk1ab2/4a4/9/p1P6/3NC4/4Pp3/P5n2/4B3N/4Ar3/1RBAK2cr r - - 0 1",
+  "solution": [
+    {
+      "san": "马六进七",
+      "uci": "d5c7"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马七退五",
+      "uci": "c7e6"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "炮五进三",
+      "uci": "e5e8"
+    },
+    {
+      "san": "卒1进1",
+      "uci": "a6a5"
+    },
+    {
+      "san": "车八进七",
+      "uci": "b0b7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

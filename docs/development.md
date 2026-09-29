@@ -39,6 +39,13 @@ npx expo install <package>
 2. Expo Go 扫终端二维码
 3. 若连不上：确认防火墙、试 `npx expo start --tunnel`
 
+**对弈（Pikafish）** 不在 Expo Go 里：需开发构建。资源与细节见 [ai-play.md](./ai-play.md)。
+
+```bash
+npm run fetch-pikafish-assets   # 若尚无 so / nnue
+npx expo run:android            # 生成并安装开发构建
+```
+
 ## 打自用 APK（以后）
 
 1. 安装并登录 EAS：`npx eas-cli@latest login`

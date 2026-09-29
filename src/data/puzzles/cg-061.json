@@ -1,0 +1,50 @@
+{
+  "id": "cg-061",
+  "title": "第61关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k4/4a4/2P5n/5N3/9/5R3/9/9/2p2p2r/C3K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "马四进六",
+      "uci": "f6d7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车四进五",
+      "uci": "f4f9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "炮九平六",
+      "uci": "a0d0"
+    },
+    {
+      "san": "卒3平4",
+      "uci": "c1d1"
+    },
+    {
+      "san": "马六进四",
+      "uci": "d7f8"
+    }
+  ],
+  "comments": {
+    "6": "红胜"
+  },
+  "source": "天天象棋残局挑战"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "sqy-020",
+  "title": "推强扶弱",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak2r1/4aP2R/2R1b4/6p1p/1Np6/P1C6/9/9/3pr4/5K2c r - - 0 1",
+  "solution": [
+    {
+      "san": "兵四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "车一平五",
+      "uci": "i8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车七进二",
+      "uci": "c7c9"
+    },
+    {
+      "san": "象5退3",
+      "uci": "e7c9"
+    },
+    {
+      "san": "马八进七",
+      "uci": "b5c7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

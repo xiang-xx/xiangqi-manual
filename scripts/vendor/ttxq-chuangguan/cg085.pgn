@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "085关.楚汉争霸.井陉之战"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg085"]
+[FEN "2ba1a2R/3k5/9/3N5/9/8R/3p5/4B4/4rp3/3K5 w - - 0 1"]
+1.前车退一 士4进5
+2.马六进四 将4进1
+3.马四退五 将4平5
+4.后车进三 士5进6
+5.后车平四
+1-0 {红胜}

@@ -1,0 +1,42 @@
+{
+  "id": "cg-062",
+  "title": "第62关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak4/4aP3/4b1n2/9/9/6C1R/4c4/4B4/4Ap1n1/2BAK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车一进五",
+      "uci": "i4i9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车一平四",
+      "uci": "i9f9"
+    },
+    {
+      "san": "马7退6",
+      "uci": "g7f9"
+    },
+    {
+      "san": "炮三进五",
+      "uci": "g4g9"
+    }
+  ],
+  "comments": {
+    "4": "红方关死黑马做炮架"
+  },
+  "source": "天天象棋残局挑战"
+}

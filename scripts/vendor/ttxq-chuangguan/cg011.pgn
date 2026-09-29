@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "011关.楚汉争霸.第11关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg011"]
+[FEN "3ak4/4c4/4bP3/1R3N3/2b6/3nC1p2/9/9/2r1r4/3K5 w - - 0 1"]
+1.马四进六 将5平6
+2.兵四进一 将6进1
+3.车八平四
+1-0 {红胜}

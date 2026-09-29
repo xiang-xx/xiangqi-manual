@@ -1,0 +1,49 @@
+{
+  "id": "cg-042",
+  "title": "第42关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4ka3/1N2a4/4c4/9/9/3R3R1/4c4/4B4/4A1rn1/3AK1B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六进五",
+      "uci": "d4d9"
+    },
+    {
+      "san": "士5退4",
+      "uci": "e8d9"
+    },
+    {
+      "san": "马八退六",
+      "uci": "b8d7"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车二进四",
+      "uci": "h4h8"
+    },
+    {
+      "san": "车7退7",
+      "uci": "g1g8"
+    },
+    {
+      "san": "车二平三",
+      "uci": "h8g8"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

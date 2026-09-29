@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "291关.三国演义.一气周瑜"]
+[Round "14"]
+[PlyCount "27"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg291"]
+[FEN "4k4/1P7/2c1b4/1P1R5/7r1/4p4/9/4K4/4p4/2p5R w - - 0 1"]
+1.车一进九 将5进1
+2.车六进三 象5退7
+3.车一退一 将5进1
+4.车六平五 将5平6
+5.车一平五 后卒进1
+6.后车退五 车8进3
+7.帅五退一 车8进1
+8.帅五进一 车8平5
+9.帅五退一 将6退1
+10.后车进五 将6进1
+11.前车平四
+1-0 {红胜}

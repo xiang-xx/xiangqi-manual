@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "295关.三国演义.三气周瑜"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg295"]
+[FEN "2b1ka3/3Pa4/4b1c2/6RC1/3R2c2/8C/9/2n6/3p3r1/4K4 w - - 0 1"]
+ {同《适情雅趣》第174局 三气周瑜（李浭版，共551局），借路，困炮架（困象）}
+1.炮一进五 后炮退2
+2.兵六进一 士5退4
+3.车六进四 将5平4
+4.车三平六 将4平5
+5.炮二平五
+1-0 {妙！红炮强留黑象作炮架，黑将黑象无处逃脱。红胜}

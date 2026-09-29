@@ -1,0 +1,33 @@
+﻿[Game "Chinese Chess"]
+[Event "344关.三国演义.大破魏兵"]
+[Round "9"]
+[PlyCount "17"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg344"]
+[FEN "2bak4/4a4/1C2b4/4pNp2/9/9/9/2n1BCN2/3rAp3/1cBAK4 w - - 0 1"]
+1.马四进三 将5平6
+2.后马进四 士5进6
+3.马四进五 士6退5
+4.马五退四 士5进6
+5.马四进六 士6退5
+6.马六进四 士5进6
+7.马四进六 士6退5
+8.马三退四 士5进6
+9.马四退六 士6退5
+10.后马退四 士5进6
+11.马四进三 士6退5
+12.马三进二 将6进1
+13.马二退四 将6进1
+14.马六退五 将6退1
+15.马五进四
+1-0 {红胜}

@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "340关.三国演义.街亭失守"]
+[Round "11"]
+[PlyCount "21"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg340"]
+[FEN "4kabC1/4a2P1/2N1n4/9/2N6/9/9/5n3/2pRp4/3K5 w - - 0 1"]
+1.车六进八 士5退4
+2.后马进六 将5进1
+3.马六退五 将5平6
+4.兵二平三 马5退7
+5.马七退五 将6平5
+6.前马进三 将6退1
+7.马五进六
+1-0 {红胜}

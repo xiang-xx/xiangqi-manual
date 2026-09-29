@@ -1,0 +1,57 @@
+{
+  "id": "sqy-143",
+  "title": "见害必避",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak1r2/4aP1R1/b3c4/8p/9/2R6/r8/4B2C1/p3A4/4K1B2 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "车二平五",
+      "uci": "h8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车七进五",
+      "uci": "c4c9"
+    },
+    {
+      "san": "象1退3",
+      "uci": "a7c9"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车7平5",
+      "uci": "g9e9"
+    },
+    {
+      "san": "车五平六",
+      "uci": "e7d7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

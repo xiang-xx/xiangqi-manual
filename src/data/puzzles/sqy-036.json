@@ -1,0 +1,58 @@
+{
+  "id": "sqy-036",
+  "title": "鹤鸣九皋",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k1b2/4a3n/1C1ab1R2/1NR6/2r1C4/9/9/4BA3/1n1p1p3/c1rAK1N2 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮八平五",
+      "uci": "b7e7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车三进二",
+      "uci": "g7g9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车三平六",
+      "uci": "g9d9"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车七进三",
+      "uci": "c6c9"
+    },
+    {
+      "san": "后车退4",
+      "uci": "c5c9"
+    },
+    {
+      "san": "后炮平六",
+      "uci": "e5d5"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

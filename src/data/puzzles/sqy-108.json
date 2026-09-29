@@ -1,0 +1,58 @@
+{
+  "id": "sqy-108",
+  "title": "争舟走渡",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak4/4aPP2/4b4/3N5/2r1C4/9/9/C2R2nr1/4Ap3/3AK3c r - - 0 1",
+  "solution": [
+    {
+      "san": "兵四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "马六进七",
+      "uci": "d6c8"
+    },
+    {
+      "san": "车3退3",
+      "uci": "c5c8"
+    },
+    {
+      "san": "炮九进七",
+      "uci": "a2a9"
+    },
+    {
+      "san": "象3进1",
+      "uci": "c9a7"
+    },
+    {
+      "san": "炮五进三",
+      "uci": "e5e8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "车六进七",
+      "uci": "d2d9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

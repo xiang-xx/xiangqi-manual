@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "124关.春秋五霸.庄公东征"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg124"]
+[FEN "3a1a1C1/2PcPnC2/2nkb3R/9/2b6/9/9/9/5p3/2rAK1p2 w - - 0 1"]
+    1.炮二平六 炮4进8
+    2.炮三退一 象5进7
+    3.炮三平七 象7退9
+    4.兵七平六
+1-0 {红胜}

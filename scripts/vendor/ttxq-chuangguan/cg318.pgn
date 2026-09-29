@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "318关.三国演义.奇袭荆州"]
+[Round "17"]
+[PlyCount "33"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg318"]
+[FEN "C3k4/4a2R1/N2c5/9/6n2/9/9/4B4/3r1p3/4K4 w - - 0 1"]
+1.马九进八 士5退4
+2.马八退六 士4进5
+3.车二进一 士5退6
+4.车二平四 将5进1
+ {黑将不能吃红车，否则后面红方有马后炮杀棋}
+5.车四退一 将5进1
+6.炮九退二 炮4进5
+7.马六退八 炮4退5
+8.马八退六 炮4退2
+9.车四平五 将5平4
+10.马六进八
+1-0 {红胜}

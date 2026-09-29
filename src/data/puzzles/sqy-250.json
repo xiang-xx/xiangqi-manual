@@ -1,0 +1,49 @@
+{
+  "id": "sqy-250",
+  "title": "雁阵排空",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "6c2/5k3/1N2b4/4C4/2b2C3/3R5/9/6n2/7r1/4K3c r - - 0 1",
+  "solution": [
+    {
+      "san": "炮五平四",
+      "uci": "e6f6"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f8e8"
+    },
+    {
+      "san": "马八进七",
+      "uci": "b7c9"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "马七退六",
+      "uci": "c9d7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "前炮平六",
+      "uci": "f6d6"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

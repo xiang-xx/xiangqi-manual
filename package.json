@@ -18,7 +18,9 @@
     "fetch-opening-gaps": "node scripts/fetch-opening-gaps.js",
     "fetch-guogong-ai": "node scripts/fetch-guogong-ai.js",
     "fetch-recent-elite": "node scripts/fetch-recent-elite.js",
-    "extract-variations": "node scripts/extract-variations.js"
+    "import-classic-puzzles": "node scripts/import-classic-puzzles.js",
+    "extract-variations": "node scripts/extract-variations.js",
+    "fetch-pikafish-assets": "node scripts/fetch-pikafish-assets.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -29,6 +31,7 @@
     "expo-linking": "~57.0.11",
     "expo-router": "~57.0.23",
     "expo-status-bar": "~57.0.1",
+    "pikafish-engine": "file:./modules/pikafish-engine",
     "react": "19.2.3",
     "react-native": "0.86.3",
     "react-native-gesture-handler": "~2.32.0",

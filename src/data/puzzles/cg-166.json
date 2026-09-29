@@ -1,0 +1,66 @@
+{
+  "id": "cg-166",
+  "title": "复兴规划",
+  "tags": [
+    "高级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 4,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2b1ka3/4a3c/4b4/6n2/7RN/9/9/3CCR3/2rp1p3/4KAr1c r - - 0 1",
+  "solution": [
+    {
+      "san": "车四进七",
+      "uci": "f2f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "车二进四",
+      "uci": "h5h9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "炮六进六",
+      "uci": "d2d8"
+    },
+    {
+      "san": "士5进4",
+      "uci": "e8d7"
+    },
+    {
+      "san": "马一进二",
+      "uci": "i5h7"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "车二平四",
+      "uci": "h9f9"
+    },
+    {
+      "san": "后炮平6",
+      "uci": "i8f8"
+    },
+    {
+      "san": "马二进三",
+      "uci": "h7g9"
+    }
+  ],
+  "comments": {
+    "10": "红胜"
+  },
+  "source": "天天象棋残局挑战"
+}

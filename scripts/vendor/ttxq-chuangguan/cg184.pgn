@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "184关.战国七雄.阴晋之战"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg184"]
+[FEN "9/4an3/3k2n2/2R2R3/3cP4/2rNPpr2/3C2p2/5K3/4p4/2cC5 w - - 0 1"]
+1.车七平六 将4平5
+2.前兵进一 马6进5
+3.车六平五 马7进5
+4.车四平五 将5平4
+5.车五平六 将4平5
+6.炮六平五 炮4平5
+7.兵五进一 将5平6
+8.车六平四
+1-0 {红胜}

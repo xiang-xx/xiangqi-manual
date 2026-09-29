@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "271关.三国演义.穰山败刘"]
+[Round "15"]
+[PlyCount "29"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg271"]
+[FEN "9/5PC2/1R1ak4/9/2P6/9/4P4/3pp4/3pr4/5K3 w - - 0 1"]
+1.车八退三 卒5平6
+2.车八平五 将5平6
+3.车五平四 将6平5
+4.车四退二 士4退5
+5.炮三平五 车5进1
+6.帅四平五 前卒平3
+7.帅五平四 将5平4
+8.车四平六 将4平5
+9.兵五进一 卒3平2
+10.兵五进一 卒2平3
+11.兵五进一
+1-0 {红胜}

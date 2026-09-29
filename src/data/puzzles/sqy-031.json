@@ -1,0 +1,58 @@
+{
+  "id": "sqy-031",
+  "title": "兵贵拙速",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k1br1/r3aPRN1/2Rab1P1n/8p/6P2/8C/9/9/3p1p3/4K2c1 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "车1平5",
+      "uci": "a8e8"
+    },
+    {
+      "san": "车三进一",
+      "uci": "g8g9"
+    },
+    {
+      "san": "象5退7",
+      "uci": "e7g9"
+    },
+    {
+      "san": "炮一平五",
+      "uci": "i4e4"
+    },
+    {
+      "san": "车5平1",
+      "uci": "e8a8"
+    },
+    {
+      "san": "马二退四",
+      "uci": "h8f7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车七进二",
+      "uci": "c7c9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

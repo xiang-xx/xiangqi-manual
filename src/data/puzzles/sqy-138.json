@@ -1,0 +1,58 @@
+{
+  "id": "sqy-138",
+  "title": "群雄割据",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2baka3/3N4C/4b4/1r2PR3/9/9/4c4/2nR3C1/5p2r/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车四进三",
+      "uci": "f6f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e6e7"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车四退二",
+      "uci": "f9f7"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e7e8"
+    },
+    {
+      "san": "炮二进六",
+      "uci": "h2h8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车四进二",
+      "uci": "f7f9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

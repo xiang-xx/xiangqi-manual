@@ -1,0 +1,57 @@
+{
+  "id": "sqy-400",
+  "title": "避难而行",
+  "tags": [
+    "中级",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2b1ka3/4a4/4b4/1N2p3p/2NC5/5n3/4c1PCc/4p4/5K3/9 r - - 0 1",
+  "solution": [
+    {
+      "san": "马八进七",
+      "uci": "b6c8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "前马退六",
+      "uci": "c8d6"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "马六进七",
+      "uci": "d6c8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "前马退五",
+      "uci": "c8e7"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "炮二进六",
+      "uci": "h3h9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

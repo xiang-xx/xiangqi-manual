@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "111关.楚汉争霸"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg111"]
+[FEN "3a1k3/1N2a4/9/6N2/4R4/9/9/9/3p1r3/4K4 w - - 0 1"]
+1.马三进二 将6进1
+2.马八退六 士5进4
+ {红方弃左马挂士角叫将，引黑士散开露出中路，红车才能顺利借中帅逼杀黑将}
+3.马二退三 将6退1
+4.车五进四
+1-0 {红胜}

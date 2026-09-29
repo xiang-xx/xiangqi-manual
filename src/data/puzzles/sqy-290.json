@@ -1,0 +1,50 @@
+{
+  "id": "sqy-290",
+  "title": "莘野邀汤",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak4/r2PaRR2/1n2N3b/4p1n2/9/9/9/4C4/2p1App2/2B1KAB1c r - - 0 1",
+  "solution": [
+    {
+      "san": "兵六进一",
+      "uci": "d8d9"
+    },
+    {
+      "san": "士5退4",
+      "uci": "e8d9"
+    },
+    {
+      "san": "马五进六",
+      "uci": "e7d9"
+    },
+    {
+      "san": "车1平5",
+      "uci": "a8e8"
+    },
+    {
+      "san": "车四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e8e9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

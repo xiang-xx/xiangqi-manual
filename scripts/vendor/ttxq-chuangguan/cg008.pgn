@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "008关.楚汉争霸.第8关"]
+[Round "2"]
+[PlyCount "3"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg008"]
+[FEN "3k3C1/4c4/3P1a1N1/9/9/9/9/9/4r4/3p1K3 w - - 0 1"]
+1.马二进三 炮5退1
+2.马三退五
+1-0 {红胜}

@@ -1,0 +1,50 @@
+{
+  "id": "sqy-223",
+  "title": "军中烈士",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3akr3/R4r2C/3a5/9/9/9/9/6n2/C2pA4/1R2K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车九平五",
+      "uci": "a8e8"
+    },
+    {
+      "san": "士4退5",
+      "uci": "d7e8"
+    },
+    {
+      "san": "炮一进一",
+      "uci": "i8i9"
+    },
+    {
+      "san": "后车平9",
+      "uci": "f9i9"
+    },
+    {
+      "san": "炮九进一",
+      "uci": "a1a2"
+    },
+    {
+      "san": "卒4平3",
+      "uci": "d1c1"
+    },
+    {
+      "san": "炮九进七",
+      "uci": "a2a9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "268关.三国演义.奇袭乌巢"]
+[Round "17"]
+[PlyCount "33"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg268"]
+[FEN "3k2b2/4PP3/4b4/1P7/9/4R1p2/9/4B4/1p1rAp3/4K4 w - - 0 1"]
+1.车五平六 车4退3
+ {红方妙着！红方一招弃车叫将，引黑车离开宫腰位置，为自己赢得一步生死棋的时间！}
+2.兵四进一 卒6进1
+3.士五退四 车4进4
+4.帅五进一 车4退1
+5.帅五退一 车4平5
+6.帅五进一 卒7平6
+7.兵四平五
+1-0 {红胜}

@@ -1,0 +1,58 @@
+{
+  "id": "sqy-003",
+  "title": "羝羊触藩",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "1rbckaP2/3PaP1r1/1P2b4/1R7/Nn7/CRBp1n3/4C4/9/4p1p2/1c3K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵三平四",
+      "uci": "g9f9"
+    },
+    {
+      "san": "炮4平6",
+      "uci": "d9f9"
+    },
+    {
+      "san": "兵六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "炮五平六",
+      "uci": "e3d3"
+    },
+    {
+      "san": "马2退4",
+      "uci": "b5d6"
+    },
+    {
+      "san": "前车平六",
+      "uci": "b6d6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

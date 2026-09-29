@@ -1,0 +1,58 @@
+{
+  "id": "sqy-303",
+  "title": "板筑隐贤",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2brk3C/4a4/3ab3n/2p3N2/4C4/2P6/9/B1p1B4/c2pA1p2/c3KA3 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮一平六",
+      "uci": "i9d9"
+    },
+    {
+      "san": "前炮退2",
+      "uci": "a0a2"
+    },
+    {
+      "san": "炮六退八",
+      "uci": "d9d1"
+    },
+    {
+      "san": "前炮进1",
+      "uci": "a1a0"
+    },
+    {
+      "san": "马三进五",
+      "uci": "g6e7"
+    },
+    {
+      "san": "前炮退1",
+      "uci": "a0a1"
+    },
+    {
+      "san": "马五退六",
+      "uci": "e7d5"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "马六进七",
+      "uci": "d5c7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

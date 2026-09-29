@@ -1,0 +1,58 @@
+{
+  "id": "cg-275",
+  "title": "徐庶荐贤",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k1ab2/n1P6/3ab4/2pN5/4p1c2/1N7/9/4B4/5p3/1rBCK1Crc r - - 0 1",
+  "solution": [
+    {
+      "san": "马六进四",
+      "uci": "d6f7"
+    },
+    {
+      "san": "士4退5",
+      "uci": "d7e8"
+    },
+    {
+      "san": "马八进六",
+      "uci": "b4d5"
+    },
+    {
+      "san": "士5进4",
+      "uci": "e8d7"
+    },
+    {
+      "san": "马六进五",
+      "uci": "d5e7"
+    },
+    {
+      "san": "士4退5",
+      "uci": "d7e8"
+    },
+    {
+      "san": "马五退六",
+      "uci": "e7d5"
+    },
+    {
+      "san": "士5进4",
+      "uci": "e8d7"
+    },
+    {
+      "san": "兵七平六",
+      "uci": "c8d8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

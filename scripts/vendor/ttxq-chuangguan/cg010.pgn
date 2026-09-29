@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "010关.楚汉争霸.破釜沉舟"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg010"]
+[FEN "2n1k4/2P1a4/1C1r1a3/9/9/9/9/9/9/4K4 w - - 0 1"]
+1.炮八进二 车4退2
+2.兵七进一 将5平6
+3.兵七平六 将6进1
+4.兵六平五 士5进4
+5.炮八退一
+1-0 {红胜}

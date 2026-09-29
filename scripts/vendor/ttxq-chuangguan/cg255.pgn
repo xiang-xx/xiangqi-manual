@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "255关.三国演义.射戟辕门"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg255"]
+[FEN "3R1a3/3Rck3/3n5/3PPP3/3P5/3c5/3r5/3r5/3C5/3K5 w - - 0 1"]
+1.兵四进一 将6进1
+2.前车平四 马4退6
+3.兵五进一 将6平5
+ {红方弃兵引请将，让将前无子可以遮挡。红方另外也可以改走 车六退一，
+炮5进1，兵五平四。黑炮自封将门，红胜}
+4.车六退一
+1-0 {红胜}

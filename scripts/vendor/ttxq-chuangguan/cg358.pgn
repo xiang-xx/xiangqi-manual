@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "358关.三国演义.刘禅投降"]
+[Round "10"]
+[PlyCount "19"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg358"]
+[FEN "3k2b2/4a3C/3rb4/n6Cc/5R3/9/9/4B4/3pp4/2B2K3 w - - 0 1"]
+1.炮二进三 士5退6
+2.车四进四 将4进1
+3.炮二退一
+1-0 {红胜}

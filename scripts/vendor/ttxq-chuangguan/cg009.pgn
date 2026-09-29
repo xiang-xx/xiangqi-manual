@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "009关.楚汉争霸.第9关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg009"]
+[FEN "3ak4/4a1P2/9/9/9/9/9/5r3/9/4K3R w - - 0 1"]
+1.车一进九 车6退7
+2.车一平三 车6平7
+3.兵三进一
+1-0 {红胜}

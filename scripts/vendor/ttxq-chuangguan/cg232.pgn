@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "232关.战国七雄.平定嫪毐"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg232"]
+[FEN "5k1n1/c3a4/5aR1b/6N2/2r5C/9/9/9/3p1p3/4K1R2 w - - 0 1"]
+ {同《适情雅趣》第185局 酸毒道路（李浭版，共551局），借路}
+1.前车进二 象9退7
+2.马三进二 炮1平8
+3.车三进九 将6进1
+4.车三退一 将6退1
+5.炮一进四 马8进6
+ {妙！红炮沉底叫将，逼黑马逃走并堵住黑将的一条退路。然后红方车炮闷杀黑将}
+6.车三进一
+1-0 {红胜}

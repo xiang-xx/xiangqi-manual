@@ -1,0 +1,30 @@
+﻿[Game "Chinese Chess"]
+[Event "228关.战国七雄.毛遂自荐"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg228"]
+[FEN "2b1P4/4ak1P1/1N7/3N2r2/6b1c/9/6P2/9/3p5/crC1KC3 w - - 0 1"]
+1.兵二平三 车7退2
+2.马六退四 士5进6
+3.马四退六 士6退5
+4.马六退四 士5进6
+5.马四退六 士6退5
+6.马六退四 士5进6
+7.马四退六 士6退5
+ {红马借炮使马，成功垫马入位，把被黑方车炮套牢的红炮放出来，助攻叫杀}
+8.炮七进八 士5进4
+9.马八进六 士4退5
+10.马六退五 将6进1
+11.马五退四 
+1-0 {红胜}

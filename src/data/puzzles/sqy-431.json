@@ -1,0 +1,47 @@
+{
+  "id": "sqy-431",
+  "title": "能为必胜",
+  "tags": [
+    "中级",
+    "车类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a1k3/2R1a4/b8/9/2b6/9/9/9/9/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车七退三",
+      "uci": "c8c5"
+    },
+    {
+      "san": "象1退3",
+      "uci": "a7c9"
+    },
+    {
+      "san": "车七平四",
+      "uci": "c5f5"
+    },
+    {
+      "san": "士5进6",
+      "uci": "e8f7"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f5f6"
+    },
+    {
+      "san": "象3进1",
+      "uci": "c9a7"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f6f7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

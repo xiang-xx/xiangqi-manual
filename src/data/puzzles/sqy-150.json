@@ -1,0 +1,58 @@
+{
+  "id": "sqy-150",
+  "title": "吕帅鹰扬",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3aka2R/1R7/c1P2P3/2P1rr3/2N5C/7C1/9/3p5/4p4/1p1K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "车一平四",
+      "uci": "i9f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "车八平四",
+      "uci": "b8f8"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "兵四平五",
+      "uci": "f7e7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e8d8"
+    },
+    {
+      "san": "前兵进一",
+      "uci": "c7c8"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

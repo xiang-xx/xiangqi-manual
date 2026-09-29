@@ -1,0 +1,21 @@
+﻿[Game "Chinese Chess"]
+[Event "013关.楚汉争霸.第13关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg013"]
+[FEN "7P1/2N4P1/5k3/9/9/4N4/5n3/3p5/4p4/3K5 w - - 0 1"]
+1.马五进六 将6退1
+2.后兵平三 将6退1
+3.兵二平三
+1-0 {红胜}

@@ -1,0 +1,48 @@
+{
+  "id": "sqy-368",
+  "title": "四门斗底",
+  "tags": [
+    "中级",
+    "车类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k4/9/3aP4/9/9/9/3p1p3/4R4/3p1p3/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "兵五平六",
+      "uci": "e7d7"
+    },
+    {
+      "san": "后卒平5",
+      "uci": "d3e3"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e2e3"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "兵六进一",
+      "uci": "d7d8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车五平六",
+      "uci": "e3d3"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "125关.春秋五霸.一鼓作气"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg125"]
+[FEN "3P1kb1R/2C1a4/2R1b4/2C6/9/9/9/3r1p3/4K4/3p1r3 w - - 0 1"]
+    1.车一平三 象5退7
+    2.车七平四 士5进6
+    3.兵六平五 将6进1
+    4.后炮平四
+{将在二楼，或者将在中线，同时还有士的局面下，最怕十字炮的叫将}
+1-0 {红胜}

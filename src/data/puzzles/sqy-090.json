@@ -1,0 +1,50 @@
+{
+  "id": "sqy-090",
+  "title": "骅骝争先",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3aka3/1R1N5/1c2b1c2/1Np1p1p2/6n2/C6R1/2P1P4/2n1C4/4Ap2r/r2AK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮五进四",
+      "uci": "e2e6"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "车八退一",
+      "uci": "b8b7"
+    },
+    {
+      "san": "车1退1",
+      "uci": "a0a1"
+    },
+    {
+      "san": "马六退七",
+      "uci": "d8c6"
+    },
+    {
+      "san": "车1进1",
+      "uci": "a1a0"
+    },
+    {
+      "san": "车八进二",
+      "uci": "b7b9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

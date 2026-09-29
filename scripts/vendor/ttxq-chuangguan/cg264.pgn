@@ -1,0 +1,31 @@
+﻿[Game "Chinese Chess"]
+[Event "264关.三国演义.关羽降汉"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg264"]
+[FEN "9/1r1P5/5k3/1r3CN2/2p6/6B2/2R6/2N2p3/3p2p2/4K4 w - - 0 1"]
+1.炮四平七 卒4平5
+2.马七退五 前车进6
+3.马五退七 前车平3
+4.车七退三 卒6平5
+5.相三退五 卒7平6
+6.车七平六 卒6平5
+7.帅五进一 车2进7
+8.帅五退一 车2退6
+9.相五进七 车2平5
+10.马三进五 卒3进1
+11.炮七进一 将6退1
+12.马五进六 将6退1
+13.炮七进二 
+1-0 {红胜}

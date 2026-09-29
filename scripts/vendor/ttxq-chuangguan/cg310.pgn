@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "310关.三国演义.甘宁劫营"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg310"]
+[FEN "2Pakcb2/c1rP1P2C/3ab3r/1n3Nn2/9/8C/3N5/9/4p4/3p1K3 w - - 0 1"]
+1.兵七平六 炮6平4
+2.前炮进一 车9退2
+ {红方进炮强攻，吸引黑车离开三楼，为后面红马在三楼的叫将提供机会}
+3.炮一平五 士4退5
+4.兵四平五 将5平6
+5.兵五进一 将6进1
+6.炮五平四 马7进6
+ {红方弃炮叫将，吸引黑马离位。这样红方四路的别腿马才有机会解脱，并转移到三楼叫将}
+7.马四进二 将6进1
+8.马六进五
+1-0 {红胜}

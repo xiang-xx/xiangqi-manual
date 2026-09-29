@@ -1,0 +1,55 @@
+{
+  "id": "sqy-432",
+  "title": "功成则退",
+  "tags": [
+    "中级",
+    "车类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "9/4aR3/3k1a2b/9/6b2/9/9/9/9/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车四退一",
+      "uci": "f8f7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "车四平一",
+      "uci": "f7i7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d8d9"
+    },
+    {
+      "san": "车一进二",
+      "uci": "i7i9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "车一退三",
+      "uci": "i9i6"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车一平六",
+      "uci": "i6d6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

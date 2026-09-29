@@ -1,0 +1,50 @@
+{
+  "id": "sqy-200",
+  "title": "落花流水",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a1k3/R3a4/4b1P2/3R4C/9/4C1N2/r8/9/2r1p4/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六进三",
+      "uci": "d6d9"
+    },
+    {
+      "san": "士5退4",
+      "uci": "e8d9"
+    },
+    {
+      "san": "车九平四",
+      "uci": "a8f8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "兵三进一",
+      "uci": "g7g8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "马三进二",
+      "uci": "g4h6"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

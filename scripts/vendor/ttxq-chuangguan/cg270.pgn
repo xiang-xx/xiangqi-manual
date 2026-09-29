@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "270关.三国演义.智夺冀州"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg270"]
+[FEN "4ka3/3P1P1n1/4b4/3N5/C1R6/9/2n6/4c4/3r5/r1c1K4 w - - 0 1"]
+1.兵四进一 将5平6
+2.车七平四 将6平5
+3.炮九平五 象5退7
+4.马六进五 象7进5
+5.马五退三 象5进7
+6.马三退五 象7退5
+7.马五进七 象5退7
+8.兵六平五
+1-0 {红胜}

@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "327关.三国演义.孙权求魏"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg327"]
+[FEN "R3CNb2/1r2a1P2/1Pnk1a3/p8/9/9/9/3A5/c1p6/1rBK1A3 w - - 0 1"]
+1.兵八平七 将4退1
+2.车九平六 士5退4
+ {红方弃车强行叫将，逼黑方下中士，这样红炮才能成功逃脱，并救活红方别腿马}
+3.炮五退九 将4平5
+4.士六退五 象7进5
+5.士五进四 象5退3
+ {红方连续借炮移仕，露出六路红帅，占线助杀}
+6.马四退五 将5进1
+7.仕四退五
+1-0 {红胜}

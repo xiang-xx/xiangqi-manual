@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "005关.楚汉争霸.揭竿而起"]
+[Round "2"]
+[PlyCount "3"]
+[Date "2020.03.14"]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg005"]
+[FEN "2R6/3ka4/r1Na5/9/9/9/9/9/3r1p3/4K4 w - - 0 1"]
+1.车七平六 士5退4
+2.马七进八
+1-0 {红胜}

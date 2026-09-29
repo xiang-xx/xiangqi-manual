@@ -1,0 +1,32 @@
+﻿[Game "Chinese Chess"]
+[Event "262关.三国演义.曹操煮酒"]
+[Round "0"]
+[PlyCount "25"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg262"]
+[FEN "2b2CP2/1P7/4k4/4cP3/9/r8/1p7/3pB4/2pR5/3K5 w - - 0 1"]
+1.兵四平五 将5退1
+2.车六平七 车1平5
+ {红车吃二楼卒，正着！}
+3.车七进七 将5退1
+4.车七进一 将5进1
+5.车七退一 将5退1
+6.炮四退九 卒4进1
+7.帅六进一 车5平4
+8.帅六平五 车4平8
+9.兵五进一 车8进3
+10.帅五退一 车8平5
+11.帅五进一 将5平4
+12.兵五进一 卒2进1
+13.车七进一
+1-0 {红胜}

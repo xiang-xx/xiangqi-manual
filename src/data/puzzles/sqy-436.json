@@ -1,0 +1,55 @@
+{
+  "id": "sqy-436",
+  "title": "独行千里",
+  "tags": [
+    "中级",
+    "车类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k1ab2/4a4/8b/9/9/9/9/9/4K4/8R r - - 0 1",
+  "solution": [
+    {
+      "san": "车一平六",
+      "uci": "i0d0"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "帅五进一",
+      "uci": "e1e2"
+    },
+    {
+      "san": "象7进5",
+      "uci": "g9e7"
+    },
+    {
+      "san": "帅五退一",
+      "uci": "e2e1"
+    },
+    {
+      "san": "象5进3",
+      "uci": "e7c5"
+    },
+    {
+      "san": "车六平八",
+      "uci": "d0b0"
+    },
+    {
+      "san": "象9进7",
+      "uci": "i7g5"
+    },
+    {
+      "san": "车八进九",
+      "uci": "b0b9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

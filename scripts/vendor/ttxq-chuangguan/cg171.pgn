@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "171关.春秋五霸.伍员自尽"]
+[Round "8"]
+[PlyCount "15"]
+[Date "2020.03.14"]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg171"]
+[FEN "5k3/3PP4/b2Pb4/5P1C1/2c6/3p5/2r6/6p2/4r4/CR1K5 w - - 0 1"]
+1.车八进九 炮3退4
+2.车八平七 车3退6
+3.炮二退六 车5平6
+4.炮二平四 车3进9
+5.炮四平七 车6平3
+6.兵四进一 车3进1
+7.帅六进一 车3退1
+8.帅六退一
+{此时，红方有两条进攻路线: 右侧的兵四进一叫将；或者左侧的前兵进一，再前兵平五叫将。黑方无法解围。红胜。}
+1-0 {红胜}

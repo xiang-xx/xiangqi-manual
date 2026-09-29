@@ -1,0 +1,50 @@
+{
+  "id": "sqy-238",
+  "title": "长鲸授首",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "5a1C1/3ka4/4b4/7N1/1Rb6/9/9/5n3/2r1p4/c4K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮二退一",
+      "uci": "h9h8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "炮二退一",
+      "uci": "h8h7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "炮二进一",
+      "uci": "h7h8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车八进二",
+      "uci": "b5b7"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

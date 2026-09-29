@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "082关.楚汉争霸.第82关"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg082"]
+[FEN "2b1r1b2/3rnk3/3acac2/5n3/5P3/9/9/2p6/3pp2p1/2p2K3 w - - 0 1"]
+1.兵四进一 卒5平6
+2.帅四进一 卒8平7
+3.帅四进一 将6退1
+4.兵四进一 车5平4
+ {红兵借帅直冲，最终逼死黑将}
+5.兵四进一 将6平5
+6.兵四进一
+1-0 {红胜}

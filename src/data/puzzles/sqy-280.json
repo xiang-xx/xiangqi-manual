@@ -1,0 +1,57 @@
+{
+  "id": "sqy-280",
+  "title": "将机就机",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak4/1C2aR3/2n1c4/7N1/9/7R1/9/4C4/4A1rnr/3AK3c r - - 0 1",
+  "solution": [
+    {
+      "san": "车四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "马3退5",
+      "uci": "c7e8"
+    },
+    {
+      "san": "马二进三",
+      "uci": "h6g8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "炮八进一",
+      "uci": "b8b9"
+    },
+    {
+      "san": "马5退3",
+      "uci": "e8c9"
+    },
+    {
+      "san": "马三退五",
+      "uci": "g8e7"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车二平四",
+      "uci": "h4f4"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "cg-021",
+  "title": "第21关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bk2b2/4P1N2/2c4R1/9/9/9/9/4B2C1/3r1p3/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平六",
+      "uci": "h7d7"
+    },
+    {
+      "san": "车4退6",
+      "uci": "d1d7"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "炮二进六",
+      "uci": "h2h8"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

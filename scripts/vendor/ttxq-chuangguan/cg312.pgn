@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "312关.三国演义.汉水之战"]
+[Round "14"]
+[PlyCount "27"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg312"]
+[FEN "2bN3N1/3k3r1/b3RPn1c/9/3P5/5r3/4C4/7C1/6p2/1p2K4 w - - 0 1"]
+1.炮五平六 车6平4
+2.车五平六 将4进1
+ {红方弃车，逼请黑将上移，为后面红兵保持连续叫将，“借”来了宝贵的一步。
+请将杀，借步，是很多江湖棋局的常用杀法}
+3.兵六进一 将4退1
+4.兵六进一 将4退1
+5.兵六进一 车8平4
+6.马二退四
+1-0 {红胜}

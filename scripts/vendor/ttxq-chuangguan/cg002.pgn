@@ -1,0 +1,20 @@
+﻿[Game "Chinese Chess"]
+[Event "002关.楚汉争霸.第2关"]
+[Round "2"]
+[PlyCount "3"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg002"]
+[FEN "4kab2/3ra4/4b4/1R3N3/9/9/9/9/4r4/5K3 w - - 0 1"]
+1. 马四进三 将5平4
+2. 车八进三
+1-0 {红胜}

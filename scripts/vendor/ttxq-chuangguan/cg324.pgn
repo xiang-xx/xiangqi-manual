@@ -1,0 +1,27 @@
+﻿[Game "Chinese Chess"]
+[Event "324关.三国演义.曹植赋诗"]
+[Round "19"]
+[PlyCount "37"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg324"]
+[FEN "4k4/2P2P3/b3c4/9/4R1r2/9/4r1R2/1p6B/1p2pp3/3K2B2 w - - 0 1"]
+1.车三平五 车7平5
+2.车五进二 象1进3
+3.兵七平六 卒5平4
+4.帅六进一 卒6平5
+5.帅六退一 卒5平4
+6.帅六进一 前兵平3
+7.帅六退一 卒3进1
+8.帅六进一 卒2平3
+9.兵六平五
+1-0 {红胜}

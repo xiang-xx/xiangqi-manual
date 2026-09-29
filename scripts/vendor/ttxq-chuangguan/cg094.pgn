@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "094关.楚汉争霸.第94关"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg094"]
+[FEN "3nra3/3k5/2N6/2N6/4P1b2/9/9/5K3/9/9 w - - 0 1"]
+1.前马进九 将4平5
+2.马九进七
+ {红马沉底看将，趁机定住黑马，同时也关住了黑车。黑方只有一个象可以走}
+象7退5
+3.后马进五 将5进1
+4.兵五进一 将5退1
+5.兵五平六 将5平4
+6.兵六进一 将4平5
+ {红兵成功定住黑将。下一步红步走闲棋即可，而黑方无子可走}
+7.帅四退一
+1-0 {红胜}

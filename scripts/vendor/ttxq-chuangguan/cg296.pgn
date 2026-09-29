@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "296关.三国演义.卧龙吊丧"]
+[Round "11"]
+[PlyCount "21"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg296"]
+[FEN "9/C2ca4/3rbk3/7P1/N1R2P3/9/2R6/2C1p4/4p4/5K3 w - - 0 1"]
+1.炮七平六 象5进3
+2.车七平四 将6平5
+3.兵四进一 前卒进1
+4.帅四平五 车4进5
+5.马九进七 车4退4
+6.兵四平五 将5平4
+ {红兵大胆地平中叫将，顺便捉黑车。黑车因为被红马牵制，不能吃红兵}
+7.车四平六 卒5进1
+8.帅五进一 车4进3
+9.兵五进一 象3退5
+10.马七退五
+1-0 {红胜}

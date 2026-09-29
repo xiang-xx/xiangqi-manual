@@ -1,0 +1,42 @@
+{
+  "id": "cg-011",
+  "title": "第11关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak4/4c4/4bP3/1R3N3/2b6/3nC1p2/9/9/2r1r4/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "马四进六",
+      "uci": "f6d7"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "兵四进一",
+      "uci": "f7f8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车八平四",
+      "uci": "b6f6"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

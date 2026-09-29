@@ -1,0 +1,50 @@
+{
+  "id": "cg-206",
+  "title": "秦灭巴蜀",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak4/C2Ra4/N3b3R/1C5n1/9/2Bn5/9/B8/c1rp1p3/4Kc3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车一进二",
+      "uci": "i7i9"
+    },
+    {
+      "san": "士5退6",
+      "uci": "e8f9"
+    },
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "炮八进三",
+      "uci": "b6b9"
+    },
+    {
+      "san": "象3进1",
+      "uci": "c9a7"
+    },
+    {
+      "san": "炮九进一",
+      "uci": "a8a9"
+    }
+  ],
+  "comments": {
+    "6": "红胜"
+  },
+  "source": "天天象棋残局挑战"
+}

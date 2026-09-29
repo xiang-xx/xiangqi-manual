@@ -1,0 +1,30 @@
+﻿[Game "Chinese Chess"]
+[Event "343关.三国演义.夜袭陈仓"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg343"]
+[FEN "3k2b2/4P4/9/6P2/9/2p6/8R/8R/1pprAp1CC/c3K1p2 w - - 0 1"]
+1.后车平六 后卒平4
+2.车六退一 卒3平4
+3.车一平九 卒6平5
+4.炮一平五 卒2进1
+5.车九退三 卒4平5
+6.帅五进一 卒2平1
+7.兵三平四 卒7平6
+8.兵四平五 卒4平5
+9.后兵平六 卒5进1
+10.兵六进一 卒5进1
+11.帅五进一 卒6平5
+12.兵六进一
+1-0 {红胜}

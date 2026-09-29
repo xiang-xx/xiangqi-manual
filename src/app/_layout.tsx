@@ -17,8 +17,27 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: '#F7F3E8' },
         }}
       >
-        <Stack.Screen name="index" options={{ title: '象棋背谱' }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="manual/[id]" options={{ title: '棋谱' }} />
+        <Stack.Screen
+          name="puzzle/[id]"
+          options={{
+            title: '残棋',
+            headerStyle: { backgroundColor: '#2C1A0E' },
+            headerTintColor: '#F3E2C4',
+            contentStyle: { backgroundColor: '#24140C' },
+          }}
+        />
+        <Stack.Screen name="puzzle/solved" options={{ title: '已解残棋' }} />
+        <Stack.Screen
+          name="play/game"
+          options={{
+            title: '对弈',
+            headerStyle: { backgroundColor: '#2C1A0E' },
+            headerTintColor: '#F3E2C4',
+            contentStyle: { backgroundColor: '#24140C' },
+          }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );

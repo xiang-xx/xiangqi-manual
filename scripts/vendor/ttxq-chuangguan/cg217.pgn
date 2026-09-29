@@ -1,0 +1,31 @@
+﻿[Game "Chinese Chess"]
+[Event "217关.战国七雄.完璧归赵"]
+[Round "0"]
+[PlyCount "21"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg217"]
+[FEN "Nr2kc3/4a3n/2R3n2/4RN3/9/9/7C1/9/3p1pr2/4K4 w - - 0 1"]
+ {同《适情雅趣》第210局（李浭版，共551局），士马如云（车马炮联攻）
+}
+1.车五进二 马7退5
+2.马四进六 将5平4
+3.炮二平六 马5进4
+4.马六进四 马4退5
+5.车七平六 将4平5
+6.炮六平五 马5进6
+7.车六平五 马6退5
+8.车五进一 将5平4
+9.车五平九 将4平5
+10.马四退六 将5平4
+11.炮五平六
+1-0 {红胜}

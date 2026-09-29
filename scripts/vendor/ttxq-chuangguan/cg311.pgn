@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "311关.三国演义.计夺天荡"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg311"]
+[FEN "2bak4/C3a2NR/4b4/1C7/4n4/8P/2c2pc2/2r1B1r2/4ApNn1/3RKAB2 w - - 0 1"]
+1.炮八平五 前卒进1
+2.帅五平四 炮3退4
+3.车六进七 车3退4
+4.马二退四 将5平6
+5.车一平四 将6平5
+6.车四平五 将5平6
+7.车六进二
+1-0 {红胜}

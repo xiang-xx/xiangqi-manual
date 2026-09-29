@@ -1,0 +1,15 @@
+{
+  "name": "pikafish-engine",
+  "version": "1.0.0",
+  "description": "Pikafish UCI engine for Android (local Expo module)",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {},
+  "keywords": ["expo", "pikafish", "xiangqi"],
+  "license": "GPL-3.0-or-later",
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

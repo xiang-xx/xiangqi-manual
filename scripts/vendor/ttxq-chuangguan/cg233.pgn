@@ -1,0 +1,24 @@
+﻿[Game "Chinese Chess"]
+[Event "233关.战国七雄.秦灭韩"]
+[Round "6"]
+[PlyCount "11"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg233"]
+[FEN "5a2C/3NakCR1/6Nc1/3r2P1p/7n1/9/9/9/3p1p3/4K2cr w - - 0 1"]
+1.炮三平五 将6进1
+2.车二平四 将6退1
+ {红方弃车叫将，为的是下一步红马能保持连续叫将状态，不能有缓棋。只要停攻，就会立即被黑方反杀。}
+3.马三进二 将6进1
+4.炮一退二 马8退7
+5.兵三进一 
+1-0 {红胜}

@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "286关.三国演义.曹操赋诗"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg286"]
+[FEN "3ak4/3RaR3/8N/6N2/9/2B6/4P4/2r3n2/1r2p4/2BK5 w - - 0 1"]
+1.车四进一 将5平6
+2.马三进二 将6平5
+3.马一进三 将5平6
+4.马三退四 将6平5
+5.车六平五 士4进5
+ {红方妙着！上一步红马可以卧槽叫将，但被自己的红车别腿，不能发挥杀伤力。
+现在红方弃车杀士，正是为红马卧槽让路}
+6.马四进三 将5平6
+7.马三退五 将6平5
+8.马五进七
+1-0 {红胜}

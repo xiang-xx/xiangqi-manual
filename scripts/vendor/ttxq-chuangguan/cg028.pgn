@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "028关.楚汉争霸.第28关"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg028"]
+[FEN "1C2k4/9/3a5/9/9/9/2R1P4/6n2/C2p1r3/4K3c w - - 0 1"]
+1.车七进六 将5进1
+2.车七退一 将5进1
+3.炮八退二 士4退5
+4.炮九进六
+ {重炮将。红胜}
+1-0 

@@ -1,0 +1,58 @@
+{
+  "id": "sqy-131",
+  "title": "入幕之宾",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2bak3C/2C1aR2n/2n5N/9/7N1/9/9/1r6B/5p2r/3RK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "马3退5",
+      "uci": "c7e8"
+    },
+    {
+      "san": "车六进九",
+      "uci": "d0d9"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e9d9"
+    },
+    {
+      "san": "炮一平七",
+      "uci": "i9c9"
+    },
+    {
+      "san": "车2平1",
+      "uci": "b2a2"
+    },
+    {
+      "san": "前炮平八",
+      "uci": "c9b9"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "炮七进一",
+      "uci": "c8c9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

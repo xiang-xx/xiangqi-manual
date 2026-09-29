@@ -1,0 +1,58 @@
+{
+  "id": "sqy-093",
+  "title": "鱼骇月钩",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k2b1r/C4R3/P3b4/n2c1R3/9/1N7/9/4BA3/3p1p3/c1BAK4 r - - 0 1",
+  "solution": [
+    {
+      "san": "后车平六",
+      "uci": "f6d6"
+    },
+    {
+      "san": "将4平5",
+      "uci": "d9e9"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f8f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车四退一",
+      "uci": "f9f8"
+    },
+    {
+      "san": "将5退1",
+      "uci": "e8e9"
+    },
+    {
+      "san": "车四平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "车六进三",
+      "uci": "d6d9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

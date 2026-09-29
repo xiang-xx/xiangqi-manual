@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "103关.楚汉争霸.第103关"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg103"]
+[FEN "3k1ab2/1R1Na4/4b4/7n1/8C/9/9/r8/3p5/4KA3 w - - 0 1"]
+1.炮一平六 将4平5
+2.车八进一 士5退4
+3.车八平六 将5进1
+4.炮六平五 象5进3
+5.马六退五 象3退5
+6.马五进三 将5平6
+ {红方借黑象作炮架，马炮双将，黑方已无法防守}
+7.车六平四
+1-0 {红胜}

@@ -1,0 +1,58 @@
+{
+  "id": "sqy-043",
+  "title": "精忠报国",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "C4kbN1/R2Pa4/4ca3/4rNR2/6b2/6c2/9/4C4/4p3r/5K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车三进三",
+      "uci": "g6g9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车三退四",
+      "uci": "g9g5"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f8f9"
+    },
+    {
+      "san": "马二退三",
+      "uci": "h9g7"
+    },
+    {
+      "san": "炮5平7",
+      "uci": "e7g7"
+    },
+    {
+      "san": "兵六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "卒5平4",
+      "uci": "e1d1"
+    },
+    {
+      "san": "兵五进一",
+      "uci": "e8e9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

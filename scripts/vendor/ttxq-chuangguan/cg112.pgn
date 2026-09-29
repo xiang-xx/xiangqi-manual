@@ -1,0 +1,25 @@
+﻿[Game "Chinese Chess"]
+[Event "112关.楚汉争霸.第112关"]
+[Round "5"]
+[PlyCount "9"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg112"]
+[FEN "1N7/4ak3/2Ra5/9/4N4/9/9/5rn2/3p5/3AK1B2 w - - 0 1"]
+1.马五进三 将6进1
+2.车七平六 士5进4
+ {红方弃车杀士，引黑方中士散开，这样红马就少了一个别腿的障碍，
+才能保持连续叫将的杀势，否则只要有一步缓棋，黑方立马反击绝杀}
+3.马八退六 士4退5
+4.马三进二 将6退1
+5.马六退五
+1-0 {红胜}

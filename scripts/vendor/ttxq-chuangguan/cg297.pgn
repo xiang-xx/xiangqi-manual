@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "297关.三国演义.潼关败曹"]
+[Round "15"]
+[PlyCount "29"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg297"]
+[FEN "2b6/2P1nk3/4b2R1/1n7/N2P1P3/9/R8/3p1K3/4pp3/C7r w - - 0 1"]
+    1.炮九平二 车9退2
+    2.炮二进二 马5进3
+    3.兵七平六 马3进4
+    4.车九平四 卒4平5
+    5.帅四平五 车9平8
+    6.车二退五 马4进3
+    7.车四平七 马2进3
+    8.车七进一 将6退1
+    9.车七进五 将6进1
+    10.车二进六 将6进1
+    11.兵四进一 
+1-0 {红胜}

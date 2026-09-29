@@ -1,0 +1,50 @@
+{
+  "id": "sqy-140",
+  "title": "引龙出水",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4k3c/3Ra1P2/3ab1N2/9/2b6/9/9/3KCR3/1nr1p1r2/5C3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "士4退5",
+      "uci": "d7e8"
+    },
+    {
+      "san": "车四进七",
+      "uci": "f2f9"
+    },
+    {
+      "san": "将5平6",
+      "uci": "e9f9"
+    },
+    {
+      "san": "兵三进一",
+      "uci": "g8g9"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "兵三平四",
+      "uci": "g9f9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

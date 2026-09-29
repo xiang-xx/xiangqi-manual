@@ -1,0 +1,41 @@
+{
+  "id": "cg-026",
+  "title": "第26关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3k5/4a4/9/9/9/3N5/9/9/3p1pr2/1R2K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车八进九",
+      "uci": "b0b9"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d9d8"
+    },
+    {
+      "san": "马六进七",
+      "uci": "d4c6"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车八退二",
+      "uci": "b9b7"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

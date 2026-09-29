@@ -1,0 +1,50 @@
+{
+  "id": "cg-044",
+  "title": "第44关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "c1ba5/4k1N2/3abR3/9/9/9/9/5C3/2p1p4/1p1K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮四平五",
+      "uci": "f2e2"
+    },
+    {
+      "san": "象5进3",
+      "uci": "e7c5"
+    },
+    {
+      "san": "马三退五",
+      "uci": "g8e7"
+    },
+    {
+      "san": "将5平4",
+      "uci": "e8d8"
+    },
+    {
+      "san": "车四进一",
+      "uci": "f7f8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "炮五平六",
+      "uci": "e2d2"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

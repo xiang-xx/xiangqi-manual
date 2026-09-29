@@ -1,0 +1,23 @@
+﻿[Game "Chinese Chess"]
+[Event "066关.楚汉争霸.第66关"]
+[Round "3"]
+[PlyCount "5"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg066"]
+[FEN "2b1ka3/4a2N1/4b4/1R2p4/9/r8/4c2n1/4B4/4A3r/2BAKR3 w - - 0 1"]
+1.车四进九 士5退6
+ {红方舍车吃士叫将，引诱黑中士离位，红马才能顺利挂角叫将}
+2.马二退四 将5平4
+3.车八平六
+ {如果上一步黑方改走 将5进1，则红方 车八进二，红胜。}
+1-0 {红胜}

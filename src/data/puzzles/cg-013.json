@@ -1,0 +1,40 @@
+{
+  "id": "cg-013",
+  "title": "第13关",
+  "tags": [
+    "中级",
+    "马类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "7P1/2N4P1/5k3/9/9/4N4/5n3/3p5/4p4/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "马五进六",
+      "uci": "e4d6"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f7f8"
+    },
+    {
+      "san": "后兵平三",
+      "uci": "h8g8"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f8f9"
+    },
+    {
+      "san": "兵二平三",
+      "uci": "h9g9"
+    }
+  ],
+  "comments": {
+    "4": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

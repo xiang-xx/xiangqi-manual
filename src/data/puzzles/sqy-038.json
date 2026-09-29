@@ -1,0 +1,49 @@
+{
+  "id": "sqy-038",
+  "title": "百计无由",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3ak1bR1/4aP2r/9/2p3pC1/5Pc2/1RB6/7p1/9/5r3/4K4 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平三",
+      "uci": "h9g9"
+    },
+    {
+      "san": "炮7退4",
+      "uci": "g5g9"
+    },
+    {
+      "san": "前兵平五",
+      "uci": "f8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "炮二进三",
+      "uci": "h6h9"
+    },
+    {
+      "san": "炮7进2",
+      "uci": "g9g7"
+    },
+    {
+      "san": "车八进五",
+      "uci": "b4b9"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

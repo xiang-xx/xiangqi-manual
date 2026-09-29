@@ -1,0 +1,29 @@
+﻿[Game "Chinese Chess"]
+[Event "186关.战国七雄.邹忌变法"]
+[Round "5"]
+[PlyCount "9"]
+[Date "2020.03.14"]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg186"]
+[FEN "4kaPP1/c2Pa2nR/4b1P1r/6n2/6bN1/9/4C1R2/9/1r1p1p3/4K4 w - - 0 1"]
+1.前兵平四 将5平6
+2.车三平四 士5进6
+3.车四进四 马8进6
+4.车一平四 将6进1
+5.兵六平五 将6退1
+6.炮五平四 马6进5
+7.兵三平四 马5进6
+8.兵四进一 马7退6
+ {红方弃兵叫将，是为了吸引黑马或者黑炮吃子后，堵住象眼。
+这样底线的红兵就可以大胆地贴将叫杀}
+9.兵二平三
+1-0 {红胜}

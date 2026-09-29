@@ -1,0 +1,22 @@
+﻿[Game "Chinese Chess"]
+[Event "047关.楚汉争霸.第47关"]
+[Round "4"]
+[PlyCount "7"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg047"]
+[FEN "8R/5k3/2N4r1/9/1n3n3/4C4/9/5p3/2r1p1p2/5Kc2 w - - 0 1"]
+1.马七进六 将6平5
+2.车一退一 车8退1
+3.车一平二 将5退1
+4.马六退五， 绝杀完成
+1-0 {红胜}

@@ -1,0 +1,58 @@
+{
+  "id": "sqy-289",
+  "title": "汗马功劳",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1kbRC/3Ra4/9/2pPp4/3Nc4/9/4P4/3pB1N2/r2pA4/c3KAB2 r - - 0 1",
+  "solution": [
+    {
+      "san": "车二平三",
+      "uci": "h9g9"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f9f8"
+    },
+    {
+      "san": "车六平五",
+      "uci": "d8e8"
+    },
+    {
+      "san": "士4进5",
+      "uci": "d9e8"
+    },
+    {
+      "san": "车三退一",
+      "uci": "g9g8"
+    },
+    {
+      "san": "将6进1",
+      "uci": "f8f7"
+    },
+    {
+      "san": "兵六平五",
+      "uci": "d6e6"
+    },
+    {
+      "san": "炮1平2",
+      "uci": "a0b0"
+    },
+    {
+      "san": "前兵平四",
+      "uci": "e6f6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

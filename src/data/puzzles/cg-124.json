@@ -1,0 +1,50 @@
+{
+  "id": "cg-124",
+  "title": "庄公东征",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "3a1a1C1/2PcPnC2/2nkb3R/9/2b6/9/9/9/5p3/2rAK1p2 r - - 0 1",
+  "solution": [
+    {
+      "san": "炮二平六",
+      "uci": "h9d9"
+    },
+    {
+      "san": "炮4进8",
+      "uci": "d8d0"
+    },
+    {
+      "san": "炮三退一",
+      "uci": "g8g7"
+    },
+    {
+      "san": "象5进7",
+      "uci": "e7g5"
+    },
+    {
+      "san": "炮三平七",
+      "uci": "g7c7"
+    },
+    {
+      "san": "象7退9",
+      "uci": "g5i7"
+    },
+    {
+      "san": "兵七平六",
+      "uci": "c8d8"
+    }
+  ],
+  "comments": {
+    "6": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

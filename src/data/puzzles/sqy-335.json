@@ -1,0 +1,57 @@
+{
+  "id": "sqy-335",
+  "title": "蝶恋花心",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4R4/3k4r/4b4/7P1/6b2/7p1/9/C7B/4A2r1/2B1KA1p1 r - - 0 1",
+  "solution": [
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车五退一",
+      "uci": "e8e7"
+    },
+    {
+      "san": "将4退1",
+      "uci": "d7d8"
+    },
+    {
+      "san": "车五进一",
+      "uci": "e7e8"
+    },
+    {
+      "san": "将4进1",
+      "uci": "d8d7"
+    },
+    {
+      "san": "车五退二",
+      "uci": "e8e6"
+    },
+    {
+      "san": "象7退5",
+      "uci": "g5e7"
+    },
+    {
+      "san": "车五平六",
+      "uci": "e6d6"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

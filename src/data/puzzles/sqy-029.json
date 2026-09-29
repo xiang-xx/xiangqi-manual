@@ -1,0 +1,58 @@
+{
+  "id": "sqy-029",
+  "title": "四面楚歌",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2b1R1Nr1/1Nr2k3/9/C2R1P1n1/2bCp1P2/5pc2/9/5n3/2p1p4/3K5 r - - 0 1",
+  "solution": [
+    {
+      "san": "车五退一",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车3平5",
+      "uci": "c8e8"
+    },
+    {
+      "san": "马三退二",
+      "uci": "g9h7"
+    },
+    {
+      "san": "将6退1",
+      "uci": "f8f9"
+    },
+    {
+      "san": "炮九进三",
+      "uci": "a6a9"
+    },
+    {
+      "san": "象3进5",
+      "uci": "c9e7"
+    },
+    {
+      "san": "炮九平二",
+      "uci": "a9h9"
+    },
+    {
+      "san": "车5平2",
+      "uci": "e8b8"
+    },
+    {
+      "san": "车六进三",
+      "uci": "d6d9"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

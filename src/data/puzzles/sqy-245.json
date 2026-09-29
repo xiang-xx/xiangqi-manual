@@ -1,0 +1,56 @@
+{
+  "id": "sqy-245",
+  "title": "苍舒称象",
+  "tags": [
+    "中级",
+    "车类",
+    "炮类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "2ba1k3/4a4/9/9/9/4R4/9/2CrB4/3r5/2B1K3R r - - 0 1",
+  "solution": [
+    {
+      "san": "车五平四",
+      "uci": "e4f4"
+    },
+    {
+      "san": "士5进6",
+      "uci": "e8f7"
+    },
+    {
+      "san": "车四进三",
+      "uci": "f4f7"
+    },
+    {
+      "san": "将6平5",
+      "uci": "f9e9"
+    },
+    {
+      "san": "车四进二",
+      "uci": "f7f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车四退一",
+      "uci": "f9f8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车一进七",
+      "uci": "i0i7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "适情雅趣（经典局面）"
+}

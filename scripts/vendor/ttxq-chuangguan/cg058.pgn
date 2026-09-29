@@ -1,0 +1,28 @@
+﻿[Game "Chinese Chess"]
+[Event "058关.楚汉争霸.第58关"]
+[Round "7"]
+[PlyCount "13"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg058"]
+[FEN "2ba1ab2/4k4/9/9/5N3/9/9/1R2B3B/4r4/5K3 w - - 0 1"]
+1.马四进六 将5平4
+2.马六进四 将4平5
+3.车八进六 将5进1
+ {红车借叫将，移车到二楼，限制黑将活动范围}
+4.马四进二 将5平4
+ {红方不急于进攻，先走马，找到合适的进攻点位，再叫杀}
+5.马二进四 车5平6
+ {红方构成八角马杀势。黑方无解。}
+6.帅四进一 象3进5
+7.车八退一
+1-0 {红胜}

@@ -1,0 +1,30 @@
+﻿[Game "Chinese Chess"]
+[Event "231关.战国七雄.番吾之战"]
+[Round "0"]
+[PlyCount "-1"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg231"]
+[FEN "2b1ka3/4a4/4b4/1N2p3p/2NC5/5n3/4c1PCc/4p4/5K3/9 w - - 0 1"]
+ {同《适情雅趣》第400局 避难而行（李浭版，共551局），双马双炮联攻}
+1.马八进七 将5平4
+2.炮六进一 将4进1
+3.后马进八 将4退1
+4.炮二进六 象5退7
+5.炮二退二 前卒进1
+ {红方退炮，下一步有重炮的杀棋}
+6.帅四进一 士5进6
+7.马七退八 将4平5
+ {红方退马，下一步有马后炮的杀棋}
+8.后马进六 将5进1
+9.马八进七 
+1-0 {红胜}

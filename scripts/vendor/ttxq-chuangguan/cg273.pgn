@@ -1,0 +1,26 @@
+﻿[Game "Chinese Chess"]
+[Event "273关.三国演义.南漳遇士"]
+[Round "16"]
+[PlyCount "31"]
+[Date ""]
+[Site ""]
+[Red ""]
+[RedTeam ""]
+[Black ""]
+[BlackTeam ""]
+[Result "1-0"]
+[Opening ""]
+[Variation ""]
+[ECCO ""]
+[Generator "xiangqi-book-edit"]
+[Index "cg273"]
+[FEN "9/9/2nackN2/4p4/1RbNPP1C1/5p3/5C3/3p1K3/1pp3pn1/9 w - - 0 1"]
+1.兵四进一 将6退1
+2.兵四进一 将6平5
+3.兵四进一 将5退1
+4.兵四进一 将5平4
+5.马六进七 炮5平3
+6.炮二进四 将4进1
+7.车八进三 炮3退1
+8.车八平七
+1-0 {红胜}

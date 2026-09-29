@@ -1,0 +1,58 @@
+{
+  "id": "cg-031",
+  "title": "第31关",
+  "tags": [
+    "中级",
+    "车类",
+    "马类",
+    "炮类",
+    "兵类"
+  ],
+  "difficulty": 3,
+  "sideToMove": "red",
+  "goal": "red_win",
+  "goalLabel": "红先胜",
+  "startFen": "4kab2/4a4/2Ncb2C1/6p2/9/1R3RP2/P1r4r1/4B4/2n1A4/2BA1K3 r - - 0 1",
+  "solution": [
+    {
+      "san": "车八进五",
+      "uci": "b4b9"
+    },
+    {
+      "san": "象5退3",
+      "uci": "e7c9"
+    },
+    {
+      "san": "车八平七",
+      "uci": "b9c9"
+    },
+    {
+      "san": "士5退4",
+      "uci": "e8d9"
+    },
+    {
+      "san": "车四进五",
+      "uci": "f4f9"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e9e8"
+    },
+    {
+      "san": "车七退一",
+      "uci": "c9c8"
+    },
+    {
+      "san": "将5进1",
+      "uci": "e8e7"
+    },
+    {
+      "san": "车四退二",
+      "uci": "f9f7"
+    }
+  ],
+  "comments": {
+    "8": "将死，解题成功。"
+  },
+  "source": "天天象棋残局挑战"
+}

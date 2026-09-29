@@ -1,4 +1,4 @@
-/** 全 App 共用色板：宣纸列表 + 漆木棋盘 */
+/** 全 App 共用色板：宣纸列表 + 蜜黄棋盘 / 绒毡台面 */
 
 export const ink = {
   deep: '#1C2B22',
@@ -10,13 +10,21 @@ export const ink = {
 } as const;
 
 export const wood = {
-  lacquer: '#24140C',
-  header: '#2C1A0E',
-  cream: '#F0E0C4',
-  creamSoft: 'rgba(240, 224, 196, 0.62)',
-  creamFaint: 'rgba(240, 224, 196, 0.38)',
-  gold: '#C9A66B',
-  goldSoft: 'rgba(201, 166, 107, 0.45)',
-  dim: 'rgba(18, 8, 2, 0.32)',
+  /**
+   * 棋盘页台面与顶栏：干净绒毡绿（参考天天象棋桌面），
+   * 不用深色木纹图。
+   */
+  stage: '#456355',
+  header: '#456355',
+  lacquer: '#456355',
+  cream: '#F3E6C8',
+  creamSoft: 'rgba(243, 230, 200, 0.78)',
+  creamFaint: 'rgba(243, 230, 200, 0.48)',
+  gold: '#E0C080',
+  goldSoft: 'rgba(224, 192, 128, 0.45)',
+  /** 盘面：天天象棋式蜜黄，提亮不压暗 */
+  boardWash: 'rgba(255, 226, 170, 0.22)',
+  /** 底边厚度：单色略压暗 */
+  edgeWash: 'rgba(120, 78, 36, 0.16)',
   danger: '#E8B4A0',
 } as const;

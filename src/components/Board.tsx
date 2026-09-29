@@ -19,9 +19,10 @@ import Svg, {
 } from 'react-native-svg';
 
 import { boardFromFen } from '../lib/engine';
-import { BOARD_WOOD, TABLE_WOOD } from '../lib/pieceAssets';
+import { BOARD_WOOD } from '../lib/pieceAssets';
 import type { BoardPiece } from '../lib/pieces';
 import { indicesFromSquare, squareFromIndices, type Square } from '../lib/squares';
+import { wood } from '../lib/theme';
 import { FlyingPiece, LIFT_UP_MS, MOVE_EASING, MOVE_MS, PieceView, SLAM_MS } from './PieceView';
 
 type Props = {
@@ -65,21 +66,24 @@ export function Board({
   const grid = useMemo(() => boardFromFen(fen), [fen]);
   const targetSet = useMemo(() => new Set(legalTargets), [legalTargets]);
 
-  // 留足边距：外侧棋子 + 红/黑路数坐标
-  const pad = width * 0.072;
-  const boardW = width > 0 ? width - pad * 2 : 0;
+  // 尽量满宽：窄外框 + 够用的盘缘（棋子不贴边），立体底边不占格宽
+  const padX = width * 0.062;
+  const boardW = width > 0 ? width - padX * 2 : 0;
   const cell = boardW / 8;
-  const boardH = cell * 9;
-  const height = boardH + pad * 2;
   const pieceSize = cell * 0.9;
-  const faceInset = pad * 0.22;
-  const coordSize = Math.max(11, cell * 0.28);
+  const coordSize = Math.max(10, cell * 0.22);
+  const padY = pieceSize * 0.5 + coordSize * 1.4 + Math.max(10, width * 0.02);
+  const plateH = cell * 9 + padY * 2;
+  const radius = Math.max(12, width * 0.032);
+  const thickness = Math.max(9, width * 0.026);
+  const shadowH = Math.max(10, width * 0.026);
+  const height = plateH + thickness + shadowH * 0.45;
 
   // 逻辑坐标 → 屏幕坐标（翻转时 180° 旋转盘面，汉字朝向不变）
   const displayFile = (file: number) => (flipped ? 8 - file : file);
   const displayRank = (rankIndex: number) => (flipped ? 9 - rankIndex : rankIndex);
-  const xAt = (file: number) => pad + displayFile(file) * cell;
-  const yAt = (rankIndex: number) => pad + displayRank(rankIndex) * cell;
+  const xAt = (file: number) => padX + displayFile(file) * cell;
+  const yAt = (rankIndex: number) => padY + displayRank(rankIndex) * cell;
 
   const pieceOrigin = (square: Square) => {
     const { file, rankIndex } = indicesFromSquare(square);
@@ -178,344 +182,400 @@ export function Board({
     >
       {width > 0 && (
         <>
-          <Image
-            source={TABLE_WOOD}
-            style={[StyleSheet.absoluteFill, { borderRadius: 8 }]}
-            resizeMode="cover"
-          />
-
-          {/* 木纹盘面：不用 border，避免格线相对交叉点偏移 */}
-          <ImageBackground
-            source={BOARD_WOOD}
+          {/* 落桌投影 */}
+          <View
+            pointerEvents="none"
             style={{
               position: 'absolute',
-              left: faceInset,
-              top: faceInset,
-              width: width - faceInset * 2,
-              height: height - faceInset * 2,
-              borderRadius: 3,
+              left: width * 0.06,
+              right: width * 0.06,
+              top: plateH + thickness * 0.45,
+              height: shadowH,
+              borderRadius: radius,
+              backgroundColor: 'rgba(18, 8, 2, 0.22)',
+            }}
+          />
+          <View
+            pointerEvents="none"
+            style={{
+              position: 'absolute',
+              left: width * 0.14,
+              right: width * 0.14,
+              top: plateH + thickness * 0.7,
+              height: shadowH * 0.5,
+              borderRadius: radius,
+              backgroundColor: 'rgba(18, 8, 2, 0.1)',
+            }}
+          />
+
+          {/* 浅色实木盘体：盘面 + 底边厚度 */}
+          <View
+            style={{
+              width,
+              borderRadius: radius,
               overflow: 'hidden',
             }}
-            resizeMode="cover"
           >
-            <Svg width={width - faceInset * 2} height={height - faceInset * 2}>
-              {Array.from({ length: COLS }, (_, f) => {
-                const x = pad - faceInset + f * cell;
-                return f === 0 || f === 8 ? (
+            <View style={{ width, height: plateH }}>
+              <ImageBackground
+                source={BOARD_WOOD}
+                style={StyleSheet.absoluteFill}
+                resizeMode="cover"
+              >
+                <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.faceWash]} />
+                <Svg width={width} height={plateH}>
+                  {Array.from({ length: COLS }, (_, f) => {
+                    const x = padX + f * cell;
+                    return f === 0 || f === 8 ? (
+                      <Line
+                        key={`v-${f}`}
+                        x1={x}
+                        y1={padY}
+                        x2={x}
+                        y2={padY + cell * 9}
+                        stroke="#5A3A20"
+                        strokeWidth={1.8}
+                        strokeOpacity={0.88}
+                      />
+                    ) : (
+                      <G key={`v-${f}`}>
+                        <Line
+                          x1={x}
+                          y1={padY}
+                          x2={x}
+                          y2={padY + cell * 4}
+                          stroke="#6B4A2A"
+                          strokeWidth={1.1}
+                          strokeOpacity={0.8}
+                        />
+                        <Line
+                          x1={x}
+                          y1={padY + cell * 5}
+                          x2={x}
+                          y2={padY + cell * 9}
+                          stroke="#6B4A2A"
+                          strokeWidth={1.1}
+                          strokeOpacity={0.8}
+                        />
+                      </G>
+                    );
+                  })}
+
+                  {Array.from({ length: ROWS }, (_, r) => (
+                    <Line
+                      key={`h-${r}`}
+                      x1={padX}
+                      y1={padY + r * cell}
+                      x2={padX + cell * 8}
+                      y2={padY + r * cell}
+                      stroke="#6B4A2A"
+                      strokeWidth={r === 0 || r === 9 ? 1.8 : 1.1}
+                      strokeOpacity={r === 0 || r === 9 ? 0.88 : 0.8}
+                    />
+                  ))}
+
                   <Line
-                    key={`v-${f}`}
-                    x1={x}
-                    y1={pad - faceInset}
-                    x2={x}
-                    y2={pad - faceInset + cell * 9}
-                    stroke="#4A2F18"
-                    strokeWidth={1.8}
+                    x1={padX + cell * 3}
+                    y1={padY}
+                    x2={padX + cell * 5}
+                    y2={padY + cell * 2}
+                    stroke="#6B4A2A"
+                    strokeWidth={1.1}
+                    strokeOpacity={0.8}
                   />
-                ) : (
-                  <G key={`v-${f}`}>
-                    <Line
-                      x1={x}
-                      y1={pad - faceInset}
-                      x2={x}
-                      y2={pad - faceInset + cell * 4}
-                      stroke="#5C3D22"
-                      strokeWidth={1.1}
-                    />
-                    <Line
-                      x1={x}
-                      y1={pad - faceInset + cell * 5}
-                      x2={x}
-                      y2={pad - faceInset + cell * 9}
-                      stroke="#5C3D22"
-                      strokeWidth={1.1}
-                    />
-                  </G>
-                );
-              })}
+                  <Line
+                    x1={padX + cell * 5}
+                    y1={padY}
+                    x2={padX + cell * 3}
+                    y2={padY + cell * 2}
+                    stroke="#6B4A2A"
+                    strokeWidth={1.1}
+                    strokeOpacity={0.8}
+                  />
+                  <Line
+                    x1={padX + cell * 3}
+                    y1={padY + cell * 7}
+                    x2={padX + cell * 5}
+                    y2={padY + cell * 9}
+                    stroke="#6B4A2A"
+                    strokeWidth={1.1}
+                    strokeOpacity={0.8}
+                  />
+                  <Line
+                    x1={padX + cell * 5}
+                    y1={padY + cell * 7}
+                    x2={padX + cell * 3}
+                    y2={padY + cell * 9}
+                    stroke="#6B4A2A"
+                    strokeWidth={1.1}
+                    strokeOpacity={0.8}
+                  />
 
-              {Array.from({ length: ROWS }, (_, r) => (
-                <Line
-                  key={`h-${r}`}
-                  x1={pad - faceInset}
-                  y1={pad - faceInset + r * cell}
-                  x2={pad - faceInset + cell * 8}
-                  y2={pad - faceInset + r * cell}
-                  stroke="#5C3D22"
-                  strokeWidth={r === 0 || r === 9 ? 1.8 : 1.1}
-                />
-              ))}
+                  <SvgText
+                    x={width / 2 - cell * 1.5}
+                    y={padY + cell * 4.52}
+                    textAnchor="middle"
+                    fill="#5C3D22"
+                    opacity={0.36}
+                    fontSize={Math.max(13, cell * 0.34)}
+                    fontWeight="600"
+                  >
+                    楚 河
+                  </SvgText>
+                  <SvgText
+                    x={width / 2 + cell * 1.5}
+                    y={padY + cell * 4.52}
+                    textAnchor="middle"
+                    fill="#5C3D22"
+                    opacity={0.36}
+                    fontSize={Math.max(13, cell * 0.34)}
+                    fontWeight="600"
+                  >
+                    汉 界
+                  </SvgText>
+                </Svg>
+              </ImageBackground>
 
-              <Line
-                x1={pad - faceInset + cell * 3}
-                y1={pad - faceInset}
-                x2={pad - faceInset + cell * 5}
-                y2={pad - faceInset + cell * 2}
-                stroke="#5C3D22"
-                strokeWidth={1.1}
-              />
-              <Line
-                x1={pad - faceInset + cell * 5}
-                y1={pad - faceInset}
-                x2={pad - faceInset + cell * 3}
-                y2={pad - faceInset + cell * 2}
-                stroke="#5C3D22"
-                strokeWidth={1.1}
-              />
-              <Line
-                x1={pad - faceInset + cell * 3}
-                y1={pad - faceInset + cell * 7}
-                x2={pad - faceInset + cell * 5}
-                y2={pad - faceInset + cell * 9}
-                stroke="#5C3D22"
-                strokeWidth={1.1}
-              />
-              <Line
-                x1={pad - faceInset + cell * 5}
-                y1={pad - faceInset + cell * 7}
-                x2={pad - faceInset + cell * 3}
-                y2={pad - faceInset + cell * 9}
-                stroke="#5C3D22"
-                strokeWidth={1.1}
+              <View
+                pointerEvents="none"
+                style={[
+                  StyleSheet.absoluteFill,
+                  {
+                    borderRadius: radius,
+                    borderWidth: StyleSheet.hairlineWidth,
+                    borderColor: 'rgba(90, 55, 25, 0.18)',
+                  },
+                ]}
               />
 
-              <SvgText
-                x={(width - faceInset * 2) / 2 - cell * 1.5}
-                y={pad - faceInset + cell * 4.52}
-                textAnchor="middle"
-                fill="#6B4A2A"
-                opacity={0.42}
-                fontSize={Math.max(13, cell * 0.34)}
-                fontWeight="600"
-              >
-                楚 河
-              </SvgText>
-              <SvgText
-                x={(width - faceInset * 2) / 2 + cell * 1.5}
-                y={pad - faceInset + cell * 4.52}
-                textAnchor="middle"
-                fill="#6B4A2A"
-                opacity={0.42}
-                fontSize={Math.max(13, cell * 0.34)}
-                fontWeight="600"
-              >
-                汉 界
-              </SvgText>
+              {/* 落点标记：绝对定位在交叉点中心，避免被布局挤偏 */}
+              {Array.from({ length: ROWS }, (_, rankIndex) =>
+                Array.from({ length: COLS }, (_, file) => {
+                  const square = squareFromIndices(file, rankIndex);
+                  const piece = grid[rankIndex][file];
+                  const isTarget = targetSet.has(square);
+                  const isHint = hintFrom === square || hintTo === square;
+                  const isLastFrom = lastMove != null && lastMove.from === square;
+                  const isLastTo = lastMove != null && lastMove.to === square;
+                  if (!isTarget && !isHint && !isLastFrom && !isLastTo) return null;
 
-              {/* 路数：红中文 / 黑阿拉伯，贴在各自底线外侧；翻转后随之换边 */}
-              {Array.from({ length: COLS }, (_, file) => {
-                const x = pad - faceInset + displayFile(file) * cell;
-                const gridTop = pad - faceInset;
-                const gridBottom = pad - faceInset + cell * 9;
-                const margin = pad - faceInset;
-                const outsideTop = margin * 0.68;
-                const outsideBottom = gridBottom + margin * 0.52;
-                const redY = flipped ? outsideTop : outsideBottom;
-                const blackY = flipped ? outsideBottom : outsideTop;
-                return (
-                  <G key={`coord-${file}`}>
-                    <SvgText
-                      x={x}
-                      y={redY}
-                      textAnchor="middle"
-                      fill="#5C3D22"
-                      opacity={0.72}
-                      fontSize={coordSize}
-                      fontWeight="600"
-                    >
-                      {RED_FILE_LABELS[8 - file]}
-                    </SvgText>
-                    <SvgText
-                      x={x}
-                      y={blackY}
-                      textAnchor="middle"
-                      fill="#5C3D22"
-                      opacity={0.72}
-                      fontSize={coordSize}
-                      fontWeight="600"
-                    >
-                      {String(file + 1)}
-                    </SvgText>
-                  </G>
-                );
-              })}
-            </Svg>
-          </ImageBackground>
+                  const cx = xAt(file);
+                  const cy = yAt(rankIndex);
+                  const dot = cell * 0.18;
+                  const toHalo = pieceSize * 1.12;
+                  const fromRing = cell * 0.4;
+                  const fromCore = cell * 0.13;
+                  const markBox = Math.max(markSize, toHalo, fromRing * 1.4);
 
-          {/* 落点标记：绝对定位在交叉点中心，避免被布局挤偏 */}
-          {Array.from({ length: ROWS }, (_, rankIndex) =>
-            Array.from({ length: COLS }, (_, file) => {
-              const square = squareFromIndices(file, rankIndex);
-              const piece = grid[rankIndex][file];
-              const isTarget = targetSet.has(square);
-              const isHint = hintFrom === square || hintTo === square;
-              const isLastFrom = lastMove != null && lastMove.from === square;
-              const isLastTo = lastMove != null && lastMove.to === square;
-              if (!isTarget && !isHint && !isLastFrom && !isLastTo) return null;
-
-              const cx = xAt(file);
-              const cy = yAt(rankIndex);
-              const dot = cell * 0.18;
-              // moved.jpg：落点细白环；起点白芯+细环（无底影）
-              const toHalo = pieceSize * 1.12;
-              const fromRing = cell * 0.4;
-              const fromCore = cell * 0.13;
-              const markBox = Math.max(markSize, toHalo, fromRing * 1.4);
-
-              return (
-                <View
-                  key={`mark-${square}`}
-                  pointerEvents="none"
-                  style={{
-                    position: 'absolute',
-                    left: cx - markBox / 2,
-                    top: cy - markBox / 2,
-                    width: markBox,
-                    height: markBox,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 2,
-                  }}
-                >
-                  {isLastTo && (
-                    <Svg width={toHalo} height={toHalo} style={{ position: 'absolute' }}>
-                      <Defs>
-                        <RadialGradient id={`lastTo-${square}`} cx="50%" cy="50%" r="50%">
-                          <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.08} />
-                          <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.12} />
-                          <Stop offset="88%" stopColor="#FFFFFF" stopOpacity={0.35} />
-                          <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
-                        </RadialGradient>
-                      </Defs>
-                      <Circle
-                        cx={toHalo / 2}
-                        cy={toHalo / 2}
-                        r={toHalo / 2}
-                        fill={`url(#lastTo-${square})`}
-                      />
-                      <Circle
-                        cx={toHalo / 2}
-                        cy={toHalo / 2}
-                        r={toHalo * 0.47}
-                        fill="none"
-                        stroke="rgba(255,255,255,0.78)"
-                        strokeWidth={Math.max(1, cell * 0.014)}
-                      />
-                    </Svg>
-                  )}
-                  {isLastFrom && (
+                  return (
                     <View
+                      key={`mark-${square}`}
+                      pointerEvents="none"
                       style={{
                         position: 'absolute',
-                        width: fromRing,
-                        height: fromRing,
+                        left: cx - markBox / 2,
+                        top: cy - markBox / 2,
+                        width: markBox,
+                        height: markBox,
                         alignItems: 'center',
                         justifyContent: 'center',
+                        zIndex: 2,
                       }}
                     >
-                      <Svg width={fromRing} height={fromRing}>
-                        <Defs>
-                          <RadialGradient id={`lastFrom-${square}`} cx="50%" cy="50%" r="50%">
-                            <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={1} />
-                            <Stop offset="35%" stopColor="#FFFFFF" stopOpacity={0.95} />
-                            <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.25} />
-                            <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
-                          </RadialGradient>
-                        </Defs>
-                        <Circle
-                          cx={fromRing / 2}
-                          cy={fromRing / 2}
-                          r={fromRing * 0.48}
-                          fill="none"
-                          stroke="rgba(255,255,255,0.55)"
-                          strokeWidth={Math.max(1.2, cell * 0.022)}
+                      {isLastTo && (
+                        <Svg width={toHalo} height={toHalo} style={{ position: 'absolute' }}>
+                          <Defs>
+                            <RadialGradient id={`lastTo-${square}`} cx="50%" cy="50%" r="50%">
+                              <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.08} />
+                              <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.12} />
+                              <Stop offset="88%" stopColor="#FFFFFF" stopOpacity={0.35} />
+                              <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
+                            </RadialGradient>
+                          </Defs>
+                          <Circle
+                            cx={toHalo / 2}
+                            cy={toHalo / 2}
+                            r={toHalo / 2}
+                            fill={`url(#lastTo-${square})`}
+                          />
+                          <Circle
+                            cx={toHalo / 2}
+                            cy={toHalo / 2}
+                            r={toHalo * 0.47}
+                            fill="none"
+                            stroke="rgba(255,255,255,0.78)"
+                            strokeWidth={Math.max(1, cell * 0.014)}
+                          />
+                        </Svg>
+                      )}
+                      {isLastFrom && (
+                        <View
+                          style={{
+                            position: 'absolute',
+                            width: fromRing,
+                            height: fromRing,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Svg width={fromRing} height={fromRing}>
+                            <Defs>
+                              <RadialGradient id={`lastFrom-${square}`} cx="50%" cy="50%" r="50%">
+                                <Stop offset="0%" stopColor="#FFFFFF" stopOpacity={1} />
+                                <Stop offset="35%" stopColor="#FFFFFF" stopOpacity={0.95} />
+                                <Stop offset="70%" stopColor="#FFFFFF" stopOpacity={0.25} />
+                                <Stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
+                              </RadialGradient>
+                            </Defs>
+                            <Circle
+                              cx={fromRing / 2}
+                              cy={fromRing / 2}
+                              r={fromRing * 0.48}
+                              fill="none"
+                              stroke="rgba(255,255,255,0.55)"
+                              strokeWidth={Math.max(1.2, cell * 0.022)}
+                            />
+                            <Circle
+                              cx={fromRing / 2}
+                              cy={fromRing / 2}
+                              r={fromCore}
+                              fill={`url(#lastFrom-${square})`}
+                            />
+                          </Svg>
+                        </View>
+                      )}
+                      {isHint && (
+                        <View
+                          style={{
+                            position: 'absolute',
+                            width: markSize,
+                            height: markSize,
+                            borderRadius: markSize / 2,
+                            backgroundColor: 'rgba(180, 120, 50, 0.3)',
+                          }}
                         />
-                        <Circle
-                          cx={fromRing / 2}
-                          cy={fromRing / 2}
-                          r={fromCore}
-                          fill={`url(#lastFrom-${square})`}
+                      )}
+                      {isTarget && !piece && (
+                        <View
+                          style={{
+                            width: dot,
+                            height: dot,
+                            borderRadius: dot,
+                            backgroundColor: 'rgba(120, 70, 30, 0.45)',
+                          }}
                         />
-                      </Svg>
+                      )}
+                      {isTarget && piece ? (
+                        <View
+                          style={{
+                            position: 'absolute',
+                            width: pieceSize * 1.02,
+                            height: pieceSize * 1.02,
+                            borderRadius: pieceSize,
+                            borderWidth: 2,
+                            borderColor: 'rgba(140, 80, 35, 0.55)',
+                          }}
+                        />
+                      ) : null}
                     </View>
-                  )}
-                  {isHint && (
-                    <View
+                  );
+                }),
+              )}
+
+              {Array.from({ length: ROWS }, (_, rankIndex) =>
+                Array.from({ length: COLS }, (_, file) => {
+                  const square = squareFromIndices(file, rankIndex);
+                  const piece = grid[rankIndex][file];
+                  const isSelected = selected === square;
+                  const hidePiece = piece != null && hideSquare.has(square);
+
+                  return (
+                    <Pressable
+                      key={square}
+                      onPress={() => onSquarePress?.(square)}
                       style={{
                         position: 'absolute',
-                        width: markSize,
-                        height: markSize,
-                        borderRadius: markSize / 2,
-                        backgroundColor: 'rgba(180, 120, 50, 0.3)',
+                        left: xAt(file) - cell / 2,
+                        top: yAt(rankIndex) - cell / 2,
+                        width: cell,
+                        height: cell,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: isSelected ? 5 : 3,
                       }}
-                    />
-                  )}
-                  {isTarget && !piece && (
-                    <View
-                      style={{
-                        width: dot,
-                        height: dot,
-                        borderRadius: dot,
-                        backgroundColor: 'rgba(120, 70, 30, 0.45)',
-                      }}
-                    />
-                  )}
-                  {isTarget && piece ? (
-                    <View
-                      style={{
-                        position: 'absolute',
-                        width: pieceSize * 1.02,
-                        height: pieceSize * 1.02,
-                        borderRadius: pieceSize,
-                        borderWidth: 2,
-                        borderColor: 'rgba(140, 80, 35, 0.55)',
-                      }}
-                    />
-                  ) : null}
-                </View>
-              );
-            }),
-          )}
+                    >
+                      {piece && !hidePiece ? (
+                        <PieceView piece={piece} size={pieceSize} lifted={isSelected} />
+                      ) : null}
+                    </Pressable>
+                  );
+                }),
+              )}
 
-          {Array.from({ length: ROWS }, (_, rankIndex) =>
-            Array.from({ length: COLS }, (_, file) => {
-              const square = squareFromIndices(file, rankIndex);
-              const piece = grid[rankIndex][file];
-              const isSelected = selected === square;
-              const hidePiece = piece != null && hideSquare.has(square);
+              {/* 路数：钳在盘面内边，避开棋子与盘外溢出 */}
+              <Svg
+                pointerEvents="none"
+                width={width}
+                height={plateH}
+                style={{ position: 'absolute', left: 0, top: 0, zIndex: 6 }}
+              >
+                {Array.from({ length: COLS }, (_, file) => {
+                  const x = xAt(file);
+                  const outsideTop = coordSize * 0.88;
+                  const outsideBottom = plateH - Math.max(3, coordSize * 0.28);
+                  const redY = flipped ? outsideTop : outsideBottom;
+                  const blackY = flipped ? outsideBottom : outsideTop;
+                  return (
+                    <G key={`coord-${file}`}>
+                      <SvgText
+                        x={x}
+                        y={redY}
+                        textAnchor="middle"
+                        fill="#5C3D22"
+                        opacity={0.32}
+                        fontSize={coordSize}
+                        fontWeight="500"
+                      >
+                        {RED_FILE_LABELS[8 - file]}
+                      </SvgText>
+                      <SvgText
+                        x={x}
+                        y={blackY}
+                        textAnchor="middle"
+                        fill="#5C3D22"
+                        opacity={0.32}
+                        fontSize={coordSize}
+                        fontWeight="500"
+                      >
+                        {String(file + 1)}
+                      </SvgText>
+                    </G>
+                  );
+                })}
+              </Svg>
 
-              return (
-                <Pressable
-                  key={square}
-                  onPress={() => onSquarePress?.(square)}
-                  style={{
-                    position: 'absolute',
-                    left: xAt(file) - cell / 2,
-                    top: yAt(rankIndex) - cell / 2,
-                    width: cell,
-                    height: cell,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: isSelected ? 5 : 3,
-                  }}
-                >
-                  {piece && !hidePiece ? (
-                    <PieceView piece={piece} size={pieceSize} lifted={isSelected} />
-                  ) : null}
-                </Pressable>
-              );
-            }),
-          )}
+              {flight ? (
+                <FlyingPiece
+                  piece={flight.piece}
+                  size={pieceSize}
+                  translateX={flyX}
+                  translateY={flyY}
+                  scale={flyScale}
+                  lift={flyLift}
+                />
+              ) : null}
+            </View>
 
-          {flight ? (
-            <FlyingPiece
-              piece={flight.piece}
-              size={pieceSize}
-              translateX={flyX}
-              translateY={flyY}
-              scale={flyScale}
-              lift={flyLift}
-            />
-          ) : null}
+            {/* 底边厚度：同色浅木，单层略压暗 */}
+            <View style={{ height: thickness, overflow: 'hidden' }}>
+              <Image
+                source={BOARD_WOOD}
+                style={StyleSheet.absoluteFill}
+                resizeMode="cover"
+              />
+              <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.edgeWash]} />
+            </View>
+          </View>
         </>
       )}
     </View>
@@ -529,6 +589,12 @@ const styles = StyleSheet.create({
   },
   flex: {
     width: '100%',
-    aspectRatio: 0.9,
+    aspectRatio: 8 / 10.2,
+  },
+  faceWash: {
+    backgroundColor: wood.boardWash,
+  },
+  edgeWash: {
+    backgroundColor: wood.edgeWash,
   },
 });

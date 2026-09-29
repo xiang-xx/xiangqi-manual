@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -13,7 +13,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { turnFromFen } from '../../lib/engine';
-import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
   AI_DIFFICULTIES,
   findBestMove,
@@ -236,6 +235,7 @@ export default function PlayGameScreen() {
             headerStyle: { backgroundColor: wood.header },
             headerTintColor: wood.cream,
             headerShadowVisible: false,
+            statusBarStyle: 'light',
           }}
         />
         <View style={styles.fallback}>
@@ -256,11 +256,10 @@ export default function PlayGameScreen() {
           headerTintColor: wood.cream,
           headerTitleStyle: { fontWeight: '500', fontSize: 16 },
           headerShadowVisible: false,
+          statusBarStyle: 'light',
         }}
       />
-      <ImageBackground source={TABLE_WOOD} style={styles.root} resizeMode="cover">
-        <View style={styles.dim} />
-
+      <View style={styles.root}>
         <BoardScreenLayout
           bottomInset={insets.bottom}
           header={
@@ -330,7 +329,7 @@ export default function PlayGameScreen() {
                 ]
           }
         />
-      </ImageBackground>
+      </View>
     </>
   );
 }
@@ -338,15 +337,11 @@ export default function PlayGameScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: wood.lacquer,
-  },
-  dim: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: wood.dim,
+    backgroundColor: wood.stage,
   },
   fallback: {
     flex: 1,
-    backgroundColor: wood.lacquer,
+    backgroundColor: wood.stage,
     alignItems: 'center',
     justifyContent: 'center',
   },

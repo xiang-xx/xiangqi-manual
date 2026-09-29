@@ -1,13 +1,21 @@
 import 'react-native-gesture-handler';
 
 import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { ink, wood } from '../lib/theme';
 
+void SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
+  useEffect(() => {
+    void SplashScreen.hideAsync();
+  }, []);
+
   return (
     <GestureHandlerRootView style={styles.root}>
       <StatusBar style="dark" />
@@ -28,7 +36,8 @@ export default function RootLayout() {
             title: '残棋',
             headerStyle: { backgroundColor: wood.header },
             headerTintColor: wood.cream,
-            contentStyle: { backgroundColor: wood.lacquer },
+            contentStyle: { backgroundColor: wood.stage },
+            statusBarStyle: 'light',
           }}
         />
         <Stack.Screen name="puzzle/solved" options={{ title: '已解' }} />
@@ -38,7 +47,8 @@ export default function RootLayout() {
             title: '对弈',
             headerStyle: { backgroundColor: wood.header },
             headerTintColor: wood.cream,
-            contentStyle: { backgroundColor: wood.lacquer },
+            contentStyle: { backgroundColor: wood.stage },
+            statusBarStyle: 'light',
           }}
         />
       </Stack>

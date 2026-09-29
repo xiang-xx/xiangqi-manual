@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   boardCenter: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: 4,
   },
   overlay: {
     ...StyleSheet.absoluteFill,

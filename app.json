@@ -2,7 +2,7 @@
   "expo": {
     "name": "象棋背谱",
     "slug": "xiangqi-manual",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "xiangqi-manual",
@@ -14,8 +14,9 @@
     },
     "android": {
       "package": "com.xiang.xiangqimanual",
+      "versionCode": 3,
       "adaptiveIcon": {
-        "backgroundColor": "#1B4332",
+        "backgroundColor": "#456355",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -34,6 +35,15 @@
             "buildArchs": ["arm64-v8a"],
             "useLegacyPackaging": true
           }
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#456355",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 168,
+          "resizeMode": "contain"
         }
       ]
     ],

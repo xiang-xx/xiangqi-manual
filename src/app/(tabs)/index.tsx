@@ -1,5 +1,5 @@
 import { Link, useFocusEffect } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -23,15 +23,48 @@ import {
 } from '../../data/manuals';
 import { listAllProgress, listRecentManualIds } from '../../lib/progress';
 import { ink } from '../../lib/theme';
+import { loadManualFilterPrefs, saveManualFilterPrefs } from '../../lib/uiPrefs';
 import type { Manual, ManualProgress } from '../../types/manual';
 
 export default function HomeScreen() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [redOpening, setRedOpening] = useState<string | null>(null);
   const [blackOpening, setBlackOpening] = useState<string | null>(null);
+  const [prefsReady, setPrefsReady] = useState(false);
   const [progressMap, setProgressMap] = useState<Record<string, ManualProgress>>({});
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      const prefs = await loadManualFilterPrefs();
+      if (!alive) return;
+      setSelectedTags(prefs.tags);
+      setRedOpening(prefs.redOpening);
+      setBlackOpening(prefs.blackOpening);
+      setPrefsReady(true);
+    })();
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!prefsReady) return;
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(() => {
+      void saveManualFilterPrefs({
+        tags: selectedTags,
+        redOpening,
+        blackOpening,
+      });
+    }, 200);
+    return () => {
+      if (saveTimer.current) clearTimeout(saveTimer.current);
+    };
+  }, [prefsReady, selectedTags, redOpening, blackOpening]);
 
   useFocusEffect(
     useCallback(() => {
@@ -72,7 +105,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      {loading ? (
+      {loading || !prefsReady ? (
         <ActivityIndicator color={ink.deep} style={{ marginTop: 28 }} />
       ) : (
         <FlatList

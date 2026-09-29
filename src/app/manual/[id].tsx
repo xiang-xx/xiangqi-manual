@@ -1,7 +1,6 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
-  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -13,7 +12,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { getManualById } from '../../data/manuals';
-import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
   commentedMoveIndex,
   enterVariation,
@@ -132,11 +130,10 @@ export default function ManualScreen() {
           headerTintColor: wood.cream,
           headerTitleStyle: { fontWeight: '500', fontSize: 16 },
           headerShadowVisible: false,
+          statusBarStyle: 'light',
         }}
       />
-      <ImageBackground source={TABLE_WOOD} style={styles.root} resizeMode="cover">
-        <View style={styles.dim} />
-
+      <View style={styles.root}>
         <BoardScreenLayout
           bottomInset={insets.bottom}
           header={
@@ -274,7 +271,7 @@ export default function ManualScreen() {
                 ]
           }
         />
-      </ImageBackground>
+      </View>
     </>
   );
 }
@@ -286,15 +283,11 @@ const COMMENT_BODY_HEIGHT = COMMENT_LINES * COMMENT_LINE_HEIGHT;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: wood.lacquer,
-  },
-  dim: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: wood.dim,
+    backgroundColor: wood.stage,
   },
   fallback: {
     flex: 1,
-    backgroundColor: wood.lacquer,
+    backgroundColor: wood.stage,
     paddingHorizontal: 16,
   },
   error: { color: wood.danger, fontSize: 15 },

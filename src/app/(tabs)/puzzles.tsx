@@ -1,5 +1,5 @@
 import { Link, useFocusEffect } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -19,12 +19,39 @@ import {
 } from '../../data/puzzles';
 import { listAllPuzzleProgress } from '../../lib/puzzleProgress';
 import { ink } from '../../lib/theme';
+import { loadPuzzleFilterPrefs, savePuzzleFilterPrefs } from '../../lib/uiPrefs';
 import type { PuzzleProgress } from '../../types/puzzle';
 
 export default function PuzzlesScreen() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [prefsReady, setPrefsReady] = useState(false);
   const [progressMap, setProgressMap] = useState<Record<string, PuzzleProgress>>({});
   const [loading, setLoading] = useState(true);
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      const prefs = await loadPuzzleFilterPrefs();
+      if (!alive) return;
+      setSelectedTags(prefs.tags);
+      setPrefsReady(true);
+    })();
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!prefsReady) return;
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(() => {
+      void savePuzzleFilterPrefs({ tags: selectedTags });
+    }, 200);
+    return () => {
+      if (saveTimer.current) clearTimeout(saveTimer.current);
+    };
+  }, [prefsReady, selectedTags]);
 
   useFocusEffect(
     useCallback(() => {
@@ -56,7 +83,7 @@ export default function PuzzlesScreen() {
 
   return (
     <View style={styles.container}>
-      {loading ? (
+      {loading || !prefsReady ? (
         <ActivityIndicator color={ink.deep} style={{ marginTop: 28 }} />
       ) : (
         <FlatList

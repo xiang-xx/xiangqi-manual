@@ -1,6 +1,6 @@
 import Constants from 'expo-constants';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Platform,
@@ -22,6 +22,7 @@ import {
   type PlayGameRecord,
 } from '../../lib/playProgress';
 import { ink } from '../../lib/theme';
+import { loadPlaySetupPrefs, savePlaySetupPrefs } from '../../lib/uiPrefs';
 
 function unavailableHint(): string {
   if (Platform.OS !== 'android') return '当前仅 Android 支持引擎对弈。';
@@ -36,9 +37,36 @@ export default function PlaySetupScreen() {
   const available = useMemo(() => isPikafishAvailable(), []);
   const [side, setSide] = useState<PlaySide>('red');
   const [difficulty, setDifficulty] = useState<AiDifficulty>('中级');
+  const [prefsReady, setPrefsReady] = useState(false);
   const [games, setGames] = useState<PlayGameRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [starting, setStarting] = useState(false);
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      const prefs = await loadPlaySetupPrefs();
+      if (!alive) return;
+      setSide(prefs.side);
+      setDifficulty(prefs.difficulty);
+      setPrefsReady(true);
+    })();
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!prefsReady) return;
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(() => {
+      void savePlaySetupPrefs({ side, difficulty });
+    }, 200);
+    return () => {
+      if (saveTimer.current) clearTimeout(saveTimer.current);
+    };
+  }, [prefsReady, side, difficulty]);
 
   const refresh = useCallback(async () => {
     setGames(await listPlayGames());

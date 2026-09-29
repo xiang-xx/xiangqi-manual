@@ -1,12 +1,11 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { getPuzzleById, nextPuzzleId } from '../../data/puzzles';
-import { TABLE_WOOD } from '../../lib/pieceAssets';
 import {
   initialPuzzleState,
   isSolverTurn,
@@ -106,11 +105,10 @@ export default function PuzzleScreen() {
           headerTintColor: wood.cream,
           headerTitleStyle: { fontWeight: '500', fontSize: 16 },
           headerShadowVisible: false,
+          statusBarStyle: 'light',
         }}
       />
-      <ImageBackground source={TABLE_WOOD} style={styles.root} resizeMode="cover">
-        <View style={styles.dim} />
-
+      <View style={styles.root}>
         <BoardScreenLayout
           bottomInset={insets.bottom}
           header={
@@ -194,7 +192,7 @@ export default function PuzzleScreen() {
                 ]
           }
         />
-      </ImageBackground>
+      </View>
     </>
   );
 }
@@ -202,15 +200,11 @@ export default function PuzzleScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: wood.lacquer,
-  },
-  dim: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: wood.dim,
+    backgroundColor: wood.stage,
   },
   fallback: {
     flex: 1,
-    backgroundColor: wood.lacquer,
+    backgroundColor: wood.stage,
     paddingHorizontal: 16,
   },
   error: { color: wood.danger, fontSize: 15 },

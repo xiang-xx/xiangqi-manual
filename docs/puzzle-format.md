@@ -19,7 +19,7 @@
 npm run import-classic-puzzles
 ```
 
-**不需要 AI**：着法来自谱本主变；合法着用 `xiangqi.js` 校验。对方自动走的是谱着，不是引擎算杀。
+`solution[]` 仍来自谱本主变，供 **提示 / 看答案**，以及 **无 Pikafish 时**对方回退走谱。有引擎时对方由 AI 应着，不强制跟谱。
 
 ## Schema
 
@@ -27,14 +27,14 @@ npm run import-classic-puzzles
 type Puzzle = {
   id: string;
   title: string;
-  tags: string[];              // 中级 / 高级 / 车类 / 马类 / 兵类 / 趣味 …
+  tags: string[];              // 中级 / 高级 / 车类 / 马类 / 炮类 / 兵类 …
   difficulty: 1 | 2 | 3 | 4 | 5;
   sideToMove: 'red' | 'black';
   goal: 'red_win' | 'black_win';
   goalLabel: string;           // 「红先胜」
   startFen: string;
   solution: Array<{ san: string; uci: string }>;
-  // 偶数下标 = 解题方；奇数下标 = 对方（自动走出）
+  // 参考主变：偶数 = 解题方；奇数 = 对方
   comments?: Record<string, string>;
   source?: string;
   defaultFlipped?: boolean;    // 黑先默认 true
@@ -43,9 +43,12 @@ type Puzzle = {
 
 ## 交互约定
 
-- **只走解题方**：用户走 `sideToMove`；对方着法取自 `solution` 自动走出。
-- **不接引擎算杀**：自动走的是预写主变，不是 AI。
-- 合法着校验用 `xiangqi.js`；对错比对 `uci`。
+- **只走解题方**：用户走 `sideToMove`；对方由 Pikafish（固定「入门」弱档）应着。
+- **胜负**：将杀且符合 `goal` → 解题成功；被将杀 / 和棋 → 失败（可重来）。
+- **不报对错**：不提示「是不是此路」、不显示剩余步数；合法着即可落子。
+- **无引擎（Expo Go）**：对方回退走 `solution` 主变；用户也须跟主变（静默，无对错文案）。
+- **提示 / 看答案**：仍用 `solution[]`；偏离主变后提示「已偏离参考着法」。
+- 合法着用 `xiangqi.js` 校验。
 
 ## 进度
 

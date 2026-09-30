@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { initSfx } from '../lib/sfx';
 import { ink, wood } from '../lib/theme';
 
 void SplashScreen.preventAutoHideAsync();
@@ -14,6 +15,7 @@ void SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   useEffect(() => {
     void SplashScreen.hideAsync();
+    void initSfx();
   }, []);
 
   return (

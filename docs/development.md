@@ -35,7 +35,7 @@ npx expo install <package>
 
 ## 真机调试
 
-背谱 / 残棋可用 Expo Go。**对弈（Pikafish）必须用开发客户端**（含原生引擎模块）。
+背谱可用 Expo Go。**对弈与残棋对方 AI（Pikafish）必须用开发客户端**；Expo Go 下残棋会回退为走谱主变。
 
 ```bash
 npm run fetch-pikafish-assets   # 若尚无 so / nnue
@@ -55,7 +55,7 @@ adb shell am start -a android.intent.action.VIEW \
 
 或关掉 VPN / 用 `REACT_NATIVE_PACKAGER_HOSTNAME=10.x.x.x npm start` 指定真实局域网 IP。
 
-若只调试背谱/残棋：
+若只调试背谱（或残棋走谱回退）：
 
 1. `npx expo start`（不加 `--dev-client`）
 2. Expo Go 扫终端二维码

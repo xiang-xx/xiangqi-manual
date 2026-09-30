@@ -1,22 +1,26 @@
 import type { Puzzle, PuzzleProgress } from '../types/puzzle';
-import { applyUci, legalMovesFrom, pieceAt, turnFromFen, uciMatches } from './engine';
+import { applyUci, createGame, legalMovesFrom, pieceAt, turnFromFen, uciMatches } from './engine';
 import { parseUci, type Square } from './squares';
+
+export type PuzzleStatus = 'playing' | 'won' | 'lost' | 'draw';
 
 export type PuzzleState = {
   fen: string;
-  /** 已走出的 solution 步数 */
-  stepIndex: number;
+  /** 与主变对齐的步数；偏离后不再推进（提示 / 看答案 / 无引擎回退用） */
+  bookIndex: number;
+  offBook: boolean;
   selected: Square | null;
   legalTargets: Square[];
   lastMove: { from: Square; to: Square } | null;
   hintFrom: Square | null;
   hintTo: Square | null;
-  status: 'playing' | 'complete';
+  status: PuzzleStatus;
   feedback: string | null;
   comment: string | null;
   attempts: number;
   fails: number;
   solved: boolean;
+  thinking: boolean;
 };
 
 function clearInteraction(state: PuzzleState): PuzzleState {
@@ -29,67 +33,155 @@ function clearInteraction(state: PuzzleState): PuzzleState {
   };
 }
 
-function commentFor(puzzle: Puzzle, stepIndex: number): string | null {
-  return puzzle.comments?.[String(stepIndex)] ?? null;
+function commentFor(puzzle: Puzzle, bookIndex: number): string | null {
+  return puzzle.comments?.[String(bookIndex)] ?? null;
 }
 
-/** solution 偶数下标 = 解题方 */
-export function isSolverTurn(stepIndex: number): boolean {
-  return stepIndex % 2 === 0;
-}
-
-function expectedUci(puzzle: Puzzle, stepIndex: number): string | null {
-  return puzzle.solution[stepIndex]?.uci ?? null;
-}
-
-/**
- * 走出一步 solution[stepIndex]（解题方或对方，只走一手）。
- * reveal=true 时用于「看答案」，反馈文案不同。
- */
-function playSolutionPly(
+function trackBook(
   puzzle: Puzzle,
   state: PuzzleState,
-  opts: { reveal?: boolean } = {},
-): PuzzleState {
-  if (state.status === 'complete') return state;
-  if (state.stepIndex >= puzzle.solution.length) return state;
+  uci: string,
+): { bookIndex: number; offBook: boolean } {
+  if (state.offBook) return { bookIndex: state.bookIndex, offBook: true };
+  const expected = puzzle.solution[state.bookIndex]?.uci;
+  if (expected && uciMatches(expected, uci)) {
+    return { bookIndex: state.bookIndex + 1, offBook: false };
+  }
+  return { bookIndex: state.bookIndex, offBook: true };
+}
 
-  const uci = expectedUci(puzzle, state.stepIndex);
-  if (!uci) return state;
+function outcomeAfter(puzzle: Puzzle, fen: string): {
+  status: PuzzleStatus;
+  feedback: string | null;
+} {
+  const game = createGame(fen);
+  if (!game.game_over()) {
+    return { status: 'playing', feedback: null };
+  }
+  if (game.in_checkmate()) {
+    const mated = turnFromFen(fen);
+    const winner: 'red' | 'black' = mated === 'red' ? 'black' : 'red';
+    const goalWin: 'red' | 'black' = puzzle.goal === 'red_win' ? 'red' : 'black';
+    if (winner === goalWin) {
+      return { status: 'won', feedback: '解题成功！' };
+    }
+    return { status: 'lost', feedback: '未能将杀' };
+  }
+  return { status: 'draw', feedback: '和棋' };
+}
+
+function finishCounts(
+  state: PuzzleState,
+  status: PuzzleStatus,
+): Pick<PuzzleState, 'solved' | 'attempts' | 'fails'> {
+  if (status === 'won') {
+    return {
+      solved: true,
+      attempts: state.solved ? state.attempts : state.attempts + 1,
+      fails: state.fails,
+    };
+  }
+  if (status === 'lost' || status === 'draw') {
+    return {
+      solved: state.solved,
+      attempts: state.attempts + 1,
+      fails: state.fails + 1,
+    };
+  }
+  return {
+    solved: state.solved,
+    attempts: state.attempts,
+    fails: state.fails,
+  };
+}
+
+function applyPly(
+  puzzle: Puzzle,
+  state: PuzzleState,
+  uci: string,
+  opts: { reveal?: boolean; commentFromBook?: boolean } = {},
+): PuzzleState {
+  if (state.status !== 'playing') return state;
 
   const applied = applyUci(state.fen, uci);
   if (!applied) {
-    throw new Error(`Illegal solution move ${uci} at ${state.fen}`);
+    return {
+      ...clearInteraction(state),
+      thinking: false,
+      feedback: '不合法的着法',
+    };
   }
 
-  const stepIndex = state.stepIndex + 1;
-  const complete = stepIndex >= puzzle.solution.length;
-  const wasSolver = isSolverTurn(state.stepIndex);
+  const book = trackBook(puzzle, state, uci);
+  const outcome = outcomeAfter(puzzle, applied.fen);
+  const counts = finishCounts(state, outcome.status);
 
-  let feedback = state.feedback;
-  if (opts.reveal && wasSolver) {
-    feedback = `答案：${puzzle.solution[state.stepIndex].san}`;
+  let feedback = outcome.feedback;
+  if (!feedback && opts.reveal && turnFromFen(state.fen) === puzzle.sideToMove) {
+    const san = puzzle.solution[state.bookIndex]?.san;
+    feedback = san ? `答案：${san}` : null;
   }
-  if (complete) feedback = '解题成功！';
 
   return {
     ...clearInteraction(state),
     fen: applied.fen,
-    stepIndex,
+    bookIndex: book.bookIndex,
+    offBook: book.offBook,
     lastMove: parseUci(uci),
-    comment: commentFor(puzzle, state.stepIndex),
-    status: complete ? 'complete' : 'playing',
+    comment:
+      opts.commentFromBook || !book.offBook
+        ? commentFor(puzzle, state.bookIndex)
+        : state.comment,
+    status: outcome.status,
     feedback,
-    solved: complete ? true : state.solved,
-    attempts: complete && !state.solved ? state.attempts + 1 : state.attempts,
+    thinking: false,
+    ...counts,
   };
 }
 
-/** 对方按主变走出一手（由 UI 延迟调用） */
+/** 解题方行棋（FEN 轮到 sideToMove，且未在思考） */
+export function isSolverTurn(puzzle: Puzzle, state: PuzzleState): boolean {
+  if (state.status !== 'playing' || state.thinking) return false;
+  return turnFromFen(state.fen) === puzzle.sideToMove;
+}
+
+export function isOpponentTurn(puzzle: Puzzle, state: PuzzleState): boolean {
+  if (state.status !== 'playing' || state.thinking) return false;
+  return turnFromFen(state.fen) !== puzzle.sideToMove;
+}
+
+/** 无引擎时：对方按主变走出一手（已偏离主变则无法续） */
 export function playOpponentReply(puzzle: Puzzle, state: PuzzleState): PuzzleState {
-  if (state.status === 'complete') return state;
-  if (isSolverTurn(state.stepIndex)) return state;
-  return playSolutionPly(puzzle, state);
+  if (!isOpponentTurn(puzzle, state)) return state;
+  if (state.offBook) {
+    return {
+      ...state,
+      feedback: '此变需引擎续弈',
+    };
+  }
+  const uci = puzzle.solution[state.bookIndex]?.uci;
+  if (!uci) {
+    return {
+      ...state,
+      feedback: '无谱可续',
+    };
+  }
+  return applyPly(puzzle, state, uci, { commentFromBook: true });
+}
+
+export function beginOpponentThink(state: PuzzleState): PuzzleState {
+  if (state.status !== 'playing') return state;
+  return {
+    ...clearInteraction(state),
+    thinking: true,
+    feedback: null,
+  };
+}
+
+/** 引擎对方着法 */
+export function applyOpponentMove(puzzle: Puzzle, state: PuzzleState, uci: string): PuzzleState {
+  if (state.status !== 'playing') return state;
+  return applyPly(puzzle, state, uci, { commentFromBook: true });
 }
 
 export function initialPuzzleState(
@@ -105,18 +197,20 @@ export function initialPuzzleState(
 
   return {
     fen: puzzle.startFen,
-    stepIndex: 0,
+    bookIndex: 0,
+    offBook: false,
     selected: null,
     legalTargets: [],
     lastMove: null,
     hintFrom: null,
     hintTo: null,
-    status: puzzle.solution.length === 0 ? 'complete' : 'playing',
+    status: 'playing',
     feedback: null,
     comment: null,
     attempts: progress?.attempts ?? 0,
     fails: progress?.fails ?? 0,
     solved: progress?.solved ?? false,
+    thinking: false,
   };
 }
 
@@ -130,12 +224,13 @@ export function restartPuzzle(puzzle: Puzzle, state: PuzzleState): PuzzleState {
   };
 }
 
-export function selectSquare(puzzle: Puzzle, state: PuzzleState, square: Square): PuzzleState {
-  if (state.status === 'complete') return state;
-  if (!isSolverTurn(state.stepIndex)) return state;
-
-  const expected = expectedUci(puzzle, state.stepIndex);
-  if (!expected) return state;
+export function selectSquare(
+  puzzle: Puzzle,
+  state: PuzzleState,
+  square: Square,
+  opts: { requireBook?: boolean } = {},
+): PuzzleState {
+  if (!isSolverTurn(puzzle, state)) return state;
 
   if (state.selected) {
     const uci = `${state.selected}${square}`;
@@ -143,10 +238,28 @@ export function selectSquare(puzzle: Puzzle, state: PuzzleState, square: Square)
       return { ...state, selected: null, legalTargets: [], feedback: null };
     }
 
-    const applied = applyUci(state.fen, uci);
-    if (!applied) {
-      const piece = pieceAt(state.fen, square);
-      if (piece) {
+    if (state.legalTargets.includes(square)) {
+      // 无引擎回退：必须跟主变，否则静默收回（不提示对错）
+      if (opts.requireBook) {
+        const expected = puzzle.solution[state.bookIndex]?.uci;
+        if (!expected || !uciMatches(expected, uci)) {
+          return {
+            ...state,
+            selected: null,
+            legalTargets: [],
+            hintFrom: null,
+            hintTo: null,
+            feedback: null,
+          };
+        }
+      }
+      return applyPly(puzzle, state, uci);
+    }
+
+    const piece = pieceAt(state.fen, square);
+    if (piece) {
+      const solverColor = puzzle.sideToMove === 'red' ? 'r' : 'b';
+      if (piece.color === solverColor) {
         const targets = legalMovesFrom(state.fen, square).map((m) => parseUci(m)!.to);
         return {
           ...state,
@@ -157,43 +270,8 @@ export function selectSquare(puzzle: Puzzle, state: PuzzleState, square: Square)
           hintTo: null,
         };
       }
-      return { ...state, feedback: '不合法的着法', selected: null, legalTargets: [] };
     }
-
-    if (!uciMatches(expected, uci)) {
-      return {
-        ...state,
-        selected: null,
-        legalTargets: [],
-        feedback: '不是此路',
-        fails: state.fails + 1,
-        hintFrom: null,
-        hintTo: null,
-      };
-    }
-
-    // 正确：只走出用户着；对方由 UI 延迟自动走
-    const afterUser: PuzzleState = {
-      ...clearInteraction(state),
-      fen: applied.fen,
-      stepIndex: state.stepIndex + 1,
-      lastMove: parseUci(uci),
-      comment: commentFor(puzzle, state.stepIndex),
-      feedback: null,
-      status: 'playing',
-    };
-
-    if (afterUser.stepIndex >= puzzle.solution.length) {
-      return {
-        ...afterUser,
-        status: 'complete',
-        feedback: '解题成功！',
-        solved: true,
-        attempts: state.solved ? state.attempts : state.attempts + 1,
-      };
-    }
-
-    return afterUser;
+    return { ...state, feedback: '不合法的着法', selected: null, legalTargets: [] };
   }
 
   const piece = pieceAt(state.fen, square);
@@ -218,29 +296,42 @@ export function selectSquare(puzzle: Puzzle, state: PuzzleState, square: Square)
 }
 
 export function showHint(puzzle: Puzzle, state: PuzzleState): PuzzleState {
-  if (state.status === 'complete') return state;
-  if (!isSolverTurn(state.stepIndex)) return state;
-  const expected = expectedUci(puzzle, state.stepIndex);
-  if (!expected) return state;
+  if (state.status !== 'playing') return state;
+  if (!isSolverTurn(puzzle, state)) return state;
+  if (state.offBook) {
+    return { ...state, feedback: '已偏离参考着法', selected: null, legalTargets: [] };
+  }
+  const expected = puzzle.solution[state.bookIndex]?.uci;
+  if (!expected) {
+    return { ...state, feedback: '无参考着法', selected: null, legalTargets: [] };
+  }
   const parsed = parseUci(expected);
   if (!parsed) return state;
   return {
     ...state,
     hintFrom: parsed.from,
     hintTo: parsed.to,
-    feedback: `提示：${puzzle.solution[state.stepIndex].san}`,
+    feedback: `提示：${puzzle.solution[state.bookIndex].san}`,
     selected: null,
     legalTargets: [],
   };
 }
 
-/** 看答案：走出下一步解题方着法（对方由 UI 延迟自动走） */
+/** 看答案：走出下一步参考着（对方仍由 UI / 引擎续） */
 export function revealNext(puzzle: Puzzle, state: PuzzleState): PuzzleState {
-  if (state.status === 'complete') return state;
-  if (!isSolverTurn(state.stepIndex)) {
+  if (state.status !== 'playing') return state;
+  if (isOpponentTurn(puzzle, state)) {
     return playOpponentReply(puzzle, state);
   }
-  return playSolutionPly(puzzle, state, { reveal: true });
+  if (!isSolverTurn(puzzle, state)) return state;
+  if (state.offBook) {
+    return { ...state, feedback: '已偏离参考着法' };
+  }
+  const uci = puzzle.solution[state.bookIndex]?.uci;
+  if (!uci) {
+    return { ...state, feedback: '无参考着法' };
+  }
+  return applyPly(puzzle, state, uci, { reveal: true, commentFromBook: true });
 }
 
 export function toPuzzleProgress(state: PuzzleState, flipped: boolean): PuzzleProgress {

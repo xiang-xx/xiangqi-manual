@@ -35,6 +35,7 @@ import {
   type StudyMode,
 } from '../../lib/practiceMachine';
 import { loadProgress, flippedForPracticeSide, resolveFlipped, saveProgress } from '../../lib/progress';
+import { playSfxIfMoved } from '../../lib/sfx';
 import type { Square } from '../../lib/squares';
 import { wood } from '../../lib/theme';
 import type { ManualProgress, SideToMemorize } from '../../types/manual';
@@ -102,7 +103,12 @@ export default function ManualScreen() {
 
     if (opponentTimer.current) clearTimeout(opponentTimer.current);
     opponentTimer.current = setTimeout(() => {
-      setState((prev) => (prev ? playOpponentPly(manual, prev) : prev));
+      setState((prev) => {
+        if (!prev) return prev;
+        const next = playOpponentPly(manual, prev);
+        playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+        return next;
+      });
     }, OPPONENT_DELAY_MS);
 
     return () => {
@@ -287,7 +293,12 @@ export default function ManualScreen() {
               lastMove={state.lastMove}
               onSquarePress={(sq: Square) => {
                 if (isStudy) return;
-                setState((prev) => (prev ? selectSquare(manual, prev, sq) : prev));
+                setState((prev) => {
+                  if (!prev) return prev;
+                  const next = selectSquare(manual, prev, sq);
+                  playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+                  return next;
+                });
               }}
             />
           }
@@ -319,7 +330,13 @@ export default function ManualScreen() {
                     label: '下一步',
                     primary: true,
                     disabled: !canNext,
-                    onPress: () => setState((prev) => (prev ? goNext(manual, prev) : prev)),
+                    onPress: () =>
+                      setState((prev) => {
+                        if (!prev) return prev;
+                        const next = goNext(manual, prev);
+                        playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+                        return next;
+                      }),
                   },
                 ]
               : [

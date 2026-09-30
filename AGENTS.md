@@ -29,7 +29,7 @@ npx expo install --fix
 - Do not create or hand-edit `android/` / `ios/`; configure via `app.json`.
 - Prefer Expo modules; use vendored `src/lib/vendor/xiangqi.js` for rules — do not hand-roll xiangqi legality.
 - Manual schema uses `tags[]` (not single category); default `sideToMemorize` is `both`.
-- Puzzle: user plays `sideToMove` only; opponent plies come from `solution[]` (not an engine).
+- Puzzle: user plays `sideToMove` only; opponent uses weak Pikafish on Android (book `solution[]` fallback without engine); win by mate vs `goal`; no remaining-move counter / no正确错 path feedback.
 - AI vs human: Android-only via local module `pikafish-engine` (see `docs/ai-play.md`); Expo Go cannot load it.
 - Keep UI focused on board + practice; avoid dashboard clutter.
 - Package name `com.xiang.xiangqimanual` is fixed for future store listing.

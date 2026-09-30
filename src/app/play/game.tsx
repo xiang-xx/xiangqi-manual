@@ -42,6 +42,7 @@ import {
   reviewSummary,
   type ReviewNote,
 } from '../../lib/playReview';
+import { playMoveSfx, playSfxIfMoved } from '../../lib/sfx';
 import { parseUci, type Square } from '../../lib/squares';
 import { wood } from '../../lib/theme';
 
@@ -233,7 +234,12 @@ export default function PlayGameScreen() {
         if (cancelled || !mounted.current || genRef.current !== gen) return;
         await new Promise((r) => setTimeout(r, AI_MOVE_DELAY_MS));
         if (cancelled || !mounted.current || genRef.current !== gen) return;
-        setState((prev) => (prev && prev.fen === requestFen ? applyAiMove(prev, uci) : prev));
+        setState((prev) => {
+          if (!prev || prev.fen !== requestFen) return prev;
+          const next = applyAiMove(prev, uci);
+          playMoveSfx(prev.fen, uci);
+          return next;
+        });
       } catch (e) {
         if (cancelled || !mounted.current || genRef.current !== gen) return;
         const msg = e instanceof Error ? e.message : '引擎错误';
@@ -365,7 +371,12 @@ export default function PlayGameScreen() {
                 lastMove={boardLastMove}
                 onSquarePress={(sq: Square) => {
                   if (inReview || !isHumanTurn(state)) return;
-                  setState((prev) => (prev ? selectPlaySquare(prev, sq) : prev));
+                  setState((prev) => {
+                    if (!prev) return prev;
+                    const next = selectPlaySquare(prev, sq);
+                    playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+                    return next;
+                  });
                 }}
               />
             </View>
@@ -383,7 +394,11 @@ export default function PlayGameScreen() {
                     key: 'next',
                     label: '下一步',
                     disabled: reviewPly >= state.moves.length,
-                    onPress: () => setReviewPly((p) => Math.min(state.moves.length, p + 1)),
+                    onPress: () => {
+                      const uci = state.moves[reviewPly];
+                      if (uci && reviewFen) playMoveSfx(reviewFen, uci);
+                      setReviewPly((p) => Math.min(state.moves.length, p + 1));
+                    },
                   },
                   {
                     key: 'exit-review',

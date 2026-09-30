@@ -21,8 +21,9 @@ export type Puzzle = {
   goalLabel: string;
   startFen: string;
   /**
-   * 主杀法：从 sideToMove 起双方交替；
-   * 偶数下标（0,2,4…）为解题方，奇数下标为对方（自动走出）。
+   * 参考主变：提示 / 看答案 / 无引擎时对方回退用。
+   * 有引擎时对方由 AI 走，胜负看将杀，不强制跟谱。
+   * 偶数下标 = 解题方；奇数下标 = 对方。
    */
   solution: PuzzleMove[];
   comments?: Record<string, string>;

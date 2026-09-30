@@ -7,8 +7,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { getPuzzleById, nextPuzzleId } from '../../data/puzzles';
+import { findBestMove, isPikafishAvailable, shutdownEngine } from '../../lib/pikafish';
 import {
+  applyOpponentMove,
+  beginOpponentThink,
   initialPuzzleState,
+  isOpponentTurn,
   isSolverTurn,
   playOpponentReply,
   restartPuzzle,
@@ -20,10 +24,13 @@ import {
   type PuzzleState,
 } from '../../lib/puzzleMachine';
 import { loadPuzzleProgress, savePuzzleProgress } from '../../lib/puzzleProgress';
+import { playMoveSfx, playSfxIfMoved } from '../../lib/sfx';
 import type { Square } from '../../lib/squares';
 import { wood } from '../../lib/theme';
 
-const OPPONENT_DELAY_MS = 500;
+/** 残棋对方固定弱档，避免强防堵死杀局 */
+const PUZZLE_AI_DIFFICULTY = '入门' as const;
+const OPPONENT_DELAY_MS = 400;
 
 export default function PuzzleScreen() {
   useKeepAwake(undefined, { suppressDeactivateWarnings: true });
@@ -32,13 +39,28 @@ export default function PuzzleScreen() {
   const router = useRouter();
   const [state, setState] = useState<PuzzleState | null>(null);
   const [flipped, setFlipped] = useState(false);
+  const [useEngine, setUseEngine] = useState(false);
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const opponentTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const aiBusy = useRef(false);
+  const genRef = useRef(0);
+  const mounted = useRef(true);
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    mounted.current = true;
+    setUseEngine(isPikafishAvailable());
+    return () => {
+      mounted.current = false;
+      void shutdownEngine();
+    };
+  }, []);
 
   useEffect(() => {
     if (!puzzle) return;
     let alive = true;
+    aiBusy.current = false;
+    genRef.current += 1;
     if (opponentTimer.current) clearTimeout(opponentTimer.current);
     (async () => {
       const progress = await loadPuzzleProgress(puzzle.id);
@@ -63,20 +85,72 @@ export default function PuzzleScreen() {
     };
   }, [puzzle, state, flipped]);
 
+  // 无引擎：对方走谱
   useEffect(() => {
-    if (!puzzle || !state) return;
-    if (state.status !== 'playing') return;
-    if (isSolverTurn(state.stepIndex)) return;
+    if (!puzzle || !state || useEngine) return;
+    if (!isOpponentTurn(puzzle, state)) return;
 
     if (opponentTimer.current) clearTimeout(opponentTimer.current);
     opponentTimer.current = setTimeout(() => {
-      setState((prev) => (prev ? playOpponentReply(puzzle, prev) : prev));
+      setState((prev) => {
+        if (!prev) return prev;
+        const next = playOpponentReply(puzzle, prev);
+        playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+        return next;
+      });
     }, OPPONENT_DELAY_MS);
 
     return () => {
       if (opponentTimer.current) clearTimeout(opponentTimer.current);
     };
-  }, [puzzle, state?.stepIndex, state?.status]);
+  }, [puzzle, state?.fen, state?.status, state?.thinking, useEngine]);
+
+  // 有引擎：对方 AI
+  useEffect(() => {
+    if (!puzzle || !state || !useEngine) return;
+    if (!isOpponentTurn(puzzle, state)) return;
+    if (aiBusy.current) return;
+
+    const requestFen = state.fen;
+    let cancelled = false;
+    aiBusy.current = true;
+    const gen = ++genRef.current;
+
+    (async () => {
+      setState((prev) =>
+        prev && prev.fen === requestFen ? beginOpponentThink(prev) : prev,
+      );
+      try {
+        const uci = await findBestMove(requestFen, PUZZLE_AI_DIFFICULTY);
+        if (cancelled || !mounted.current || genRef.current !== gen) return;
+        await new Promise((r) => setTimeout(r, OPPONENT_DELAY_MS));
+        if (cancelled || !mounted.current || genRef.current !== gen) return;
+        setState((prev) => {
+          if (!prev || prev.fen !== requestFen) return prev;
+          const next = applyOpponentMove(puzzle, prev, uci);
+          playMoveSfx(prev.fen, uci);
+          return next;
+        });
+      } catch {
+        if (cancelled || !mounted.current || genRef.current !== gen) return;
+        // 引擎失败则回退走谱（仅主变上可用）
+        setUseEngine(false);
+        setState((prev) => {
+          if (!prev || prev.fen !== requestFen) return prev;
+          const warmed = { ...prev, thinking: false };
+          const next = playOpponentReply(puzzle, warmed);
+          playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+          return next;
+        });
+      } finally {
+        if (genRef.current === gen) aiBusy.current = false;
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [puzzle, state?.fen, state?.status, useEngine]);
 
   if (!puzzle) {
     return (
@@ -95,8 +169,21 @@ export default function PuzzleScreen() {
   }
 
   const nextId = nextPuzzleId(puzzle.id);
-  const progressLabel = `${Math.min(state.stepIndex, puzzle.solution.length)}/${puzzle.solution.length}`;
-  const done = state.status === 'complete';
+  const done = state.status !== 'playing';
+  const canInteract = isSolverTurn(puzzle, state);
+
+  const onRestart = () => {
+    aiBusy.current = false;
+    genRef.current += 1;
+    if (opponentTimer.current) clearTimeout(opponentTimer.current);
+    setUseEngine(isPikafishAvailable());
+    setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev));
+  };
+
+  const overlayText =
+    state.feedback ||
+    state.comment ||
+    (state.thinking ? '对方落子…' : null);
 
   return (
     <>
@@ -115,16 +202,16 @@ export default function PuzzleScreen() {
           bottomInset={insets.bottom}
           header={
             <View style={styles.topBar}>
-              <Text style={styles.progress}>{progressLabel}</Text>
+              <Text style={styles.goal}>{puzzle.goalLabel}</Text>
               <Pressable onPress={() => setFlipped((f) => !f)} hitSlop={10}>
                 <Text style={styles.flip}>翻转</Text>
               </Pressable>
             </View>
           }
           overlay={
-            state.comment || state.feedback ? (
+            overlayText ? (
               <View style={styles.noteBlock}>
-                {state.comment ? (
+                {state.comment && !state.feedback && !state.thinking ? (
                   <Text style={styles.comment} numberOfLines={4}>
                     {state.comment}
                   </Text>
@@ -132,6 +219,10 @@ export default function PuzzleScreen() {
                 {state.feedback ? (
                   <Text style={styles.feedback} numberOfLines={1}>
                     {state.feedback}
+                  </Text>
+                ) : state.thinking ? (
+                  <Text style={styles.thinking} numberOfLines={1}>
+                    对方落子…
                   </Text>
                 ) : null}
               </View>
@@ -141,14 +232,20 @@ export default function PuzzleScreen() {
             <Board
               fen={state.fen}
               flipped={flipped}
-              selected={state.selected}
-              legalTargets={state.legalTargets}
+              selected={canInteract ? state.selected : null}
+              legalTargets={canInteract ? state.legalTargets : []}
               hintFrom={state.hintFrom}
               hintTo={state.hintTo}
               lastMove={state.lastMove}
-              onSquarePress={(sq: Square) =>
-                setState((prev) => (prev ? selectSquare(puzzle, prev, sq) : prev))
-              }
+              onSquarePress={(sq: Square) => {
+                if (!canInteract) return;
+                setState((prev) => {
+                  if (!prev) return prev;
+                  const next = selectSquare(puzzle, prev, sq, { requireBook: !useEngine });
+                  playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+                  return next;
+                });
+              }}
             />
           }
           actions={
@@ -157,8 +254,7 @@ export default function PuzzleScreen() {
                   {
                     key: 'restart',
                     label: '重来',
-                    onPress: () =>
-                      setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev)),
+                    onPress: onRestart,
                   },
                   nextId
                     ? {
@@ -183,13 +279,18 @@ export default function PuzzleScreen() {
                   {
                     key: 'reveal',
                     label: '看答案',
-                    onPress: () => setState((prev) => (prev ? revealNext(puzzle, prev) : prev)),
+                    onPress: () =>
+                      setState((prev) => {
+                        if (!prev) return prev;
+                        const next = revealNext(puzzle, prev);
+                        playSfxIfMoved(prev.fen, next.fen, next.lastMove);
+                        return next;
+                      }),
                   },
                   {
                     key: 'restart',
                     label: '重来',
-                    onPress: () =>
-                      setState((prev) => (prev ? restartPuzzle(puzzle, prev) : prev)),
+                    onPress: onRestart,
                   },
                 ]
           }
@@ -216,11 +317,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  progress: {
+  goal: {
     color: wood.creamFaint,
     fontSize: 12,
-    fontVariant: ['tabular-nums'],
-    letterSpacing: 1,
+    letterSpacing: 2,
   },
   flip: {
     color: wood.creamSoft,
@@ -237,6 +337,11 @@ const styles = StyleSheet.create({
   feedback: {
     marginTop: 4,
     color: wood.gold,
+    fontSize: 12,
+  },
+  thinking: {
+    marginTop: 4,
+    color: wood.creamFaint,
     fontSize: 12,
   },
 });

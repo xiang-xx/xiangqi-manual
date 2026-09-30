@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { BoardActionBar, type BoardAction } from './BoardActionBar';
+import { CombatFlash } from './CombatFlash';
 
 type Props = {
   /** 顶栏（进度 / 模式），占固定流式高度 */
@@ -34,6 +35,7 @@ export function BoardScreenLayout({
             {overlay}
           </View>
         ) : null}
+        <CombatFlash />
       </View>
       <BoardActionBar
         actions={actions}

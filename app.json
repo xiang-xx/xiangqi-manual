@@ -32,7 +32,9 @@
         "expo-build-properties",
         {
           "android": {
-            "buildArchs": ["arm64-v8a"],
+            "buildArchs": [
+              "arm64-v8a"
+            ],
             "useLegacyPackaging": true
           }
         }
@@ -44,6 +46,15 @@
           "image": "./assets/splash-icon.png",
           "imageWidth": 168,
           "resizeMode": "contain"
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
         }
       ]
     ],

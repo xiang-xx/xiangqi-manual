@@ -51,6 +51,11 @@ export type Manual = {
   variations?: Record<string, ManualVariation[]>;
   /** 书名或来源备注 */
   source?: string;
+  /**
+   * 对局结果：红胜 / 黑胜 / 和。
+   * 只筛先手或只筛后手开局时用于隐藏该侧负局。
+   */
+  result?: 'red' | 'black' | 'draw';
 };
 
 export type ManualProgress = {

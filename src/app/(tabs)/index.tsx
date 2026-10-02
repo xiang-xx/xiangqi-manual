@@ -14,9 +14,11 @@ import { TagFilter } from '../../components/TagFilter';
 import {
   allOpenings,
   allTags,
+  exclusiveOpeningSide,
   filterManuals,
   getManualById,
   manualMetaLine,
+  manualResultHint,
   manuals,
   openingFacetCounts,
   tagFacetCounts,
@@ -103,6 +105,7 @@ export default function HomeScreen() {
   );
   const hasFilter = selectedTags.length > 0 || redOpening != null || blackOpening != null;
   const entrySide = entrySideFromOpeningFilter(redOpening, blackOpening);
+  const sideOnly = exclusiveOpeningSide(redOpening, blackOpening);
 
   const manualHref = (manualId: string) =>
     entrySide
@@ -204,25 +207,40 @@ export default function HomeScreen() {
                 </Text>
                 <View style={styles.rule} />
               </View>
+              {sideOnly ? (
+                <Text style={styles.resultTip}>
+                  仅{sideOnly === 'red' ? '先手' : '后手'}：已隐藏负局，下列为胜 / 和
+                </Text>
+              ) : null}
             </View>
           }
           ListEmptyComponent={<Text style={styles.empty}>无匹配棋谱</Text>}
-          renderItem={({ item }) => (
-            <Link href={manualHref(item.id)} asChild>
-              <Pressable style={styles.row}>
-                <Text style={styles.rowTitle} numberOfLines={2}>
-                  {item.title}
-                </Text>
-                <Text style={styles.rowMeta} numberOfLines={1}>
-                  {manualMetaLine(item)}
-                  <Text style={styles.rowProgress}>
-                    {'  '}
-                    {progressLabel(progressMap[item.id], item)}
+          renderItem={({ item }) => {
+            const hint = manualResultHint(item, redOpening, blackOpening);
+            return (
+              <Link href={manualHref(item.id)} asChild>
+                <Pressable style={styles.row}>
+                  <View style={styles.rowTitleRow}>
+                    <Text style={styles.rowTitle} numberOfLines={2}>
+                      {item.title}
+                    </Text>
+                    {hint ? (
+                      <Text style={[styles.resultBadge, hint === '和' && styles.resultBadgeDraw]}>
+                        {hint}
+                      </Text>
+                    ) : null}
+                  </View>
+                  <Text style={styles.rowMeta} numberOfLines={1}>
+                    {manualMetaLine(item)}
+                    <Text style={styles.rowProgress}>
+                      {'  '}
+                      {progressLabel(progressMap[item.id], item)}
+                    </Text>
                   </Text>
-                </Text>
-              </Pressable>
-            </Link>
-          )}
+                </Pressable>
+              </Link>
+            );
+          }}
         />
       )}
     </View>
@@ -311,16 +329,44 @@ const styles = StyleSheet.create({
     fontSize: 11,
     letterSpacing: 2,
   },
+  resultTip: {
+    color: ink.faint,
+    fontSize: 12,
+    lineHeight: 18,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
   row: {
     paddingVertical: 16,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: ink.rule,
   },
+  rowTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 8,
+  },
   rowTitle: {
+    flex: 1,
     color: ink.deep,
     fontSize: 17,
     fontWeight: '500',
     lineHeight: 24,
+  },
+  resultBadge: {
+    marginTop: 2,
+    color: ink.deep,
+    fontSize: 12,
+    fontWeight: '600',
+    letterSpacing: 1,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: ink.chip,
+  },
+  resultBadgeDraw: {
+    color: ink.soft,
   },
   rowMeta: {
     marginTop: 6,

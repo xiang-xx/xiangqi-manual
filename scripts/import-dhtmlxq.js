@@ -215,6 +215,8 @@ function buildManual({ text, id, title, tags, sideToMemorize, source, focusPlaye
   tagSet.add('名局');
 
   const parsedOpening = parseDongpingOpen(opening);
+  const parsedResult =
+    parseDongpingResult(result) || parseTitleResult(metaTitle);
 
   return {
     id,
@@ -226,10 +228,30 @@ function buildManual({ text, id, title, tags, sideToMemorize, source, focusPlaye
     startFen,
     moves,
     comments,
+    ...(parsedResult ? { result: parsedResult } : {}),
     source:
       source ||
       [red && black ? `${red} vs ${black}` : '', date, result, opening].filter(Boolean).join(' · '),
   };
+}
+
+function parseTitleResult(title) {
+  const m = /^(.+?)\s+(胜|负|和)\s+(.+)$/.exec(String(title || '').trim());
+  if (!m) return null;
+  if (m[2] === '和') return 'draw';
+  if (m[2] === '胜') return 'red';
+  if (m[2] === '负') return 'black';
+  return null;
+}
+
+function parseDongpingResult(raw) {
+  if (!raw) return null;
+  const t = String(raw).trim();
+  if (!t) return null;
+  if (/和/.test(t)) return 'draw';
+  if (/红胜|先胜|红方胜|1\s*-\s*0/.test(t)) return 'red';
+  if (/黑胜|后胜|黑方胜|0\s*-\s*1/.test(t)) return 'black';
+  return null;
 }
 
 async function loadText(args) {

@@ -28,11 +28,15 @@ type Manual = {
     moves: Array<{ san: string; uci: string }>;
   }>>;
   source?: string;            // 书名 / 来源备注
+  result?: 'red' | 'black' | 'draw'; // 红胜 / 黑胜 / 和
 };
 ```
 
 展示用 tag 顺序见 `src/data/tags.ts`；开局词表见 `src/data/openings.ts`。
 首页可分别选先手 / 后手开局（如「后手中炮」，或「先手中炮 + 后手屏风马」），再与分类 tag 取交集。
+**只选先手或只选后手**时，自动隐藏该侧负局，只保留胜 / 和，列表项旁标注「胜」「和」。
+
+`result?: 'red' | 'black' | 'draw'`：红胜 / 黑胜 / 和（由标题「红方 胜/负/和 黑方」或东萍 result 回填）。
 
 **变例**：仅 **记谱** 可点进浏览（棋盘走出旁路），**背谱不校验变例**。可用 `npm run extract-variations` 从注释「如改走…」抽取。
 

@@ -24,8 +24,8 @@ type Burst = {
 let nextId = 1;
 
 /**
- * 将军 / 绝杀全屏字效（冲入大字 + 红晕闪）。
- * 挂在棋盘 stage 上，pointerEvents none。
+ * 将军：只出大字，不闪屏。
+ * 绝杀：大字 + 轻红晕（终局强调）。
  */
 export function CombatFlash() {
   const [burst, setBurst] = useState<Burst | null>(null);
@@ -48,17 +48,22 @@ export function CombatFlash() {
     progress.value = 0;
     wash.value = 0;
 
-    const hold = mate ? 780 : 520;
-    const fade = mate ? 460 : 340;
+    const hold = mate ? 780 : 560;
+    const fade = mate ? 420 : 300;
 
-    wash.value = withSequence(
-      withTiming(1, { duration: 80, easing: Easing.out(Easing.quad) }),
-      withTiming(mate ? 0.62 : 0.34, { duration: 160 }),
-      withDelay(hold, withTiming(0, { duration: fade })),
-    );
+    if (mate) {
+      wash.value = withSequence(
+        withTiming(0.85, { duration: 100, easing: Easing.out(Easing.quad) }),
+        withTiming(0.4, { duration: 180 }),
+        withDelay(hold, withTiming(0, { duration: fade })),
+      );
+    }
 
     progress.value = withSequence(
-      withTiming(1, { duration: 240, easing: Easing.out(Easing.back(1.7)) }),
+      withTiming(1, {
+        duration: mate ? 240 : 180,
+        easing: mate ? Easing.out(Easing.back(1.5)) : Easing.out(Easing.cubic),
+      }),
       withDelay(
         hold,
         withTiming(2, { duration: fade, easing: Easing.in(Easing.quad) }, (finished) => {
@@ -69,38 +74,25 @@ export function CombatFlash() {
   }, [burst, intensity, progress, wash]);
 
   const washStyle = useAnimatedStyle(() => ({
-    opacity: wash.value * interpolate(intensity.value, [0, 1], [0.3, 0.58]),
-    backgroundColor:
-      intensity.value > 0.5 ? 'rgba(110, 12, 10, 1)' : 'rgba(150, 32, 24, 1)',
+    opacity: wash.value * 0.42,
+    backgroundColor: 'rgba(110, 12, 10, 1)',
   }));
 
   const labelStyle = useAnimatedStyle(() => {
     const p = progress.value;
     const appear = Math.min(p, 1);
     const fadeOut = p > 1 ? p - 1 : 0;
+    const mate = intensity.value > 0.5;
     return {
-      opacity: interpolate(appear, [0, 0.12, 1], [0, 1, 1]) * (1 - fadeOut),
+      opacity: interpolate(appear, [0, 0.15, 1], [0, 1, 1]) * (1 - fadeOut),
       transform: [
         {
           scale:
-            interpolate(appear, [0, 1], [1.9, 1]) *
-            interpolate(fadeOut, [0, 1], [1, 1.08]),
+            interpolate(appear, [0, 1], [mate ? 1.75 : 1.35, 1]) *
+            interpolate(fadeOut, [0, 1], [1, 1.04]),
         },
-        { translateY: interpolate(appear, [0, 1], [22, 0]) },
+        { translateY: interpolate(appear, [0, 1], [mate ? 16 : 8, 0]) },
       ],
-    };
-  });
-
-  const ringStyle = useAnimatedStyle(() => {
-    const p = Math.min(progress.value, 1);
-    const fadeOut = Math.max(0, progress.value - 1);
-    return {
-      opacity: interpolate(p, [0, 0.18, 1], [0, 0.75, 0.15]) * (1 - fadeOut),
-      transform: [{ scale: interpolate(p, [0, 1], [0.5, 1.5]) }],
-      borderColor:
-        intensity.value > 0.5
-          ? 'rgba(255, 200, 100, 0.8)'
-          : 'rgba(255, 214, 150, 0.55)',
     };
   });
 
@@ -111,9 +103,8 @@ export function CombatFlash() {
 
   return (
     <View style={styles.root} pointerEvents="none">
-      <Animated.View style={[styles.wash, washStyle]} />
+      {mate ? <Animated.View style={[styles.wash, washStyle]} /> : null}
       <View style={styles.center}>
-        <Animated.View style={[styles.ring, ringStyle]} />
         <Animated.View style={labelStyle}>
           <Text
             style={[styles.label, mate ? styles.labelMate : styles.labelCheck]}
@@ -141,24 +132,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ring: {
-    position: 'absolute',
-    width: 230,
-    height: 230,
-    borderRadius: 115,
-    borderWidth: 3,
-  },
   label: {
-    fontSize: 76,
+    fontSize: 72,
     fontWeight: '800',
     letterSpacing: 12,
     textAlign: 'center',
   },
   labelCheck: {
-    color: '#F6E6C4',
-    textShadowColor: 'rgba(70, 8, 6, 0.85)',
-    textShadowOffset: { width: 0, height: 3 },
-    textShadowRadius: 10,
+    color: '#FFF1D0',
+    textShadowColor: 'rgba(40, 18, 8, 0.75)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 6,
   },
   labelMate: {
     color: '#FFE7A0',

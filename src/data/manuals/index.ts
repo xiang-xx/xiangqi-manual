@@ -1,4 +1,9 @@
 import type { Manual } from '../../types/manual';
+import {
+  exclusiveOpeningSide,
+  keepsResultForSide,
+  resultHintForSide,
+} from '../../lib/manualResult';
 import { formatOpeningLabel, sortOpeningNames } from '../openings';
 import { sortTags } from '../tags';
 
@@ -76,10 +81,14 @@ export function filterManualsByTags(selectedTags: string[]): Manual[] {
   return filterManuals({ tags: selectedTags });
 }
 
-/** tags 全包含 AND 先手/后手开局（未选侧不限制） */
+/**
+ * tags 全包含 AND 先手/后手开局（未选侧不限制）。
+ * 只选一侧开局时：去掉该侧负局，保留胜/和（无 result 的保留）。
+ */
 export function filterManuals(filter: ManualFilter = {}): Manual[] {
   const tags = filter.tags ?? [];
   const { redOpening, blackOpening } = filter;
+  const sideOnly = exclusiveOpeningSide(redOpening, blackOpening);
   if (tags.length === 0 && !redOpening && !blackOpening) return manuals;
 
   return manuals.filter((manual) => {
@@ -88,6 +97,7 @@ export function filterManuals(filter: ManualFilter = {}): Manual[] {
     }
     if (redOpening && manual.opening?.red !== redOpening) return false;
     if (blackOpening && manual.opening?.black !== blackOpening) return false;
+    if (sideOnly && !keepsResultForSide(manual.result, sideOnly)) return false;
     return true;
   });
 }
@@ -98,3 +108,16 @@ export function manualMetaLine(manual: Manual): string {
   const parts = [opening, tagPart, `${manual.moves.length} 手`].filter(Boolean);
   return parts.join(' · ');
 }
+
+/** 单侧开局筛选时的结果提示（胜/和） */
+export function manualResultHint(
+  manual: Manual,
+  redOpening: string | null | undefined,
+  blackOpening: string | null | undefined,
+): '胜' | '和' | null {
+  const side = exclusiveOpeningSide(redOpening, blackOpening);
+  if (!side) return null;
+  return resultHintForSide(manual.result, side);
+}
+
+export { exclusiveOpeningSide };

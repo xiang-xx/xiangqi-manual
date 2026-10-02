@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
-import { createGame, fenAfterMoves, turnFromFen } from '../../lib/engine';
+import { fenAfterMoves, turnFromFen } from '../../lib/engine';
 import {
   AI_DIFFICULTIES,
   findBestMove,
@@ -47,16 +47,26 @@ import { parseUci, type Square } from '../../lib/squares';
 import { wood } from '../../lib/theme';
 
 const AI_MOVE_DELAY_MS = 300;
+/** 记谱/背谱切入演变时的默认难度（较强） */
+const EXPLORE_DIFFICULTY: AiDifficulty = '高级';
 
 function parseSide(raw: string | string[] | undefined): PlaySide {
   const v = Array.isArray(raw) ? raw[0] : raw;
   return v === 'black' ? 'black' : 'red';
 }
 
-function parseDifficulty(raw: string | string[] | undefined): AiDifficulty {
+function parseDifficulty(
+  raw: string | string[] | undefined,
+  fallback: AiDifficulty = '中级',
+): AiDifficulty {
   const v = Array.isArray(raw) ? raw[0] : raw;
   if (v && (AI_DIFFICULTIES as string[]).includes(v)) return v as AiDifficulty;
-  return '中级';
+  return fallback;
+}
+
+function parseParam(raw: string | string[] | undefined): string | undefined {
+  if (Array.isArray(raw)) return raw[0];
+  return raw;
 }
 
 function AiPulseDot({ active }: { active: boolean }) {
@@ -82,14 +92,24 @@ function AiPulseDot({ active }: { active: boolean }) {
 
 export default function PlayGameScreen() {
   useKeepAwake(undefined, { suppressDeactivateWarnings: true });
-  const params = useLocalSearchParams<{ id?: string; side?: string; difficulty?: string }>();
-  const paramId = Array.isArray(params.id) ? params.id[0] : params.id;
+  const params = useLocalSearchParams<{
+    id?: string;
+    side?: string;
+    difficulty?: string;
+    fen?: string;
+    ephemeral?: string;
+  }>();
+  const paramId = parseParam(params.id);
+  const paramFen = parseParam(params.fen);
+  const ephemeral = parseParam(params.ephemeral) === '1';
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
   const [gameId, setGameId] = useState<string | null>(paramId ?? null);
   const [side, setSide] = useState<PlaySide>(parseSide(params.side));
-  const [difficulty, setDifficulty] = useState<AiDifficulty>(parseDifficulty(params.difficulty));
+  const [difficulty, setDifficulty] = useState<AiDifficulty>(
+    parseDifficulty(params.difficulty, ephemeral ? EXPLORE_DIFFICULTY : '中级'),
+  );
   const [state, setState] = useState<PlayState | null>(null);
   const [ready, setReady] = useState(false);
   const [engineError, setEngineError] = useState<string | null>(null);
@@ -122,16 +142,15 @@ export default function PlayGameScreen() {
             ? '认负'
             : '负';
 
-  const startFen = useMemo(() => createGame().fen(), []);
   const reviewFen = useMemo(() => {
     if (!state || !inReview) return null;
-    if (reviewPly <= 0) return startFen;
+    if (reviewPly <= 0) return state.startFen;
     try {
-      return fenAfterMoves(startFen, state.moves.slice(0, reviewPly));
+      return fenAfterMoves(state.startFen, state.moves.slice(0, reviewPly));
     } catch {
       return state.fen;
     }
-  }, [state, inReview, reviewPly, startFen]);
+  }, [state, inReview, reviewPly]);
 
   const reviewLastMove = useMemo(() => {
     if (!state || !inReview || reviewPly <= 0) return null;
@@ -174,6 +193,18 @@ export default function PlayGameScreen() {
         return;
       }
 
+      // 记谱/背谱切入：不落盘，从当前 FEN 开局
+      if (ephemeral && paramFen) {
+        const humanSide = parseSide(params.side);
+        const diff = parseDifficulty(params.difficulty, EXPLORE_DIFFICULTY);
+        setGameId(null);
+        setSide(humanSide);
+        setDifficulty(diff);
+        setState(initialPlayState(humanSide, paramFen));
+        setReady(true);
+        return;
+      }
+
       const record = await createPlayGame({
         humanSide: parseSide(params.side),
         difficulty: parseDifficulty(params.difficulty),
@@ -190,7 +221,7 @@ export default function PlayGameScreen() {
     return () => {
       alive = false;
     };
-  }, [paramId]);
+  }, [paramId, ephemeral, paramFen]);
 
   useEffect(() => {
     mounted.current = true;
@@ -201,7 +232,7 @@ export default function PlayGameScreen() {
   }, []);
 
   useEffect(() => {
-    if (!ready || !gameId || !state) return;
+    if (!ready || ephemeral || !gameId || !state) return;
     if (persistTimer.current) clearTimeout(persistTimer.current);
     persistTimer.current = setTimeout(() => {
       void savePlayGame(gameId, {
@@ -213,7 +244,7 @@ export default function PlayGameScreen() {
     return () => {
       if (persistTimer.current) clearTimeout(persistTimer.current);
     };
-  }, [ready, gameId, state?.moves, state?.status, state?.note]);
+  }, [ready, ephemeral, gameId, state?.moves, state?.status, state?.note]);
 
   useEffect(() => {
     if (!ready || !state || inReview) return;
@@ -263,6 +294,12 @@ export default function PlayGameScreen() {
     setEngineError(null);
     setReviewNotes(null);
     setReviewing(false);
+    if (ephemeral) {
+      const start = state?.startFen ?? paramFen;
+      if (!start) return;
+      setState(initialPlayState(side, start));
+      return;
+    }
     const record = await createPlayGame({ humanSide: side, difficulty });
     router.replace({ pathname: '/play/game', params: { id: record.id } });
   };
@@ -275,6 +312,8 @@ export default function PlayGameScreen() {
     setState((prev) => (prev ? undoPlay(prev) : prev));
   };
 
+  const goBack = () => router.back();
+
   const startReview = async () => {
     if (!state || reviewing) return;
     if (!isPikafishAvailable()) {
@@ -284,9 +323,14 @@ export default function PlayGameScreen() {
     setReviewing(true);
     setReviewProgress('复盘中…');
     try {
-      const notes = await analyzeHumanPlies(state.moves, state.humanSide, (done, total) => {
-        setReviewProgress(`复盘中 ${done}/${total}`);
-      });
+      const notes = await analyzeHumanPlies(
+        state.moves,
+        state.humanSide,
+        (done, total) => {
+          setReviewProgress(`复盘中 ${done}/${total}`);
+        },
+        state.startFen,
+      );
       if (!mounted.current) return;
       setReviewNotes(notes);
       setReviewPly(state.moves.length);
@@ -304,7 +348,7 @@ export default function PlayGameScreen() {
       <>
         <Stack.Screen
           options={{
-            title: '对弈',
+            title: ephemeral ? '演变' : '对弈',
             headerStyle: { backgroundColor: wood.header },
             headerTintColor: wood.cream,
             headerShadowVisible: false,
@@ -326,12 +370,18 @@ export default function PlayGameScreen() {
     : inReview
       ? (activeNote?.text ?? reviewProgress)
       : engineError ?? endLabel;
+  const backLabel = ephemeral ? '回原局' : '返回';
+  const screenTitle = inReview
+    ? '复盘'
+    : ephemeral
+      ? `演变 · ${difficulty}`
+      : `对弈 · ${difficulty}`;
 
   return (
     <>
       <Stack.Screen
         options={{
-          title: inReview ? '复盘' : `对弈 · ${difficulty}`,
+          title: screenTitle,
           headerStyle: { backgroundColor: wood.header },
           headerTintColor: wood.cream,
           headerTitleStyle: { fontWeight: '500', fontSize: 16 },
@@ -344,7 +394,10 @@ export default function PlayGameScreen() {
           bottomInset={insets.bottom}
           header={
             <View style={styles.metaRow}>
-              <Text style={styles.metaSide}>{side === 'red' ? '执红' : '执黑'}</Text>
+              <Text style={styles.metaSide}>
+                {ephemeral ? '试走' : side === 'red' ? '执红' : '执黑'}
+                {ephemeral ? ` · ${side === 'red' ? '红' : '黑'}` : ''}
+              </Text>
               <Text style={styles.metaDiff}>{inReview ? '引擎建议' : difficulty}</Text>
             </View>
           }
@@ -424,8 +477,8 @@ export default function PlayGameScreen() {
                     },
                     {
                       key: 'back',
-                      label: '返回',
-                      onPress: () => router.back(),
+                      label: backLabel,
+                      onPress: goBack,
                     },
                   ]
                 : [
@@ -446,8 +499,8 @@ export default function PlayGameScreen() {
                     },
                     {
                       key: 'back',
-                      label: '返回',
-                      onPress: () => router.back(),
+                      label: backLabel,
+                      onPress: goBack,
                     },
                   ]
           }

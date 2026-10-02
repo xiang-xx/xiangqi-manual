@@ -24,18 +24,19 @@ export async function analyzeHumanPlies(
   moves: string[],
   humanSide: PlaySide,
   onProgress?: (done: number, total: number) => void,
+  startFen?: string,
 ): Promise<ReviewNote[]> {
-  const startFen = createGame().fen();
+  const start = startFen ?? createGame().fen();
   const humanPlies: number[] = [];
   for (let i = 0; i < moves.length; i++) {
-    const fen = i === 0 ? startFen : fenAfterMoves(startFen, moves.slice(0, i));
+    const fen = i === 0 ? start : fenAfterMoves(start, moves.slice(0, i));
     if (turnFromFen(fen) === humanSide) humanPlies.push(i);
   }
 
   const notes: ReviewNote[] = [];
   let done = 0;
   for (const ply of humanPlies) {
-    const fen = ply === 0 ? startFen : fenAfterMoves(startFen, moves.slice(0, ply));
+    const fen = ply === 0 ? start : fenAfterMoves(start, moves.slice(0, ply));
     const played = normalizeIccs(moves[ply]);
     let best: string;
     try {

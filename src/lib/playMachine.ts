@@ -14,8 +14,10 @@ export type PlayStatus = 'playing' | 'won' | 'lost' | 'draw';
 
 export type PlayState = {
   fen: string;
+  /** 本局起点（标准开局或演变切入局面） */
+  startFen: string;
   humanSide: PlaySide;
-  /** 从开局起的 UCI 序列 */
+  /** 自 startFen 起的 UCI 序列 */
   moves: string[];
   selected: Square | null;
   legalTargets: Square[];
@@ -54,15 +56,20 @@ function outcomeAfter(fen: string, humanSide: PlaySide): {
   return { status: 'draw', note: '双方无子可动' };
 }
 
-function rebuild(humanSide: PlaySide, moves: string[], noteOverride?: string | null): PlayState {
-  const start = createGame().fen();
-  const fen = moves.length === 0 ? start : fenAfterMoves(start, moves);
+function rebuild(
+  humanSide: PlaySide,
+  moves: string[],
+  startFen: string,
+  noteOverride?: string | null,
+): PlayState {
+  const fen = moves.length === 0 ? startFen : fenAfterMoves(startFen, moves);
   const lastUci = moves[moves.length - 1];
   const outcome = outcomeAfter(fen, humanSide);
   // 认负等非局面终局：保留 noteOverride
   const resigned = noteOverride === '认负';
   return {
     fen,
+    startFen,
     humanSide,
     moves,
     selected: null,
@@ -74,17 +81,22 @@ function rebuild(humanSide: PlaySide, moves: string[], noteOverride?: string | n
   };
 }
 
-export function initialPlayState(humanSide: PlaySide): PlayState {
-  return rebuild(humanSide, []);
+export function initialPlayState(humanSide: PlaySide, startFen?: string): PlayState {
+  return rebuild(humanSide, [], startFen ?? createGame().fen());
 }
 
 /** 从存档着法恢复（终局可继续悔棋） */
 export function restorePlayState(
   humanSide: PlaySide,
   moves: string[],
-  opts?: { resigned?: boolean },
+  opts?: { resigned?: boolean; startFen?: string },
 ): PlayState {
-  return rebuild(humanSide, moves, opts?.resigned ? '认负' : undefined);
+  return rebuild(
+    humanSide,
+    moves,
+    opts?.startFen ?? createGame().fen(),
+    opts?.resigned ? '认负' : undefined,
+  );
 }
 
 export function isHumanTurn(state: PlayState): boolean {
@@ -236,5 +248,5 @@ export function undoPlay(state: PlayState): PlayState {
     state.thinking || state.moves.length === 1
       ? 1
       : 2;
-  return rebuild(state.humanSide, state.moves.slice(0, -take));
+  return rebuild(state.humanSide, state.moves.slice(0, -take), state.startFen);
 }

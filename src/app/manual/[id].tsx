@@ -1,6 +1,6 @@
 import { useKeepAwake } from 'expo-keep-awake';
-import { Stack, useLocalSearchParams } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Pressable,
   ScrollView,
@@ -13,6 +13,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { getManualById } from '../../data/manuals';
+import { turnFromFen } from '../../lib/engine';
+import { isPikafishAvailable } from '../../lib/pikafish';
 import {
   commentedMoveIndex,
   enterVariation,
@@ -56,6 +58,8 @@ export default function ManualScreen() {
   const manual = getManualById(id);
   const entrySide: 'red' | 'black' | null =
     entrySideRaw === 'red' ? 'red' : entrySideRaw === 'black' ? 'black' : null;
+  const router = useRouter();
+  const canExplore = useMemo(() => isPikafishAvailable(), []);
   const [state, setState] = useState<PracticeState | null>(null);
   const [flipped, setFlipped] = useState(false);
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -168,7 +172,7 @@ export default function ManualScreen() {
   const resetToStart = () => {
     setState((prev) => {
       if (!prev) return prev;
-      if (prev.variation) return exitVariation(manual, prev);
+      // 记谱：回主变起点（goToStep 会清掉变例）
       if (prev.mode === 'study') return goToStep(manual, prev, 0);
       return restartPractice(manual, {
         wrongCounts: prev.wrongCounts,
@@ -183,6 +187,29 @@ export default function ManualScreen() {
     if (nextFlip != null) setFlipped(nextFlip);
     setState((prev) => (prev ? setPracticeSide(manual, prev, side) : prev));
   };
+
+  /** 从当前局面切入强 AI 试走；不落盘，返回即恢复记谱/背谱进度 */
+  const openExplore = () => {
+    if (!canExplore) return;
+    const side = turnFromFen(state.fen);
+    router.push({
+      pathname: '/play/game',
+      params: {
+        ephemeral: '1',
+        fen: state.fen,
+        side,
+        difficulty: '高级',
+      },
+    });
+  };
+
+  const exploreAction = canExplore
+    ? {
+        key: 'explore',
+        label: '演变',
+        onPress: openExplore,
+      }
+    : null;
 
   return (
     <>
@@ -338,6 +365,13 @@ export default function ManualScreen() {
                         return next;
                       }),
                   },
+                  {
+                    key: 'reset',
+                    label: '重置',
+                    disabled: !canReset,
+                    onPress: resetToStart,
+                  },
+                  ...(exploreAction ? [exploreAction] : []),
                 ]
               : [
                   {
@@ -356,6 +390,7 @@ export default function ManualScreen() {
                     disabled: !canReset,
                     onPress: resetToStart,
                   },
+                  ...(exploreAction ? [exploreAction] : []),
                 ]
           }
         />

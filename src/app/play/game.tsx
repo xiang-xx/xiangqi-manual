@@ -261,7 +261,10 @@ export default function PlayGameScreen() {
     (async () => {
       setState((prev) => (prev && prev.fen === requestFen ? beginAiThink(prev) : prev));
       try {
-        const uci = await findBestMove(requestFen, difficulty);
+        const uci = await findBestMove(requestFen, difficulty, {
+          startFen: state.startFen,
+          moves: state.moves,
+        });
         if (cancelled || !mounted.current || genRef.current !== gen) return;
         await new Promise((r) => setTimeout(r, AI_MOVE_DELAY_MS));
         if (cancelled || !mounted.current || genRef.current !== gen) return;

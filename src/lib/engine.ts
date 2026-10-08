@@ -74,6 +74,24 @@ export function applyUci(
   return { fen: game.fen(), move };
 }
 
+/** 局面键：棋盘 + 行棋方（忽略半回合/回合计数） */
+export function positionKey(fen: string): string {
+  return fen.trim().split(/\s+/).slice(0, 2).join(' ');
+}
+
+export function allLegalUcis(fen: string): string[] {
+  const game = createGame(fen);
+  const moves = game.moves({ verbose: true }) as XiangqiMoveVerbose[];
+  return moves.map((m) => m.iccs.toLowerCase());
+}
+
+/** 该着是否将军（对方受将） */
+export function givesCheck(fen: string, uci: string): boolean {
+  const game = createGame(fen);
+  if (!game.move(uci)) return false;
+  return game.in_check();
+}
+
 export function pieceAt(fen: string, square: Square): BoardPiece | null {
   const game = createGame(fen);
   return toBoardPiece(game.get(square));

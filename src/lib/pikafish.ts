@@ -108,12 +108,21 @@ export async function shutdownEngine(): Promise<void> {
   await stopPikafish();
 }
 
+export type FindMoveOpts = {
+  /** 与 moves 一起用：让引擎看到完整路径（重复/长将） */
+  startFen?: string;
+  moves?: string[];
+  /** 限制搜索着法（排除长将等） */
+  searchmoves?: string[];
+};
+
 export async function findBestMove(
   fen: string,
   difficulty: AiDifficulty,
+  opts?: FindMoveOpts,
 ): Promise<string> {
-  const opts = DIFFICULTY_OPTS[difficulty];
-  return findBestMoveTimed(fen, opts.movetime, opts.hash);
+  const d = DIFFICULTY_OPTS[difficulty];
+  return findBestMoveTimed(fen, d.movetime, d.hash, opts);
 }
 
 /** 复盘等场景：自定义思考时间（毫秒） */
@@ -121,13 +130,30 @@ export async function findBestMoveTimed(
   fen: string,
   movetime: number,
   hash = 32,
+  opts?: FindMoveOpts,
 ): Promise<string> {
   await ensureEngine();
   await sendPikafish(`setoption name Hash value ${hash}`);
   await sendPikafish('setoption name Threads value 1');
-  await sendPikafish(`position fen ${toPikafishFen(fen)}`);
+
+  const startFen = opts?.startFen;
+  const moves = opts?.moves;
+  const positionCmd =
+    startFen && moves && moves.length > 0
+      ? `position fen ${toPikafishFen(startFen)} moves ${moves.map((m) => m.toLowerCase()).join(' ')}`
+      : startFen && moves
+        ? `position fen ${toPikafishFen(startFen)}`
+        : `position fen ${toPikafishFen(fen)}`;
+  await sendPikafish(positionCmd);
+
+  const search = opts?.searchmoves?.filter(Boolean).map((m) => m.toLowerCase()) ?? [];
+  const goCmd =
+    search.length > 0
+      ? `go movetime ${movetime} searchmoves ${search.join(' ')}`
+      : `go movetime ${movetime}`;
+
   const bestPromise = waitFor((l) => l.startsWith('bestmove '), movetime + 15_000);
-  await sendPikafish(`go movetime ${movetime}`);
+  await sendPikafish(goCmd);
   const line = await bestPromise;
   const parts = line.trim().split(/\s+/);
   const move = parts[1];

@@ -203,14 +203,6 @@ export default function ManualScreen() {
     });
   };
 
-  const exploreAction = canExplore
-    ? {
-        key: 'explore',
-        label: '演变',
-        onPress: openExplore,
-      }
-    : null;
-
   return (
     <>
       <Stack.Screen
@@ -228,7 +220,7 @@ export default function ManualScreen() {
           bottomInset={insets.bottom}
           header={
             <View style={styles.topBar}>
-              <View style={styles.topLeft}>
+              <View style={styles.topRow}>
                 <View style={styles.modeRow}>
                   {(['study', 'practice'] as StudyMode[]).map((m) => {
                     const on = state.mode === m;
@@ -242,20 +234,41 @@ export default function ManualScreen() {
                     );
                   })}
                 </View>
-                {!isStudy ? (
-                  <View style={styles.sideRow}>
-                    {PRACTICE_SIDES.map((s) => {
-                      const on = state.practiceSide === s.id;
-                      return (
-                        <Pressable key={s.id} onPress={() => onPracticeSide(s.id)} hitSlop={6}>
-                          <Text style={[styles.sideText, on && styles.sideTextOn]}>{s.label}</Text>
-                        </Pressable>
-                      );
-                    })}
-                  </View>
-                ) : null}
+                <View style={styles.toolRow}>
+                  <Pressable onPress={() => setFlipped((v) => !v)} hitSlop={8}>
+                    <Text style={styles.tool}>翻转</Text>
+                  </Pressable>
+                  {canExplore ? (
+                    <>
+                      <Text style={styles.toolSep}>·</Text>
+                      <Pressable onPress={openExplore} hitSlop={8}>
+                        <Text style={styles.tool}>演变</Text>
+                      </Pressable>
+                    </>
+                  ) : null}
+                  <Text style={styles.toolSep}>·</Text>
+                  <Pressable onPress={resetToStart} disabled={!canReset} hitSlop={8}>
+                    <Text style={[styles.tool, !canReset && styles.toolDisabled]}>重置</Text>
+                  </Pressable>
+                </View>
               </View>
-              <Text style={styles.progress}>{progressLabel}</Text>
+              <View style={styles.topRow}>
+                {/* 记谱也占位，避免切背谱时顶栏高度/按钮位置跳动 */}
+                <View
+                  style={[styles.sideRow, isStudy && styles.sideRowPlaceholder]}
+                  pointerEvents={isStudy ? 'none' : 'auto'}
+                >
+                  {PRACTICE_SIDES.map((s) => {
+                    const on = state.practiceSide === s.id;
+                    return (
+                      <Pressable key={s.id} onPress={() => onPracticeSide(s.id)} hitSlop={6}>
+                        <Text style={[styles.sideText, on && styles.sideTextOn]}>{s.label}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+                <Text style={styles.progress}>{progressLabel}</Text>
+              </View>
             </View>
           }
           overlay={
@@ -348,11 +361,6 @@ export default function ManualScreen() {
                     },
                   },
                   {
-                    key: 'flip',
-                    label: '翻转',
-                    onPress: () => setFlipped((v) => !v),
-                  },
-                  {
                     key: 'next',
                     label: '下一步',
                     primary: true,
@@ -365,13 +373,6 @@ export default function ManualScreen() {
                         return next;
                       }),
                   },
-                  {
-                    key: 'reset',
-                    label: '重置',
-                    disabled: !canReset,
-                    onPress: resetToStart,
-                  },
-                  ...(exploreAction ? [exploreAction] : []),
                 ]
               : [
                   {
@@ -379,18 +380,6 @@ export default function ManualScreen() {
                     label: '提示',
                     onPress: () => setState((prev) => (prev ? showHint(manual, prev) : prev)),
                   },
-                  {
-                    key: 'flip',
-                    label: '翻转',
-                    onPress: () => setFlipped((v) => !v),
-                  },
-                  {
-                    key: 'reset',
-                    label: '重置',
-                    disabled: !canReset,
-                    onPress: resetToStart,
-                  },
-                  ...(exploreAction ? [exploreAction] : []),
                 ]
           }
         />
@@ -416,13 +405,13 @@ const styles = StyleSheet.create({
   error: { color: wood.danger, fontSize: 15 },
   muted: { color: wood.creamSoft, fontSize: 14 },
   topBar: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-  },
-  topLeft: {
-    flexShrink: 1,
     gap: 8,
+  },
+  topRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minHeight: 22,
   },
   modeRow: {
     flexDirection: 'row',
@@ -453,7 +442,12 @@ const styles = StyleSheet.create({
   },
   sideRow: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: 14,
+    minHeight: 18,
+  },
+  sideRowPlaceholder: {
+    opacity: 0,
   },
   sideText: {
     color: wood.creamFaint,
@@ -464,12 +458,28 @@ const styles = StyleSheet.create({
     color: wood.gold,
     fontWeight: '600',
   },
+  toolRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  tool: {
+    color: wood.creamSoft,
+    fontSize: 13,
+    letterSpacing: 2,
+  },
+  toolSep: {
+    color: wood.creamFaint,
+    fontSize: 13,
+    marginHorizontal: 8,
+  },
+  toolDisabled: {
+    opacity: 0.32,
+  },
   progress: {
     color: wood.creamFaint,
     fontSize: 12,
     fontVariant: ['tabular-nums'],
     letterSpacing: 1,
-    paddingBottom: 2,
   },
   noteBlock: {
     // 叠在棋盘上方空白区，不改变棋盘垂直位置

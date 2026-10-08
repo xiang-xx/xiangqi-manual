@@ -10,7 +10,7 @@ export type BoardAction = {
   primary?: boolean;
 };
 
-/** 棋盘页底栏：字重操作，主操作略提亮 */
+/** 棋盘页底栏：字重操作，主操作略提亮；两项时左右拉开便于点按 */
 export function BoardActionBar({
   actions,
   style,
@@ -18,16 +18,17 @@ export function BoardActionBar({
   actions: BoardAction[];
   style?: StyleProp<ViewStyle>;
 }) {
+  const spread = actions.length === 2;
   return (
-    <View style={[styles.bar, style]}>
+    <View style={[styles.bar, spread && styles.barSpread, style]}>
       {actions.map((a, i) => (
         <View key={a.key} style={styles.item}>
-          {i > 0 ? <Text style={styles.sep}>·</Text> : null}
+          {!spread && i > 0 ? <Text style={styles.sep}>·</Text> : null}
           <Pressable
             onPress={a.onPress}
             disabled={a.disabled}
             hitSlop={10}
-            style={[styles.hit, a.disabled && styles.hitDisabled]}
+            style={[styles.hit, spread && styles.hitSpread, a.disabled && styles.hitDisabled]}
           >
             <Text style={[styles.label, a.primary && styles.labelPrimary]}>{a.label}</Text>
           </Pressable>
@@ -47,6 +48,10 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     gap: 2,
   },
+  barSpread: {
+    justifyContent: 'space-between',
+    paddingHorizontal: 36,
+  },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -59,6 +64,11 @@ const styles = StyleSheet.create({
   hit: {
     paddingVertical: 8,
     paddingHorizontal: 4,
+  },
+  hitSpread: {
+    paddingHorizontal: 12,
+    minWidth: 88,
+    alignItems: 'center',
   },
   hitDisabled: {
     opacity: 0.32,

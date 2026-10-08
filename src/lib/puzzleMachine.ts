@@ -1,11 +1,23 @@
 import type { Puzzle, PuzzleProgress } from '../types/puzzle';
-import { applyUci, createGame, legalMovesFrom, pieceAt, turnFromFen, uciMatches } from './engine';
+import {
+  allLegalUcis,
+  applyUci,
+  createGame,
+  givesCheck,
+  legalMovesFrom,
+  pieceAt,
+  positionKey,
+  turnFromFen,
+  uciMatches,
+} from './engine';
 import { parseUci, type Square } from './squares';
 
 export type PuzzleStatus = 'playing' | 'won' | 'lost' | 'draw';
 
 export type PuzzleState = {
   fen: string;
+  /** 自 startFen 起的 UCI（引擎历史 / 禁长将） */
+  moves: string[];
   /** 与主变对齐的步数；偏离后不再推进（提示 / 看答案 / 无引擎回退用） */
   bookIndex: number;
   offBook: boolean;
@@ -125,6 +137,7 @@ function applyPly(
   return {
     ...clearInteraction(state),
     fen: applied.fen,
+    moves: [...state.moves, uci.toLowerCase()],
     bookIndex: book.bookIndex,
     offBook: book.offBook,
     lastMove: parseUci(uci),
@@ -135,6 +148,58 @@ function applyPly(
     status: outcome.status,
     feedback,
     thinking: false,
+    ...counts,
+  };
+}
+
+/** 已出现过的局面键（含起点） */
+function seenPositionKeys(startFen: string, moves: string[]): Set<string> {
+  const keys = new Set<string>([positionKey(startFen)]);
+  if (moves.length === 0) return keys;
+  let fen = startFen;
+  for (const u of moves) {
+    const next = applyUci(fen, u);
+    if (!next) break;
+    fen = next.fen;
+    keys.add(positionKey(fen));
+  }
+  return keys;
+}
+
+/**
+ * 将军后回到已出现过的局面 → 长将循环，残棋对方不允许。
+ * （非将军的重复着不在此拦，留给引擎/规则层。）
+ */
+export function isRepeatingCheckMove(
+  startFen: string,
+  moves: string[],
+  fen: string,
+  uci: string,
+): boolean {
+  if (!givesCheck(fen, uci)) return false;
+  const applied = applyUci(fen, uci);
+  if (!applied) return false;
+  return seenPositionKeys(startFen, moves).has(positionKey(applied.fen));
+}
+
+/** 对方可选着：排除长将循环 */
+export function allowedOpponentMoves(
+  startFen: string,
+  moves: string[],
+  fen: string,
+): string[] {
+  return allLegalUcis(fen).filter((u) => !isRepeatingCheckMove(startFen, moves, fen, u));
+}
+
+/** 对方只剩长将循环 → 判负，解题成功 */
+export function applyOpponentPerpetualCheckLoss(state: PuzzleState): PuzzleState {
+  if (state.status !== 'playing') return state;
+  const counts = finishCounts(state, 'won');
+  return {
+    ...clearInteraction(state),
+    thinking: false,
+    status: 'won',
+    feedback: '对方长将，解题成功！',
     ...counts,
   };
 }
@@ -197,6 +262,7 @@ export function initialPuzzleState(
 
   return {
     fen: puzzle.startFen,
+    moves: [],
     bookIndex: 0,
     offBook: false,
     selected: null,

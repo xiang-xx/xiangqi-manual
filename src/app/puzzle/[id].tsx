@@ -7,9 +7,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Board } from '../../components/Board';
 import { BoardScreenLayout } from '../../components/BoardScreenLayout';
 import { getPuzzleById, nextPuzzleId } from '../../data/puzzles';
+import { givesCheck } from '../../lib/engine';
 import { findBestMove, isPikafishAvailable, shutdownEngine } from '../../lib/pikafish';
 import {
+  allowedOpponentMoves,
   applyOpponentMove,
+  applyOpponentPerpetualCheckLoss,
   beginOpponentThink,
   initialPuzzleState,
   isOpponentTurn,
@@ -112,6 +115,7 @@ export default function PuzzleScreen() {
     if (aiBusy.current) return;
 
     const requestFen = state.fen;
+    const requestMoves = state.moves;
     let cancelled = false;
     aiBusy.current = true;
     const gen = ++genRef.current;
@@ -121,7 +125,35 @@ export default function PuzzleScreen() {
         prev && prev.fen === requestFen ? beginOpponentThink(prev) : prev,
       );
       try {
-        const uci = await findBestMove(requestFen, PUZZLE_AI_DIFFICULTY);
+        const path = { startFen: puzzle.startFen, moves: requestMoves };
+        const allowed = allowedOpponentMoves(puzzle.startFen, requestMoves, requestFen);
+        if (allowed.length === 0) {
+          if (cancelled || !mounted.current || genRef.current !== gen) return;
+          await new Promise((r) => setTimeout(r, OPPONENT_DELAY_MS));
+          if (cancelled || !mounted.current || genRef.current !== gen) return;
+          setState((prev) =>
+            prev && prev.fen === requestFen ? applyOpponentPerpetualCheckLoss(prev) : prev,
+          );
+          return;
+        }
+
+        const fallbackUci =
+          allowed.find((u) => !givesCheck(requestFen, u)) ?? allowed[0]!;
+
+        let uci = await findBestMove(requestFen, PUZZLE_AI_DIFFICULTY, path);
+        if (!allowed.includes(uci)) {
+          // 引擎想走长将循环时，在合法非长将着里重算
+          try {
+            uci = await findBestMove(requestFen, PUZZLE_AI_DIFFICULTY, {
+              ...path,
+              searchmoves: allowed,
+            });
+          } catch {
+            uci = fallbackUci;
+          }
+          if (!allowed.includes(uci)) uci = fallbackUci;
+        }
+
         if (cancelled || !mounted.current || genRef.current !== gen) return;
         await new Promise((r) => setTimeout(r, OPPONENT_DELAY_MS));
         if (cancelled || !mounted.current || genRef.current !== gen) return;

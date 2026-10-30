@@ -49,3 +49,6 @@ moved.jpg
 modules/pikafish-engine/android/src/main/assets/pikafish.nnue
 modules/pikafish-engine/vendor/
 modules/pikafish-engine/.build/
+
+# Pikafish Android 本地编译产物
+modules/pikafish-engine/android/build/
